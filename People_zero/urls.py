@@ -9,7 +9,6 @@ router.register(r'accounts', views.UserViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('backend.urls')),
+    path('', include(router.urls)),
     path('frontend/', TemplateView.as_view(template_name='index.html')),
-    path('accounts/', include(router.urls))
 ]
