@@ -74,8 +74,10 @@ TEMPLATES = [
         },
     },
 ]
+STATIC_URL = '/static/'
 STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'frontend','build','static')
+    os.path.join(BASE_DIR,'frontend','build','static'),
+    os.path.join(BASE_DIR,'frontend','build','img')
 ]
 WSGI_APPLICATION = 'People_zero.wsgi.application'
 
