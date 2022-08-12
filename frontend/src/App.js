@@ -1,21 +1,25 @@
-
+import LoginPage from './LoginPage';
 import './App.css';
-// import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import React from 'react';
 function App() {
   return (
-    // <BrowserRouter>
-    <div className="App">
-      프론트엔드팀 화이팅~
-      {/* <Routes>
-        <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/new' element={<New></New>}></Route>
-        <Route path='/edit/:id' element={<Edit></Edit>}></Route>
-        <Route path='/diary/:id' element={<Diary></Diary>}></Route>
+    
+    
+      
+      <BrowserRouter>
+      <Routes>
+        <Route path='/login' element={<LoginPage></LoginPage>}></Route>
         
       </Routes>
-       */}
-    </div>
-    // </BrowserRouter>
+      
+      </BrowserRouter>
+
+
+
+      
+    
+    
   );
 }
 
