@@ -335,3 +335,5 @@ pip-selfcheck.json
 
 # End of https://www.toptal.com/developers/gitignore/api/react,django,venv,node
 
+#migrations
+migrations
