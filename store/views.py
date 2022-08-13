@@ -1,10 +1,11 @@
-from urllib import response
+from urllib import request, response
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Store,Review
-from .tests import TestReviewSerializer,TestStoreSerializer
+from .serializers import TestReviewSerializer,TestStoreSerializer
 from django.shortcuts import get_object_or_404
+from rest_framework import status
 
 # Create your views here.
 class TestStoreListAPIView(APIView):
@@ -30,11 +31,11 @@ class TestStoreDetailAPIView(APIView):
     
     def put(self, request, pk):
         store = self.get_object(pk)
-        serializer = TestStoreSerializer(store)
+        serializer = TestStoreSerializer(store, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_404_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
         store = self.get_object(pk)

@@ -6,12 +6,12 @@ from django.core.validators import RegexValidator
 # Create your models here.
 class Store(models.Model):
     store_name = models.CharField(max_length=20)
-    store_image = models.ImageField(null=True)
+    store_image = models.ImageField(null=True,blank=True)
     opening_time = models.CharField(max_length=50)
     store_longtitude = models.DecimalField(max_digits=9, decimal_places=6)
     store_latitude = models.DecimalField(max_digits=9, decimal_places=6)
     phoneNumberRegex = RegexValidator(regex = r"^\+?1?\d{8,15}$")
-    telphone = models.CharField(validators = [phoneNumberRegex], max_length = 16, unique = True)
+    telephone = models.CharField(validators = [phoneNumberRegex], max_length = 16, unique = True, null=True)
     description = models.TextField(blank=True)
     point_avg = models.FloatField()
 
