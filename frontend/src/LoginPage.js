@@ -1,4 +1,5 @@
 import { useState } from "react"
+import LoginPageHeader from "./component/LoginPageHeader"
 import "./css/LoginPage.css"
 
 const LoginPage=()=>{
@@ -7,12 +8,8 @@ const LoginPage=()=>{
     return(
         
     <div className="LoginPage">
-        
-    <header className="LoginPage_header">
-        <span>BZero</span>
-        <button className="LoginPage_header_loginbutton">로그인</button>
-        <button className="LoginPage_header_signin">회원가입</button>
-    </header>
+    <LoginPageHeader></LoginPageHeader>    
+    
     <div className="LoginPage_body">
 
     <div className="LoginPage_infotext">

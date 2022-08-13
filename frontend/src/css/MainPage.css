@@ -1,0 +1,154 @@
+@import url(reset.css);
+
+
+
+.MainPage_firstpage{
+
+
+width: 100%;
+height: 500px;
+
+
+background: #006EFF;
+display: flex;
+
+justify-content: space-between;
+z-index: -5;
+}
+
+.MainPage_firstPage_textbox{
+    display: flex;
+    flex-direction: column;
+    max-width:400px;
+    position: relative;
+    top:130px;
+    left:290px;
+    min-width:280px;
+}
+
+.MainPage_firstPage_maintext{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 60px;
+line-height: 88px;
+/* identical to box height */
+
+
+color: #FFFFFF;
+}
+
+.MainPage_firstPage_subtext{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 32px;
+/* identical to box height */
+
+
+color: #CECECE;
+}
+
+.MainPage_firstPage_start{
+
+margin-top:45px;    
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 21px;
+line-height: 30px;
+width: 140px;
+height: 48px;
+color: #075CFF;
+
+background: #FFFFFF;
+border: 1px solid #075CFF;
+border-radius: 50px;
+
+
+}
+.MainPage_firstPage_imgbox{
+    max-height:500px;
+    width:60%;
+    overflow: hidden;
+    padding-left:100px;
+
+}
+
+.MainPage_vector1{
+
+    max-width: 500px;
+    width: 669.47px;
+    height: 681.38px;
+
+
+}
+.MainPage_vector2{
+    height: 100%;
+    position:absolute;
+    top:350px;
+    padding-left:55px;
+}
+.MainPage_vector3{
+    
+    position:absolute;
+    top:250px;
+    padding-left:70px;
+    
+}
+.MainPage_vector4{
+    position:absolute;
+    top:202px;
+    padding-left:240px;
+    z-index: 0;;
+    height:400px;
+}
+.MainPage_vector4 img{
+    height:100%;
+
+}
+.MainPage_vector5{
+    position:absolute;
+    top:292px;
+    padding-left:350px;
+    z-index: 0;;
+    height:310px;
+}
+.MainPage_vector5 img{
+    height:100%;
+
+}
+.MainPage_vector6{
+    position:absolute;
+    top:100px;
+    padding-left:460px;
+    z-index: 0;;
+    height:230px;
+}
+.MainPage_vector6 img{
+    height:100%;
+    
+}
+.MainPage_vector7{
+    position:absolute;
+    top:422px;
+    padding-left:470px;
+    z-index: 0;;
+    height:180px;
+}
+.MainPage_vector7 img{
+    height:100%;
+
+}
+.MainPage_vector8{
+    height: 100%;
+    position:relative;
+    bottom:850px;
+    padding-left:80px;
+    overflow: hidden;
+}
+.MainPage_vector8 img{
+    height:684px;
+    overflow: hidden;
+}
