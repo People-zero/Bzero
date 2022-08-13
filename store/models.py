@@ -6,7 +6,7 @@ from django.core.validators import RegexValidator
 # Create your models here.
 class Store(models.Model):
     store_name = models.CharField(max_length=20)
-    store_image = models.ImageField()
+    store_image = models.ImageField(null=True)
     opening_time = models.CharField(max_length=50)
     store_longtitude = models.DecimalField(max_digits=9, decimal_places=6)
     store_latitude = models.DecimalField(max_digits=9, decimal_places=6)
