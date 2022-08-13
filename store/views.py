@@ -70,7 +70,7 @@ class ReviewViewSet(ModelViewSet):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.filter(Clean_Store__pk=self.kwargs["Clean_Store_pk"])
+        qs = qs.filter(Clean_Store__pk=self.kwargs["store_review"])
         return qs
 
 class Bottle_Collection_StoreViewSet(ModelViewSet):
