@@ -152,3 +152,113 @@ border-radius: 50px;
     height:684px;
     overflow: hidden;
 }
+
+.MainPage_secondPage{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    min-height: 300px;
+    margin-top:150px;
+}
+.MainPage_secondPage_Maintext{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 27px;
+line-height: 34px;
+
+color: #000000;
+}
+.MainPage_secondPage_subtext{
+margin-top:20px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 21px;
+line-height: 29px;
+
+color: #767678;
+
+}
+
+.MainPage_secondPage_blockblock{
+    margin-top:90px;
+    width:600px;
+}
+
+
+.MainPage_secondPage_block span{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    
+    color: #FFFFFF;
+    
+    
+}
+
+.MainPage_secondPage_block span img{
+    position: relative;
+    left:6px;
+    top:8px;
+    width:30px;
+}
+
+.MainPage_secondPage_block{
+    
+    /* width: 473px;
+    height: 81px; */
+    width:410px;
+    padding:11px 40px 17px 40px;
+    background: #A3ACFF;
+    border-radius: 50px 50px 50px 0px;
+    margin-bottom:13px;
+    margin-right:50px;
+    
+    }
+    
+   
+    
+
+    
+
+    .MainPage_secondPage_block2 span{
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 29px;
+        
+        color: #FFFFFF;
+        
+        
+    }
+    
+    .MainPage_secondPage_block2 span img{
+        position: relative;
+        right:6px;
+        top:8px;
+        width:30px;
+    }
+    
+    .MainPage_secondPage_block2{
+        
+        /* width: 473px;
+        height: 81px; */
+        width:410px;
+        padding:11px 40px 17px 40px;
+        background: #A3ACFF;
+        border-radius: 50px 50px 0px 50px;
+        margin-bottom:13px;
+        margin-left:180px;
+        
+        }
+        
+    
+            
+
+
+
