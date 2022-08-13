@@ -36,6 +36,16 @@ const MainPage=()=>{
         <div className="MainPage_vector6"><img src={process.env.PUBLIC_URL+`../img/Union.png`}></img></div>
         <div className="MainPage_vector8"><img src={process.env.PUBLIC_URL+`../img/Vector 27.png`}></img></div>
        </div>
+       {/* <div className="MainPage_firstPage_imgbox">
+        <div className="MainPage_vector7"><img src={`/static/Rectangle 87.png`}></img></div>
+        <div className="MainPage_vector4"><img src={`/static/Group 1122.png`}></img></div>
+        <div className="MainPage_vector1"><img src={`/static/Vector 28.png`}></img></div>
+        <div className="MainPage_vector2"><img src={`/static/Vector 26.png`}></img></div>
+        <div className="MainPage_vector3"><img src={`/static/Vector 29.png`}></img></div>
+        <div className="MainPage_vector5"><img src={`/static/Subtract.png`}></img></div>
+        <div className="MainPage_vector6"><img src={`/static/Union.png`}></img></div>
+        <div className="MainPage_vector8"><img src={`/static/Vector 27.png`}></img></div>
+       </div> */}
  
     </div>
 
