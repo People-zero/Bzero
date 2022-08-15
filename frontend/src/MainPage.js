@@ -81,6 +81,30 @@ const MainPage=()=>{
 
     </div>
 
+    <div className="MainPage_subpage">
+        
+        <img src={process.env.PUBLIC_URL+`../img/Vector 47.png`}className="MainPage_subpage_vector"/> 
+        <img src={process.env.PUBLIC_URL+`../img/Vector 47.png`}className="MainPage_subpage_vector"/>   
+        <img src={process.env.PUBLIC_URL+`../img/Vector 47.png`}className="MainPage_subpage_vector"/>         
+
+        {/* <img src={process.env.PUBLIC_URL+`../img/Group 1161.png`}className="MainPage_subpage_trash"/> */}
+        
+        </div>   
+    <div className="MainPage_thirdpage">
+
+       <div className="MainPage_thirdpage_textbox">
+        <div className="MainPage_thirdpage_maintext">공병 수거와 같은 우리 주위의 사소한 제로웨이스트들!</div>
+        <div className="MainPage_thirdpage_subtext">BZero는 내 근처 공병 수거 가게를 찾아 주는 서비스를 제공합니다.</div>
+       </div>
+
+       <div className="MainPage_thirdpage_imagebox">
+       <img className="MainPage_thirdpage_glass" src={process.env.PUBLIC_URL+`../img/Group 1170.png`}/>
+       <img src={process.env.PUBLIC_URL+`../img/Group 1172.png`}/>
+       </div>
+
+
+    </div>
+
     </div>
 )
 }

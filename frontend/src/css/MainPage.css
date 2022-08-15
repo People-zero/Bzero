@@ -256,9 +256,67 @@ color: #767678;
         margin-left:180px;
         
         }
-        
+
+.MainPage_thirdpage{
+    height:500px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
     
+    
+}
+.MainPage_thirdpage_textbox{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left:80px;
+}
+.MainPage_thirdpage_subtext{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 29px;
+color: #767678;
+
+}
+.MainPage_thirdpage_maintext{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 51px;
+    
+    color: #000000;
+    margin-bottom:37px;
+}
             
 
+.MainPage_thirdpage_imagebox img{
+    
+    padding-top:120px;
+    height:650px;
+    padding-right:100px;
+}
 
 
+.MainPage_subpage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top:100px;
+}
+.MainPage_subpage_trash{
+    position: relative;
+    width:300px;
+    right:350px;
+}
+.MainPage_thirdpage_glass{
+    position: relative;
+    height: 497px !important;
+    padding-bottom: 150px;
+    left:100px;
+}
