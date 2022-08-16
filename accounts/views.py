@@ -30,10 +30,11 @@ class AttendViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def create(self, request):
-        date = request
-        user = request.uesr
-        if(Attendance.objects.filter(date=date)):
-            return
+        username = request.user
+        attended_date = request.POST['attended_date']
+        if(Attendance.objects.filter(username=username, attended_date=attended_date)):
+            return Response({'a': 'a'})
         else:
-            data = Attendance(username=user, attended_date=date)
+            data = Attendance(username=username, attended_date=attended_date)
             data.save()
+            return Response({'b': 'b'})
