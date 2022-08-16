@@ -10,6 +10,8 @@ const dummyList = [
   },
 ];
 
+const dummy_checked_date = ["2022-08-01", "2022-08-05", "2022-08-13"];
+
 const dummy_badge = [
   { badge_id: 1, badge_type: "badge1.png" },
   { badge_id: 2, badge_type: "badge1.png" },
@@ -22,7 +24,11 @@ function App() {
   return (
     // <BrowserRouter>
     <div className="App">
-      <MyPage user_info={dummyList} badge_info={dummy_badge} />
+      <MyPage
+        user_info={dummyList}
+        checked_date={dummy_checked_date}
+        badge_info={dummy_badge}
+      />
       {/* <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/new' element={<New></New>}></Route>

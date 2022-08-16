@@ -364,7 +364,7 @@
     border: 1px solid white;
     font-family: 'Inter';
     
-    pointer-events: none;
+    /* pointer-events: none; */
   }
   .react-calendar--doubleView {
     width: 700px;
@@ -404,11 +404,13 @@
     text-transform: uppercase;
     font-family: 'Inter';
     font-size: 16px;
-    padding-bottom: 30px;
+    
+    padding-bottom: 15px;
     
   }
   
   .react-calendar__month-view__weekNumbers .react-calendar__tile {
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -422,11 +424,16 @@
   }
   
   .react-calendar__tile {
+    
     font-family: 'Inter';
-    max-width: 100%;
-    padding-bottom: 30px;
+
+    width: 30px;
     
-    
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+
     background: none;
     text-align: center;
     line-height: 16px;
@@ -434,6 +441,17 @@
     font-size: 16px;
   }
  
+.mypage .highlight {
+    
+    height: 30px;
+   
+    background: #DDFFD8;
+    border-radius: 50%;
+    overflow: auto;
+
+    padding-bottom: 0px;
+  }
+
  .mypage .mypage_badge{
     padding-left: 564px;
  }

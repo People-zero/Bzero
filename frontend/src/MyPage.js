@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import moment from "moment";
 import Calendar from "react-calendar";
+
 const point_list = [
   { level: "B", level_kr: "브론즈", min: 0, max: 1500 },
   { level: "S", level_kr: "실버", min: 1500, max: 4500 },
@@ -19,7 +21,7 @@ const my_level = (user_info) => {
     return "D";
   }
 };
-const MyPage = ({ user_info, badge_info }) => {
+const MyPage = ({ user_info, checked_date, badge_info }) => {
   const [value, onChange] = useState(new Date());
 
   return (
@@ -163,6 +165,15 @@ const MyPage = ({ user_info, badge_info }) => {
                   className="mypage_calendar"
                   onChange={onChange}
                   value={value}
+                  tileClassName={({ date, view }) => {
+                    if (
+                      checked_date.find(
+                        (x) => x === moment(date).format("YYYY-MM-DD")
+                      )
+                    ) {
+                      return "highlight";
+                    }
+                  }}
                 />
               </div>
             </div>
