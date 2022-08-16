@@ -16,4 +16,9 @@ class User(AbstractUser):
     is_staff = models.BooleanField(blank=False, default=False)
 
 
+class Attendance(models.Model):
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    attended_date = models.DateField()
+
+
 # Create your models here.

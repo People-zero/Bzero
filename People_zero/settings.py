@@ -37,12 +37,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'backend',
+
+    # 'django.contrib.sites',
+
+    # DRF
     'rest_framework',
+    'rest_framework.authtoken',
+
+    # rest_auth
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    # 'allauth.socialaccount',
+    'dj_rest_auth.registration',
+
+    # my apps
+    'backend',
     'corsheaders',
     'accounts',
     'board',
     'store',
+
 ]
 
 MIDDLEWARE = [
@@ -136,3 +151,23 @@ AUTH_USER_MODEL = 'accounts.User'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# REST_FRAMEWORK = { // 인증
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.TokenAuthentication',
+#     ]
+# }
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    # custom register_serializer
+    'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
+}
+
+ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'  # custom login db 저장
+
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # email 유효성인증 하지 않음
+
+# ACCOUNT_AUTHENTICATION_METHOD = 'username'
+
+# ACCOUNT_EMAIL_REQUIRED = False

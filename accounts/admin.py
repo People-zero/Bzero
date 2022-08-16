@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import User
+from .models import Attendance, User
 
 
 class userAdmin(admin.ModelAdmin):
@@ -9,4 +9,13 @@ class userAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User, userAdmin)
+
+
+class attendanceAdmin(admin.ModelAdmin):
+    list_display = ('username', 'attended_date')
+
+
+admin.site.register(Attendance, attendanceAdmin)
+
+
 # Register your models here.
