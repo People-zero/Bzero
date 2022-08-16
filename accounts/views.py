@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import User, Attendance
+from .models import User, Attendance, Profile
 from rest_framework import viewsets, permissions
-from accounts.serializers import UserSerializer, AttendSerializer
+from accounts.serializers import UserSerializer, AttendSerializer, ProfileSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -38,3 +38,14 @@ class AttendViewSet(viewsets.ModelViewSet):
             data = Attendance(username=username, attended_date=attended_date)
             data.save()
             return Response({'b': 'b'})
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def list(self, request):
+        user = request.user
+        queryset = Profile.objects.filter(username=user)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
