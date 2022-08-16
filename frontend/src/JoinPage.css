@@ -2,19 +2,22 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&display=swap');
 
+
+
 .join_page .join_page_nav {
-    display: flex;
-    
+    position: fixed;
+ 
     width: 1920px;
     height: 102px;
     left: 0px;
     top: 0px;
     border-bottom: 1px solid #0679FF;
-    
+
+    background-color: #FFFFFF;
 }
 
 .join_page .join_page_nav a {
-
+    display: inline-block;
     width: 192px;
     height: 32px;
     
@@ -27,24 +30,18 @@
     font-size: 26px;
     line-height: 32px;
     text-decoration: none;
-    color: #0679FF;
+    color: #0679FF !important;
 }
 
-.join_page .join_page_nav a:link {
-    color: #0679FF;
-}
 
-.join_page .join_page_nav a:visited {
-    color: #0679FF;
-}
 .join_page .join_page_login_btn {
-
+    float: right;
     width: 50px;
     height: 22px;
 
     margin-top: 34px;
     margin-right: 47px;
-    margin-left: 801px;
+    
     padding-top: 9px;
     padding-bottom: 9px;
 
@@ -59,7 +56,7 @@
 }
 
 .join_page .join_page_goto_join_btn {
-
+float: right;
     width: 110px;
     height: 40px;
     
@@ -87,12 +84,14 @@
 .join_page .join_page_container {
     
     display: flex;
-    justify-content: center;
+    
     align-items: center;
     height: auto;
 
-    margin: 10px;
+    margin-top: 10px;
+    margin-left: 664px;
     padding: 20px;
+    overflow: auto;
 }
 .join_page .join_page_row {
     display: block;
@@ -109,15 +108,12 @@
     color: #000000;
 }
 
-.join_page .join_page_row label{
+.join_page .join_page_detail label{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     color: #454545;
-
-    margin-bottom: 11px;
-    margin-top: 18px;
 }
 
 .join_page .join_page_input {
@@ -133,6 +129,9 @@
     border: 1px solid #BDC8D3;
     border-radius: 5px;
 
+    font-family: 'Roboto';
+    font-size: 16px;
+
 }
 
 .join_page .join_page_row ::placeholder {
@@ -141,11 +140,26 @@
     color: #B9B9B9;
 }
 
-.join_page .join_page_user_type_btn{
+.join_page .join_page_user_type_btn_1{
+    width: 282px;
+    height: 48px;
+    border: 1px solid #0788FF;
+    border-radius: 5px;
+
+    margin-top: 11px;
+    margin-bottom: 22px;
+    margin-right: 24px;
     
 
+    font-size: 18px;
+    text-align: center;
+    background-color: white;
+    color: #0788FF; 
+}
+
+.join_page .join_page_user_type_btn_2{
     width: 282px;
-height: 48px;
+    height: 48px;
     border: 1px solid #BDC8D3;
     border-radius: 5px;
 
@@ -158,6 +172,35 @@ height: 48px;
     text-align: center;
     background-color: white;
     color: #454545;
+
+    
+}
+
+.join_page .join_page_radio {
+    margin-top: 11px;
+    margin-bottom: 18px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.join_page select{
+    
+    width: 78px;
+    height: 48px;
+
+    margin-top: 11px;
+    margin-bottom: 18px;
+    border: 1px solid #BDC8D3;
+    border-radius: 5px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+
+    color: #000000;
 }
 
 .join_page .join_page_date {
@@ -165,9 +208,7 @@ height: 48px;
     width: 588px;
     height: 48px;
 
-
     padding-left: 15px;
-
     margin-top: 11px;
     margin-bottom: 18px;
 
@@ -179,6 +220,27 @@ height: 48px;
     color: #B9B9B9;
 }
 
+
+.join_page input[type='date']::before {
+    content: attr(data-placeholder);
+    width: 100%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+  }
+  
+
+ .join_page input[type='date']:valid::before {
+    display: none;
+  }
+
+  .join_page input[type="date"]::-webkit-datetime-edit-month-field,
+  .join_page input[type="date"]::-webkit-datetime-edit-day-field,
+  .join_page input[type="date"]::-webkit-datetime-edit-year-field {
+    color: #000000;
+  }
+
 .join_page .join_page_row section {
     width: 588px;
     border-top: 1px solid #0679FF;
@@ -187,6 +249,70 @@ height: 48px;
 .join_page .join_page_all_check {
     margin-top: 36px;
     margin-bottom: 8px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+
+    color: #000000;
+}
+
+
+.join_page .join_page_check label {
+    
+    display: inline-block;
+    
+    margin-top: 17px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+
+    color: #434343;
+}
+
+.join_page .join_page_check_detail_1 {
+    position: absolute;
+    
+    margin-top: 17px;
+    margin-left: 360px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+
+    color: #0788FF !important;
+}
+
+.join_page .join_page_check_detail_2 {
+    position: absolute;
+    
+    margin-top: 17px;
+    margin-left: 259px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+
+    color: #0788FF !important;
+}
+
+.join_page .join_page_check_detail_3 {
+    position: absolute;
+    
+    margin-top: 17px;
+    margin-bottom: 0px;
+    margin-left: 314px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+
+    color: #0788FF !important;
 }
 
 .join_page .join_page_cancel_btn {
@@ -194,6 +320,7 @@ height: 48px;
     height: 62px;
 
     margin-top: 63px;
+    margin-bottom: 128px;
     margin-right: 24px;
 
     border: 1px solid #BDC8D3;
@@ -210,6 +337,7 @@ height: 48px;
     height: 62px;
 
     margin-top: 63px;
+    margin-bottom: 128px;
 
     background: #0788FF;
     border-radius: 5px;
@@ -220,3 +348,5 @@ height: 48px;
     font-size: 20px;
     color: #FFFFFF;
 }
+
+

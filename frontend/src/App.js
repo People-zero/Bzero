@@ -1,11 +1,11 @@
-
-import './App.css';
+import "./JoinPage.css";
+import JoinPage from "./JoinPage";
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
   return (
     // <BrowserRouter>
     <div className="App">
-      프론트엔드팀 화이팅~
+      <JoinPage />
       {/* <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/new' element={<New></New>}></Route>
@@ -19,4 +19,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
