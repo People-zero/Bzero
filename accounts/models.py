@@ -21,4 +21,11 @@ class Attendance(models.Model):
     attended_date = models.DateField()
 
 
+class Profile(models.Model):
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile_image = models.ImageField(upload_to='image/', blank=True, null=True)
+    intro_comment = models.CharField(max_length=150, blank=True, null=True)
+    point = models.IntegerField(default=0)
+
+
 # Create your models here.

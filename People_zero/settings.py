@@ -145,6 +145,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
+# Media files (image)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 AUTH_USER_MODEL = 'accounts.User'
 
 # Default primary key field type

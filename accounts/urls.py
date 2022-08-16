@@ -1,6 +1,6 @@
-from django.contrib import admin
+# Bzero/accounts/urls.py
+
 from django.urls import path, include, re_path
-from django.views.generic import TemplateView
 from rest_framework import routers
 from .views import UserViewSet, AttendViewSet
 

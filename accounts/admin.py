@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Attendance, User
+from .models import Attendance, User, Profile
 
 
 class userAdmin(admin.ModelAdmin):
@@ -17,5 +17,9 @@ class attendanceAdmin(admin.ModelAdmin):
 
 admin.site.register(Attendance, attendanceAdmin)
 
+class profileAdmin(admin.ModelAdmin):
+    list_display = ('profile_image', 'intro_comment', 'point')
+
+admin.site.register(Profile, profileAdmin)
 
 # Register your models here.
