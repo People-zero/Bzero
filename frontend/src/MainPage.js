@@ -95,6 +95,7 @@ const MainPage=()=>{
        <div className="MainPage_thirdpage_textbox">
         <div className="MainPage_thirdpage_maintext">공병 수거와 같은 우리 주위의 사소한 제로웨이스트들!</div>
         <div className="MainPage_thirdpage_subtext">BZero는 내 근처 공병 수거 가게를 찾아 주는 서비스를 제공합니다.</div>
+        
        </div>
 
        <div className="MainPage_thirdpage_imagebox">
@@ -103,6 +104,21 @@ const MainPage=()=>{
        </div>
 
 
+    </div>
+
+    <div className="MainPage_fourth">
+
+    <div className="MainPage_fourthpage_imagebox">
+        <img src={process.env.PUBLIC_URL+`../img/PEOPLE.png`}/>
+        <img style={{width:'292px'}} src={process.env.PUBLIC_URL+`../img/ZERO.png`}/>
+    </div>
+    
+    <div className="MainPage_fourthpage_textbox">
+       <div className="MainPage_fourthpage_maintext">제로웨이스터들을 위한 커뮤니티 플랫폼</div>
+       <span className="MainPage_fourthpage_subtext">혹시 주위의 다른 제로웨이스터들과 소통하고 싶으신가요?<br></br>
+       BZero의 제로웨이스트 커뮤니티를 이용하여 제로웨이스트 라이프를 공유해보세요!</span><br></br>
+       <button className="MainPage_fourthPage_start">시작하기</button>
+       </div>
     </div>
 
     </div>

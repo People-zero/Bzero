@@ -165,7 +165,7 @@ border-radius: 50px;
     font-family: 'Montserrat';
 font-style: normal;
 font-weight: 500;
-font-size: 27px;
+font-size: 30px;
 line-height: 34px;
 
 color: #000000;
@@ -286,11 +286,11 @@ color: #767678;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 27px;
+    font-size: 30px;
     line-height: 51px;
     
     color: #000000;
-    margin-bottom:37px;
+    margin-bottom:30px;
 }
             
 
@@ -320,3 +320,57 @@ color: #767678;
     padding-bottom: 150px;
     left:100px;
 }
+
+.MainPage_fourth{
+    display: flex;
+    height:500px;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top:70px;
+}
+.MainPage_fourthpage_imagebox{
+    display: flex;
+    flex-direction: column;
+}
+
+.MainPage_fourthpage_imagebox img{
+    width: 438px;
+height: 80px;
+margin-bottom: 30px;
+}
+.MainPage_fourthpage_maintext{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 51px;
+    
+    color: #000000;
+    margin-bottom:30px;
+}
+.MainPage_fourthpage_subtext{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    color: #767678;
+}
+.MainPage_fourthPage_start{
+
+    margin-top:45px;    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 30px;
+    width: 140px;
+    height: 48px;
+    color: #075CFF;
+    
+    background: #FFFFFF;
+    border: 1px solid #075CFF;
+    border-radius: 50px;
+    
+    
+    }
