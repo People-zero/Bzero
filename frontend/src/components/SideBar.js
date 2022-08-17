@@ -1,19 +1,7 @@
-import SideBarItem from "./SideBarItem";
-import { useLocation, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const env=process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
-
-// {emotion_id: 5, emotion_img: process.env.PUBLIC_URL + `/assets/emotion5.png`,emotion_descript: '끔찍함'}
-
-// const menus = [ //URL 임의로 정해놓음.
-//     {name : "마이페이지", path:  "/mypage"},
-//     {name : "가게 찾기" ,path: "/findstore"},
-//     {name : "클린스토어",path:"/cleanstore" },
-//     {name : "공병스토어",path:"/emptybottlestore" },
-//     {name : "커뮤니티",path:"/community" },
-//     {name : "제로웨이스트 일기",path: "/zeroweistdiary"}
-// ];
 
 const SideBar = () => {
     return (
