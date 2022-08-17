@@ -13,7 +13,18 @@ class Clean_Store(models.Model):
     phoneNumberRegex = RegexValidator(regex = r"^\+?1?\d{8,15}$")
     telephone = models.CharField(validators = [phoneNumberRegex], max_length = 16, unique = True, null=True)
     description = models.TextField(blank=True)
-    point_avg = models.FloatField()
+
+    def point_avg(self,obj):
+        cnt = 0
+        total = 0
+        for review in Review.objects.filter(pk = Review.store_review):
+            cnt += 1
+            total += review.point
+        return total/cnt
+
+        
+
+    
 
 
 class Review(models.Model):

@@ -1,3 +1,4 @@
+from posixpath import basename
 from urllib import request, response
 from django.shortcuts import render
 from rest_framework.response import Response
@@ -61,6 +62,9 @@ class Clean_StoreViewSet(ModelViewSet):
         Clean_Store.objects.all()
     )
     serializer_class = serializers.Clean_StoreSerializer
+
+    def perform_create(self, serializer):
+        return super().perform_create(serializer)
 
 class ReviewViewSet(ModelViewSet):
     queryset = (
