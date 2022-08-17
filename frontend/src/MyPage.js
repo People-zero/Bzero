@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
 import Calendar from "react-calendar";
-
+import "./css/MyPage.css"
 const point_list = [
   { level: "B", level_kr: "브론즈", min: 0, max: 1500 },
   { level: "S", level_kr: "실버", min: 1500, max: 4500 },

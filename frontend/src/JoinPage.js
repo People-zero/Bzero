@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import LoginPageHeader from "./component/LoginPageHeader";
+import "./css/JoinPage.css"
 const JoinPage = () => {
   const [user_type, set_user_type] = useState(true);
 
@@ -71,11 +72,7 @@ const JoinPage = () => {
 
   return (
     <div className="join_page">
-      <div className="join_page_nav">
-        <a href="#main">BZero</a>
-        <button className="join_page_goto_join_btn">회원가입</button>
-        <button className="join_page_login_btn">로그인</button>
-      </div>
+      <LoginPageHeader></LoginPageHeader>
       <div className="join_page_container">
         <div className="join_page_row">
           <p>
@@ -171,7 +168,7 @@ const JoinPage = () => {
               value="남성"
               name="gender"
             ></input>
-            <label for="male">남성</label>
+            <label style={{marginRight:"40px"}}for="male">남성</label>
 
             <input id="female" type="radio" value="여성" name="gender"></input>
             <label for="female">여성</label>

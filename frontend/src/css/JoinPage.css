@@ -87,9 +87,8 @@ float: right;
     
     align-items: center;
     height: auto;
+    justify-content: center;
 
-    margin-top: 10px;
-    margin-left: 664px;
     padding: 20px;
     overflow: auto;
 }
@@ -211,7 +210,7 @@ float: right;
     padding-left: 15px;
     margin-top: 11px;
     margin-bottom: 18px;
-
+    padding-right:19px;
     border: 1px solid #BDC8D3;
     border-radius: 5px;
 
@@ -290,7 +289,7 @@ float: right;
     position: absolute;
     
     margin-top: 17px;
-    margin-left: 259px;
+    margin-left: 268px;
 
     font-family: 'Roboto';
     font-style: normal;
