@@ -1,3 +1,4 @@
+import JoinPage from "./JoinPage";
 import LoginPage from './LoginPage';
 import './App.css';
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
@@ -23,4 +24,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
