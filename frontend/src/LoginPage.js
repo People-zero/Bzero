@@ -15,7 +15,7 @@ const LoginPage=()=>{
     <div className="LoginPage_infotext">
 
         <span className="LoginPage_headtext">
-        🖐 이미 BZero 회원이신가요?
+         이미 BZero 회원이신가요?
         </span>
         
         <span className="LoginPage_bodytext">
