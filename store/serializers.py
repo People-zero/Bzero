@@ -7,7 +7,10 @@ class Clean_StoreSerializer(serializers.ModelSerializer):
    class Meta:
       model = Clean_Store
       fields = "__all__"
-
+   def get_point_avg(self, obj):
+      point = Review.objects.filter(store_review_id = obj.id)
+      return point
+      
 class ReviewSerializer(serializers.ModelSerializer):
    class Meta:
       model = Review
