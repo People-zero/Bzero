@@ -61,6 +61,25 @@
     min-width: 100%;
 }
 
+/* CleanStoreItem */
+.CleanStoreItem{
+    margin-left: 72px;
+    margin-top: 120px;
+    justify-content: space-between;
+}
+
+.CleanStoreItem .img_wrapper{
+    cursor: pointer;
+}
+
+.CleanStoreItem img{
+    cursor: pointer;
+    max-width: 100%;
+    max-height: 100%;
+    width: 478px;
+    height: 464px;
+}
+
 
 /* SideBar */
 

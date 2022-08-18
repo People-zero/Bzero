@@ -1,11 +1,9 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import React,{useReducer} from 'react';
+import React,{useReducer,useRef} from 'react';
 import CleanStoreDetail from './CleanStoreDetail';
 import CleanStore from './CleanStore';
-
-const env=process.env;
-env.PUBLIC_URL = env.PUBLIC_URL || "";
+import { dummyData } from './util/dummyData';
 
 const reducer=(state,action)=>{
   switch(action.type){
@@ -18,9 +16,13 @@ const reducer=(state,action)=>{
 
 export const CleanStoreContext = React.createContext();
 
-
 function App() {
+
+  const [data,dispatch]=useReducer(reducer,dummyData);
+  const dataId= useRef(10);
+
   return (
+    <CleanStoreContext.Provider value={data}>
     <BrowserRouter>
     <div className="App">
       <Routes>
@@ -29,7 +31,8 @@ function App() {
       </Routes>
     </div>
     </BrowserRouter>
+    </CleanStoreContext.Provider>
   );
 }
 
-export default App
+export default App;
