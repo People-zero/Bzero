@@ -49,9 +49,4 @@ class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    http_method_names = ['get', 'patch']  # get method 만을 활용
-    # def list(self, request):
-    #     user = request.user
-    #     queryset = Profile.objects.filter(username=user)
-    #     serializer = self.get_serializer(queryset, many=True)
-    #     return Response(serializer.data)
+    # http_method_names = ['get', 'patch', 'post', 'delete']  # get method 만을 활용
