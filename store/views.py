@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 from posixpath import basename
 from urllib import request, response
 from django.shortcuts import render
@@ -8,6 +9,7 @@ from . import serializers
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
+
 
 # Create your views here.
 # class TestStoreListAPIView(APIView):
@@ -58,13 +60,12 @@ from rest_framework.viewsets import ModelViewSet
 #         return Response(serializer.errors,status = 400)
 
 class Clean_StoreViewSet(ModelViewSet):
-    quereyset = (
-        Clean_Store.objects.all()
-    )
+    queryset =  (Clean_Store.objects.all())
     serializer_class = serializers.Clean_StoreSerializer
 
-    def perform_create(self, serializer):
-        return super().perform_create(serializer)
+
+    # def perform_create(self, serializer):
+    #     return super().perform_create(serializer)
 
 class ReviewViewSet(ModelViewSet):
     queryset = (
@@ -74,7 +75,8 @@ class ReviewViewSet(ModelViewSet):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.filter(Clean_Store__pk=self.kwargs["store_review"])
+        print("안녕: ",self.kwargs)
+        qs = qs.filter(store_review__pk=self.kwargs["clean_store_pk"])
         return qs
 
 class Bottle_Collection_StoreViewSet(ModelViewSet):
