@@ -59,13 +59,19 @@
     margin-top: 63px;
     border-top: 1px solid #0679FF;
     min-width: 100%;
+    display: grid; /* 격자를 만들어줌*/
+    grid-template-columns: repeat(3, auto); /* 격자 5개 지정 */
+    gap: 1%; /* item 사이의 gap 생성 */
 }
 
 /* CleanStoreItem */
 .CleanStoreItem{
     margin-left: 72px;
     margin-top: 120px;
-    justify-content: space-between;
+    width: 478px;
+    height: 464px;
+    /* justify-content: space-between; */
+    
 }
 
 .CleanStoreItem .img_wrapper{
@@ -80,6 +86,25 @@
     height: 464px;
 }
 
+.CleanStoreItem .info_wrapper{
+    margin-top: 17px;
+    border-top: 1px solid #0679FF;
+}
+
+.CleanStoreItem .info_wrapper .store_name{
+    margin-top: 12px;
+    color: #075CFF;
+    font-size: 22px;
+    line-height: 27px;
+    font-weight: 400;
+}
+
+.CleanStoreItem .info_wrapper .store_content{
+    color: #474747;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 27px;
+}
 
 /* SideBar */
 
