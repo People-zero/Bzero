@@ -13,7 +13,4 @@ router.register(r"clean_store/(?P<clean_store_pk>\d+)/reviews",views.ReviewViewS
 
 urlpatterns = [
     path("",include(router.urls)),
-    # path('store/', TestStoreListAPIView.as_view()),
-    # path('store_detail/<int:pk>', TestStoreDetailAPIView.as_view()),
-    # path('review/', TestReviewAPIView.as_view()),
 ]

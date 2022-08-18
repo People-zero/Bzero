@@ -37,14 +37,3 @@ class Bottle_Collection_StoreSerializer(serializers.ModelSerializer):
       fields = "__all__"
 
 
-
-
-# class TestStoreSerializer(serializers.ModelSerializer):
-#      class Meta:
-#         model = Clean_Store
-#         fields = ('id', 'store_name', 'opening_time', 'store_longtitude', 'store_latitude', 'telephone','description', 'point_avg')
-
-# class TestReviewSerializer(serializers.ModelSerializer):
-#      class Meta:
-#         model = Review
-#         fields = '__all__'
