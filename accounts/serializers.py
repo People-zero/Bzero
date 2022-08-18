@@ -1,20 +1,28 @@
 from dataclasses import fields
 from pyexpat import model
 from re import A
-from .models import User, Attendance
+from .models import User, Attendance, Profile
 from rest_framework import serializers
 from dj_rest_auth.registration.serializers import RegisterSerializer
 
 
+class ProfileSerializer(serializers.ModelSerializer):
+    # user_data = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    class Meta:
+        model = Profile
+        fields = ['id', 'username', 'profile_image', 'intro_comment', 'point']
+
+
 class UserSerializer(serializers.ModelSerializer):
+    profile_set = ProfileSerializer(many=True, read_only=True)
+
     class Meta:
         model = User
         fields = ['id', 'username', 'birth',
-                  'email', 'age', 'phone_number', 'first_name', 'last_name', 'is_staff']
+                  'email', 'age', 'phone_number', 'first_name', 'last_name', 'is_staff', 'profile_set']
 
 
 class AttendSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Attendance
         fields = ['id', 'username', 'attended_date']

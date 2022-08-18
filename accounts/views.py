@@ -1,7 +1,9 @@
+from email.policy import HTTP
+from http.client import HTTPMessage
 from django.shortcuts import render
-from .models import User, Attendance
+from .models import User, Attendance, Profile
 from rest_framework import viewsets, permissions
-from accounts.serializers import UserSerializer, AttendSerializer
+from accounts.serializers import UserSerializer, AttendSerializer, ProfileSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -10,6 +12,8 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    http_method_names = ['get', 'patch']  # get method 만을 활용
 
     # def list(self, request):
     #     user = request.user
@@ -38,3 +42,11 @@ class AttendViewSet(viewsets.ModelViewSet):
             data = Attendance(username=username, attended_date=attended_date)
             data.save()
             return Response({'b': 'b'})
+
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    # http_method_names = ['get', 'patch', 'post', 'delete']  # get method 만을 활용
