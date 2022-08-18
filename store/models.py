@@ -1,4 +1,3 @@
-from faulthandler import disable
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
@@ -14,17 +13,17 @@ class Clean_Store(models.Model):
     phoneNumberRegex = RegexValidator(regex = r"^\+?1?\d{8,15}$")
     telephone = models.CharField(validators = [phoneNumberRegex], max_length = 16, unique = True, null=True)
     description = models.TextField(blank=True)
-    point_avg = models.DecimalField(blank=True,null=True, max_digits=9,decimal_places=9)
+    point_avg = models.FloatField()
 
 
 class Review(models.Model):
-    CHOICE_RATE = (('1',"1점"),('2',"2점"),('3',"3점"),('4',"4점"),('5',"5점"))
+    CHOICE_RATE = ((1,"1점"),(2,"2점"),(3,"3점"),(4,"4점"),(5,"5점"))
 
     comment = models.CharField(max_length = 100)
     point = models.CharField(max_length = 1, choices = CHOICE_RATE)
     store_review = models.ForeignKey(Clean_Store, on_delete = models.CASCADE)
     user_review = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete = models.CASCADE)
-    created_at_review = models.DateField(auto_now_add=True,editable= False, null=True)
+    created_at_review = models.DateField(auto_created=timezone.now,editable= False)
     updated_at_review = models.DateField(auto_created=timezone.now)
 
 
