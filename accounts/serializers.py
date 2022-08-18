@@ -10,12 +10,12 @@ class ProfileSerializer(serializers.ModelSerializer):
     # user_data = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Profile
-        fields = ['id', 'profile_image', 'intro_comment', 'point']
-
+        fields = ['id', 'username', 'profile_image', 'intro_comment', 'point']
 
 
 class UserSerializer(serializers.ModelSerializer):
-    profile_set = ProfileSerializer(many=True,read_only=True)
+    profile_set = ProfileSerializer(many=True, read_only=True)
+
     class Meta:
         model = User
         fields = ['id', 'username', 'birth',
@@ -26,7 +26,6 @@ class AttendSerializer(serializers.ModelSerializer):
     class Meta:
         model = Attendance
         fields = ['id', 'username', 'attended_date']
-
 
 
 class CustomRegisterSerializer(RegisterSerializer):
