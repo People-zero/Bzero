@@ -106,6 +106,42 @@
     line-height: 27px;
 }
 
+/* CleanStoreDetail */
+
+.CleanStoreDetail{
+    display: flex;
+}
+
+.CleanStoreDetail .cleanstore_detail{
+    flex-grow: 1;
+}
+
+.CleanStoreDetail .cleanstore_topbar{
+    margin-left: 72px;
+    margin-top: 42px;
+}
+
+.CleanStoreDetail .cleanstore_topbar h2{
+
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+}
+
+.CleanStoreDetail .cleanstore_content{
+    border-top: 1px solid #0679FF;
+    margin-top: 33px;
+}
+
+.CleanStoreDetail .cleanstore_content h2{
+    margin-left: 70px;
+    margin-top: 38px;
+    color : #0679FF;
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 55px;
+}
+
 /* SideBar */
 
 .SideBar{
