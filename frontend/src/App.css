@@ -144,7 +144,7 @@
     flex-grow: 1;
 }
 
-.CleanStoreDetail .cleanstore_content2 h3{
+.CleanStoreDetail .cleanstore_content2 .cleanstore_star{
     margin-left: 70px;
     margin-top: 37px;
     color : #D9D9D9;
@@ -154,16 +154,18 @@
 }
 
 .CleanStoreDetail .cleanstore_content2 h4{
+    display: inline-block;
+    width: 588px;
     margin-left: 942px;
     margin-top: 48px;
-    margin-right: 140;
+    margin-right: 140px;
     color : #474747;
     font-weight: 500;
     font-size: 22px;
     line-height: 34px;  
 }
 
-.CleanStoreDetail .cleanstore_content2 img{
+.CleanStoreDetail .cleanstore_content2 .store_image{
       margin-top: 76px;
       margin-left: 93px;
       max-width: 100%;
@@ -210,12 +212,102 @@
     border-top: 1px solid #0679FF;
 }
 
-.CleanStoreDetail .cleanstore_management h2{
+.CleanStoreDetail .cleanstore_management .vector_image{
+    max-width: 100%;
+    max-height: 100%;
+    width: 22px;
+    height: 14px;
+    margin-top: 29px;
+    margin-left: 72px;
+    margin-right: 11px;
+}
+
+.CleanStoreDetail .cleanstore_management button{
     margin-top: 22px;
     color: #075CFF;
     font-weight: 400;
     font-size: 24px;
     line-height: 29px;
+}
+
+.CleanStoreDetail .cleanstore_information{
+    display: flex;
+}
+
+.CleanStoreDetail .cleanstore_information h2{
+    display: flex;
+    margin-left: 105px;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    color: #075CFF;
+}
+
+.CleanStoreDetail .cleanstore_information .opening_hours{
+    margin-top: 409px;
+}
+
+.CleanStoreDetail .cleanstore_information .opening_hours h3{
+    margin-left: 43px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #353535;
+}
+
+.CleanStoreDetail .cleanstore_information .address{
+    margin-top: 22px;
+}
+
+.CleanStoreDetail .cleanstore_information .address h3{
+    margin-left: 163px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #353535;
+}
+
+.CleanStoreDetail .cleanstore_information .telephone{
+    margin-top: 22px;
+}
+
+.CleanStoreDetail .cleanstore_information .telephone h3{
+    margin-left: 143px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #353535;
+}
+
+.CleanStoreDetail .cleanstore_information img{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 79px;
+}
+
+.CleanStoreDetail .cleanstore_description{
+    margin-top: 45px;
+    border-top: 1px solid #0679FF;
+}
+
+.CleanStoreDetail .cleanstore_description h2{
+    margin-top: 76px;
+    margin-left: 52px;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 33px;
+    color: #474747;
+}
+
+.CleanStoreDetail .cleanstore_description h3{
+    margin-top: 49px;
+    margin-left: 62px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 33px;
+    color: #474747;
+    margin-right: 100px;
+    word-break: keep-all;
 }
 
 /* SideBar */

@@ -4,6 +4,7 @@ import { useNavigate,useParams } from "react-router";
 import { CleanStoreContext } from "./App";
 import Vector from './Vector.png' 
 import Vector_bottom from './Vector_bottom.png' 
+import Map from './Map.png'
 
 const env=process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
@@ -48,11 +49,29 @@ const CleanStoreDetail = () => {
             </div>
             </section>
             <section className="cleanstore_content2">
-            <h3>임시 별점</h3>
-            <h4>{data.description.slice(0,25)}</h4>
-            <img src={data.store_image} />
+            <h3 className="cleanstore_star">임시 별점</h3>
+            <h4>
+                {((data.description).split('.')).slice(0,1)}.
+                {/* 한줄만 보여주기 - 간략하게 */}
+                </h4>
+            <img className="store_image" src={data.store_image} />
             <div className="cleanstore_management">
-                <h2>가게 운영 안내</h2>
+                <button>
+                <img className="vector_image" src={Vector_bottom} alt="Vector_bottom" />
+                가게 운영 안내
+                </button>
+                <div className="cleanstore_information">
+                    <section>
+                    <h2 className="opening_hours">영업 일자 및 시간<h3>{data.opening_hours}</h3></h2>
+                    <h2 className="address">주소<h3>{data.address}</h3></h2>
+                    <h2 className="telephone">문의처<h3>{data.telephone}</h3></h2>
+                    </section>
+                    <img src={Map} alt="Map" /> 
+                </div>
+                <div className="cleanstore_description">
+                    <h2>가게에 대한 설명</h2>
+                    <h3>{data.description}</h3>
+                </div>
             </div>
             </section>
             </div>

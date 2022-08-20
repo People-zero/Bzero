@@ -22,7 +22,7 @@ export const dummyData = [ //가게 별점 평균, 리뷰 data는 따로 빼기
         store_longitude: "37",
         store_latitude : "40",
         telephone: "02-OOO-OOOO", //문의처
-        description : "제로웨이스트 상점 2번", //가게 설명
+        description : "제로웨이스트 상점 2번 : 무신사(MUSINSA)는 '무진장 신발 사진이 많은 곳'이라는 프리챌 커뮤니티로 시작해, 현재는 대한민국의 온라인 패션커머스 기업이다. 2001년에 개설되었으며, 무신사 스토어뿐만 아니라 여성 전용 스토어인 우신사도 오픈되어 있다. 2017년에는 무신사 자체 브랜드인 무신사 스탠다드를 론칭했다. 2018년 6월 패션특화 공유오피스 무신사 스튜디오를 오픈했다. 2019년 8월 패션문화 편집공간 무신사 테라스가 문을 열었다. 2020년, 패션 플랫폼 월간 활성 사용자 1위에 선정됐다.", //가게 설명
         store_image : process.env.PUBLIC_URL + `/assets/dummy_photo/photo_2.png`, //가게 사진
         point_avg : "(37,40)",
         address: "서울특별시 OO구 OO길 123-12(OO동)",
