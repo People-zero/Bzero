@@ -131,6 +131,7 @@
 .CleanStoreDetail .cleanstore_content{
     border-top: 1px solid #0679FF;
     margin-top: 33px;
+    display: flex;
 }
 
 .CleanStoreDetail .cleanstore_content h2{
@@ -140,6 +141,81 @@
     font-weight: 500;
     font-size: 45px;
     line-height: 55px;
+    flex-grow: 1;
+}
+
+.CleanStoreDetail .cleanstore_content2 h3{
+    margin-left: 70px;
+    margin-top: 37px;
+    color : #D9D9D9;
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 55px;
+}
+
+.CleanStoreDetail .cleanstore_content2 h4{
+    margin-left: 942px;
+    margin-top: 48px;
+    margin-right: 140;
+    color : #474747;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 34px;  
+}
+
+.CleanStoreDetail .cleanstore_content2 img{
+      margin-top: 76px;
+      margin-left: 93px;
+      max-width: 100%;
+      max-height: 100%;
+      /* width: 700px; */
+      height: 754px;
+}
+
+.CleanStoreDetail .cleanstore_url button{
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 38px;
+    margin-right: 101px;
+    display: flex;
+    border: 1px solid #0679FF;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
+    color: #0679FF;
+    padding-top: 14px;
+    padding-bottom: 13px;
+    padding-left: 36px;
+    padding-right: 18px;
+}
+
+.CleanStoreDetail .cleanstore_url button a{
+    color : #0679FF;
+    text-decoration: none;
+}
+
+.CleanStoreDetail .cleanstore_url img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 20px;
+    height: 20px;
+    margin-left: 23px;
+    margin-right: 20px;
+    margin-top: 3px;
+
+}
+
+.CleanStoreDetail .cleanstore_management{
+    margin-top: 47px;
+    border-top: 1px solid #0679FF;
+}
+
+.CleanStoreDetail .cleanstore_management h2{
+    margin-top: 22px;
+    color: #075CFF;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
 }
 
 /* SideBar */

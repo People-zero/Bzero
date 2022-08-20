@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import BZero from './../BZero.png' 
 
 const env=process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
@@ -6,7 +7,8 @@ env.PUBLIC_URL = env.PUBLIC_URL || "";
 const SideBar = () => {
     return (
       <div className="SideBar">
-      <img src={process.env.PUBLIC_URL + `assets/BZero.png`}/>
+      <img src={BZero} alt="BZero" /> 
+      {/* <img src={process.env.PUBLIC_URL + `assets/BZero.png`}/> 엑박 문제 때문에 import 방식 변경 */}
       <nav>
         <div className="mypage"><NavLink to="/mypage">마이페이지</NavLink></div>
         <div className="findstore"><NavLink to="/findstore">가게 찾기</NavLink></div>
