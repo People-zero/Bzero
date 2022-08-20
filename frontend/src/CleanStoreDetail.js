@@ -5,7 +5,7 @@ import { CleanStoreContext } from "./App";
 import Vector from './Vector.png' 
 import Vector_bottom from './Vector_bottom.png' 
 import Map from './Map.png'
-
+import "./css/CleanStore.css"
 const env=process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
 

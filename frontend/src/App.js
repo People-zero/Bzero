@@ -6,6 +6,24 @@ import React from 'react';
 import MainPage from './MainPage';
 import MyPage from "./MyPage";
 import MapPage from "./MapPage";
+
+import {useReducer,useRef} from 'react';
+import CleanStoreDetail from './CleanStoreDetail';
+import CleanStore from './CleanStore';
+import { dummyData } from './util/dummyData';
+
+import './App.css';
+// import { BrowserRouter, Route, Routes } from 'react-router-dom';
+const dummy_checked_date = ["2022-08-01", "2022-08-05", "2022-08-13"];
+const dummy_badge = [
+  { badge_id: 1, badge_type: "badge1.png" },
+  { badge_id: 2, badge_type: "badge1.png" },
+  { badge_id: 7, badge_type: "badge1.png" },
+  { badge_id: 6, badge_type: "badge1.png" },
+  { badge_id: 5, badge_type: "badge1.png" },
+  { badge_id: 6, badge_type: "badge1.png" },
+  { badge_id: 4, badge_type: "badge1.png" },
+];
 const dummyList = [
   {
     profile: "example_profile.jpg",
@@ -14,15 +32,15 @@ const dummyList = [
     point: 4300,
   },
 ];
-import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import React,{useReducer,useRef} from 'react';
-import CleanStoreDetail from './CleanStoreDetail';
-import CleanStore from './CleanStore';
-import { dummyData } from './util/dummyData';
-
-import './App.css';
-// import { BrowserRouter, Route, Routes } from 'react-router-dom';
+const reducer=(state,action)=>{
+  switch(action.type){
+    case 'INIT':{
+      return action.data;
+    }
+    default: return state;
+  }
+};
+export const CleanStoreContext = React.createContext();
 function App() {
 
   const [data,dispatch]=useReducer(reducer,dummyData);
