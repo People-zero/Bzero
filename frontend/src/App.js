@@ -14,21 +14,22 @@ const dummyList = [
     point: 4300,
   },
 ];
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React,{useReducer,useRef} from 'react';
+import CleanStoreDetail from './CleanStoreDetail';
+import CleanStore from './CleanStore';
+import { dummyData } from './util/dummyData';
 
-const dummy_checked_date = ["2022-08-01", "2022-08-05", "2022-08-13"];
-const dummy_badge = [
-  { badge_id: 1, badge_type: "badge1.png" },
-  { badge_id: 2, badge_type: "badge1.png" },
-  { badge_id: 7, badge_type: "badge1.png" },
-  { badge_id: 6, badge_type: "badge1.png" },
-  { badge_id: 5, badge_type: "badge1.png" },
-  { badge_id: 6, badge_type: "badge1.png" },
-  { badge_id: 4, badge_type: "badge1.png" },
-];
+import './App.css';
+// import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
+
+  const [data,dispatch]=useReducer(reducer,dummyData);
+  const dataId= useRef(10);
+
   return (
-   
-      
+    <CleanStoreContext.Provider value={data}>
       <BrowserRouter>
       <Routes>
         <Route path='/login' element={<LoginPage></LoginPage>}></Route>
@@ -40,15 +41,11 @@ function App() {
       />}></Route>
       <Route path='/join' element={<JoinPage></JoinPage>}></Route>
       <Route path='/map' element={<MapPage></MapPage>}></Route>
+        <Route path='/cleanstore' element={<CleanStore />}></Route>
+        <Route path='/cleanstore/:id' element={<CleanStoreDetail />}></Route>
       </Routes>
-      
-      </BrowserRouter>
-
-
-
-      
-    
-    
+    </BrowserRouter>
+    </CleanStoreContext.Provider>
   );
 }
 
