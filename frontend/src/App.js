@@ -21,6 +21,8 @@ const dummy_badge = [
   { badge_id: 7, badge_type: "badge1.png" },
   { badge_id: 6, badge_type: "badge1.png" },
   { badge_id: 5, badge_type: "badge1.png" },
+  { badge_id: 6, badge_type: "badge1.png" },
+  { badge_id: 4, badge_type: "badge1.png" },
 ];
 function App() {
   return (
