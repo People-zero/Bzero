@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import React from 'react';
 import MainPage from './MainPage';
 import MyPage from "./MyPage";
+import MapPage from "./MapPage";
 const dummyList = [
   {
     profile: "example_profile.jpg",
@@ -38,7 +39,7 @@ function App() {
         badge_info={dummy_badge}
       />}></Route>
       <Route path='/join' element={<JoinPage></JoinPage>}></Route>
-      
+      <Route path='/map' element={<MapPage></MapPage>}></Route>
       </Routes>
       
       </BrowserRouter>
