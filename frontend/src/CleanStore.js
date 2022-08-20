@@ -19,19 +19,19 @@ const CleanStore = () => {
         <div className="CleanStore">
             <section className="menu_wrapper">
             <SideBar />
+		    </section>
+            <article>
             <section className="cleanstore_list">
             <div className="cleanstore_content">
             <h2>제로웨이스트 클린 스토어</h2>
-            <h4>제로웨이스트 클린 스토어들의 목록을 확인하세요.</h4>   
-            <CleanStoreList cleanStoreList = {data} />
+            <h4>제로웨이스트 클린 스토어들의 목록을 확인하세요.</h4> 
             </div>
-            <div className="earth_logo">
+		    <div className="earth_logo">
             <img src={process.env.PUBLIC_URL + `assets/Earth.png`}/>
             </div>
-            </section>
-
-            
-            </section>
+	        </section>
+            <CleanStoreList cleanStoreList = {data} />
+            </article>
         </div>
     );
 };

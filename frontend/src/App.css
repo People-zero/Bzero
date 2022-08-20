@@ -9,17 +9,24 @@
 
 /* CleanStore */
 
-.CleanStore{
-
+.CleanStore article{
+    display: flex;
+    flex-direction: column;
 }
 
-.CleanStore .menu_wrapper {
+.CleanStore{
     display: flex;
 }
 
+.CleanStore .cleanstore_list {
+    display: flex;
+    flex-grow: 1; 
+}
+
 .CleanStore .cleanstore_content{
-    margin-left: 72px;
-    flex-grow: 1;   
+    display: flex;
+    flex-direction: column;
+    margin-left: 72px;  
 }
 
 .CleanStore h2{
@@ -39,6 +46,7 @@
 
 .CleanStore .earth_logo{
     margin-top: 42px;
+    margin-left: 980px;
     margin-right: 105px;
     width: 135.72px;
     height: 105px;
