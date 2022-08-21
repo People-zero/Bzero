@@ -16,3 +16,38 @@ body,html{
 .MapContainer{
     width:100%;
     height:100%;}
+
+
+.MapPage_search{
+    position: fixed;
+    background-color: white;
+    width:230px;
+    height:40px;
+    z-index: 2;
+    left:250px;
+    top:10px;
+    border-radius: 10px 10px 10px 10px;
+    
+}
+.MapPage_search input{
+    width:230px;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 10px 10px 10px 10px;
+    border-color: #0679FF;
+
+    
+}
+.MapPage_search img{
+    position: relative;
+    left:200px;
+    bottom: 30px;
+    width:19px;
+    height:19px;
+}
+
+.infovar{
+    font-size:13px;
+    padding-left:10px;
+    border-radius: 20pxs;
+}
