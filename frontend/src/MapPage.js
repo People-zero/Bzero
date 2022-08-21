@@ -36,7 +36,30 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 		// 지도의 우측에 확대 축소 컨트롤을 추가한다
 		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 		// 마커 이미지의 주소
-		var markerImageUrl = '../img/Group 1182 (1).png', 
+        
+		
+        const place=[{
+            place_name:"하윤집",
+            x:37.6084606,
+            y:127.0094845,
+        },
+    {
+        place_name:"축산",
+            x:37.6055906,
+            y:127.0099845,
+    },{place_name:"test",
+            x:37.6064606,
+            y:127.0096845,
+    },{
+        place_name:"하윤집",
+        x:37.6084606,
+        y:127.0073845,
+    },
+]
+
+        for(var i=0;i<place.length;i++){
+            if(i%3==0){
+            var markerImageUrl = '../img/Group 1182 (1).png', 
         // 'https://t1.daumcdn.net/localimg/localimages/07/2012/img/marker_p.png',
         // '../img/Group 1182 (1).png', 
 		    markerImageSize = new kakao.maps.Size(36, 42), // 마커 이미지의 크기
@@ -46,27 +69,31 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 		// 마커 이미지를 생성한다
 		var markerImage = new kakao.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
+    }
+    else if(i%3==1){
+        var markerImageUrl = '../img/Group 1170 (1).png', 
+        // 'https://t1.daumcdn.net/localimg/localimages/07/2012/img/marker_p.png',
+        // '../img/Group 1182 (1).png', 
+		    markerImageSize = new kakao.maps.Size(30, 42), // 마커 이미지의 크기
+		    markerImageOptions = { 
+		        offset : new kakao.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+		    };
 
-        const place=[{
-            place_name:"하윤집",
-            x:37.6084606,
-            y:127.0094845,
-        },
-    {
-        place_name:"축산",
-            x:37.6054606,
-            y:127.0094845,
-    },{place_name:"test",
-            x:37.6064606,
-            y:127.0094845,
-    },{
-        place_name:"하윤집",
-        x:37.6084606,
-        y:127.0074845,
-    },
-]
+		// 마커 이미지를 생성한다
+		var markerImage = new kakao.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
+    }
+    else{
+        var markerImageUrl = '../img/Group 1183 (1).png', 
+        // 'https://t1.daumcdn.net/localimg/localimages/07/2012/img/marker_p.png',
+        // '../img/Group 1182 (1).png', 
+		    markerImageSize = new kakao.maps.Size(36, 42), // 마커 이미지의 크기
+		    markerImageOptions = { 
+		        offset : new kakao.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+		    };
 
-        for(var i=0;i<place.length;i++){
+		// 마커 이미지를 생성한다
+		var markerImage = new kakao.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
+    }
 		// 지도에 마커를 생성하고 표시한다
 		var marker = new kakao.maps.Marker({
 		    position: new kakao.maps.LatLng(place[i].x, place[i].y), // 마커의 좌표
