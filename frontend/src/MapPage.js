@@ -51,7 +51,7 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
             x:37.6064606,
             y:127.0096845,
     },{
-        place_name:"하윤집",
+        place_name:"하윤집s",
         x:37.6084606,
         y:127.0073845,
     },
