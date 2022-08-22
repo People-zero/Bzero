@@ -1,7 +1,8 @@
 from django.shortcuts import redirect, get_object_or_404
 from rest_framework.viewsets import ModelViewSet
-from .serializer import PostSerializer
+from .serializer import CommentCreateSerializer, CommentSerializer, PostSerializer
 from . import models
+from accounts.models import Profile
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 
@@ -26,11 +27,20 @@ def post_recommend(request, pk):
     return redirect('http://127.0.0.1:8000/board/post')
 
 
-# class CommentViewSet(ModelViewSet):
-#     queryset = models.Comment.objects.all()
-#     serializer_class = CommentSerializer
-
-
 class DiaryViewSet(ModelViewSet):
     queryset = models.Post.objects.filter(is_public=False)
     serializer_class = PostSerializer
+
+
+class CommentViewSet(ModelViewSet):
+    queryset = models.Comment.objects.all()
+    # permission_classes = [CustomReadOnly]
+
+    def get_serializer_class(self):
+        if self.action == 'list' or 'retrieve':
+            return CommentSerializer
+        return CommentCreateSerializer
+
+    def perform_create(self, serializer):
+        profile = Profile.objects.get(user=self.request.user)
+        serializer.save(author=self.request.user, profile=profile)

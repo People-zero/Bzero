@@ -7,6 +7,7 @@ from django.urls import path, include
 router = DefaultRouter()
 router.register("post", views.PostViewSet, basename=models.Post)
 router.register("diary", views.DiaryViewSet)
+router.register("comments", views.CommentViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
