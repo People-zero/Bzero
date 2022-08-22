@@ -9,7 +9,7 @@
 }
 
 .my_page_title {
-  font-size: 32px;
+  font-size: 24px;
   height: 114px;
   width: 1670px;
   padding-left: 74px;
@@ -21,28 +21,28 @@
 
 .profile_image {
   border-radius: 50%;
-  width: 237px;
-  height: 237px;
+  width: 177px;
+  height: 177px;
 }
 .profile_body {
-  padding-top: 73px;
+  padding-top: 54px;
   width: 475px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .profile_nickname {
-  font-size: 20px;
+  font-size: 15px;
   color: #151515;
   margin-top: 45px;
 }
 .profile_email {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 13px;
   color: #545454;
 }
 .profile_navibar {
-  width: 324px;
+  width: 243px;
   margin-top: 35px;
   padding-top: 46px;
   border-top: 1px solid #0679ff;
@@ -51,14 +51,14 @@
   align-items: flex-start;
 }
 .navi_btn {
-  font-size: 20px;
+  font-size: 15px;
   margin-top: 11px;
   color: #474747;
 }
 .profile_edit_btn {
-  width: 203px;
-  height: 53px;
-  font-size: 18px;
+  width: 152px;
+  height: 40px;
+  font-size: 13px;
   color: #0679ff;
   border: 1px solid #0679ff;
   border-radius: 50px;
@@ -67,23 +67,23 @@
 /* 프로필 수정 파트  */
 
 .edit_profile {
-  padding-top: 62px;
+  padding-top: 46px;
   width: 1198px;
   display: flex;
   flex-direction: column;
 }
 .edit_profile_title {
     padding-left: 63px;
-  font-size: 24px;
+  font-size: 18px;
   color: black;
 }
 .profile_image_margin {
   justify-self: center;
-  margin-top: 110px;
-  margin-bottom: 110px;
+  margin-top: 82.5px;
+  margin-bottom: 82.5px;
 }
 .edit_profile_main {
-  padding-top: 36px;
+  padding-top: 27px;
   width: 845px;
   display: flex;
   flex-direction: column;
@@ -98,26 +98,27 @@
 }
 .input_tag {
   color: #767678;
-  font-size: 18px;
+  font-size: 13px;
 }
 .profile_input_tag {
   color: #767678;
-  font-size: 18px;
+  font-size: 13px;
   align-self: flex-start;
 }
 .input_text {
-  padding-left: 14px;
+  padding-left: 10px;
   width: 588px;
-  height: 48px;
+  height: 36px;
   border: 1px solid #bdc8d3;
   border-radius: 5px;
   color: #252525;
-  font-size: 18px;
+  font-size: 13px;
 }
+
 input[type="date"]::-webkit-calendar-picker-indicator {
-  width: 18px;
-  height: 21.5px;
-  margin-right: 19px;
+  width: 13px;
+  height: 16.125px;
+  margin-right: 14px;
 
   content: url("/src/images/calendar_icon.svg");
 }
@@ -135,49 +136,49 @@ input[type="file"] {
 
 .camera_upload_button {
   position: absolute;
-  margin-left: 178px;
-  margin-top: -72px;
+  margin-left: 133.5px;
+  margin-top: -54px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 56px;
-  height: 56px;
+  width: 42px;
+  height: 42px;
   background-color: white;
   border-radius: 50%;
   border: 1px solid #0679ff;
 }
 .input_div {
-  height: 48px;
-  margin-bottom: 48px;
+  height: 36px;
+  margin-bottom: 36px;
 }
 .radios {
   display: flex;
-
-  margin-right: 422px;
+  
+  margin-right: 457px;
 }
 .radio {
-  margin-left: 43px;
-  width: 20px;
-  height: 20px;
+  margin-left: 36px;
+  width: 15px;
+  height: 15px;
 }
 label {
-  font-size: 18px;
+  font-size: 13px;
   color: #454545;
 }
 .age {
   margin-right: 508px;
   width: 78px;
-  height: 48px;
+  height: 36px;
   border: 1px solid #bdc8d3;
   border-radius: 5px;
   color: #454545;
-  font-size: 18px;
+  font-size: 13px;
 }
 .sumbit_btn {
-  width: 182px;
-  height: 56px;
+  width: 136.5px;
+  height: 42px;
   color: white;
-  font-size: 20px;
+  font-size: 15px;
   border-radius: 5px;
   background-color: #0788ff;
   align-self: flex-end;
@@ -186,13 +187,13 @@ label {
 /* 회원 탈퇴 */
 .withdrawal {
   align-self: center;
-  margin-top: 48px;
+  margin-top: 36px;
   border-top: 1px solid #0679ff;
   width: 1030px;
 }
 
 .withdrawal_btn {
   color: #0679ff;
-  font-size: 18px;
-  margin-top: 21px;
+  font-size: 13px;
+  margin-top: 15.75px;
 }
