@@ -11,6 +11,4 @@ router.register("diary", views.DiaryViewSet)
 urlpatterns = [
     path("", include(router.urls)),
     path('post/<int:pk>/recommend/', views.post_recommend, name='post_recommend'),
-    path('post/<int:pk>/unrecommend/',
-         views.post_unrecommend, name='post_unrecommend'),
 ]

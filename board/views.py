@@ -19,13 +19,10 @@ class PostViewSet(ModelViewSet):
 
 def post_recommend(request, pk):
     post = get_object_or_404(models.Post, pk=pk)
-    post.recommend_user_set.add(request.user)
-    return redirect('http://127.0.0.1:8000/board/post')
-
-
-def post_unrecommend(request, pk):
-    post = get_object_or_404(models.Post, pk=pk)
-    post.recommend_user_set.remove(request.user)
+    if request.user in post.recommend_user_set.all():
+        post.recommend_user_set.remove(request.user)
+    else:
+        post.recommend_user_set.add(request.user)
     return redirect('http://127.0.0.1:8000/board/post')
 
 
