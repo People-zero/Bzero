@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import React,{useReducer,useRef} from 'react';
 import CleanStoreDetail from './CleanStoreDetail';
 import CleanStore from './CleanStore';
+import axios from 'axios';
 import { dummyData } from './util/dummyData';
 
 const reducer=(state,action)=>{
