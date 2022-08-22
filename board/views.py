@@ -1,11 +1,9 @@
-from unicodedata import category
 from django.shortcuts import render
 from rest_framework.response import Response 
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
-from Bzero.board import serializer
-from Bzero.board.serializer import CommentSerializer, PostSerializer
-from models import Post,Tag,Comment
+from .serializer import CommentSerializer, PostSerializer
+from .models import Post,Tag,Comment
 import re
 from rest_framework.generics import get_object_or_404
 
@@ -25,12 +23,18 @@ class PostViewSet(ModelViewSet):
         context["request"] = self.request
         return context
 
+    def extract_tag_list(self):
+        tag_name_list = re.findall(r"#([a-zA-Z\dㄱ-힣]+)",self.request.data["content"])
+        tag_list = []
+        for tag_name in tag_name_list:
+            tag,_ = Tag.objects.get_or_create(name=tag_name)
+            tag_list.append(tag)
+            return tag_list
 
     def perform_create(self, serializer): #저장할때
+        self.request.data["tag_set"].add(*self.extract_tag_list())
         serializer.save(author = self.request.user)
         return super().perform_create(serializer)
-    
-
 
 
 class CommentViewSet(ModelViewSet):
@@ -53,9 +57,9 @@ class CommentViewSet(ModelViewSet):
         serializer.save(author=self.request.user, post=post)
         return super().perform_create(serializer)
 
-#TODO tag 검색 (get만 가능하게)
-class TagSearchAPIView(APIView):
-    def get(self,request):
-        post = Post.objects.filter()
+
+class TagSearchViewSet(ModelViewSet):
+    def list(self,request):
+        post = Post.objects.filter(tag_set__in=self.kwargs["tag_pk"])
         serializer = PostSerializer(post, many = True)
         return Response(serializer.data)
