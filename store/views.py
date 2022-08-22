@@ -1,3 +1,4 @@
+from posixpath import basename
 from urllib import request, response
 from django.shortcuts import render
 from rest_framework.response import Response
@@ -62,6 +63,9 @@ class Clean_StoreViewSet(ModelViewSet):
     )
     serializer_class = serializers.Clean_StoreSerializer
 
+    def perform_create(self, serializer):
+        return super().perform_create(serializer)
+
 class ReviewViewSet(ModelViewSet):
     queryset = (
         Review.objects.all()
@@ -70,7 +74,7 @@ class ReviewViewSet(ModelViewSet):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.filter(Clean_Store__pk=self.kwargs["Clean_Store_pk"])
+        qs = qs.filter(Clean_Store__pk=self.kwargs["store_review"])
         return qs
 
 class Bottle_Collection_StoreViewSet(ModelViewSet):
