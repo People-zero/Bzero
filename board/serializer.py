@@ -1,13 +1,24 @@
 from rest_framework import serializers
 from . import models
 
-class PostSerializer(serializers.ModelSerializer):
-    model = models.Post
-    class Meta:
-        fields = "__all__"
-
 
 class CommentSerializer(serializers.ModelSerializer):
-    model = models.Comment
     class Meta:
+        model = models.Comment
         fields = "__all__"
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Tag
+        fields = "__all__"
+
+
+class PostSerializer(serializers.ModelSerializer):
+    comments = CommentSerializer(many=True)
+    tag_set = TagSerializer(many=True)
+
+    class Meta:
+        model = models.Post
+        fields = ('title', 'content', 'image', 'created_at', 'updated_at',
+                  'recommend_cnt', 'is_public', 'tag_set', 'comments')
