@@ -82,6 +82,7 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 		// 마커 이미지를 생성한다
 		var markerImage = new kakao.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
     }
+    
     else{
         var markerImageUrl = '../img/Group 1183 (1).png', 
         // 'https://t1.daumcdn.net/localimg/localimages/07/2012/img/marker_p.png',
@@ -94,29 +95,90 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 		// 마커 이미지를 생성한다
 		var markerImage = new kakao.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
     }
+    
+    
+    var positionA=new kakao.maps.LatLng(place[i].x, place[i].y)
 		// 지도에 마커를 생성하고 표시한다
 		var marker = new kakao.maps.Marker({
-		    position: new kakao.maps.LatLng(place[i].x, place[i].y), // 마커의 좌표
+		    position: positionA, // 마커의 좌표
 		    image : markerImage, // 마커의 이미지
 		    map: map // 마커를 표시할 지도 객체
 		});
+    
+		// // 마커 위에 표시할 인포윈도우를 생성한다
+		// var infowindow = new kakao.maps.InfoWindow({
+		//     content : '<div class="infovar">공병 수거가 가능합니다!</div>' // 인포윈도우에 표시할 내용
+		// });
 
-		// 마커 위에 표시할 인포윈도우를 생성한다
-		var infowindow = new kakao.maps.InfoWindow({
-		    content : '<div class="infovar">공병 수거가 가능합니다!</div>' // 인포윈도우에 표시할 내용
-		});
-
-		// 인포윈도우를 지도에 표시한다
+		// // 인포윈도우를 지도에 표시한다
 		// infowindow.open(map, marker);
 
 		// 마커에 클릭 이벤트를 등록한다 (우클릭 : rightclick)
-		kakao.maps.event.addListener(marker, 'click', function() {
-		    alert('마커를 클릭했습니다!');
-		});
+		// kakao.maps.event.addListener(marker, 'click', function() {
+		//     alert('마커를 클릭했습니다!');
+		// });
+        // kakao.maps.event.addListener(marker, 'click', function() {
+        //             // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+        //             infowindow.setContent('<div>' + place[i].place_name + '</div>');
+        //             infowindow.open(map, marker);
+        //         });
+        
+        
+        // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+        var content = '<script>function closeOverlay() {overlay.setMap(null);}</script>'+'<div class="Map_wrap">' + 
+        '    <div class="info">' + 
+        '        <div class="title">' + 
+        '            카카오 스페이스닷원' + 
+        '            <div class="close" onclick="overlay.setup(null)" title="닫기"></div>' + 
+        '        </div>' + 
+        '        <div class="body">' + 
+        '            <div class="img">' +
+        '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+        '           </div>' + 
+        '            <div class="desc">' + 
+        '                <div class="ellipsis">'+place[i].place_name+'</div>' + 
+        '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
+        '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">자세히보기</a></div>' + 
+        '            </div>' + 
+        '        </div>' + 
+        '    </div>' +    
+        '</div>';
+        function closeOverlay() {
+            overlay.setMap(null);     
+        }
+        var overlay = new kakao.maps.CustomOverlay(
+            {
+            
+                content: content,
+            // map: map,
+            position: positionA,    
+        });
+        
+        (function(marker, overlay) {
+        kakao.maps.event.addListener(marker, 'mouseover', function() {
+            overlay.setMap(map);
+        });
+        kakao.maps.event.addListener(marker, 'mouseout', function() {
+            overlay.setMap(null);
+        });
+        
+        
+        // kakao.maps.event.addListener(marker, 'mouseout', function() {
+        //     overlay.setMap(null);
+        // });
+        })(marker, overlay);
     }
 
+  
         var ps = new kakao.maps.services.Places(); 
-
+        
+        
+        
+    
+    
+        // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+        
+        
 // 키워드로 장소를 검색합니다
 
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
@@ -137,6 +199,8 @@ function placesSearchCB (data, status, pagination) {
     } 
 }
 ps.keywordSearch(where, placesSearchCB);
+
+
 
 
 // 지도에 마커를 표시하는 함수입니다
