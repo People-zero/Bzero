@@ -167,8 +167,19 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                       <Calendar
                         onChange={onChange}
                         value={value}
+                        calendarType="US"
                         formatDay={(locale, date) => moment(date).format("D")}
+                        formatShortWeekday={(locale, date) =>
+                          moment(date).format("ddd")
+                        }
+                        formatMonthYear={(locale, date) =>
+                          moment(date).format("YYYY.MM")
+                        }
                         showNeighboringMonth={false}
+                        next2Label={null}
+                        nextLabel={null}
+                        prev2Label={null}
+                        prevLabel={null}
                         tileClassName={({ date, view }) => {
                           if (
                             checked_date.find(
