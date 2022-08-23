@@ -1,4 +1,4 @@
-import './Community.css';
+import "./css/Community.css"
 import { PostStateContext } from "./App";
 import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState, useRef} from 'react';
@@ -130,8 +130,8 @@ const Community = () => {
                         </div>
                         <div className='Community_body_four_postlist'>
                                 {getProcessedPostList().map((it)=>(
-                                    <div classname='Community_body_four_postlist_s' key={it.id}>
-                                        <div classname='Community_body_four_postlist_s_content'>{it.content}</div>
+                                    <div className='Community_body_four_postlist_s' key={it.id}>
+                                        <div className='Community_body_four_postlist_s_content'>{it.content}</div>
                                         <div className='Community_body_four_postlist_imgs'>
                                                 <img src={process.env.PUBLIC_URL + `/icon/Good.png`}/>
                                                 <img src={process.env.PUBLIC_URL + `/icon/Pin.png`}/>
