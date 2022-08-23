@@ -1,11 +1,19 @@
-
-import './App.css';
+import "./CalendarPage.css";
+import CalendarPage from "./CalendarPage";
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+const dummy_checked_date = [
+  "2022-08-01",
+  "2022-08-05",
+  "2022-08-13",
+  "2022-08-30",
+];
+
 function App() {
   return (
     // <BrowserRouter>
     <div className="App">
-      프론트엔드팀 화이팅~
+      <CalendarPage checked_date={dummy_checked_date} />
       {/* <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/new' element={<New></New>}></Route>
@@ -19,4 +27,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
