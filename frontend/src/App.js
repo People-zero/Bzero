@@ -1,10 +1,11 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import React,{useReducer,useRef} from 'react';
+import React,{useEffect, useReducer,useRef, useState} from 'react';
 import CleanStoreDetail from './CleanStoreDetail';
 import CleanStore from './CleanStore';
 import axios from 'axios';
 import { dummyData } from './util/dummyData';
+import { dummyReview } from './util/dummyReview';
 
 const reducer=(state,action)=>{
   switch(action.type){
@@ -16,14 +17,25 @@ const reducer=(state,action)=>{
 };
 
 export const CleanStoreContext = React.createContext();
+export const CleanStoreReview = React.createContext();
 
 function App() {
 
   const [data,dispatch]=useReducer(reducer,dummyData);
+  const [review, setReview]=useState([]);
   const dataId= useRef(10);
+
+  useEffect(()=>{
+    fetch('http://localhost:8000/review/')
+    .then((res)=>res.json())
+    .then((review)=>{
+      setReview(review)
+    })
+  })
 
   return (
     <CleanStoreContext.Provider value={data}>
+      <CleanStoreReview.Provider value={review}>
     <BrowserRouter>
     <div className="App">
       <Routes>
@@ -32,6 +44,7 @@ function App() {
       </Routes>
     </div>
     </BrowserRouter>
+      </CleanStoreReview.Provider>
     </CleanStoreContext.Provider>
   );
 }

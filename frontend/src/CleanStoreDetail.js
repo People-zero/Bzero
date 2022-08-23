@@ -2,6 +2,8 @@ import SideBar from "./components/SideBar";
 import { useState,useEffect,useContext } from "react";
 import { useNavigate,useParams } from "react-router";
 import { CleanStoreContext } from "./App";
+import { CleanStoreReview } from "./App";
+import CleanStoreReviewList from "./components/CleanStoreReviewList";
 import Vector from './Vector.png' 
 import Vector_bottom from './Vector_bottom.png' 
 import Map from './Map.png'
@@ -13,12 +15,15 @@ const CleanStoreDetail = () => {
 
     const {id} = useParams();
     const cleanStoreList = useContext(CleanStoreContext);
+    const cleanStoreReview = useContext(CleanStoreReview);
     const navigate = useNavigate();
     const [data,setData] = useState();
+    const [review,setReview] = useState();
 
     useEffect(()=>{
         if (cleanStoreList.length >=1){
             const targetList = cleanStoreList.find((it)=>parseInt(it.id)===parseInt(id));
+            const targetReview = cleanStoreReview.find((it)=>parseInt(it.Store_PK)===parseInt(id));
 
             if(targetList){ //가게가 존재할 때
                 setData(targetList);
@@ -26,8 +31,12 @@ const CleanStoreDetail = () => {
                 alert("없는 가게입니다.");
                 navigate("/cleanstore",{replace:true}); //뒤로가기 막음.
             }
+
+            if (targetReview){
+                setReview(targetReview);
+            }
         }
-    },[id,cleanStoreList]);
+    },[id,cleanStoreList,cleanStoreReview]);
 
     if(!data) {
         return <div className="CleanStoreDetail">로딩중입니다...</div>;
@@ -71,6 +80,17 @@ const CleanStoreDetail = () => {
                 <div className="cleanstore_description">
                     <h2>가게에 대한 설명</h2>
                     <h3>{data.description}</h3>
+                </div>
+                <div className="cleanstore_review">
+                    <button>
+                    <img className="vector_image" src={Vector_bottom} alt="Vector_bottom" />
+                    리뷰
+                    </button>
+                    <h3 className="cleanstore_star">임시 별점</h3>
+                    <section className="review">
+                        <CleanStoreReviewList cleanStoreReview = {review} />
+                    </section>
+
                 </div>
             </div>
             </section>
