@@ -64,6 +64,8 @@ function App() {
       </Routes>
     </BrowserRouter>
     </CleanStoreContext.Provider>
+          <Route path="/community" element={<Community />} />
+          <Route path="/details" element={<Details />} />
   );
 }
 
