@@ -4,15 +4,14 @@ from . import models
 import re
 
 class PostSerializer(serializers.ModelSerializer):
-    model = models.Post
     class Meta:
-        fields = "__all__"
-        read_only_fields = ["created_at","updated_at"]
+        model = models.Post
+        fields = ["category","title","image","content","tag_set"]
+        
     
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    model = models.Comment
     class Meta:
+        model = models.Comment
         fields = "__all__"
-        read_only_fields = ["created_at","updated_at"]

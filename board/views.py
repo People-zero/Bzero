@@ -6,16 +6,17 @@ from .serializer import CommentSerializer, PostSerializer
 from .models import Post,Tag,Comment
 import re
 from rest_framework.generics import get_object_or_404
+from rest_framework.decorators import action
 
 class PostViewSet(ModelViewSet):
-    serializer_class = PostSerializer
-
+    serializer_class= PostSerializer
+    queryset = Post.objects.all()
     def get_queryset(self):
         qs = super().get_queryset()
-        if self.kwargs["category"] == 1 or self.kwargs["category"] == 3: # 정보공유,공개
-            qs = qs.filter(category = self.kwargs["category"])
+        if self.kwargs["post_category"] == "1" or self.kwargs["post_category"] == "3" or self.kwargs["post_category"] == "4" or self.kwargs["post_category"] == "5" : # 정보공유,공개,인증사진
+            qs = qs.filter(category = self.kwargs["post_category"])
         else:                                        # 일기장
-            qs = qs.filter(user = self.request.user)
+            qs = qs.filter()
         return qs
 
     def get_serializer_context(self): # 보내줄때
@@ -24,21 +25,30 @@ class PostViewSet(ModelViewSet):
         return context
 
     def extract_tag_list(self):
-        tag_name_list = re.findall(r"#([a-zA-Z\dㄱ-힣]+)",self.request.data["content"])
-        tag_list = []
-        for tag_name in tag_name_list:
-            tag,_ = Tag.objects.get_or_create(name=tag_name)
-            tag_list.append(tag)
-            return tag_list
+        tag_name_list = re.findall(r"#([a-zA-Z\dㄱ-힣]+)",self.request.data.get("content"))
+        tag_list = [Tag.objects.get_or_create(name=tag_name)[0]for tag_name in tag_name_list]
+        return tag_list
+
+        # for tag_name in tag_name_list:
+        #     model_tag = Tag.objects.filter(name = tag_name)
+        #     if model_tag:
+        #         tag = Tag.objects.filter(name = tag_name)
+        #     else:
+        #         tag = Tag.objects.filter(name = tag_name)
+        #     tag_list.append(tag)
+        # return tag_list
 
     def perform_create(self, serializer): #저장할때
-        self.request.data["tag_set"].add(*self.extract_tag_list())
-        serializer.save(author = self.request.user)
+        serializer.save()
+        serializer.validated_data["tag_set"]+=(self.extract_tag_list())
+        print(serializer.validated_data)
         return super().perform_create(serializer)
-
+    
+    # def perform_update(self, serializer):
+    #     serializer.save(tag_set=self.extract_tag_list())
+    #     return super().perform_create(serializer)
 
 class CommentViewSet(ModelViewSet):
-
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
@@ -59,7 +69,20 @@ class CommentViewSet(ModelViewSet):
 
 
 class TagSearchViewSet(ModelViewSet):
-    def list(self,request):
-        post = Post.objects.filter(tag_set__in=self.kwargs["tag_pk"])
-        serializer = PostSerializer(post, many = True)
-        return Response(serializer.data)
+    queryset = Post.objects.all()
+    serializer_class= PostSerializer
+    
+    def get_queryset(self):
+        qs = super().get_queryset()
+        for i in qs:
+            if self.kwargs["tag_name"] in i.get("tag_set"):
+                print(i)
+        qs = qs.filter(tag_set__in=self.kwargs["tag_name"])
+        return qs
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context["request"] = self.request
+        return context
+
+    
