@@ -92,9 +92,9 @@ TEMPLATES = [
         },
     },
 ]
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'frontend', 'build', 'static')
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend', 'build', 'static')
+]
 WSGI_APPLICATION = 'People_zero.wsgi.application'
 
 

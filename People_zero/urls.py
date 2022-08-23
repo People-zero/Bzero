@@ -12,7 +12,8 @@ urlpatterns = [
     path('', include('backend.urls')),
     path('frontend/', TemplateView.as_view(template_name='index.html')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('test1/', include('accounts.urls'))
-    path('storetest/', include('store.urls')),
+    path('test1/', include('accounts.urls')),
+    path('cleanstore/',TemplateView.as_view(template_name='index.html')),
+    # path('storetest/', include('store.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
