@@ -73,11 +73,10 @@ class TagSearchViewSet(ModelViewSet):
     serializer_class= PostSerializer
     
     def get_queryset(self):
+        answer = Tag.objects.filter(name=self.kwargs["tag_name"])
+        print(answer)
         qs = super().get_queryset()
-        for i in qs:
-            if self.kwargs["tag_name"] in i.get("tag_set"):
-                print(i)
-        qs = qs.filter(tag_set__in=self.kwargs["tag_name"])
+        qs = qs.filter(tag_set__in = answer)
         return qs
 
     def get_serializer_context(self):
