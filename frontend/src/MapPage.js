@@ -125,42 +125,92 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
         
         
         // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
-        var content = '<script>function closeOverlay() {overlay.setMap(null);}</script>'+'<div class="Map_wrap">' + 
-        '    <div class="info">' + 
-        '        <div class="title">' + 
-        '            카카오 스페이스닷원' + 
-        '            <div class="close" onclick="overlay.setup(null)" title="닫기"></div>' + 
-        '        </div>' + 
-        '        <div class="body">' + 
-        '            <div class="img">' +
-        '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-        '           </div>' + 
-        '            <div class="desc">' + 
-        '                <div class="ellipsis">'+place[i].place_name+'</div>' + 
-        '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-        '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">자세히보기</a></div>' + 
-        '            </div>' + 
-        '        </div>' + 
-        '    </div>' +    
-        '</div>';
+    
+
+        
+        // const content=('<div class="Map_wrap">' + 
+
+        // '    <div class="info">' + 
+        // '        <div class="title">' + 
+        // '            카카오 스페이스닷원' + 
+        // '            <div class="close" onclick="overlay.setup(null)" title="닫기"></div>' + 
+        // '        </div>' + 
+        // '        <div class="body">' + 
+        // '            <div class="img">' +
+        // '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+        // '           </div>' + 
+        // '            <div class="desc">' + 
+        // '                <div class="ellipsis">'+place[i].place_name+'</div>' + 
+        // '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
+        // '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">자세히보기</a></div>' + 
+        // '            </div>' + 
+        // '        </div>' + 
+        // '    </div>' + 
+
+        // '</div>');
         function closeOverlay() {
             overlay.setMap(null);     
         }
         var overlay = new kakao.maps.CustomOverlay(
             {
             
-                content: content,
+                // content: content,
             // map: map,
             position: positionA,    
         });
+
+
+        var content = document.createElement('div');
+        content.className='Map_wrap'
+        var info=document.createElement('div')
+        info.className='info'
+        content.appendChild(info)
+        var title=document.createElement('div')
+        title.className='title'
+        title.innerHTML=place[i].place_name
+        info.appendChild(title)
+        var close=document.createElement('div')
+        close.className='close'
+        close.title='닫기'
+        info.appendChild(close)
+        var body=document.createElement('body')
+        body.className='body'
+        content.appendChild(body)
+        var img=document.createElement('img')
+        img.className='img'
+        img.src="https://mblogthumb-phinf.pstatic.net/20160517_261/kljg28_1463472546517lMIjU_JPEG/20160517_152400.jpg?type=w800"
+        body.appendChild(img)
+        var desc=document.createElement('div')
+        desc.className='desc'
+        body.appendChild(desc)
+        var ellipsis=document.createElement('div')
+        ellipsis.className='ellipsis'
+        ellipsis.innerHTML='임시용임시용'
+        desc.appendChild(ellipsis)
+        var jibun=document.createElement('div')
+        jibun.className='jibun'
+        jibun.innerHTML='임시용임시용2'
+        desc.appendChild(jibun)
+
+
+    
+    
+    overlay.setContent(content);
         
+        
+
+
         (function(marker, overlay) {
-        kakao.maps.event.addListener(marker, 'mouseover', function() {
+        kakao.maps.event.addListener(marker, 'click', function() {
             overlay.setMap(map);
         });
-        kakao.maps.event.addListener(marker, 'mouseout', function() {
+        close.onclick = function () {
             overlay.setMap(null);
-        });
+        };
+        
+        // kakao.maps.event.addListener(marker, 'click', function() {
+        //     overlay.setMap(null);
+        // });
         
         
         // kakao.maps.event.addListener(marker, 'mouseout', function() {
