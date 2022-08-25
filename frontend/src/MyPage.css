@@ -120,9 +120,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 325px;
+    width: 335px;
     padding-top: 43px;
-    padding-left: 42px;
+    padding-left: 52px;
     padding-right: 42px;
 }
 
@@ -207,7 +207,7 @@
     display: flex;
     flex-direction: column;
 
-    padding-left: 47px;
+    padding-left: 57px;
 }
 
 .mypage_my_contents_top {
@@ -257,8 +257,8 @@
 
 .mypage_level_img {
     display: flex;
-    width: 297px;
-    height: 211px;
+    width: 282px;
+    height: 200px;
 
     margin-top: 18px;
     margin-bottom: 3px;
@@ -268,8 +268,8 @@
     display: flex;
     flex-direction: column;
 
-    padding-top: 200px;
-    padding-left: 44px;
+    padding-top: 170px;
+    padding-left: 64px;
 }
 
 .mypage_point_title {
@@ -295,7 +295,7 @@
 }
 
 .mypage_my_point {
-    padding-right: 104px;
+    padding-right: 80px;
 
     font-family: 'Roboto';
     font-style: normal;
@@ -319,7 +319,7 @@
     display: flex;
 
     appearance: none;
-    width: 335px;
+    width: 310px;
     height: 13px;
     margin-top: 18px;
 }
@@ -345,9 +345,7 @@
 }
 
 .mypage_my_calendar {
-    margin-bottom: 27px;
-
-    width: 297px;
+    width: 286px;
 }
 
 .mypage_content_title {
@@ -453,9 +451,9 @@
     display: flex;
     flex-direction: column;
 
-    width: 349px;
+    width: 330px;
 
-    padding-left: 44px;
+    padding-left: 64px;
   }
 
   .mypage_badge_top {
@@ -466,8 +464,8 @@
     
     position: relative;
 
-    width: 50px;
-    height: 50px;
+    width: 310px;
+    height: 57px;
  }
 
  .mypage_badge_top_img {
@@ -475,8 +473,8 @@
     flex-direction: row;
     justify-content: space-between;
 
-    width: 50px;
-    height: 50px;
+    width: 57px;
+    height: 57px;
  }
 
  .mypage_badge_img {
@@ -484,8 +482,8 @@
     flex-direction: row;
     position: absolute;
 
-    width: 50px;
-    height: 50px;
+    width: 57px;
+    height: 57px;
  }
 
  .mypage_badge_img2 {
@@ -493,10 +491,10 @@
     flex-direction: row;
     position: absolute;
 
-    width: 50px;
-    height: 50px;
+    width: 57px;
+    height: 57px;
     
-    padding-left: 125px;
+    padding-left: 84px;
  }
 
  .mypage_badge_img3 {
@@ -505,8 +503,9 @@
     padding-left: 250px;
     position: absolute;
 
-    width: 50px;
-    height: 50px;
+    width: 57px;
+    height: 57px;
+    padding-left: 169px;
  }
 
  .mypage_badge_img4 {
@@ -515,16 +514,18 @@
     padding-left: 375px;
     position: absolute;
 
-    width: 50px;
-    height: 50px;
+    width: 57px;
+    height: 57px;
+
+    padding-left: 253px;
  }
 
  .mypage_badge_top_base {
     display: flex;
     flex-direction: row;
 
-    width: 50px;
-    height: 50px;
+    width: 57px;
+    height: 57px;
  }
 
  .mypage_badge_bottom {
@@ -532,11 +533,11 @@
     flex-direction: row;
     justify-content: space-between;
     
-    padding-top: 22px;
+    padding-top: 32px;
    
     position: relative;
 
-    width: 50px;
+    width: 310px;
     height: 50px;
  }
 
@@ -544,13 +545,13 @@
     display: flex;
     flex-direction: row;
 
-    width: 50px;
-    height: 50px;
+    width: 57px;
+    height: 57px;
  }
 
  .mypage_badge_more_btn {
-    width: 49px;
-    height: 49px;
+    width: 56px;
+    height: 56px;
 
     flex-wrap: nowrap;
 

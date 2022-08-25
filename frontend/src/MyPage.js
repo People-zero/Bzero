@@ -245,6 +245,7 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                         ))}
 
                       <img
+                        className="mypage_badge_top_base"
                         src={process.env.PUBLIC_URL + `/img/badge_base.png`}
                         alt="base"
                       />
@@ -303,6 +304,7 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                         ))}
 
                       <img
+                        className="mypage_badge_bottom_base"
                         src={process.env.PUBLIC_URL + `/img/badge_base.png`}
                         alt="base"
                       />
