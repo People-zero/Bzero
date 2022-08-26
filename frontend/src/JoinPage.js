@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LoginPageHeader from "./component/LoginPageHeader";
-import "./css/JoinPage.css"
+import "./css/JoinPage.css";
 const JoinPage = () => {
   const [user_type, set_user_type] = useState(true);
 
@@ -168,7 +168,9 @@ const JoinPage = () => {
               value="남성"
               name="gender"
             ></input>
-            <label style={{marginRight:"40px"}}for="male">남성</label>
+            <label style={{ marginRight: "40px" }} for="male">
+              남성
+            </label>
 
             <input id="female" type="radio" value="여성" name="gender"></input>
             <label for="female">여성</label>
@@ -201,13 +203,16 @@ const JoinPage = () => {
             <div>
               <div>
                 <div className="join_page_check">
-                  <input
-                    type="checkbox"
-                    id="check1"
-                    checked={use_check}
-                    onChange={use_btn_event}
-                  />
-                  <label for="check1">이용약관 동의 *</label>
+                  <div className="join_page_check_part">
+                    <input
+                      type="checkbox"
+                      id="check1"
+                      checked={use_check}
+                      onChange={use_btn_event}
+                    />
+                    <label for="check1">이용약관 동의 *</label>
+                  </div>
+
                   <a
                     className="join_page_check_detail_1"
                     href="#terms_of_service"
@@ -218,13 +223,15 @@ const JoinPage = () => {
               </div>
 
               <div className="join_page_check">
-                <input
-                  type="checkbox"
-                  id="check2"
-                  checked={info_use_check}
-                  onChange={info_use_btn_event}
-                />
-                <label for="check2">개인정보 수집 및 이용 동의 *</label>
+                <div className="join_page_check_part">
+                  <input
+                    type="checkbox"
+                    id="check2"
+                    checked={info_use_check}
+                    onChange={info_use_btn_event}
+                  />
+                  <label for="check2">개인정보 수집 및 이용 동의 *</label>
+                </div>
                 <a
                   className="join_page_check_detail_2"
                   href="#terms_of_service"
@@ -233,13 +240,16 @@ const JoinPage = () => {
                 </a>
               </div>
               <div className="join_page_check">
-                <input
-                  type="checkbox"
-                  id="check3"
-                  checked={age_check}
-                  onChange={age_btn_event}
-                />
-                <label for="check3">만 14세 이상입니다. *</label>
+                <div className="join_page_check_part">
+                  <input
+                    type="checkbox"
+                    id="check3"
+                    checked={age_check}
+                    onChange={age_btn_event}
+                  />
+                  <label for="check3">만 14세 이상입니다. *</label>
+                </div>
+
                 <a
                   className="join_page_check_detail_3"
                   href="#terms_of_service"
