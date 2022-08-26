@@ -1,30 +1,58 @@
 import SideBar from "./components/SideBar";
-import { useState,useEffect,useContext } from "react";
+import { useState,useEffect,useContext,useReducer,useRef } from "react";
 import { useNavigate,useParams } from "react-router";
 import { CleanStoreContext } from "./App";
-import { CleanStoreReview } from "./App";
+// import { CleanStoreReview } from "./App";
+import axios from "axios";
 import CleanStoreReviewList from "./components/CleanStoreReviewList";
 import Vector from './Vector.png' 
 import Vector_bottom from './Vector_bottom.png' 
 import Map from './Map.png'
+import { dummyReview } from "./util/dummyReview";
 
 const env=process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
+
+const reducer = (state,action)=>{
+    let newState = [];
+    switch(action.type){
+      case 'INIT' : {
+        return action.data;
+      }
+      case 'CREATE': {
+        newState = [action.data, ...state]; 
+        break;
+      }
+      default: return state;
+    }
+    return newState;
+  };
 
 const CleanStoreDetail = () => {
 
     const {id} = useParams();
     const cleanStoreList = useContext(CleanStoreContext);
-    const cleanStoreReview = useContext(CleanStoreReview);
     const navigate = useNavigate();
     const [data,setData] = useState();
-    const [review,setReview] = useState();
+    const [reviewData,setReview] = useState([]); 
+    const [review,dispatch] = useReducer(reducer,dummyReview); 
 
+    // useEffect(()=>{
+    //     fetch('http://localhost:8000/review/')
+    //     .then((res)=>res.json())
+    //     .then((reviewData)=>{
+    //       setReview(reviewData)
+    //     })
+    //   })
+
+    useEffect(()=>{
+        init();
+    })
+    
     useEffect(()=>{
         if (cleanStoreList.length >=1){
             const targetList = cleanStoreList.find((it)=>parseInt(it.id)===parseInt(id));
-            const targetReview = cleanStoreReview.find((it)=>parseInt(it.Store_PK)===parseInt(id));
-
+                 // const targetReview = cleanStoreReview.find((it)=>parseInt(it.Store_PK)===parseInt(id));
             if(targetList){ //가게가 존재할 때
                 setData(targetList);
             } else{ //가게가 없을 때
@@ -32,11 +60,60 @@ const CleanStoreDetail = () => {
                 navigate("/cleanstore",{replace:true}); //뒤로가기 막음.
             }
 
-            if (targetReview){
-                setReview(targetReview);
-            }
+            // if (targetReview){
+            //     setReview(targetReview);
+            // }
         }
-    },[id,cleanStoreList,cleanStoreReview]);
+    },[id,cleanStoreList]);
+
+    const reviewId = useRef(6);
+    const date = new Date();
+    const strDate = new Date(parseInt(date)).toLocaleDateString();
+
+    const commentRef=useRef(); //content를 다 작성 안했을 때 focus하기 위함.
+    const [comment,setComment] = useState("");
+    const [point,setpoint] = useState(5);
+
+    const init = () => {
+            axios.get("http://127.0.0.1:8000/review/")
+            .then((response) => {
+            setReview([...response.data]);
+        })
+
+        if (reviewData.lengh>=1){
+            const targetReview = reviewData.filter((it)=>parseInt(it.Store_PK)===parseInt(id));
+            setReview(targetReview);
+        } else{
+            const targetReview = dummyReview.find((it)=>parseInt(it.Store_PK)===parseInt(id));
+            setReview(targetReview);
+        }
+        dispatch({type:"INIT",data:reviewData});
+        console.log(reviewData);
+    }
+
+    const onCreate = (point,comment) => {
+        dispatch({
+          type : "CREATE",
+          data : {
+            id : reviewId.current,
+            Store_PK : cleanStoreList.find((it)=>parseInt(it.id)===parseInt(id)).id,
+            User_PK : 3,
+            point,
+            comment, 
+            created_at : new Date(strDate).getTime(),
+            updated_at : new Date(strDate).getTime(),
+          },
+        });
+        reviewId.current += 1;
+      };
+
+      const handleSubmit = () => { //리뷰 작성
+        if(comment.length <1) {
+            commentRef.current.focus();
+            return;
+        }
+        onCreate(point,comment);
+    };
 
     if(!data) {
         return <div className="CleanStoreDetail">로딩중입니다...</div>;
@@ -88,7 +165,7 @@ const CleanStoreDetail = () => {
                     </button>
                     <h3 className="cleanstore_star">임시 별점</h3>
                     <section className="review">
-                        <CleanStoreReviewList cleanStoreReview = {review} />
+                        {/* <CleanStoreReviewList cleanStoreReviewList = {reviewData} /> */}
                     </section>
 
                 </div>

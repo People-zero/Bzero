@@ -17,34 +17,26 @@ const reducer=(state,action)=>{
 };
 
 export const CleanStoreContext = React.createContext();
-export const CleanStoreReview = React.createContext();
+// export const CleanStoreReview = React.createContext();
 
 function App() {
 
   const [data,dispatch]=useReducer(reducer,dummyData);
-  const [review, setReview]=useState([]);
+  // const [review, setReview]=useState([dummyReview]);
   const dataId= useRef(10);
-
-  useEffect(()=>{
-    fetch('http://localhost:8000/review/')
-    .then((res)=>res.json())
-    .then((review)=>{
-      setReview(review)
-    })
-  })
 
   return (
     <CleanStoreContext.Provider value={data}>
-      <CleanStoreReview.Provider value={review}>
+      {/* <CleanStoreReview.Provider value={review}> */}
     <BrowserRouter>
     <div className="App">
       <Routes>
-        <Route path='/cleanstore' element={<CleanStore />}></Route>
-        <Route path='/cleanstore/:id' element={<CleanStoreDetail />}></Route>
+        <Route path='/store/clean_store' element={<CleanStore />}></Route>
+        <Route path='/store/clean_store/:id' element={<CleanStoreDetail />}></Route>
       </Routes>
     </div>
     </BrowserRouter>
-      </CleanStoreReview.Provider>
+      {/* </CleanStoreReview.Provider> */}
     </CleanStoreContext.Provider>
   );
 }

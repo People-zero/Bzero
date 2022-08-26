@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 const CleanStoreItem = ({id,store_name,opening_hours,store_longitude,store_latitude,telephone,description,store_image,point_avg,address,store_url})=>{
     const navigate = useNavigate();
     const goDetail =()=>{
-        navigate(`/cleanstore/${id}`);
+        navigate(`/store/clean_store/${id}`);
     };
 
     return(
