@@ -15,6 +15,9 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=150, blank=False, unique=True)
     is_staff = models.BooleanField(blank=False, default=False)
 
+    def __str__(self) -> str:
+        return str(self.username)
+
 
 class Attendance(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
