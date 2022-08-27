@@ -9,7 +9,7 @@ import MapNav from "./components/MapNav";
 const { kakao } = window;
 
 const MapPage = () => {
-    
+    const [currentday,setcurrentday]=useState(['월','화','수','목','금','토','일'])
     const [where,setwhere]=useState("정릉시장")
   useEffect(() => {
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -42,22 +42,27 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
             place_name:"하윤집",
             x:37.6084606,
             y:127.0094845,
+            day:['월','화','수']
         },
     {
         place_name:"축산",
             x:37.6055906,
             y:127.0099845,
+            day:['월','화','수','목','금']
     },{place_name:"test",
             x:37.6064606,
             y:127.0096845,
+            day:['월','화','수']
     },{
         place_name:"하윤집s",
         x:37.6084606,
         y:127.0073845,
+        day:['월','화','수']
     },
 ]
 
         for(var i=0;i<place.length;i++){
+            if(place[i].day.filter(x=>currentday.includes(x)).length>0){
             if(i%3==0){
             var markerImageUrl = '../img/Group 1182 (1).png', 
         // 'https://t1.daumcdn.net/localimg/localimages/07/2012/img/marker_p.png',
@@ -105,49 +110,7 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 		    map: map // 마커를 표시할 지도 객체
 		});
     
-		// // 마커 위에 표시할 인포윈도우를 생성한다
-		// var infowindow = new kakao.maps.InfoWindow({
-		//     content : '<div class="infovar">공병 수거가 가능합니다!</div>' // 인포윈도우에 표시할 내용
-		// });
-
-		// // 인포윈도우를 지도에 표시한다
-		// infowindow.open(map, marker);
-
-		// 마커에 클릭 이벤트를 등록한다 (우클릭 : rightclick)
-		// kakao.maps.event.addListener(marker, 'click', function() {
-		//     alert('마커를 클릭했습니다!');
-		// });
-        // kakao.maps.event.addListener(marker, 'click', function() {
-        //             // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-        //             infowindow.setContent('<div>' + place[i].place_name + '</div>');
-        //             infowindow.open(map, marker);
-        //         });
-        
-        
-        // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
-    
-
-        
-        // const content=('<div class="Map_wrap">' + 
-
-        // '    <div class="info">' + 
-        // '        <div class="title">' + 
-        // '            카카오 스페이스닷원' + 
-        // '            <div class="close" onclick="overlay.setup(null)" title="닫기"></div>' + 
-        // '        </div>' + 
-        // '        <div class="body">' + 
-        // '            <div class="img">' +
-        // '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-        // '           </div>' + 
-        // '            <div class="desc">' + 
-        // '                <div class="ellipsis">'+place[i].place_name+'</div>' + 
-        // '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-        // '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">자세히보기</a></div>' + 
-        // '            </div>' + 
-        // '        </div>' + 
-        // '    </div>' + 
-
-        // '</div>');
+		
         function closeOverlay() {
             overlay.setMap(null);     
         }
@@ -167,7 +130,7 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
         content.appendChild(info)
         var title=document.createElement('div')
         title.className='title'
-        title.innerHTML=place[i].place_name
+        title.innerHTML=('📌   '+place[i].place_name)
         info.appendChild(title)
         var close=document.createElement('div')
         close.className='close'
@@ -183,17 +146,49 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
         var desc=document.createElement('div')
         desc.className='desc'
         body.appendChild(desc)
+
+        var day_zone=document.createElement('div')
+        day_zone.className='day_zone'
+        desc.appendChild(day_zone)
+
+        for(var a=0;a<place[i].day.length;a++){
         var ellipsis=document.createElement('div')
-        ellipsis.className='ellipsis'
-        ellipsis.innerHTML='임시용임시용'
-        desc.appendChild(ellipsis)
+        ellipsis.className='lay_day'
+        ellipsis.innerHTML=place[i].day[a]
+        day_zone.appendChild(ellipsis)
+
+        
+    }
+
+
+        
         var jibun=document.createElement('div')
         jibun.className='jibun'
-        jibun.innerHTML='임시용임시용2'
+        
         desc.appendChild(jibun)
 
+        var jubun_image=document.createElement('img')
+        jubun_image.className='jibun_image'
+        jubun_image.src='../img/현위치.png'
+        jibun.appendChild(jubun_image)
 
-    
+       var jibun_text=document.createElement('span')
+       jibun_text.className='jubun_text'
+       jibun.appendChild(jibun_text)
+       jibun_text.innerHTML='서울특별시 성북구 보국문로11길 18-2'
+
+        var linktext=document.createElement('div')
+        linktext.className='linktext'
+        desc.appendChild(linktext)
+
+        var linkto=document.createElement('a')
+        linkto.href="/main"
+        linktext.append(linkto)
+
+        var linkmessage=document.createElement('div')
+        linkmessage.className=('linkmessage')
+        linkmessage.innerHTML='자세히 보기'
+        linkto.appendChild(linkmessage)
     
     overlay.setContent(content);
         
@@ -216,7 +211,10 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
         // kakao.maps.event.addListener(marker, 'mouseout', function() {
         //     overlay.setMap(null);
         // });
-        })(marker, overlay);
+        })(marker, overlay);}
+        else{
+            continue;
+        }
     }
 
   
@@ -271,18 +269,51 @@ ps.keywordSearch(where, placesSearchCB);
 // }
 
 // var Marker=displayMarker(place)
-
-
-  }, [where]);
+    console.log(currentday)
+  }, [where,currentday]);
   
+
+  
+  const dayselect=(e)=>{
+    if(e.target.className=='day_select_button'){
+        e.target.className='day_select_unclicked'
+        setcurrentday(currentday.filter(function(data){
+            
+            return data != e.target.innerHTML
+        }))
+    }
+    else{
+        e.target.className='day_select_button'
+        setcurrentday(currentday.concat([e.target.innerHTML]))
+    }
+  }
+
   const [searchwhere,setsearchwhere]=useState(where)
+
   return (
     <div className="Map">
         <MapNav></MapNav>
         <div className="MapPage_search">
             <input placeholder="지역을 검색해주세요!" value={searchwhere} onChange={(e)=>setsearchwhere(e.target.value)}></input><img onClick={()=>setwhere(searchwhere) } src={process.env.PUBLIC_URL+`../img/Group 1140.png`}></img>
         </div>
+        
       <div className="MapContainer" id="map">
+      <div className="option_view">
+            <div className="day_selectzone">
+                <span>요일 선택</span>
+                <div className="day_button">
+                <div className="day_select_button" onClick={(e)=>dayselect(e)} name='월'>월</div>
+                <div className="day_select_button" onClick={(e)=>dayselect(e)} value='화'>화</div>
+                <div className="day_select_button" onClick={(e)=>dayselect(e)} value='수'>수</div>
+                <div className="day_select_button" onClick={(e)=>dayselect(e)} value='목'>목</div>
+                <div className="day_select_button" onClick={(e)=>dayselect(e)} value='금'>금</div>
+                <div className="day_select_button" onClick={(e)=>dayselect(e)} value='토'>토</div>
+                <div className="day_select_button" onClick={(e)=>dayselect(e)} value='일'>일</div>
+                </div>
+
+            </div>
+            
+            </div>
       </div>
     </div>
   );
