@@ -151,8 +151,11 @@
     line-height: 55px;
     flex-grow: 1;
 }
+
 /* Point */
+
 .star-rating {
+    margin-left: 420px;
     display: flex;
     flex-direction: row-reverse;
     font-size: 2.25rem;
@@ -180,7 +183,7 @@
    
   .star-rating label:hover,
   .star-rating label:hover ~ label {
-    -webkit-text-fill-color: #fff58c;
+    -webkit-text-fill-color: #0679FF;
   }
 
 .CleanStoreDetail .star{
@@ -390,6 +393,29 @@
     font-weight: 400;
     font-size: 22px;
     line-height: 27px;
+}
+
+.CleanStoreDetail .cleanstore_review_write .star{
+    margin-top: 5px;
+    display: flex;
+}
+
+.CleanStoreDetail .cleanstore_review_write .star h2{
+    margin-top: 12px;
+    font-style: bold;
+}
+
+.CleanStoreDetail .cleanstore_review_write textarea{
+    margin-left: 100px;
+    margin-top: 20px;
+    width: 50%;
+    box-sizing: border-box;
+    min-height: 200px;
+    resize: vertical; /* 위아래로만 textarea 사이즈 변경 가능하게 */
+    border-radius: 5px;
+    border-color: #0679FF;
+    background-color: #f0f0f0;
+    padding: 20px;
 }
 
 /* CleanStoreReview */

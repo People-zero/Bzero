@@ -77,8 +77,9 @@ const CleanStoreDetail = () => {
 
     const commentRef=useRef(); //content를 다 작성 안했을 때 focus하기 위함.
     const [comment,setComment] = useState("");
-    const [point,setpoint] = useState();
-    console.log(pointAvg); 
+    const [point,setpoint] = useState(0);
+    console.log(pointAvg);
+    console.log(comment); 
 
     const getPoint= (point) =>{ 
         setpoint(point);
@@ -193,8 +194,10 @@ const CleanStoreDetail = () => {
                     <h3>이 스토어를 추천하시겠어요?</h3>
                     <div className="star">
                         <Point pointAvg value={point} getPoint={getPoint}/>
-                        {point}
+                        <h2>{point}/5</h2>
                     </div>
+                    <textarea placeholder="리뷰를 작성해주세요." ref={commentRef} value={comment} onChange={(e)=>setComment(e.target.value)} />
+
                 </div>
             </div>
             </section>
