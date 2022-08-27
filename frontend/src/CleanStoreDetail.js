@@ -146,7 +146,7 @@ const CleanStoreDetail = () => {
             </div>
             </section>
             <section className="cleanstore_content2">
-            <div className="star">
+            <div className="stars">
             <div className="starBox" style={{width : pointAvg}} >
                 <img className="pointOfStar" src={blue_star} alt="blue_star" />
             </div>
