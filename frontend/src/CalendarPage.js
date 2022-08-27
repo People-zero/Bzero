@@ -5,8 +5,6 @@ import Calendar from "react-calendar";
 const CalendarPage = ({ checked_date }) => {
   const [value, onChange] = useState(new Date());
 
-  const calendar_to_diary = ({ checked_date, value }) => {};
-
   return (
     <div className="calendar_page">
       <section className="calendar_page_nav">
@@ -68,7 +66,9 @@ const CalendarPage = ({ checked_date }) => {
             <Calendar
               onChange={onChange}
               value={value}
-              onClick={calendar_to_diary(checked_date, value)}
+              onClickDay={(value, event) =>
+                window.location.assign(`/${moment(value).format("YYYY-MM-DD")}`)
+              }
               calendarType="US"
               formatDay={(locale, date) => moment(date).format("D")}
               formatShortWeekday={(locale, date) => moment(date).format("ddd")}
