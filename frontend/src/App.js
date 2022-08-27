@@ -1,6 +1,6 @@
 import "./MyPage.css";
 import MyPage from "./MyPage";
-// import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 const dummyList = [
   {
     profile: "example_profile.jpg",
@@ -24,23 +24,20 @@ const dummy_badge = [
 
 function App() {
   return (
-    // <BrowserRouter>
-    <div className="App">
-      <MyPage
-        user_info={dummyList}
-        checked_date={dummy_checked_date}
-        badge_info={dummy_badge}
-      />
-      {/* <Routes>
-        <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/new' element={<New></New>}></Route>
-        <Route path='/edit/:id' element={<Edit></Edit>}></Route>
-        <Route path='/diary/:id' element={<Diary></Diary>}></Route>
-        
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/mypage"
+          element={
+            <MyPage
+              user_info={dummyList}
+              checked_date={dummy_checked_date}
+              badge_info={dummy_badge}
+            />
+          }
+        ></Route>
       </Routes>
-       */}
-    </div>
-    // </BrowserRouter>
+    </BrowserRouter>
   );
 }
 

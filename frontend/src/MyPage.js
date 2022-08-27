@@ -74,6 +74,7 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                     src={process.env.PUBLIC_URL + `/img/${it.profile}`}
                     alt="profile"
                   />
+                  {/* <img src={`static/${it.profile}`} alt="profile"></img> */}
                   <p className="mypage_nickname">{it.nickname}</p>
                   <p className="mypage_email">{it.email}</p>
                   <button className="mypage_edit_profile_btn">
@@ -132,6 +133,7 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                       }
                       alt="level"
                     />
+                    {/* <img className="mypage_level_img" src={`static/level${my_level(it)}.png`} alt="level"></img> */}
                   </div>
                   <div className="mypage_my_point_status">
                     {point_list
@@ -145,6 +147,9 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                               src={process.env.PUBLIC_URL + `/img/coins.png`}
                               alt="coins"
                             />
+                            {/* <img className="mypage_coins_img"
+                              src={`static/coins.png`}
+                              alt="coins"></img> */}
                             <p className="mypage_my_point">{it.point}P</p>
                             <p className="mypage_next_point">
                               다음 레벨까지 {list.max - it.point}P 남았어요!
@@ -205,6 +210,7 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                               }
                               alt=""
                             />
+                            {/* <img src={`static/${it.badge_type}`} alt=""></img> */}
                           </div>
                         ))}
                       {badge_info
@@ -217,6 +223,7 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                               }
                               alt=""
                             />
+                            {/* <img src={`static/${it.badge_type}`} alt=""></img> */}
                           </div>
                         ))}
                       {badge_info
@@ -229,6 +236,7 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                               }
                               alt=""
                             />
+                            {/* <img src={`static/${it.badge_type}`} alt=""></img> */}
                           </div>
                         ))}
                       {badge_info
@@ -241,6 +249,7 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                               }
                               alt=""
                             />
+                            {/* <img src={`static/${it.badge_type}`} alt=""></img> */}
                           </div>
                         ))}
 
@@ -249,21 +258,25 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                         src={process.env.PUBLIC_URL + `/img/badge_base.png`}
                         alt="base"
                       />
+                      {/* <img className="mypage_badge_top_base" src={`static/badge_base.png`} alt="base"></img> */}
                       <img
                         className="mypage_badge_top_base"
                         src={process.env.PUBLIC_URL + `/img/badge_base.png`}
                         alt="base"
                       />
+                      {/* <img className="mypage_badge_top_base" src={`static/badge_base.png`} alt="base"></img> */}
                       <img
                         className="mypage_badge_top_base"
                         src={process.env.PUBLIC_URL + `/img/badge_base.png`}
                         alt="base"
                       />
+                      {/* <img className="mypage_badge_top_base" src={`static/badge_base.png`} alt="base"></img> */}
                       <img
                         className="mypage_badge_top_base"
                         src={process.env.PUBLIC_URL + `/img/badge_base.png`}
                         alt="base"
                       />
+                      {/* <img className="mypage_badge_top_base" src={`static/badge_base.png`} alt="base"></img> */}
                     </div>
                     <div className="mypage_badge_bottom">
                       {badge_info
@@ -276,6 +289,7 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                               }
                               alt=""
                             />
+                            {/* <img src={`static/${it.badge_type}`} alt=""></img> */}
                           </div>
                         ))}
                       {badge_info
@@ -288,6 +302,7 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                               }
                               alt=""
                             />
+                            {/* <img src={`static/${it.badge_type}`} alt=""></img> */}
                           </div>
                         ))}
                       {badge_info
@@ -300,6 +315,7 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                               }
                               alt=""
                             />
+                            {/* <img src={`static/${it.badge_type}`} alt=""></img> */}
                           </div>
                         ))}
 
@@ -308,16 +324,19 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                         src={process.env.PUBLIC_URL + `/img/badge_base.png`}
                         alt="base"
                       />
+                      {/* <img className="mypage_badge_bottom_base" src={`static/badge_base.png`} alt="base"></img> */}
                       <img
                         className="mypage_badge_bottom_base"
                         src={process.env.PUBLIC_URL + `/img/badge_base.png`}
                         alt="base"
                       />
+                      {/* <img className="mypage_badge_bottom_base" src={`static/badge_base.png`} alt="base"></img> */}
                       <img
                         className="mypage_badge_bottom_base"
                         src={process.env.PUBLIC_URL + `/img/badge_base.png`}
                         alt="base"
                       />
+                      {/* <img className="mypage_badge_bottom_base" src={`static/badge_base.png`} alt="base"></img> */}
                       <div>
                         <button className="mypage_badge_more_btn">
                           더보기
