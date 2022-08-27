@@ -220,7 +220,7 @@
 .CleanStoreDetail .cleanstore_content2 h4{
     display: inline-block;
     width: 588px;
-    margin-left: 942px;
+    margin-left: 785px;
     margin-top: 48px;
     margin-right: 140px;
     color : #474747;
@@ -282,7 +282,7 @@
     width: 22px;
     height: 14px;
     margin-top: 29px;
-    margin-left: 72px;
+    margin-left: 35px;
     margin-right: 11px;
 }
 
@@ -300,7 +300,7 @@
 
 .CleanStoreDetail .cleanstore_information h2{
     display: flex;
-    margin-left: 105px;
+    margin-left: 20px;
     font-weight: 400;
     font-size: 22px;
     line-height: 27px;
@@ -344,7 +344,7 @@
 }
 
 .CleanStoreDetail .cleanstore_information img{
-    margin-left: 100px;
+    margin-left: 30px;
     margin-right: 100px;
     margin-top: 79px;
 }
@@ -356,7 +356,7 @@
 
 .CleanStoreDetail .cleanstore_description h2{
     margin-top: 76px;
-    margin-left: 52px;
+    margin-left: 35px;
     font-weight: 600;
     font-size: 26px;
     line-height: 33px;
@@ -364,6 +364,7 @@
 }
 
 .CleanStoreDetail .cleanstore_description h3{
+    width: 80%;
     margin-top: 49px;
     margin-left: 62px;
     font-weight: 500;
@@ -372,6 +373,11 @@
     color: #474747;
     margin-right: 100px;
     word-break: keep-all;
+}
+
+.CleanStoreDetail .cleanstore_review{
+    margin-top: 45px;
+    border-top: 1px solid #0679FF;
 }
 
 .CleanStoreDetail .cleanstore_review_write{
@@ -406,7 +412,7 @@
 }
 
 .CleanStoreDetail .cleanstore_review_write textarea{
-    margin-left: 100px;
+    margin-left: 130px;
     margin-top: 20px;
     width: 50%;
     box-sizing: border-box;
@@ -419,7 +425,7 @@
 }
 
 .CleanStoreDetail .write_button{
-    margin-left: 800px;
+    margin-left: 750px;
     background: #0679FF;
     border: 1px solid #0679FF;
     border-radius: 10px;
@@ -442,7 +448,7 @@
 
 .CleanStoreDetail .relative_url{
     margin-top: 46px;
-    padding: 20px;
+    padding: 40px;
     border-top: 1px solid #0679FF;
     border-bottom: 1px solid #0679FF;
 }
@@ -510,7 +516,7 @@
 
 .CleanStoreReview{
     margin-top: 50px;
-    margin-left: 52px;
+    margin-left: 50px;
     /* margin-bottom: 50px; */
     display: flex;
     flex-direction: column;
@@ -518,7 +524,7 @@
 }
 
 .CleanStoreReview button{
-    margin-right: 1500px;
+    margin-right: 1350px;
     margin-bottom: 40px;
     font-weight: 400;
     font-size: 18px;
@@ -537,6 +543,7 @@
 /* CleanStoreReviewItem */
 
 .CleanStoreReviewItem .info_wrapper{
+    margin-left: 60px;
     display: flex;    
 }
 
@@ -556,6 +563,7 @@
 }
 
 .CleanStoreReviewItem .review{
+    margin-left: 60px;
     margin-bottom: 50px;
     font-weight: 400;
     font-size: 20px;
