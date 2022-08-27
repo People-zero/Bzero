@@ -6,6 +6,7 @@ import CleanStore from './CleanStore';
 import axios from 'axios';
 import { dummyData } from './util/dummyData';
 import { dummyReview } from './util/dummyReview';
+import Point from './components/Point';
 
 const reducer=(state,action)=>{
   switch(action.type){

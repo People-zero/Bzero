@@ -9,6 +9,9 @@ import Vector from './Vector.png'
 import Vector_bottom from './Vector_bottom.png' 
 import Map from './Map.png'
 import { dummyReview } from "./util/dummyReview";
+import blue_star from './blue_star.png'
+import gray_star from './gray_star.png'
+import Point from "./components/Point";
 
 const env=process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
@@ -36,6 +39,7 @@ const CleanStoreDetail = () => {
     const [data,setData] = useState();
     const [reviewData,setReview] = useState([]); 
     const [review,dispatch] = useReducer(reducer,dummyReview); 
+    const [pointAvg,setPointAvg] = useState(); //평균 별점
 
     // useEffect(()=>{
     //     fetch('http://localhost:8000/review/')
@@ -55,6 +59,7 @@ const CleanStoreDetail = () => {
                  // const targetReview = cleanStoreReview.find((it)=>parseInt(it.Store_PK)===parseInt(id));
             if(targetList){ //가게가 존재할 때
                 setData(targetList);
+                setPointAvg((targetList.point_avg)*20);
             } else{ //가게가 없을 때
                 alert("없는 가게입니다.");
                 navigate("/cleanstore",{replace:true}); //뒤로가기 막음.
@@ -72,7 +77,12 @@ const CleanStoreDetail = () => {
 
     const commentRef=useRef(); //content를 다 작성 안했을 때 focus하기 위함.
     const [comment,setComment] = useState("");
-    const [point,setpoint] = useState(5);
+    const [point,setpoint] = useState();
+    console.log(pointAvg); 
+
+    const getPoint= (point) =>{ 
+        setpoint(point);
+    } 
 
     const init = () => {
             axios.get("http://127.0.0.1:8000/review/")
@@ -135,7 +145,12 @@ const CleanStoreDetail = () => {
             </div>
             </section>
             <section className="cleanstore_content2">
-            <h3 className="cleanstore_star">임시 별점</h3>
+            <div className="star">
+            <div className="starBox" style={{width : pointAvg}} >
+                <img className="pointOfStar" src={blue_star} alt="blue_star" />
+            </div>
+            <img className="backgroundStar" src={gray_star} alt="gray_star" />
+            </div>
             <h4>
                 {((data.description).split('.')).slice(0,1)}.
                 {/* 한줄만 보여주기 - 간략하게 */}
@@ -163,7 +178,12 @@ const CleanStoreDetail = () => {
                     <img className="vector_image" src={Vector_bottom} alt="Vector_bottom" />
                     리뷰
                     </button>
-                    <h3 className="cleanstore_star">임시 별점</h3>
+                    <div className="cleanstore_star">
+                        <div className="starBox" style={{width : pointAvg}} >
+                        <img className="pointOfStar" src={blue_star} alt="blue_star" />
+                        </div>
+                        <img className="backgroundStar" src={gray_star} alt="gray_star" />
+                    </div>
                     <section className="review">
                         <CleanStoreReview cleanStoreReview = {reviewData} />
                     </section>
@@ -171,6 +191,10 @@ const CleanStoreDetail = () => {
                 <div className="cleanstore_review_write">
                     <h2>리뷰 작성</h2>
                     <h3>이 스토어를 추천하시겠어요?</h3>
+                    <div className="star">
+                        <Point pointAvg value={point} getPoint={getPoint}/>
+                        {point}
+                    </div>
                 </div>
             </div>
             </section>

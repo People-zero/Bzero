@@ -151,14 +151,66 @@
     line-height: 55px;
     flex-grow: 1;
 }
+/* Point */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    justify-content: space-around;
+    padding: 0 0.2em;
+    text-align: center;
+    width: 5em;
+  }
+   
+  .star-rating input {
+    display: none;
+  }
+   
+  .star-rating label {
+    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 2.3px;
+    -webkit-text-stroke-color: #2b2a29;
+    cursor: pointer;
+  }
+   
+  .star-rating :checked ~ label {
+    -webkit-text-fill-color: gold;
+  }
+   
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    -webkit-text-fill-color: #fff58c;
+  }
+
+.CleanStoreDetail .star{
+}
+
+.CleanStoreDetail .starBox{
+    z-index: 1000;
+    margin-left: 55px;
+    margin-right: 10px;
+    height: 15px;
+    overflow: hidden;
+}
+
+.CleanStoreDetail .pointOfStar{
+    z-index: 10;
+    height: 19px;
+    width: 100px;
+}
+
+.CleanStoreDetail .backgroundStar{
+    position: absolute;
+    /* margin-left: 84px; */
+    margin-left: 55px;
+    width: 100px;
+    height: 19px;
+}
 
 .CleanStoreDetail .cleanstore_content2 .cleanstore_star{
     margin-left: 70px;
     margin-top: 37px;
-    color : #D9D9D9;
-    font-weight: 500;
-    font-size: 35px;
-    line-height: 55px;
 }
 
 .CleanStoreDetail .cleanstore_content2 h4{
