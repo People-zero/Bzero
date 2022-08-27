@@ -197,7 +197,18 @@ const CleanStoreDetail = () => {
                         <h2>{point}/5</h2>
                     </div>
                     <textarea placeholder="리뷰를 작성해주세요." ref={commentRef} value={comment} onChange={(e)=>setComment(e.target.value)} />
-
+                </div>
+                <button className="write_button"><h2>작성하기</h2></button>
+                <div className="relative_url">
+                    <section>
+                        <img src={Vector_bottom} alt="Vector_bottom" />
+                        <h2>관련 링크</h2>
+                    </section>
+                    <button className="relative_button" onClick={()=>navigate(`${data.store_url}`)}>
+                    <a href={data.store_url} > <h2>관련링크 방문하기 {data.store_name}</h2> </a>
+                    <img src={Vector} alt="Vector" />
+                    {/* <img src={process.env.PUBLIC_URL + `assets/Vector.png`.default}/> */}
+                    </button>
                 </div>
             </div>
             </section>

@@ -118,6 +118,7 @@
 
 .CleanStoreDetail{
     display: flex;
+    justify-content: center;
 }
 
 .CleanStoreDetail .cleanstore_detail{
@@ -241,7 +242,7 @@
     border-radius: 50px;
     cursor: pointer;
     margin-top: 38px;
-    margin-right: 101px;
+    margin-right: 250px;
     display: flex;
     border: 1px solid #0679FF;
     font-weight: 500;
@@ -375,7 +376,6 @@
 
 .CleanStoreDetail .cleanstore_review_write{
     border-top: 1px solid #0679FF;
-    
 }
 
 .CleanStoreDetail .cleanstore_review_write h2{
@@ -416,6 +416,94 @@
     border-color: #0679FF;
     background-color: #f0f0f0;
     padding: 20px;
+}
+
+.CleanStoreDetail .write_button{
+    margin-left: 800px;
+    background: #0679FF;
+    border: 1px solid #0679FF;
+    border-radius: 10px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 36px;
+    padding-right: 37px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.CleanStoreDetail .write_button h2{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.CleanStoreDetail .relative_url{
+    margin-top: 46px;
+    padding: 20px;
+    border-top: 1px solid #0679FF;
+    border-bottom: 1px solid #0679FF;
+}
+
+.CleanStoreDetail .relative_url section{
+    display: flex;
+}
+
+.CleanStoreDetail .relative_url section h2{
+    margin-left: 11px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #075CFF;
+}
+
+.CleanStoreDetail .relative_url section img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 22px;
+    height: 14px;
+    margin-top: 8px;
+}
+
+.CleanStoreDetail .relative_url .relative_button{
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 38px;
+    margin-right: 101px;
+    display: flex;
+    border: 1px solid #0679FF;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
+    color: #0679FF;
+    padding-top: 14px;
+    padding-bottom: 13px;
+    padding-left: 36px;
+    padding-right: 18px;
+}
+
+.CleanStoreDetail .relative_url .relative_button a{
+    color: #0679FF;
+    text-decoration: none;
+}
+
+.CleanStoreDetail .relative_url .relative_button h2{
+    font-size: 25px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.CleanStoreDetail .relative_url .relative_button img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 20px;
+    height: 20px;
+    margin-left: 23px;
+    margin-right: 20px;
+    margin-top: 3px;
+
 }
 
 /* CleanStoreReview */
@@ -483,16 +571,19 @@
 
 .SideBar{
     margin-top:37px;
-    margin-left: 48px;
+    margin-left: 260px;
     border-right: 1px solid #0679FF;
     min-height: 100vh;
+    justify-items: center;
 }
 
 .SideBar nav{
+    margin-right: 30px;
     margin-top: 55px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    word-break: keep-all;
     /* padding-bottom:16px; */
 }
 
@@ -508,13 +599,11 @@
 
 .SideBar .cleanstore{
     cursor: pointer;
-    margin-left: 18px;
     margin-bottom: 8px;
 }
 
 .SideBar .emptybottlestore{
     cursor: pointer;
-    margin-left: 18px;
     margin-bottom: 16px;
 }
 
@@ -526,7 +615,6 @@
 .SideBar .zeroweistdiary{
     cursor: pointer;
     margin-bottom: 437px;
-    margin-right:49px;
 }
 
 .SideBar .logout{
