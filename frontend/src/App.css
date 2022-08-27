@@ -318,6 +318,89 @@
     word-break: keep-all;
 }
 
+.CleanStoreDetail .cleanstore_review_write{
+    border-top: 1px solid #0679FF;
+    
+}
+
+.CleanStoreDetail .cleanstore_review_write h2{
+    margin-top: 33px;
+    margin-left: 52px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color : #075CFF
+}
+
+.CleanStoreDetail .cleanstore_review_write h3{
+    margin-top: 92px;
+    margin-left: 382px;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+}
+
+/* CleanStoreReview */
+
+.CleanStoreReview{
+    margin-top: 50px;
+    margin-left: 52px;
+    /* margin-bottom: 50px; */
+    display: flex;
+    flex-direction: column;
+    /* min-width: 50%; */
+}
+
+.CleanStoreReview button{
+    margin-right: 1500px;
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 50px;
+    border: 1px solid #0679FF;
+    color: #0679FF;
+    padding-top:7px;
+    padding-bottom: 7px;
+    padding-left: 21px;
+    padding-right: 22px;
+}
+
+/* CleanStoreReviewItem */
+
+.CleanStoreReviewItem .info_wrapper{
+    display: flex;    
+}
+
+.CleanStoreReviewItem .user{
+    color: #075CFF;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    margin-right: 767px;
+}
+
+.CleanStoreReviewItem .created_at{
+    color: #767678;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.CleanStoreReviewItem .review{
+    margin-bottom: 50px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: #474747;
+    margin-top: 22px;
+    margin-right: 691px;
+    word-break: keep-all;
+}
+
+
 /* SideBar */
 
 .SideBar{

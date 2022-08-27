@@ -4,7 +4,7 @@ import { useNavigate,useParams } from "react-router";
 import { CleanStoreContext } from "./App";
 // import { CleanStoreReview } from "./App";
 import axios from "axios";
-import CleanStoreReviewList from "./components/CleanStoreReviewList";
+import CleanStoreReview from "./components/CleanStoreReview";
 import Vector from './Vector.png' 
 import Vector_bottom from './Vector_bottom.png' 
 import Map from './Map.png'
@@ -47,7 +47,7 @@ const CleanStoreDetail = () => {
 
     useEffect(()=>{
         init();
-    })
+    },[])
     
     useEffect(()=>{
         if (cleanStoreList.length >=1){
@@ -84,7 +84,7 @@ const CleanStoreDetail = () => {
             const targetReview = reviewData.filter((it)=>parseInt(it.Store_PK)===parseInt(id));
             setReview(targetReview);
         } else{
-            const targetReview = dummyReview.find((it)=>parseInt(it.Store_PK)===parseInt(id));
+            const targetReview = dummyReview.filter((it)=>parseInt(it.Store_PK)===parseInt(id));
             setReview(targetReview);
         }
         dispatch({type:"INIT",data:reviewData});
@@ -165,9 +165,12 @@ const CleanStoreDetail = () => {
                     </button>
                     <h3 className="cleanstore_star">임시 별점</h3>
                     <section className="review">
-                        {/* <CleanStoreReviewList cleanStoreReviewList = {reviewData} /> */}
+                        <CleanStoreReview cleanStoreReview = {reviewData} />
                     </section>
-
+                </div>
+                <div className="cleanstore_review_write">
+                    <h2>리뷰 작성</h2>
+                    <h3>이 스토어를 추천하시겠어요?</h3>
                 </div>
             </div>
             </section>

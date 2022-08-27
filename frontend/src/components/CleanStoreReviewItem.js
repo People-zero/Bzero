@@ -4,7 +4,7 @@ const CleanStoreReviewItem = ({id,Store_PK, User_PK, point, comment, created_at,
         <div className="CleanStoreReviewItem">
             <div className="info_wrapper">
                 <div className="user">{User_PK}</div>
-                <div className="updated_at">{updated_at}</div>
+                <div className="created_at">{created_at}</div> 
             </div>
             <div className="review">
                 {comment}
@@ -14,4 +14,5 @@ const CleanStoreReviewItem = ({id,Store_PK, User_PK, point, comment, created_at,
 };
 
 export default CleanStoreReviewItem;
+
 
