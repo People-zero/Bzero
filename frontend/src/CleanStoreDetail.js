@@ -115,6 +115,25 @@ const CleanStoreDetail = () => {
             updated_at : new Date(strDate).getTime(),
           },
         });
+        //back 연결
+
+        axios.post("http://127.0.0.1:8000/review/", {
+            id : data.id,
+            Store_PK : data.Store_PK,
+            User_PK : data.User_PK,
+            point : point,
+            comment: comment, 
+            created_at : data.created_at,
+            updated_at : data.updated_at,
+          })
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error,response) {
+              console.log(error);
+              console.log(response);
+            });
+            
         reviewId.current += 1;
       };
 
@@ -198,7 +217,9 @@ const CleanStoreDetail = () => {
                     </div>
                     <textarea placeholder="리뷰를 작성해주세요." ref={commentRef} value={comment} onChange={(e)=>setComment(e.target.value)} />
                 </div>
-                <button className="write_button"><h2>작성하기</h2></button>
+                <button className="write_button" onClick={handleSubmit}>
+                    <h2>작성하기</h2>
+                </button>
                 <div className="relative_url">
                     <section>
                         <img src={Vector_bottom} alt="Vector_bottom" />
