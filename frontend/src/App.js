@@ -1,6 +1,6 @@
 import "./CalendarPage.css";
 import CalendarPage from "./CalendarPage";
-// import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const dummy_checked_date = [
   "2022-08-01",
@@ -11,19 +11,14 @@ const dummy_checked_date = [
 
 function App() {
   return (
-    // <BrowserRouter>
-    <div className="App">
-      <CalendarPage checked_date={dummy_checked_date} />
-      {/* <Routes>
-        <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/new' element={<New></New>}></Route>
-        <Route path='/edit/:id' element={<Edit></Edit>}></Route>
-        <Route path='/diary/:id' element={<Diary></Diary>}></Route>
-        
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/calendar"
+          element={<CalendarPage checked_date={dummy_checked_date} />}
+        ></Route>
       </Routes>
-       */}
-    </div>
-    // </BrowserRouter>
+    </BrowserRouter>
   );
 }
 
