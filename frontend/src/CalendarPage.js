@@ -2,48 +2,14 @@ import React, { useState } from "react";
 import moment from "moment";
 import Calendar from "react-calendar";
 import "./css/CalendarPage.css";
+import CalendarNav from "./components/CalendarNav";
 
 const CalendarPage = ({ checked_date }) => {
   const [value, onChange] = useState(new Date());
 
   return (
     <div className="calendar_page">
-      <section className="calendar_page_nav">
-        <header className="calendar_page_goto_home">
-          <a className="calendar_page_goto_home_detail" href="#main">
-            BZero
-          </a>
-        </header>
-        <nav className="calendar_page_nav_menu">
-          <ul className="calendar_page_nav_detail">
-            <li>
-              <a className="calendar_page_goto" href="#mypage">
-                마이페이지
-              </a>
-            </li>
-            <li>
-              <a className="calendar_page_goto" href="#find_store">
-                가게 찾기
-              </a>
-            </li>
-            <li>
-              <a className="calendar_page_goto" href="#community">
-                커뮤니티
-              </a>
-            </li>
-            <li>
-              <a className="calendar_page_goto_calendar" href="#zero_diary">
-                제로웨이스트 일기
-              </a>
-            </li>
-            <li>
-              <a className="calendar_page_logout" href="#main">
-                로그아웃
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </section>
+     <CalendarNav></CalendarNav>
       <div className="calendar_page_main">
         <header className="calendar_page_header">
           <p className="calendar_page_title">제로웨이스트 캘린더</p>

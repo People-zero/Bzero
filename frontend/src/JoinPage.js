@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import LoginPageHeader from "./component/LoginPageHeader";
+import LoginPageHeader from "./components/LoginPageHeader";
 import "./css/JoinPage.css"
 const JoinPage = () => {
   const [user_type, set_user_type] = useState(true);

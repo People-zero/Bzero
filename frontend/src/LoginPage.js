@@ -1,5 +1,5 @@
 import { useState } from "react"
-import LoginPageHeader from "./component/LoginPageHeader"
+import LoginPageHeader from "./components/LoginPageHeader"
 import "./css/LoginPage.css"
 
 const LoginPage=()=>{

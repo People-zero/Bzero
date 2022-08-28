@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import moment from "moment";
 import Calendar from "react-calendar";
 import "./css/MyPage.css"
+import MapNav from "./components/MapNav";
+import MypageNav from "./components/MypageNav";
 const point_list = [
   { level: "B", level_kr: "브론즈", min: 0, max: 1500 },
   { level: "S", level_kr: "실버", min: 1500, max: 4500 },
@@ -25,42 +27,7 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
 
   return (
     <div className="mypage">
-      <section className="mypage_nav">
-        <header className="mypage_goto_home">
-          <a className="mypage_goto_home_detail" href="#main">
-            BZero
-          </a>
-        </header>
-        <nav className="mypage_nav_menu">
-          <ul className="mypage_nav_detail">
-            <li>
-              <a className="mypage_goto_mypage" href="#mypage">
-                마이페이지
-              </a>
-            </li>
-            <li>
-              <a className="mypage_goto" href="#find_store">
-                가게 찾기
-              </a>
-            </li>
-            <li>
-              <a className="mypage_goto" href="#community">
-                커뮤니티
-              </a>
-            </li>
-            <li>
-              <a className="mypage_goto" href="#zero_diary">
-                제로웨이스트 일기
-              </a>
-            </li>
-            <li>
-              <a className="mypage_logout" href="#main">
-                로그아웃
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </section>
+      <MypageNav/>
       <div className="mypage_main">
         {user_info.map((it) => (
           <div>
