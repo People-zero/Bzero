@@ -115,6 +115,11 @@ function EditProfilePage() {
                   src={camera_icon}
                   alt="upload_button"
                 />
+                {/* <img
+                  className="camera_icon"
+                  src={`/static/camera_icon.svg`}
+                  alt="upload_button"
+                /> */}
               </label>
               <input
                 type="file"
@@ -259,6 +264,7 @@ function EditProfilePage() {
           <div className="withdrawal">
             <button className="withdrawal_btn" onChange={withdrawal_event}>
               탈퇴하기 <img src={withdrawl_icon} alt="withdrawl_icon"/>
+              {/* <img src={`/static/withdrawl_icon.svg`} alt="withdrawl_icon"/> */}
             </button>
           </div>
         </div>
