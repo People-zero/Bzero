@@ -10,6 +10,7 @@ const CleanStore = () => {
 
     const cleanStoreList = useContext(CleanStoreContext);
     const [data, setData] = useState([]);
+    console.log(cleanStoreList);
 
     useEffect(()=>{
         setData(cleanStoreList)

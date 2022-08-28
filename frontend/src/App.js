@@ -4,6 +4,7 @@ import React from "react";
 import {useReducer,useRef} from 'react';
 import CleanStoreDetail from './CleanStoreDetail';
 import CleanStore from './CleanStore';
+import axios from 'axios';
 import { dummyData } from './util/dummyData';
 import Community from './Community'
 import Details from './Details'
@@ -107,6 +108,22 @@ function App() {
   };
   const [data,dispatch]=useReducer(reducer,dummyData);
   const dataId= useRef(10);
+
+  const init = () => {
+    axios.get("http://127.0.0.1:8000/store/clean_store/")
+    .then((response) => {
+    dispatch({type:"INIT",data:response});
+  })
+    if (data.lengh<1){
+      dispatch({type:"INIT",data:dummyData});
+    }
+  }
+
+  useEffect(()=>{
+    init();
+  })
+
+  // console.log(data);
 
   return (
     <PostStateContext.Provider value={data}>
