@@ -47,6 +47,7 @@ const dumyData = [
   }
 ]
 
+import EditProfilePage from './EditProfilePage';
 
   
 const dummy_checked_date = ["2022-08-01", "2022-08-05", "2022-08-13"];
