@@ -71,6 +71,11 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
                         제로웨이스트 일기
                       </a>
                     </li>
+                    <li>
+                      <a className="mypage_goto_menu" href="#mypage_my_diary">
+                        로그아웃
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </div>

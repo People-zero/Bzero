@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import LoginPageHeader from "./components/LoginPageHeader";
 import "./css/JoinPage.css"
+
+
 const JoinPage = () => {
+  const navigate=useNavigate();
   const [user_type, set_user_type] = useState(true);
 
   const user_type_btn_event_1 = () => {
@@ -249,7 +253,7 @@ const JoinPage = () => {
               </div>
             </div>
           </section>
-          <button className="join_page_cancel_btn">취소</button>
+          <button onClick={()=>navigate(-1)} className="join_page_cancel_btn">취소</button>
           <button className="join_page_join_btn">가입하기</button>
         </div>
       </div>

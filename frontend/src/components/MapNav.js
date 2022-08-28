@@ -13,7 +13,7 @@ const MapNav=()=>{
         <div className="Map_nav_subtext" style={{color:'#0679FF'}}>가게 찾기</div>
         <div className="Map_nav_subsub">
             <div>클린스토어</div>
-            <div style={{color:'#353535'}}>공병스토어</div>
+            <a href="/map"><div style={{color:'#353535'}}>공병스토어</div></a>
         </div>
         <div className="Map_nav_subtext">커뮤니티</div>
         <div className="Map_nav_subtext">제로웨이스트 일기</div>
