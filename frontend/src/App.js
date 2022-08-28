@@ -43,6 +43,7 @@ const dumyData = [
     date:1660478254687
   }
 ]
+import CalendarPage from "./CalendarPage";
 
   
 const dummy_checked_date = ["2022-08-01", "2022-08-05", "2022-08-13"];
@@ -114,6 +115,10 @@ function App() {
     <CleanStoreContext.Provider value={data}>
       <BrowserRouter>
       <Routes>
+        <Route
+          element={<CalendarPage checked_date={dummy_checked_date} />}
+          path="/calendar"
+        ></Route>
         <Route path='/login' element={<LoginPage></LoginPage>}></Route>
         <Route path='/main' element={<MainPage></MainPage>}></Route>
         <Route path='/mypage' element={<MyPage
