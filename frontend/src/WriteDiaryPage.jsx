@@ -56,6 +56,7 @@ function WriteDiaryPage() {
         />
         <label for="images_upload" className="diary_image_input">
           <img src={image_icon_svg} alt="image_icon" />
+          {/* <img src={`/static/image_icon.svg`} alt="image_icon" /> */}
           <p>이미지 첨부</p>
         </label>
         <input
@@ -68,6 +69,7 @@ function WriteDiaryPage() {
         <div className="diary_buttons">
           <button className="cancel_btn">
             <img src={arrow_svg} alt="left_arrow" />
+            {/* <img src={`/static/left_arrow.svg`} alt="left_arrow" /> */}
             <p>작성 취소</p>
           </button>
           <button className="submit_btn">
