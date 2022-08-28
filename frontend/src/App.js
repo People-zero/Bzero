@@ -1,4 +1,4 @@
-import "./CalendarPage.css";
+import "./App.css";
 import CalendarPage from "./CalendarPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 

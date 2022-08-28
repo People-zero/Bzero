@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
 import Calendar from "react-calendar";
+import "./css/CalendarPage.css";
 
 const CalendarPage = ({ checked_date }) => {
   const [value, onChange] = useState(new Date());
