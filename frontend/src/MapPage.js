@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 
 import "./css/MapPage.css";
 
@@ -7,21 +7,56 @@ import MapNav from "./components/MapNav";
 
 
 const { kakao } = window;
-
+console.log(MapNav)
 const MapPage = () => {
     const [currentday,setcurrentday]=useState(['월','화','수','목','금','토','일'])
     const [where,setwhere]=useState("정릉시장")
+    const [currentbottle,setcurrentbottle]=useState(['소형 및 중형','대형 및 유류 정종','화장품 및 기타 공병'])
+
+    const place=[{
+        place_name:"하윤집",
+        x:37.6084606,
+        y:127.0094845,
+        day:['월','화','수'],
+        Bottle_kind:['소형 및 중형']
+    },
+{
+    place_name:"축산",
+        x:37.6055906,
+        y:127.0099845,
+        day:['월','화','수','목','금'],
+        Bottle_kind:['소형 및 중형']
+},{place_name:"test",
+        x:37.6064606,
+        y:127.0096845,
+        day:['월','화','수'],
+        Bottle_kind:['소형 및 중형']
+},{
+    place_name:"하윤집s",
+    x:37.6084606,
+    y:127.0073845,
+    day:['월','화','수'],
+    Bottle_kind:['소형 및 중형']
+},
+]
+
+    var map
+    
   useEffect(() => {
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        
+        
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = {
 		        center: new kakao.maps.LatLng(37.56843, 126.97472), // 지도의 중심좌표
 		        level: 6, // 지도의 확대 레벨
 		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
 		    }; 
-var infowindow = new kakao.maps.InfoWindow({zIndex:1});
-		// 지도를 생성한다 
-		var map = new kakao.maps.Map(mapContainer, mapOption); 
 
+		// 지도를 생성한다 
+        
+            map=new kakao.maps.Map(mapContainer, mapOption); 
+        
+       
 		// 지도 타입 변경 컨트롤을 생성한다
 		var mapTypeControl = new kakao.maps.MapTypeControl();
 
@@ -35,34 +70,61 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 		// 지도의 우측에 확대 축소 컨트롤을 추가한다
 		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-		// 마커 이미지의 주소
+
+        
         
 		
-        const place=[{
-            place_name:"하윤집",
-            x:37.6084606,
-            y:127.0094845,
-            day:['월','화','수']
-        },
-    {
-        place_name:"축산",
-            x:37.6055906,
-            y:127.0099845,
-            day:['월','화','수','목','금']
-    },{place_name:"test",
-            x:37.6064606,
-            y:127.0096845,
-            day:['월','화','수']
-    },{
-        place_name:"하윤집s",
-        x:37.6084606,
-        y:127.0073845,
-        day:['월','화','수']
-    },
-]
 
+      
+		// 마커 이미지의 주소
+        
+        var ps = new kakao.maps.services.Places(); 
+        
+        
+        
+    
+    
+        // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+        
+        
+// 키워드로 장소를 검색합니다
+
+// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+function placesSearchCB (data, status, pagination) {
+    if (status === kakao.maps.services.Status.OK) {
+
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가합니다
+        var bounds = new kakao.maps.LatLngBounds();
+
+        for (var i=0; i<data.length; i++) {
+            // displayMarker(data[i]);    
+            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+        }       
+
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+        map.setBounds(bounds);
+    } 
+}
+ps.keywordSearch(where, placesSearchCB);
+  },[where])
+
+useEffect(()=>{
+    
+
+    // var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	// 	    mapOption = {
+	// 	        center: new kakao.maps.LatLng(37.56843, 126.97472), // 지도의 중심좌표
+	// 	        level: 6, // 지도의 확대 레벨
+	// 	        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+	// 	    }; 
+
+	// 	// 지도를 생성한다 
+
+	// 	var map=new kakao.maps.Map(mapContainer, mapOption); 
+        
         for(var i=0;i<place.length;i++){
-            if(place[i].day.filter(x=>currentday.includes(x)).length>0){
+            if(place[i].day.filter(x=>currentday.includes(x)).length>0 && place[i].Bottle_kind.filter(x=>currentbottle.includes(x)).length>0){
             if(i%3==0){
             var markerImageUrl = '../img/Group 1182 (1).png', 
         // 'https://t1.daumcdn.net/localimg/localimages/07/2012/img/marker_p.png',
@@ -111,9 +173,7 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 		});
     
 		
-        function closeOverlay() {
-            overlay.setMap(null);     
-        }
+        
         var overlay = new kakao.maps.CustomOverlay(
             {
             
@@ -190,7 +250,7 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
         linkmessage.innerHTML='자세히 보기'
         linkto.appendChild(linkmessage)
     
-    overlay.setContent(content);
+        overlay.setContent(content);
         
         
 
@@ -203,57 +263,21 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
             overlay.setMap(null);
         };
         
-        // kakao.maps.event.addListener(marker, 'click', function() {
-        //     overlay.setMap(null);
-        // });
-        
-        
-        // kakao.maps.event.addListener(marker, 'mouseout', function() {
-        //     overlay.setMap(null);
-        // });
+       
         })(marker, overlay);}
         else{
             continue;
         }
     }
 
-  
-        var ps = new kakao.maps.services.Places(); 
-        
-        
-        
+    // useEffect(()=>{
+     
+    
+
     
     
-        // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-        
-        
-// 키워드로 장소를 검색합니다
-
-// 키워드 검색 완료 시 호출되는 콜백함수 입니다
-function placesSearchCB (data, status, pagination) {
-    if (status === kakao.maps.services.Status.OK) {
-
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-        // LatLngBounds 객체에 좌표를 추가합니다
-        var bounds = new kakao.maps.LatLngBounds();
-
-        for (var i=0; i<data.length; i++) {
-            // displayMarker(data[i]);    
-            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-        }       
-
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-        map.setBounds(bounds);
-    } 
-}
-ps.keywordSearch(where, placesSearchCB);
-
-
-
-
-
-    console.log(currentday)
-  }, [where,currentday]);
+    
+  }, [where,currentday,currentbottle]);
   
 
   
@@ -274,24 +298,28 @@ ps.keywordSearch(where, placesSearchCB);
   const bottleselect=(e)=>{
     if(e.target.className=='bottle_button'){
         e.target.className='bottle_button_unclicked'
-        // setcurrentbottle(currentbottle.filter(function(data){
+        setcurrentbottle(currentbottle.filter(function(data){
             
-        //     return data != e.target.innerHTML
-        // }))
+            return data != e.target.innerText
+        }))
     }
     else{
         e.target.className='bottle_button'
-        // setcurrentday(currentday.concat([e.target.innerHTML]))
+        setcurrentbottle(currentbottle.concat([e.target.innerText]))
     }
   }
 
   const [searchwhere,setsearchwhere]=useState(where)
-
+  const onSubmitSearch = (e) => {
+    if (e.key === "Enter") {
+     setwhere(searchwhere)
+    }
+  };
   return (
     <div className="Map">
         <MapNav></MapNav>
         <div className="MapPage_search">
-            <input placeholder="지역을 검색해주세요!" value={searchwhere} onChange={(e)=>setsearchwhere(e.target.value)}></input><img onClick={()=>setwhere(searchwhere) } src={process.env.PUBLIC_URL+`../img/Group 1140.png`}></img>
+            <input placeholder="지역을 검색해주세요!" value={searchwhere} onKeyPress={(e)=>onSubmitSearch(e)} onChange={(e)=>setsearchwhere(e.target.value)}></input><img onClick={()=>setwhere(searchwhere) } src={process.env.PUBLIC_URL+`../img/Group 1140.png`}></img>
         </div>
         
       <div className="MapContainer" id="map">
@@ -323,7 +351,7 @@ ps.keywordSearch(where, placesSearchCB);
                 </div>
                 <div className="bottle_button" onClick={(e)=>bottleselect(e)}>
                 <img src="../img/화장품병.png" onClick={1}></img>
-                    화장품 및 기타공병
+                    화장품 및 기타 공병
                 </div>
                 </div>
             </div>
@@ -334,4 +362,4 @@ ps.keywordSearch(where, placesSearchCB);
   );
 };
 
-export default MapPage;
+export default React.memo(MapPage);
