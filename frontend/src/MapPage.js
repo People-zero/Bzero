@@ -15,7 +15,7 @@ const MapPage = () => {
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = {
 		        center: new kakao.maps.LatLng(37.56843, 126.97472), // 지도의 중심좌표
-		        level: 5, // 지도의 확대 레벨
+		        level: 6, // 지도의 확대 레벨
 		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
 		    }; 
 var infowindow = new kakao.maps.InfoWindow({zIndex:1});
@@ -251,24 +251,7 @@ ps.keywordSearch(where, placesSearchCB);
 
 
 
-// 지도에 마커를 표시하는 함수입니다
-// function displayMarker(place) {
-    
-//     // 마커를 생성하고 지도에 표시합니다
-//     var marker = new kakao.maps.Marker({
-//         map: map,
-//         position: new kakao.maps.LatLng(place.y, place.x) 
-//     });
 
-//     // 마커에 클릭이벤트를 등록합니다
-//     kakao.maps.event.addListener(marker, 'click', function() {
-//         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-//         infowindow.setContent('<div>' + place.place_name + '</div>');
-//         infowindow.open(map, marker);
-//     });
-// }
-
-// var Marker=displayMarker(place)
     console.log(currentday)
   }, [where,currentday]);
   
@@ -285,6 +268,20 @@ ps.keywordSearch(where, placesSearchCB);
     else{
         e.target.className='day_select_button'
         setcurrentday(currentday.concat([e.target.innerHTML]))
+    }
+  }
+
+  const bottleselect=(e)=>{
+    if(e.target.className=='bottle_button'){
+        e.target.className='bottle_button_unclicked'
+        // setcurrentbottle(currentbottle.filter(function(data){
+            
+        //     return data != e.target.innerHTML
+        // }))
+    }
+    else{
+        e.target.className='bottle_button'
+        // setcurrentday(currentday.concat([e.target.innerHTML]))
     }
   }
 
@@ -311,6 +308,24 @@ ps.keywordSearch(where, placesSearchCB);
                 <div className="day_select_button" onClick={(e)=>dayselect(e)} value='일'>일</div>
                 </div>
 
+            </div>
+
+            <div className="bottle_select">
+                공병 수거 종류
+                <div className="bottle_flex">
+                <div className="bottle_button" onClick={(e)=>bottleselect(e)}>
+                    <img src="../img/Group 1170 (1).png" onClick={1}></img>
+                    소형 및 중형
+                </div>
+                <div className="bottle_button" onClick={(e)=>bottleselect(e)}>
+                <img src="../img/Group 1183 (1).png" onClick={1}></img>
+                    대형 및 유류 정종 
+                </div>
+                <div className="bottle_button" onClick={(e)=>bottleselect(e)}>
+                <img src="../img/화장품병.png" onClick={1}></img>
+                    화장품 및 기타공병
+                </div>
+                </div>
             </div>
             
             </div>

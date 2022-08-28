@@ -122,6 +122,9 @@ body,html{
     display: flex;
     justify-content: center;
 }
+.day_selectzone{
+    padding-top: 50px;
+}
 .day_select_button{
     background-color: #0679FF;
     color: white;
@@ -144,4 +147,53 @@ body,html{
     margin-right: 3px;
     border-radius: 5px;
     border:1px solid #0679FF;
+}
+
+.bottle_select{
+    display:flex;
+    font-size: 11px;
+    margin-top: 30px;
+    flex-direction: column;
+}
+
+.bottle_button{
+    width:200px;
+    height:80px;
+    border: 1px solid #0679FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: #0679FF ;
+    color: white;
+    margin-left:10px;
+    margin-bottom: 20px;
+}
+
+.bottle_button img{
+    width:40px;
+    height:60px;
+    margin-bottom: 3px;
+}
+
+.bottle_button_unclicked{
+    width:200px;
+    height:80px;
+    border: 1px solid #0679FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: white ;
+    color: #0679FF;
+    margin-left:10px;
+    margin-bottom: 20px;
+}
+
+.bottle_button_unclicked img{
+    width:40px;
+    height:60px;
+    margin-bottom: 3px;
 }
