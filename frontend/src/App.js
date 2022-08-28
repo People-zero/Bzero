@@ -148,8 +148,8 @@ function App() {
       />}></Route>
       <Route path='/join' element={<JoinPage></JoinPage>}></Route>
       <Route path='/map' element={<MapPage></MapPage>}></Route>
-      <Route path='/store/clean_store' element={<CleanStore />}></Route>
-        <Route path='/store/clean_store/:id' element={<CleanStoreDetail />}></Route>
+        <Route path='/cleanstore' element={<CleanStore />}></Route>
+        <Route path='/cleanstore/:id' element={<CleanStoreDetail />}></Route>
         <Route path="/community" element={<Community />} />
         <Route path="/details" element={<Details />} />
       </Routes>
