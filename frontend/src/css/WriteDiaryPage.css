@@ -1,9 +1,10 @@
 body {
-  width: 1670px;
+  max-width: 1670px;
   margin-bottom: 46px;
 }
 .write_diary_page {
-  width: 1670px;
+  width: 86.97%;
+  max-width: 1670px;
   display: flex;
   flex-direction: column;
 }
@@ -45,7 +46,8 @@ input[type="file"] {
 /* 일기 작성 */
 
 .main_body {
-  width: 1316px;
+  width: 78.80%;
+  max-width: 1316px;
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -84,7 +86,9 @@ input[type="file"] {
   height: 453px;
   font-size: 15px;
   padding-left: 27px;
+  padding-right: 27px;
   padding-top: 24px;
+  padding-bottom: 24px;
 }
 .diary_text_input:focus {
   outline: none !important;
