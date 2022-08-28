@@ -5,8 +5,6 @@ import CleanStoreDetail from './CleanStoreDetail';
 import CleanStore from './CleanStore';
 import axios from 'axios';
 import { dummyData } from './util/dummyData';
-import { dummyReview } from './util/dummyReview';
-import Point from './components/Point';
 
 const reducer=(state,action)=>{
   switch(action.type){
@@ -18,17 +16,30 @@ const reducer=(state,action)=>{
 };
 
 export const CleanStoreContext = React.createContext();
-// export const CleanStoreReview = React.createContext();
 
 function App() {
 
   const [data,dispatch]=useReducer(reducer,dummyData);
-  // const [review, setReview]=useState([dummyReview]);
   const dataId= useRef(10);
+
+  const init = () => {
+    axios.get("http://127.0.0.1:8000/store/clean_store/")
+    .then((response) => {
+    dispatch({type:"INIT",data:response});
+  })
+    if (data.lengh<1){
+      dispatch({type:"INIT",data:dummyData});
+    }
+  }
+
+  useEffect(()=>{
+    init();
+  })
+
+  // console.log(data);
 
   return (
     <CleanStoreContext.Provider value={data}>
-      {/* <CleanStoreReview.Provider value={review}> */}
     <BrowserRouter>
     <div className="App">
       <Routes>
@@ -37,7 +48,6 @@ function App() {
       </Routes>
     </div>
     </BrowserRouter>
-      {/* </CleanStoreReview.Provider> */}
     </CleanStoreContext.Provider>
   );
 }

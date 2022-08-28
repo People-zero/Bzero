@@ -4,7 +4,7 @@ import CleanStoreItem from "./CleanStoreItem";
 const CleanStoreList = ({cleanStoreList})=>{
 
     const navigate = useNavigate();
-    console.log(cleanStoreList);
+    // console.log(cleanStoreList);
 
     return(
         <div className="CleanStoreList">
