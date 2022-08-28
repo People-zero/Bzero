@@ -14,6 +14,8 @@ import LoginPage from "./LoginPage"
 import MainPage from "./MainPage";
 import JoinPage from "./JoinPage";
 import CalendarPage from "./CalendarPage";
+
+import EditProfilePage from './EditProfilePage';
 const dumyData = [
   {
     id:1,
@@ -47,7 +49,6 @@ const dumyData = [
   }
 ]
 
-import EditProfilePage from './EditProfilePage';
 
   
 const dummy_checked_date = ["2022-08-01", "2022-08-05", "2022-08-13"];
@@ -141,6 +142,7 @@ function App() {
           
         ></Route>
         <Route path='/login' element={<LoginPage></LoginPage>}></Route>
+        <Route path='/edit' element={<EditProfilePage/>}></Route>
         <Route path='/main' element={<MainPage></MainPage>}></Route>
         <Route path='/mypage' element={<MyPage
         user_info={dummyList}
@@ -149,8 +151,8 @@ function App() {
       />}></Route>
       <Route path='/join' element={<JoinPage></JoinPage>}></Route>
       <Route path='/map' element={<MapPage></MapPage>}></Route>
-        <Route path='/cleanstore' element={<CleanStore />}></Route>
-        <Route path='/cleanstore/:id' element={<CleanStoreDetail />}></Route>
+      <Route path='/clean_store' element={<CleanStore />}></Route>
+        <Route path='/clean_store/:id' element={<CleanStoreDetail />}></Route>
         <Route path="/community" element={<Community />} />
         <Route path="/details" element={<Details />} />
       </Routes>
