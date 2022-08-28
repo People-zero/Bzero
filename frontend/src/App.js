@@ -1,6 +1,8 @@
-import "./MyPage.css";
 import MyPage from "./MyPage";
+import "./App.css";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 const dummyList = [
   {
     profile: "example_profile.jpg",
@@ -21,7 +23,6 @@ const dummy_badge = [
   { badge_id: 4, badge_type: "badge1.png" },
   { badge_id: 7, badge_type: "badge1.png" },
 ];
-
 function App() {
   return (
     <BrowserRouter>
