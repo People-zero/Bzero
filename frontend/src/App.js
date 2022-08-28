@@ -1,7 +1,7 @@
 import MyPage from "./MyPage";
 import MapPage from "./MapPage";
 import React from "react";
-import {useReducer,useRef} from 'react';
+import {useReducer,useRef,useEffect} from 'react';
 import CleanStoreDetail from './CleanStoreDetail';
 import CleanStore from './CleanStore';
 import axios from 'axios';
@@ -148,8 +148,8 @@ function App() {
       />}></Route>
       <Route path='/join' element={<JoinPage></JoinPage>}></Route>
       <Route path='/map' element={<MapPage></MapPage>}></Route>
-        <Route path='/cleanstore' element={<CleanStore />}></Route>
-        <Route path='/cleanstore/:id' element={<CleanStoreDetail />}></Route>
+      <Route path='/store/clean_store' element={<CleanStore />}></Route>
+        <Route path='/store/clean_store/:id' element={<CleanStoreDetail />}></Route>
         <Route path="/community" element={<Community />} />
         <Route path="/details" element={<Details />} />
       </Routes>
