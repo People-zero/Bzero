@@ -23,7 +23,7 @@ const reducer = (state,action)=>{
         return action.data;
       }
       case 'CREATE': {
-        newState = [action.data, ...state]; 
+        newState = [action.data, ...state];
         break;
       }
       default: return state;
@@ -115,7 +115,8 @@ const CleanStoreDetail = () => {
             updated_at : new Date(strDate).getTime(),
           },
         });
-        //back 연결
+
+        //back 연결 
 
         axios.post("http://127.0.0.1:8000/review/", {
             id : data.id,
