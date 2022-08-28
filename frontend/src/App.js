@@ -1,9 +1,3 @@
-import JoinPage from "./JoinPage";
-import LoginPage from './LoginPage';
-import './App.css';
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
-import React from 'react';
-import MainPage from './MainPage';
 import MyPage from "./MyPage";
 import MapPage from "./MapPage";
 
@@ -55,11 +49,11 @@ const dummy_checked_date = ["2022-08-01", "2022-08-05", "2022-08-13"];
 const dummy_badge = [
   { badge_id: 1, badge_type: "badge1.png" },
   { badge_id: 2, badge_type: "badge1.png" },
-  { badge_id: 7, badge_type: "badge1.png" },
-  { badge_id: 6, badge_type: "badge1.png" },
+  { badge_id: 3, badge_type: "badge1.png" },
   { badge_id: 5, badge_type: "badge1.png" },
   { badge_id: 6, badge_type: "badge1.png" },
   { badge_id: 4, badge_type: "badge1.png" },
+  { badge_id: 7, badge_type: "badge1.png" },
 ];
 const dummyList = [
   {
