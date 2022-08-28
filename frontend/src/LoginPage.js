@@ -1,5 +1,5 @@
 import { useState } from "react"
-import LoginPageHeader from "./component/LoginPageHeader"
+import LoginPageHeader from "./components/LoginPageHeader"
 import "./css/LoginPage.css"
 
 const LoginPage=()=>{
@@ -53,7 +53,7 @@ const LoginPage=()=>{
         <span className="LoginPage_smalltext">
         ❗️ 아직 비제로 회원이 아니신가요?
         </span>
-        <a href="#">
+        <a href="/join">
         <span style={{color:'#0679FF',marginLeft:"110px"}}className="LoginPage_smalltext">
         회원가입 하기
         

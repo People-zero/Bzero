@@ -1,0 +1,199 @@
+@import url(reset.css);
+
+body,html{
+    height: 100%;
+}
+
+#root{
+    height:100%;
+}
+
+.Map{
+    width:100%;
+    height:100%;
+    
+}
+#map{
+    width:100%;
+    height:100%;}
+
+
+.MapPage_search{
+    position: fixed;
+    background-color: white;
+    width:230px;
+    height:40px;
+    z-index: 2;
+    left:250px;
+    top:10px;
+    border-radius: 10px 10px 10px 10px;
+    
+}
+.MapPage_search input{
+    width:230px;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 10px 10px 10px 10px;
+    border-color: #0679FF;
+
+    
+}
+.MapPage_search img{
+    position: relative;
+    left:200px;
+    bottom: 30px;
+    width:19px;
+    height:19px;
+}
+
+.infovar{
+    font-size:13px;
+    padding-left:10px;
+    border-radius: 20pxs;
+}
+
+.Map_wrap{
+    background-color: white;
+}
+.Map_wrap {position: absolute;left: 0;bottom: 40px;width: 270px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;line-height: 1.5;border: 1.5px solid #0679FF;border-radius: 15px;}
+    .wrap * {padding: 0;margin: 0;}
+    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff; border: 1px solid #0679FF;}
+    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+    .info .title {padding: 5px 0 0 10px;background: white;border-bottom: 1px solid #0679FF;font-size: 18px;color:#0679FF}
+    .info .close {position: absolute;top: 10px;right: 10px;color: #0679FF;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+    .info .close:hover {cursor: pointer;}
+    .info .body {position: relative;overflow: hidden;}
+    .body .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+    .body .img {position: absolute;top: 40px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+
+.lay_day{
+    background-color: #0679FF;
+    color: white;
+    width:15px;
+    padding-left:2.5px;
+    height:18px;
+    padding-top:3px;
+    margin-right:3px;
+    border-radius: 5px;
+}
+
+.day_zone{
+    display: flex;
+    position: relative;
+    bottom:5px;
+}   
+
+.jibun_image{
+    width:13px;
+    height:13px;
+    margin-right:3px;
+}
+.jibun{
+    
+    overflow: visible;
+}
+
+.jibun span{
+    white-space:normal;
+    width:100px;
+    position: relative;
+    bottom:1.5px;
+}
+
+.linkmessage{
+    position: relative;
+    left:110px;
+    color:#0679FF;
+    top:10px;
+}
+
+.option_view{
+    background-color: white;
+    width:230px;
+    height:500px;
+    z-index: 5;
+    position: relative;
+    left:250px;
+    top:100px;
+}
+
+.day_button{
+    display: flex;
+    justify-content: center;
+}
+.day_selectzone{
+    padding-top: 50px;
+}
+.day_select_button{
+    background-color: #0679FF;
+    color: white;
+    width: 25px;
+    padding-left: 5px;
+    height: 25px;
+    padding-top: 5px;
+    margin-right: 3px;
+    border-radius: 5px;
+    border:1px solid #0679FF;
+}
+
+.day_select_unclicked{
+    background-color: white;
+    color: #0679FF;
+    width: 25px;
+    padding-left: 5px;
+    height: 25px;
+    padding-top: 5px;
+    margin-right: 3px;
+    border-radius: 5px;
+    border:1px solid #0679FF;
+}
+
+.bottle_select{
+    display:flex;
+    font-size: 11px;
+    margin-top: 30px;
+    flex-direction: column;
+}
+
+.bottle_button{
+    width:200px;
+    height:80px;
+    border: 1px solid #0679FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: #0679FF ;
+    color: white;
+    margin-left:10px;
+    margin-bottom: 20px;
+}
+
+.bottle_button img{
+    width:40px;
+    height:60px;
+    margin-bottom: 3px;
+}
+
+.bottle_button_unclicked{
+    width:200px;
+    height:80px;
+    border: 1px solid #0679FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: white ;
+    color: #0679FF;
+    margin-left:10px;
+    margin-bottom: 20px;
+}
+
+.bottle_button_unclicked img{
+    width:40px;
+    height:60px;
+    margin-bottom: 3px;
+}

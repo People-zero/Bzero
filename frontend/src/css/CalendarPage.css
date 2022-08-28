@@ -1,0 +1,304 @@
+@import url(reset.css);
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+.calendar_page {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.calendar_page_nav {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    z-index: 10;
+    
+    width: 180px;
+
+    background: #FFFFFF;
+    border-right: 1px solid #0679FF;
+}
+
+.calendar_page_goto_home {
+    display: flex;
+
+    margin-top: 37px;
+    padding-left: 30px;
+}
+
+.calendar_page_goto_home_detail {
+    display: flex;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 39px;
+
+    color: #0679FF !important;
+}
+
+.calendar_page_nav_menu {
+    margin-top: 30px;
+    padding-left: 30px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 34px;
+}
+
+.calendar_page_nav_detail {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.calendar_page_goto_calendar {
+    display: flex;
+
+    color: #0679FF !important;
+}
+
+.calendar_page_goto {
+    display: flex;
+
+    color: #353535 !important;  
+}
+
+.calendar_page_logout {
+    display: flex;
+
+    padding-top: 250px;
+    padding-bottom: 179px;
+
+    color: #353535 !important;
+}
+
+.calendar_page_main {
+    display: flex;    
+
+    padding-left: 250px;
+}
+
+.calendar_page_header {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+
+    height: 80px;
+
+    padding-bottom: 23px;
+    padding-left: 100px;
+
+    border-bottom: 1px solid #0679FF;
+    background-color: #FFFFFF;
+}
+
+.calendar_page_title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    
+}
+
+.calender_page_title_sub {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+
+    padding-left: 40px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+
+    color: #767678;
+}
+
+.calendar_page_title_sub_title {
+    display: flex;
+
+}
+
+.calendar_page_contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 111px;
+    width: 860px;
+}
+
+  .calendar_page_goto_other {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.calendar_page_goto_edit {
+    margin-left: 14px;
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border: 1px solid #0679FF;
+    border-radius: 50px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+
+    color: #0679FF !important;
+}
+
+.calendar_page_my_calendar {
+    width: 807px;
+
+    margin-bottom: 33px;
+}
+
+.react-calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 870px;
+    height: 400px;
+    background: white;
+    
+    font-family: 'Inter';
+  }
+  
+  .react-calendar,
+  .react-calendar *,
+  .react-calendar *:before,
+  .react-calendar *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .react-calendar button {
+    margin: 0;
+    border: 0;
+    outline: none;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    color: #000000;
+  }
+
+  .react-calendar button:enabled:hover {
+    cursor: pointer;
+  }
+
+  .react-calendar__navigation {
+    display: flex;
+    flex-direction: row;
+    
+    width: 200px;
+    height: 30px;
+    margin-bottom: 10px;
+  }
+
+  .react-calendar__navigation__label {
+    pointer-events: none;
+    
+  }
+  .react-calendar__navigation button {
+    min-width: 30px;
+    background: none;
+  }
+  .react-calendar__navigation button:disabled {
+    background-color: #f0f0f0;
+  }
+  .react-calendar__navigation button:enabled:hover,
+  .react-calendar__navigation button:enabled:focus {
+    background-color: #e6e6e6;
+  }
+  .react-calendar__month-view__weekdays {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #535353;
+
+    background-color: #BADEFF;
+  }
+  .react-calendar__month-view__weekdays__weekday {
+    padding: 10px;
+  }
+ 
+  .react-calendar__month-view__days__day {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    color: #000000;
+  }
+
+  .react-calendar__month-view__days__day--weekend {
+    color: #d10000 !important;
+  }
+  
+  .react-calendar__tile {
+    display: flex;
+    flex-direction: row ;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    
+    border-left: 35px solid #FFFFFF !important;
+    border-right: 35px solid #FFFFFF !important;
+    border-bottom: 10px solid #FFFFFF !important;
+    border-top: 10px solid #FFFFFF !important;
+    
+    background: none;
+    text-align: center;
+
+    pointer-events: none;
+  }
+
+  .react-calendar__tile:disabled {
+    background-color: #f0f0f0;
+  }
+  .react-calendar__tile:enabled:hover
+   {
+    background-color: #e6e6e6;
+  }
+
+  /* 오늘 */
+  .react-calendar__tile--now {
+    color: #0679FF !important;
+  }
+  
+  /* 마우스 올렸을 때 */
+  .react-calendar--selectRange .react-calendar__tile--hover {
+    background-color: #c7c2c2;
+  }
+
+.react-calendar__navigation__prev-button,
+.react-calendar__navigation__next-button {
+    color: #0679FF !important;
+}
+ 
+.calendar_page_highlight {
+    background-color: #72EFCA;
+    border-radius: 50%;
+
+    pointer-events: auto;
+}

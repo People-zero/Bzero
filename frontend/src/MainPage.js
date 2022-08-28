@@ -1,4 +1,4 @@
-import LoginPageHeader from "./component/LoginPageHeader"
+import LoginPageHeader from "./components/LoginPageHeader"
 import { FunctionComponent } from "react";
 import "./css/MainPage.css"
 
