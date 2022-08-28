@@ -1,6 +1,6 @@
 import MyPage from "./MyPage";
 import MapPage from "./MapPage";
-
+import React from "react";
 import {useReducer,useRef} from 'react';
 import CleanStoreDetail from './CleanStoreDetail';
 import CleanStore from './CleanStore';
@@ -8,9 +8,11 @@ import { dummyData } from './util/dummyData';
 import Community from './Community'
 import Details from './Details'
 import './App.css';
-// import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import LoginPage from "./LoginPage"
+import MainPage from "./MainPage";
+import JoinPage from "./JoinPage";
+import CalendarPage from "./CalendarPage";
 const dumyData = [
   {
     id:1,
@@ -43,7 +45,7 @@ const dumyData = [
     date:1660478254687
   }
 ]
-import CalendarPage from "./CalendarPage";
+
 
   
 const dummy_checked_date = ["2022-08-01", "2022-08-05", "2022-08-13"];
@@ -116,8 +118,9 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route
+        path="/calendar"
           element={<CalendarPage checked_date={dummy_checked_date} />}
-          path="/calendar"
+          
         ></Route>
         <Route path='/login' element={<LoginPage></LoginPage>}></Route>
         <Route path='/main' element={<MainPage></MainPage>}></Route>
