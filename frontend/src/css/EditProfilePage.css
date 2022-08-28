@@ -1,17 +1,20 @@
 .body {
-  width: 1670px;
+  width: 86.97%;
+  max-width: 1670px;
   margin-bottom: 46px;
 }
 
 .main_body {
-  width: 1670px;
+  width: 86.97%;
+  max-width: 1670px;
   display: flex;
 }
 
 .my_page_title {
   font-size: 24px;
   height: 114px;
-  width: 1670px;
+  width: 86.97%;
+  max-width: 1670px;
   padding-left: 74px;
   padding-top: 42px;
   border-bottom: 1px solid #0679ff;
@@ -26,7 +29,8 @@
 }
 .profile_body {
   padding-top: 54px;
-  width: 475px;
+  width: 28.44%;
+  max-width: 475px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,7 +72,8 @@
 
 .edit_profile {
   padding-top: 46px;
-  width: 1198px;
+  width: 71.52%;
+  max-width: 1198px;
   display: flex;
   flex-direction: column;
 }
@@ -84,7 +89,8 @@
 }
 .edit_profile_main {
   padding-top: 27px;
-  width: 845px;
+  width: 70.53%;
+  max-width: 845px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,7 +98,8 @@
 }
 
 .input_div {
-  width: 845px;
+  width: 100%;
+
   display: flex;
   justify-content: space-between;
 }
@@ -107,7 +114,8 @@
 }
 .input_text {
   padding-left: 10px;
-  width: 588px;
+  width: 69.58%;
+  max-width: 588px;
   height: 36px;
   border: 1px solid #bdc8d3;
   border-radius: 5px;
@@ -153,8 +161,8 @@ input[type="file"] {
 }
 .radios {
   display: flex;
-  
-  margin-right: 457px;
+  width: 69.58%;
+  max-width: 588px;
 }
 .radio {
   margin-left: 36px;
