@@ -7,8 +7,10 @@ import MapNav from "./components/MapNav";
 
 
 const { kakao } = window;
-console.log(MapNav)
+
 const MapPage = () => {
+    const [count,setcount]=useState(0)
+    const localdata=localStorage.getItem
     const [currentday,setcurrentday]=useState(['월','화','수','목','금','토','일'])
     const [where,setwhere]=useState("정릉시장")
     const [currentbottle,setcurrentbottle]=useState(['소형 및 중형','대형 및 유류 정종','화장품 및 기타 공병'])
@@ -40,8 +42,6 @@ const MapPage = () => {
 },
 ]
 
-    var map
-    
   useEffect(() => {
         
         
@@ -54,27 +54,27 @@ const MapPage = () => {
 
 		// 지도를 생성한다 
         
-            map=new kakao.maps.Map(mapContainer, mapOption); 
+            var map=new kakao.maps.Map(mapContainer, mapOption); 
         
        
-		// 지도 타입 변경 컨트롤을 생성한다
-		var mapTypeControl = new kakao.maps.MapTypeControl();
-
-		// 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
-		map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);	
-
-		// 지도에 확대 축소 컨트롤을 생성한다
-		var zoomControl = new kakao.maps.ZoomControl();
-
-    
-
-		// 지도의 우측에 확대 축소 컨트롤을 추가한다
-		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-        
+		
+  
         
 		
 
+// 지도 타입 변경 컨트롤을 생성한다
+var mapTypeControl = new kakao.maps.MapTypeControl();
+
+// 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
+map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);	
+
+// 지도에 확대 축소 컨트롤을 생성한다
+var zoomControl = new kakao.maps.ZoomControl();
+
+
+
+// 지도의 우측에 확대 축소 컨트롤을 추가한다
+map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
       
 		// 마커 이미지의 주소
         
@@ -107,10 +107,8 @@ function placesSearchCB (data, status, pagination) {
     } 
 }
 ps.keywordSearch(where, placesSearchCB);
-  },[where])
 
-useEffect(()=>{
-    
+
 
     // var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	// 	    mapOption = {
@@ -271,10 +269,14 @@ useEffect(()=>{
     }
 
     // useEffect(()=>{
-     
-    
-
-    
+    localStorage.setItem('currentday',JSON.stringify(currentday))
+    if(count>=20){
+        window.location.reload();
+    }
+    else{
+        setcount(count+1)
+    }
+    console.log("새로고침")
     
     
   }, [where,currentday,currentbottle]);
@@ -339,7 +341,7 @@ useEffect(()=>{
             </div>
 
             <div className="bottle_select">
-                공병 수거 종류
+                <span>공병 수거 종류</span>
                 <div className="bottle_flex">
                 <div className="bottle_button" onClick={(e)=>bottleselect(e)}>
                     <img src="../img/Group 1170 (1).png" onClick={1}></img>
