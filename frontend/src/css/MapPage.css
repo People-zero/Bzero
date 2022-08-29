@@ -111,19 +111,24 @@ body,html{
 .option_view{
     background-color: white;
     width:230px;
-    height:500px;
+    height:450px;
     z-index: 5;
     position: relative;
     left:250px;
     top:100px;
+    opacity: 0.8;
+    border-radius: 10px;
+    border:1px solid #0679FF;
 }
 
 .day_button{
     display: flex;
     justify-content: center;
+    opacity: 1;
 }
 .day_selectzone{
-    padding-top: 50px;
+    padding-top: 30px;
+    opacity: 1;
 }
 .day_select_button{
     background-color: #0679FF;
@@ -135,6 +140,7 @@ body,html{
     margin-right: 3px;
     border-radius: 5px;
     border:1px solid #0679FF;
+    opacity: 1;
 }
 
 .day_select_unclicked{
@@ -197,3 +203,11 @@ body,html{
     height:60px;
     margin-bottom: 3px;
 }
+
+.option_view span{
+    color:black;
+    font-size:15px;
+    text-align: center;
+    margin-bottom:10px;
+}
+
