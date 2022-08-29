@@ -358,7 +358,7 @@
     line-height: 24px;
 }
 
-.react-calendar {
+.mypage_my_calendar .react-calendar {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -369,53 +369,49 @@
     background: white;
     border: 1px solid white;
     font-family: 'Inter';
-    
-    /* pointer-events: none; */
-  }
-  
-  .react-calendar button {
+}
+
+.mypage_my_calendar .react-calendar button {
     margin: 0;
     border: 0;
     outline: none;
-  }
+}
 
-  .react-calendar button:enabled:hover {
+.mypage_my_calendar .react-calendar button:enabled:hover {
     cursor: pointer;
-  }
+}
 
-  .react-calendar__navigation {
+.mypage_my_calendar .react-calendar__navigation {
     display: flex;
     height: 24px;
     margin-bottom: 10px;
-    
-  }
+}
 
-  .react-calendar__navigation button {
-    
+.mypage_my_calendar .react-calendar__navigation button {
     background: none;
     font-size: 11px;
     font-family: 'Inter';
-  }
+}
 
-  /* 요일 */
-  .react-calendar__month-view__weekdays {
+/* 요일 */
+.mypage_my_calendar .react-calendar__month-view__weekdays {
     text-align: center;
     text-transform: uppercase;
     font-family: 'Inter';
     font-size: 12px;
-    
+
     padding-bottom: 8px;
-  }
-  
-  .react-calendar__month-view__weekNumbers 
-  .react-calendar__tile {
+}
+
+.mypage_my_calendar .react-calendar__month-view__weekNumbers 
+.mypage_my_calendar .react-calendar__tile {
     display: flex;
     align-items: center;
     font-size: 12px;
     font-family: 'Inter';
-  }
-  
-  .react-calendar__tile {
+}
+
+.mypage_my_calendar .react-calendar__tile {
     display: flex;
     flex-direction: row ;
     justify-content: center;
@@ -431,9 +427,9 @@
 
     border-left: 10px solid #FFFFFF !important;
     border-right: 10px solid #FFFFFF !important;
-  }
- 
-.react-calendar__month-view__days__day{
+}
+
+.mypage_my_calendar .react-calendar__month-view__days__day{
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -442,62 +438,62 @@
     color: #2E2E2E;
 }
 
-.mypage_calendar_highlight {
+.mypage_my_calendar .mypage_calendar_highlight {
     background: #DDFFD8;
     border-radius: 45%;
-  }
+}
 
-  .mypage_my_badge {
+.mypage_my_badge {
     display: flex;
     flex-direction: column;
 
     width: 330px;
 
     padding-left: 64px;
-  }
+}
 
-  .mypage_badge_top {
+.mypage_badge_top {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-top: 24px;
-    
+
     position: relative;
 
     width: 310px;
     height: 57px;
- }
+}
 
- .mypage_badge_top_img {
+.mypage_badge_top_img {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
     width: 57px;
     height: 57px;
- }
+}
 
- .mypage_badge_img {
+.mypage_badge_img {
     display: flex;
     flex-direction: row;
     position: absolute;
 
     width: 57px;
     height: 57px;
- }
+}
 
- .mypage_badge_img2 {
+.mypage_badge_img2 {
     display: flex;
     flex-direction: row;
     position: absolute;
 
     width: 57px;
     height: 57px;
-    
+
     padding-left: 84px;
- }
+}
 
- .mypage_badge_img3 {
+.mypage_badge_img3 {
     display: flex;
     flex-direction: row;
     padding-left: 250px;
@@ -506,9 +502,9 @@
     width: 57px;
     height: 57px;
     padding-left: 169px;
- }
+}
 
- .mypage_badge_img4 {
+.mypage_badge_img4 {
     display: flex;
     flex-direction: row;
     padding-left: 375px;
@@ -518,38 +514,38 @@
     height: 57px;
 
     padding-left: 253px;
- }
+}
 
- .mypage_badge_top_base {
+.mypage_badge_top_base {
     display: flex;
     flex-direction: row;
 
     width: 57px;
     height: 57px;
- }
+}
 
- .mypage_badge_bottom {
+.mypage_badge_bottom {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    
+
     padding-top: 32px;
-   
+
     position: relative;
 
     width: 310px;
     height: 50px;
- }
+}
 
- .mypage_badge_bottom_base {
+.mypage_badge_bottom_base {
     display: flex;
     flex-direction: row;
 
     width: 57px;
     height: 57px;
- }
+}
 
- .mypage_badge_more_btn {
+.mypage_badge_more_btn {
     width: 56px;
     height: 56px;
 
@@ -563,5 +559,5 @@
     font-weight: 400;
     font-size: 11px;
 
-    color: #0679FF;
- }
+color: #0679FF;
+}
