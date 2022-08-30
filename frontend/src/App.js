@@ -158,6 +158,7 @@ function App() {
   // console.log(data);
 
   return (
+      {/*<RegistStore/>*/}
     <PostStateContext.Provider value={data}>
     <PostDispatchContext.Provider value={{
       onCreate,
