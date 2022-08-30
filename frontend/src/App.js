@@ -19,7 +19,6 @@ import photo1 from "./images/photo1.png";
 import photo2 from "./images/photo2.png";
 import photo3 from "./images/photo3.png";
 import BottleStore from './BottleStore';
-import React,{useEffect, useReducer,useRef, useState} from 'react';
 import RegistStore from './RegistStore';
 
 import EditProfilePage from './EditProfilePage';
@@ -88,7 +87,7 @@ const reducer=(state,action)=>{
 export const CleanStoreContext = React.createContext();
 export const PostStateContext = React.createContext();
 export const PostDispatchContext = React.createContext();
-const dummyList = [
+const dummyList2 = [
   {
     name : "공병스토어1",
     grade : 3,
@@ -158,7 +157,7 @@ function App() {
   // console.log(data);
 
   return (
-      {/*<RegistStore/>*/}
+    
     <PostStateContext.Provider value={data}>
     <PostDispatchContext.Provider value={{
       onCreate,
@@ -186,13 +185,15 @@ function App() {
         <Route path='/clean_store/:id' element={<CleanStoreDetail />}></Route>
         <Route path="/community" element={<Community />} />
         <Route path="/details" element={<Details />} />
+        <Route path="/regist_store" element={<RegistStore/>}></Route>
+        <Route path="/bottle_store" element={<BottleStore store={dummyList2}></BottleStore>}></Route>
       </Routes>
     </BrowserRouter>
     </CleanStoreContext.Provider>
     </PostDispatchContext.Provider>
     </PostStateContext.Provider>
           
-      <BottleStore store={dummyList}/>
+      
   );
 }
 
