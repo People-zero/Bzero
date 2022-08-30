@@ -26,50 +26,32 @@ const dumyData = [
   {
     id:1,
     emotion: 1,
-    user : "Player1",
-    title : "a 1",
-    content: "가 라 1",
+    content: "송하윤 멋져 1",
     date:1660478254683
   },
   {
     id:2,
     emotion: 2,
-    user : "Player2",
-    title : "b 2qweipqwjeioqjwejqhjoiwejqkwejoqiwjeioqwjioenqwneoiqw",
-    content: "나 2dasdasdsasaddassadsaddasadsdass",
+    content: "송하윤 멋져 2",
     date:1660478254684
   },
   {
     id:3,
     emotion: 3,
-    user : "Player3",
-    title : "c 3",
-    content: "다 3",
+    content: "송하윤 멋져 3",
     date:1660478254685
   },
   {
     id:4,
     emotion: 4,
-    user : "Player4",
-    title : "d 4",
-    content: "라 4",
+    content: "송하윤 멋져 4",
     date:1660478254686
   },
   {
     id:5,
     emotion: 5,
-    user : "Player5",
-    title : "e 5",
-    content: "마 5",
+    content: "송하윤 멋져 5",
     date:1660478254687
-  },
-  {
-    id:6,
-    emotion: 5,
-    user : "Player6",
-    title : "e 5",
-    content: "마 리아 5",
-    date:1660478254688
   }
 ]
 
@@ -166,10 +148,9 @@ function App() {
   const onCreate = (date, content, emotion) => {
     dispatch({type :"CREATE", data:{
       id : dataId.current,
-      date: new Date(date).getTime(),
-      title,
+      data: new Date(date).getTime(),
       content,
-      emotion,
+      emotion
     }})
   
     dataId.current += 1;

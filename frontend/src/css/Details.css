@@ -5,14 +5,14 @@
 .Details_header {
     display: flex;
     padding: 15px;
-    border-bottom: 2px solid #0679FF;
+    border-bottom: 1px solid greenyellow;
     height: 10%;
 }
 
 .Details_header_title {
     width: 50%;
     font-size: 30px;
-    color: #0679FF;
+    color: green;
 }
 
 .Details_header_right {
@@ -20,11 +20,9 @@
     display: flex;
     padding-top: 8px;
     justify-content: end;
-    color: #353535;    
+    color: #bbb;    
 }
-.Details_header_right_community {
-    color: #0679FF;
-}
+
 .Details_header_right div {
     padding-right: 30px;
 }
@@ -62,72 +60,30 @@
 .Details_Body_2_title {
     padding-top: 20px;
     font-size: 23px;
-    margin-bottom: 10px;
-    font-size: 28px;
 }
 
 .Details_Body_3 {
-    display: flex;
     width: 80%;
-    height: 50px;
-    border-bottom: 1px solid gray;
 }
 
 .Details_Body_3_user{
+    padding-top: 20px;
 }
 
-.Details_Body_3 img {
-    height: 20px;
-    width: 20px;
-}
-.Details_Body_3_imgs {
-    display: flex;
-    flex-grow: 1;
-    justify-content: end;
-    align-items: flex-end;
-    margin-bottom: 7px;
-}
-
-.Details_Body_3_imgs_imgs1 {
-    margin-right: 10px;
-}
 .Details_Body_4 {
     width: 80%;
-    height: 50vh;
-    margin-top: 30px;
 }
 
 .Details_Body_4_post {
-    font-size: 12px;
 }
 
 .Details_Body_5 {
     width: 100%;
+    height: auto;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
 }
 
 .Details_Body_5_answer {
-    display: flex;
-    align-items: center;
     width: 80%;
-    height: 4vh;
-    border-bottom: 1px solid gray;
-    color: gray;
-}
-
-.Details_Body_5_answer img {
-    height: 20px;
-    width: 25px;
-    margin-right: 10px;
-}
-.Details_Body_5_answers {
-    margin-top: 20px;
-    padding-top: 10px;
-    padding-left: 10px;
-    border-radius: 10px;
-    width: 80%;
-    height: 8vh;
-    color: #bbb;
 }
