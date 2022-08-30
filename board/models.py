@@ -1,6 +1,7 @@
 from django.db import models
 from accounts.models import User
 
+
 # from accounts.models import User
 
 class TimestampAbstractModel(models.Model):
@@ -47,3 +48,4 @@ class Comment(TimestampAbstractModel):
 
     class Meta:
         ordering = ["-id"]
+

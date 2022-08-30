@@ -12,7 +12,10 @@ class Clean_StoreSerializer(serializers.ModelSerializer):
       for review in Review.objects.filter(store_review__pk= clean_store.pk ):
           cnt += 1
           total += int(review.point)
-      point_avg=total/cnt
+      if cnt != 0:
+         point_avg=total/cnt
+      else:
+         point_avg = 0
       return point_avg
 
    class Meta:
@@ -34,14 +37,3 @@ class Bottle_Collection_StoreSerializer(serializers.ModelSerializer):
       fields = "__all__"
 
 
-
-
-# class TestStoreSerializer(serializers.ModelSerializer):
-#      class Meta:
-#         model = Clean_Store
-#         fields = ('id', 'store_name', 'opening_time', 'store_longtitude', 'store_latitude', 'telephone','description', 'point_avg')
-
-# class TestReviewSerializer(serializers.ModelSerializer):
-#      class Meta:
-#         model = Review
-#         fields = '__all__'
