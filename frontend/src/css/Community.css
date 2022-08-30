@@ -6,14 +6,14 @@
 .Community_header {
     display: flex;
     padding: 15px;
-    border-bottom: 1px solid blue;
+    border-bottom: 2px solid #0679FF;
     height: 10%;
 }
 
 .Community_header_title {
     width: 50%;
     font-size: 30px;
-    color: blue;
+    color: #0679FF;
 }
 
 .Community_header_right {
@@ -21,7 +21,11 @@
     display: flex;
     padding-top: 8px;
     justify-content: end;
-    color: #bbb;    
+    color: #353535; 
+}
+
+.Community_header_right_communiy {
+    color: #0679FF;
 }
 
 .Community_header_right div {
@@ -47,6 +51,7 @@
 .Community_body_one_title {
     width: 50%;
     font-size: 35px;
+    color: #454545;
 }
 
 .Community_body_one_post {
@@ -57,30 +62,42 @@
 }
 
 .Community_body_one_post button {
-   width: 60px;
+   width: 100px;
    border: 1px solid;
    border-radius: 5px;
-   background-color: #64c964;
+   background-color: #0679FF;
    color: white;
+   font-size: 17px;
 }
 
+.Community_body_one_post_imgs {
+    padding: 0;
+    padding-left: 4px;
+    height: 22px;
+    width: 17px;
+}
 .Community_body_two {
     padding-top: 10px;
     display: flex;
-    border-bottom: 2px solid gray;
     margin-left: 50px;
     margin-top: 30px;
     margin-right: 40px;
+
 }
 
+
 .Community_body_two_doing {
-    color : gray;
-    padding-right: 35px;
+    color :  black;
     padding-bottom: 12px;
+    border-bottom: 2px solid black;
 }
 
 .Community_body_two_share {
+    display: flex;
+    flex-grow: 1;
+    padding-left: 35px;
     color: gray;
+    border-bottom: 2px solid gray;
 }
 
 .Community_body_three {
@@ -122,7 +139,7 @@
 
 .Community_body_four_right{
     width: 80%;
-    height: auto;   
+    height: 50vh;   
     margin-left: 110px;
 }
 
@@ -138,23 +155,53 @@
     width: 100%;
 }
 
-.Community_body_four_postlist_s {
-    display: flex;
-    width: 100%;
-    height: 50vh;
+.Community_ControlMenu {
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+
 }
 
+.Community_body_four_postlist_ss {
+    width: auto;
 
+}
+.Community_body_four_postlist div{
+    width: 100%;
+    height: 90px;
+    border-bottom: 1px solid gray;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.Community_body_four_postlist_imgs span {
+    width: 100%;
+}
+
+.Community_body_four_postlist_ss span {
+    margin-bottom: 10px;
+}
 .Community_body_four_postlist_imgs {
     display: flex;
-    border: 0;
-    width: 20px;
+    width: 40px;
     height: 20px;
+    margin-top: 30px;
 }
 
-.Community_body_four_postlist_s_content {
+.Community_body_four_postlist_imgs1 {
+    margin-right: 10px;
+}
+
+.Community_body_four_postlist_imgs2 {
+    margin-left: 10px;
+}
+
+
+.Community_body_four_postlist_ss_content {
     width: 100%;
     height: 40px;
+    margin-bottom: 80px;
+    color: #bbb;
 }
 
 .EmotionItem { 
