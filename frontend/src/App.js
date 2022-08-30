@@ -14,6 +14,13 @@ import LoginPage from "./LoginPage"
 import MainPage from "./MainPage";
 import JoinPage from "./JoinPage";
 import CalendarPage from "./CalendarPage";
+import info_photo from "./images/info_photo.jpg";
+import photo1 from "./images/photo1.png";
+import photo2 from "./images/photo2.png";
+import photo3 from "./images/photo3.png";
+import BottleStore from './BottleStore';
+import React,{useEffect, useReducer,useRef, useState} from 'react';
+import RegistStore from './RegistStore';
 
 import EditProfilePage from './EditProfilePage';
 const dumyData = [
@@ -81,6 +88,29 @@ const reducer=(state,action)=>{
 export const CleanStoreContext = React.createContext();
 export const PostStateContext = React.createContext();
 export const PostDispatchContext = React.createContext();
+const dummyList = [
+  {
+    name : "공병스토어1",
+    grade : 3,
+    store_url:"www.naver.com",
+    info_summary : "이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...",
+    photo: info_photo,
+    photo1:photo1,
+    photo2:photo2,
+    map: "",
+    photo3:photo3,
+    businessDay : "평일",
+    businessHour : "오전 10시 - 오후 7시",
+    dayOff : "토•일•공휴일",
+    CollectHour :"오전 10시 - 오후 7시",
+    address : "서울특별시 OO구 OO 길 1232-12(OO동)",
+    CollectDay : "매주 수요일",
+    inquiries : "02-OOO-OOOO",
+    info_title:"가게에 대한 설명 (부제목)",
+    info:"가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~",
+
+  },
+]
 function App() {
   const onCreate = (date, content, emotion) => {
     dispatch({type :"CREATE", data:{
@@ -161,6 +191,7 @@ function App() {
     </PostDispatchContext.Provider>
     </PostStateContext.Provider>
           
+      <BottleStore store={dummyList}/>
   );
 }
 
