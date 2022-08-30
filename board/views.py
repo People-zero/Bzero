@@ -15,7 +15,7 @@ class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()
     def get_queryset(self):
         qs = super().get_queryset()
-        if self.kwargs["post_category"] == "1" or self.kwargs["post_category"] == "3" or self.kwargs["post_category"] == "4" or self.kwargs["post_category"] == "5" : # 정보공유,공개,인증사진
+        if self.kwargs["post_category"] == "2" or self.kwargs["post_category"] == "3" or self.kwargs["post_category"] == "4" or self.kwargs["post_category"] == "5" : # 정보공유,공개,인증사진
             qs = qs.filter(category = self.kwargs["post_category"])
         else:                                        # 일기장
             qs = qs.filter(author = self.request.user)
@@ -32,13 +32,13 @@ class PostViewSet(ModelViewSet):
         return tag_list
 
     @action(detail=True, methods=["POST"])
-    def like(self, request, pk):
+    def like(self):
         post = self.get_object()
         post.ttabong.add(self.request.user)
         return Response(status.HTTP_201_CREATED)
 
     @like.mapping.delete
-    def unlike(self, request, pk):
+    def unlike(self):
         post = self.get_object()
         post.ttabong.remove(self.request.user)
         return Response(status.HTTP_204_NO_CONTENT)
