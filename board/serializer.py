@@ -1,15 +1,16 @@
 from rest_framework import serializers
 from . import models
-import re
 
 class PostSerializer(serializers.ModelSerializer):
     is_ttabong = serializers.SerializerMethodField("ttabong_field")
+    # count_ttabong = serializers.SerializerMethodField("ttabong_count")
     
     def ttabong_field(self,post):
         if "request" in self.context:
             user = self.context["request"].user
             return post.ttabong.filter(pk = user.pk).exists()
         return False
+
 
     class Meta:
         model = models.Post
@@ -19,7 +20,9 @@ class PostSerializer(serializers.ModelSerializer):
             "image",
             "content",
             "user",
-            "is_ttabong"]
+            "is_ttabong",
+            # "ttabong_count"
+            ]
         
     
 
