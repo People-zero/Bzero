@@ -37,9 +37,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'backend',
+
+    # 'django.contrib.sites',
+
+    # DRF
     'rest_framework',
+    'rest_framework.authtoken',
+
+    # rest_auth
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    # 'allauth.socialaccount',
+    'dj_rest_auth.registration',
+
+    # my apps
+    'backend',
     'corsheaders',
+    'accounts',
+    'board',
+    'store',
+
 ]
 
 MIDDLEWARE = [
@@ -52,17 +70,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-CORS_ORIGIN_WHITELIST=[
+CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "http://127.0.0.1:8000",
 ]
-CORS_ALLOW_CREDENTIALS=True
+CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = 'People_zero.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'frontend','build')],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend', 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,9 +92,9 @@ TEMPLATES = [
         },
     },
 ]
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'frontend','build','static')
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'frontend', 'build', 'static')
+# ]
 WSGI_APPLICATION = 'People_zero.wsgi.application'
 
 
@@ -115,7 +133,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -127,7 +145,34 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
+# Media files (image)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+AUTH_USER_MODEL = 'accounts.User'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# REST_FRAMEWORK = { // 인증
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.TokenAuthentication',
+#     ]
+# }
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    # custom register_serializer
+    'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
+}
+
+ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'  # custom login db 저장
+
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # email 유효성인증 하지 않음
+
+# ACCOUNT_AUTHENTICATION_METHOD = 'username'
+
+# ACCOUNT_EMAIL_REQUIRED = False
