@@ -1,6 +1,6 @@
 import MyPage from "./MyPage";
 import MapPage from "./MapPage";
-import React from "react";
+import React, { useState } from "react";
 import {useReducer,useRef,useEffect} from 'react';
 import CleanStoreDetail from './CleanStoreDetail';
 import CleanStore from './CleanStore';
@@ -111,6 +111,40 @@ const dummyList2 = [
   },
 ]
 function App() {
+  const [place,setplace]=useState([])
+
+  const getData = async() => {
+    const res = await fetch("http://127.0.0.1:8000/store/bottle_collection_Store/")
+      .then((res)=>res.json());
+      // console.log(res); // 500개의 데이터
+
+      const initData = res.map((it)=>{
+        // console.log(it.id)
+        return {
+          id : it.id, // 작성자
+          place_name:it.store_name,
+          x:it.store_longtitude,
+          y:it.store_latitude,
+          day:it.pickup_day.split(","),
+          Bottle_kind:it.bottle_kind.split(","),
+          image:it.store_image
+        }
+
+      
+      });
+      
+      setplace(initData)
+      
+  }
+
+  useEffect(()=>{
+    getData();
+    
+  },[])
+
+  
+    
+  
   const onCreate = (date, content, emotion) => {
     dispatch({type :"CREATE", data:{
       id : dataId.current,
@@ -180,7 +214,7 @@ function App() {
         badge_info={dummy_badge}
       />}></Route>
       <Route path='/join' element={<JoinPage></JoinPage>}></Route>
-      <Route path='/map' element={<MapPage></MapPage>}></Route>
+      <Route path='/map' element={<MapPage place={place}></MapPage>}></Route>
       <Route path='/clean_store' element={<CleanStore />}></Route>
         <Route path='/clean_store/:id' element={<CleanStoreDetail />}></Route>
         <Route path="/community" element={<Community />} />

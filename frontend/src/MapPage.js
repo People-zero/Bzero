@@ -1,21 +1,21 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
 
 import "./css/MapPage.css";
-import axios from "axios"
+ 
 import "./css/Mapnav.css";
 import MapNav from "./components/MapNav";
 
 
 const { kakao } = window;
 
-const MapPage = () => {
+const MapPage = ({place}) => {
     const [count,setcount]=useState(0)
     const localdata=localStorage.getItem
     const [currentday,setcurrentday]=useState(['월','화','수','목','금','토','일'])
     const [where,setwhere]=useState("정릉시장")
     const [currentbottle,setcurrentbottle]=useState(['소형 및 중형','대형 및 유류 정종','화장품 및 기타 공병'])
     
-    const [place,setplace]=useState([])
+
   
     
     
@@ -46,29 +46,13 @@ const MapPage = () => {
 //     Bottle_kind:['소형 및 중형']
 // },
 // ]
-async function getdata(){
-    axios
-        .get("http://127.0.0.1:8000/store/bottle_collection_Store/")
-        .then((res)=>{
-            setplace([
-                ...res.data]
-                    
-                    )
-                    return place
-            // console.log(res.data)
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
 
-    
-}
-
-
-const place3=getdata()
 
 var map
   useEffect(() => {
+    console.log(place[0]?.id)
+    // console.log(place);//들어오는 형태 찍어보기
+
 //     axios
 //     .get("http://127.0.0.1:8000/store/bottle_collection_Store/")
 //     .then((res)=>{
@@ -82,7 +66,7 @@ var map
 //         console.log(error);
 //     })
       
-    console.log(place)
+    
             
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = {
@@ -227,7 +211,7 @@ ps.keywordSearch(where, placesSearchCB);
         content.appendChild(body)
         var img=document.createElement('img')
         img.className='img'
-        img.src="https://mblogthumb-phinf.pstatic.net/20160517_261/kljg28_1463472546517lMIjU_JPEG/20160517_152400.jpg?type=w800"
+        img.src=place[i].image
         body.appendChild(img)
         var desc=document.createElement('div')
         desc.className='desc'
