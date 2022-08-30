@@ -1,50 +1,73 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
 
 import "./css/MapPage.css";
-
+ 
 import "./css/Mapnav.css";
 import MapNav from "./components/MapNav";
 
 
 const { kakao } = window;
 
-const MapPage = () => {
+const MapPage = ({place}) => {
     const [count,setcount]=useState(0)
     const localdata=localStorage.getItem
     const [currentday,setcurrentday]=useState(['월','화','수','목','금','토','일'])
     const [where,setwhere]=useState("정릉시장")
     const [currentbottle,setcurrentbottle]=useState(['소형 및 중형','대형 및 유류 정종','화장품 및 기타 공병'])
+    
 
-    const place=[{
-        place_name:"하윤집",
-        x:37.6084606,
-        y:127.0094845,
-        day:['월','화','수'],
-        Bottle_kind:['소형 및 중형']
-    },
-{
-    place_name:"축산",
-        x:37.6055906,
-        y:127.0099845,
-        day:['월','화','수','목','금'],
-        Bottle_kind:['소형 및 중형']
-},{place_name:"test",
-        x:37.6064606,
-        y:127.0096845,
-        day:['월','화','수'],
-        Bottle_kind:['소형 및 중형']
-},{
-    place_name:"하윤집s",
-    x:37.6084606,
-    y:127.0073845,
-    day:['월','화','수'],
-    Bottle_kind:['소형 및 중형']
-},
-]
+  
+    
+    
+    
+//     const place=[{
+//         place_name:"하윤집",
+//         x:37.6084606,
+//         y:127.0094845,
+//         day:['월','화','수'],
+//         Bottle_kind:['소형 및 중형']
+//     },
+// {
+//     place_name:"축산",
+//         x:37.6055906,
+//         y:127.0099845,
+//         day:['월','화','수','목','금'],
+//         Bottle_kind:['소형 및 중형']
+// },{place_name:"test",
+//         x:37.6064606,
+//         y:127.0096845,
+//         day:['월','화','수'],
+//         Bottle_kind:['소형 및 중형']
+// },{
+//     place_name:"하윤집s",
+//     x:37.6084606,
+//     y:127.0073845,
+//     day:['월','화','수'],
+//     Bottle_kind:['소형 및 중형']
+// },
+// ]
 
+
+var map
   useEffect(() => {
-        
-        
+    console.log(place[0]?.id)
+    // console.log(place);//들어오는 형태 찍어보기
+
+//     axios
+//     .get("http://127.0.0.1:8000/store/bottle_collection_Store/")
+//     .then((res)=>{
+//         setplace([
+//             ...res.data]
+                
+//                 )
+//         // console.log(res.data)
+//     })
+//     .catch((error)=>{
+//         console.log(error);
+//     })
+      
+    
+            
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = {
 		        center: new kakao.maps.LatLng(37.56843, 126.97472), // 지도의 중심좌표
@@ -54,7 +77,7 @@ const MapPage = () => {
 
 		// 지도를 생성한다 
         
-            var map=new kakao.maps.Map(mapContainer, mapOption); 
+            map=new kakao.maps.Map(mapContainer, mapOption); 
         
        
 		
@@ -62,19 +85,7 @@ const MapPage = () => {
         
 		
 
-// 지도 타입 변경 컨트롤을 생성한다
-var mapTypeControl = new kakao.maps.MapTypeControl();
 
-// 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
-map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);	
-
-// 지도에 확대 축소 컨트롤을 생성한다
-var zoomControl = new kakao.maps.ZoomControl();
-
-
-
-// 지도의 우측에 확대 축소 컨트롤을 추가한다
-map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
       
 		// 마커 이미지의 주소
         
@@ -122,6 +133,7 @@ ps.keywordSearch(where, placesSearchCB);
 	// 	var map=new kakao.maps.Map(mapContainer, mapOption); 
         
         for(var i=0;i<place.length;i++){
+          
             if(place[i].day.filter(x=>currentday.includes(x)).length>0 && place[i].Bottle_kind.filter(x=>currentbottle.includes(x)).length>0){
             if(i%3==0){
             var markerImageUrl = '../img/Group 1182 (1).png', 
@@ -199,7 +211,7 @@ ps.keywordSearch(where, placesSearchCB);
         content.appendChild(body)
         var img=document.createElement('img')
         img.className='img'
-        img.src="https://mblogthumb-phinf.pstatic.net/20160517_261/kljg28_1463472546517lMIjU_JPEG/20160517_152400.jpg?type=w800"
+        img.src=place[i].image
         body.appendChild(img)
         var desc=document.createElement('div')
         desc.className='desc'
@@ -279,8 +291,26 @@ ps.keywordSearch(where, placesSearchCB);
     console.log("새로고침")
     
     
-  }, [where,currentday,currentbottle]);
+  }, [where,currentday,currentbottle,place]);
   
+
+  useEffect(()=>{
+   
+// 지도 타입 변경 컨트롤을 생성한다
+var mapTypeControl = new kakao.maps.MapTypeControl();
+
+// 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
+map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);	
+
+// 지도에 확대 축소 컨트롤을 생성한다
+var zoomControl = new kakao.maps.ZoomControl();
+
+
+
+// 지도의 우측에 확대 축소 컨트롤을 추가한다
+map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+  },[where])
 
   
   const dayselect=(e)=>{
