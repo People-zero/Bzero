@@ -1,9 +1,10 @@
-import React,{ useReducer, useRef } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Community from './Community';
 import Post from './Post';
 import Details from './Details';
+import React, {  useReducer, useRef, useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 
 const reducer = (state, action) => {
   let newState = [];
@@ -38,49 +39,64 @@ const dumyData = [
   {
     id:1,
     emotion: 1,
-    content: "송하윤 멋져 1",
+    user : "Player1",
+    title : "a 1",
+    content: "가 라 1",
     date:1660478254683
   },
   {
     id:2,
     emotion: 2,
-    content: "송하윤 멋져 2",
+    user : "Player2",
+    title : "b 2qweipqwjeioqjwejqhjoiwejqkwejoqiwjeioqwjioenqwneoiqw",
+    content: "나 2dasdasdsasaddassadsaddasadsdass",
     date:1660478254684
   },
   {
     id:3,
     emotion: 3,
-    content: "송하윤 멋져 3",
+    user : "Player3",
+    title : "c 3",
+    content: "다 3",
     date:1660478254685
   },
   {
     id:4,
     emotion: 4,
-    content: "송하윤 멋져 4",
+    user : "Player4",
+    title : "d 4",
+    content: "라 4",
     date:1660478254686
   },
   {
     id:5,
     emotion: 5,
-    content: "송하윤 멋져 5",
+    user : "Player5",
+    title : "e 5",
+    content: "마 5",
     date:1660478254687
+  },
+  {
+    id:6,
+    emotion: 5,
+    user : "Player6",
+    title : "e 5",
+    content: "마 리아 5",
+    date:1660478254688
   }
 ]
 
+
 function App() {
 
-  const [data, dispatch] = useReducer(reducer,dumyData);
-
-  const dataId = useRef(0);
-
-  const onCreate = (date, content, emotion) => {
+  const onCreate = ( date, emotion, title, content) => {
     dispatch({type :"CREATE", data:{
       id : dataId.current,
-      data: new Date(date).getTime(),
+      date: new Date(date).getTime(),
+      title,
       content,
-      emotion
+      emotion,
     }})
-
     dataId.current += 1;
   } 
   // REMOVE
@@ -100,26 +116,30 @@ function App() {
     })
   };
 
-  
+const [data, dispatch] = useReducer(reducer, dumyData);
+const dataId = useRef(7);
+console.log(data)
+console.log(dataId)
 
   return (
-    <PostStateContext.Provider value={data}>
     <PostDispatchContext.Provider value={{
       onCreate,
       onEdit,
-      onRemove,}}>
+      onRemove
+    }}>
+    <PostStateContext.Provider value={data}>
     <BrowserRouter>
-      <div className="App">
-        <Routes>
+      <div className="App"> 
+      <Routes>
           <Route path="/community" element={<Community />} />
-          <Route path="/details" element={<Details />} />
-          <Route path="/post/:id" element={<Post />} />
-        </Routes>
+          <Route path="/details/:id" element={<Details />} />
+          <Route path="/post" element={<Post />} />
+          </Routes>
       </div>
-    </BrowserRouter>
-    </PostDispatchContext.Provider>
+      </BrowserRouter>
     </PostStateContext.Provider>
+    </PostDispatchContext.Provider>
   );
 }
 
-export default App
+export default App;
