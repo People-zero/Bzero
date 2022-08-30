@@ -1,9 +1,10 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from . import views
-from .models import Post,Comment,Tag 
+from .models import Post,Comment
 
 router = DefaultRouter()
+
 router.register(r"posts/(?P<post_category>\d+)", views.PostViewSet, basename = Post)
 #카테고리로 나누는 게시판 list
 router.register(r"tag/(?P<tag_name>[a-zA-Z\dㄱ-힣]+)", views.TagSearchViewSet, basename = Post)
