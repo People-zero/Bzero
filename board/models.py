@@ -2,25 +2,50 @@ from django.db import models
 from accounts.models import User
 
 
-class Post(models.Model):
+# from accounts.models import User
+
+class TimestampAbstractModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add= True)
+    updated_at = models.DateTimeField(auto_now= True)
+
+    class Meta:
+        abstract = True
+    #time 모델 만들어서 시간 만들어놓고 이거 상속해서 이용할게요
+
+class Post(TimestampAbstractModel):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    CATEGORY_CHOICES = ((1,"공개글"),(2,"일기장"),(3,"정보공유글"),(4,"인증사진"),(5,"질문글"))
+    category = models.IntegerField(choices =CATEGORY_CHOICES)
     title = models.CharField(max_length=30)
     content = models.TextField()
     image = models.ImageField(null=True, blank=True)
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
     recommend_cnt = models.IntegerField(default=0)
-    is_public = models.BooleanField()
+    tag_set = models.ManyToManyField("Tag",blank = True,related_name="tagiing")
+    ttabong = models.ManyToManyField(
+        User, blank=True, related_name="ttabong"
+    )
 
+    def is_like_user(self, user):
+        return self.ttabong.filter(pk=user.pk).exists()
+    
+    class Meta:
+        ordering = ["-id"] # 최신순 정렬
+    
 
-class Tag(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    tag_name = models.CharField(max_length=10)
+    
 
+class Tag(TimestampAbstractModel):
+    name = models.CharField(max_length = 30,unique=True)
 
-class Comment(models.Model):
+    def __str__(self):
+        return self.name
+
+class Comment(TimestampAbstractModel):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
     content = models.TextField()
+
+
+    class Meta:
+        ordering = ["-id"]
+
