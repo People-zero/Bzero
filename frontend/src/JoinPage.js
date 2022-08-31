@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import LoginPageHeader from "./component/LoginPageHeader";
 import "./css/JoinPage.css";
 const JoinPage = () => {
-  const [user_type, set_user_type] = useState(true);
+  const [isStaff, setIsStaff] = useState(false);
+  const [name, setName] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [email, setEmail] = useState("");
+  const [pwd1, setPwd1] = useState("");
+  const [pwd2, setPwd2] = useState("");
+  const [phone, setPhone] = useState("");
+  const [gender, setGender] = useState("");
+  const [age, setAge] = useState(15);
+  const [birth, setBirth] = useState(null);
+
+  const [userType, setUserType] = useState(true);
 
   const user_type_btn_event_1 = () => {
-    set_user_type(true);
+    setUserType(true);
   };
 
   const user_type_btn_event_2 = () => {
-    set_user_type(false);
+    setUserType(false);
   };
 
   const age_list_make = () => {
@@ -70,6 +82,30 @@ const JoinPage = () => {
     }
   }, [use_check, info_use_check, age_check]);
 
+  const join = () => {
+    axios
+      .post("http://127.0.0.1:8000/auth/registration/", {
+        username: email,
+        email: email,
+        password1: pwd1,
+        password2: pwd2,
+        birth: birth,
+        age: age,
+        phone_number: phone,
+        name: name,
+        nickname: nickname,
+        is_staff: isStaff,
+      })
+      .then(() => {
+        // Handle success.
+        console.log("Well done!");
+        //페이지 이동 필요
+      })
+      .catch((error) => {
+        console.log("An error occurred:", error.response);
+      });
+  };
+
   return (
     <div className="join_page">
       <LoginPageHeader></LoginPageHeader>
@@ -82,17 +118,25 @@ const JoinPage = () => {
           <div className="join_page_detail">
             <label id="type">가입 유형*</label>
           </div>
-          {user_type ? (
+          {isStaff ? (
             <div>
               <button
-                className="join_page_user_type_btn_1"
-                onClick={() => user_type_btn_event_1()}
+                className="join_page_user_type_btn_2"
+                onClick={() => {
+                  setIsStaff(false);
+                  user_type_btn_event_1();
+                  console.log(userType, "사b,개클", isStaff);
+                }}
               >
                 개인
               </button>
               <button
-                className="join_page_user_type_btn_2"
-                onClick={() => user_type_btn_event_2()}
+                className="join_page_user_type_btn_1"
+                onClick={() => {
+                  user_type_btn_event_2();
+                  setIsStaff(true);
+                  console.log(userType, "사b", isStaff);
+                }}
               >
                 사업자
               </button>
@@ -100,14 +144,24 @@ const JoinPage = () => {
           ) : (
             <div>
               <button
-                className="join_page_user_type_btn_2"
-                onClick={() => user_type_btn_event_1()}
+                className="join_page_user_type_btn_1"
+                onClick={() => {
+                  setIsStaff(false);
+                  user_type_btn_event_1();
+
+                  console.log(userType, "개인b", isStaff);
+                }}
+                value={isStaff}
               >
                 개인
               </button>
               <button
-                className="join_page_user_type_btn_1"
-                onClick={() => user_type_btn_event_2()}
+                className="join_page_user_type_btn_2"
+                onClick={() => {
+                  user_type_btn_event_2();
+                  setIsStaff(true);
+                  console.log(userType, "개인b,사클", isStaff);
+                }}
               >
                 사업자
               </button>
@@ -119,6 +173,10 @@ const JoinPage = () => {
           <input
             className="join_page_input"
             placeholder="성명을 입력해주세요"
+            value={name}
+            onChange={(event) => {
+              setName(event.target.value);
+            }}
           ></input>
           <h4 className="join_page_detail">
             <label id="nickname">닉네임*</label>
@@ -126,13 +184,21 @@ const JoinPage = () => {
           <input
             className="join_page_input"
             placeholder="닉네임을 입력해주세요"
+            value={nickname}
+            onChange={(event) => {
+              setNickname(event.target.value);
+            }}
           ></input>
           <h4 className="join_page_detail">
             <label id="email">이메일*</label>
           </h4>
           <input
             className="join_page_input"
-            placeholder="예: peolezero@example.com"
+            placeholder="예: bzero@example.com"
+            value={email}
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
           ></input>
           <h4 className="join_page_detail">
             <label id="pwd">비밀번호*</label>
@@ -140,6 +206,10 @@ const JoinPage = () => {
           <input
             className="join_page_input"
             placeholder="6자 이상의 비밀번호를 입력해주세요"
+            value={pwd1}
+            onChange={(event) => {
+              setPwd1(event.target.value);
+            }}
           ></input>
           <h4 className="join_page_detail">
             <label id="pwd_check">비밀번호 재확인*</label>
@@ -147,6 +217,10 @@ const JoinPage = () => {
           <input
             className="join_page_input"
             placeholder="6자 이상의 비밀번호를 입력해주세요"
+            value={pwd2}
+            onChange={(event) => {
+              setPwd2(event.target.value);
+            }}
           ></input>
           <h4 className="join_page_detail">
             <label id="phone_number">연락처*</label>
@@ -155,11 +229,14 @@ const JoinPage = () => {
             className="join_page_input"
             id="phone_number"
             placeholder="숫자만 입력해주세요"
+            value={phone}
+            onChange={(event) => {
+              setPhone(event.target.value);
+            }}
           ></input>
           <h4 className="join_page_detail">
             <label>성별</label>
           </h4>
-
           <div className="join_page_radio">
             <input
               id="male"
@@ -171,15 +248,20 @@ const JoinPage = () => {
             <label style={{ marginRight: "40px" }} for="male">
               남성
             </label>
-
             <input id="female" type="radio" value="여성" name="gender"></input>
             <label for="female">여성</label>
           </div>
-
           <h4 className="join_page_detail">
             <label id="age">나이</label>
           </h4>
-          <select>{age_list_make()}</select>
+          <select
+            value={age}
+            onChange={(event) => {
+              setAge(event.target.value);
+            }}
+          >
+            {age_list_make()}
+          </select>
           <h4 className="join_page_detail">
             <label id="birth">생년월일</label>
           </h4>
@@ -189,6 +271,10 @@ const JoinPage = () => {
             data-placeholder="YYYY / MM / DD"
             required
             aria-required="true"
+            value={birth}
+            onChange={(event) => {
+              setBirth(event.target.value);
+            }}
           />
           <section>
             <div className="join_page_all_check">
@@ -260,7 +346,14 @@ const JoinPage = () => {
             </div>
           </section>
           <button className="join_page_cancel_btn">취소</button>
-          <button className="join_page_join_btn">가입하기</button>
+          <button
+            className="join_page_join_btn"
+            onClick={() => {
+              join();
+            }}
+          >
+            가입하기
+          </button>
         </div>
       </div>
     </div>
