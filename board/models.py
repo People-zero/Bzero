@@ -20,15 +20,10 @@ class Post(TimestampAbstractModel):
     title = models.CharField(max_length=30)
     content = models.TextField()
     image = models.ImageField(null=True, blank=True)
-    ttabong = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, blank=True, related_name="ttabong"
-    )
-    ttabong_cnt = models.IntegerField(default=0)
+    recommend_user_set = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True,related_name= "ttabong")
     tag_set = models.ManyToManyField("Tag",blank = True,related_name="tagiing")
     
-    def is_like_user(self, user):
-        return self.ttabong.filter(pk=user.pk).exists()
-    
+
     class Meta:
         ordering = ["-id"] # 최신순 정렬
     

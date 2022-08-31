@@ -1,13 +1,11 @@
-from django.shortcuts import render
-from rest_framework.response import Response 
+from unicodedata import category
 from rest_framework.viewsets import ModelViewSet
 from .serializer import CommentSerializer, PostSerializer
 from .models import Post,Tag,Comment
 import re
 from rest_framework.generics import get_object_or_404
-from rest_framework.decorators import action
-from django.contrib.auth.decorators import login_required
-from rest_framework import status
+from django.shortcuts import redirect
+
 
 
 class PostViewSet(ModelViewSet):
@@ -31,22 +29,23 @@ class PostViewSet(ModelViewSet):
         tag_list = [Tag.objects.get_or_create(name=tag_name)[0]for tag_name in tag_name_list]
         return tag_list
 
-    @action(detail=True, methods=["POST"])
-    def like(self):
-        post = self.get_object()
-        post.ttabong.add(self.request.user)
-        return Response(status.HTTP_201_CREATED)
-
-    @like.mapping.delete
-    def unlike(self):
-        post = self.get_object()
-        post.ttabong.remove(self.request.user)
-        return Response(status.HTTP_204_NO_CONTENT)
-
     def perform_create(self, serializer): #저장할때
         serializer.save(author = self.request.user)
         serializer.validated_data["tag_set"]+=(self.extract_tag_list())
         return super().perform_create(serializer)
+
+
+
+def post_recommend(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.user in post.recommend_user_set.all():
+        post.recommend_user_set.remove(request.user)
+    else:
+        post.recommend_user_set.add(request.user)
+        cat = request.data.get("category")
+    return redirect('http://127.0.0.1:8000/post/posts/'+cat)
+
+
     
 class CommentViewSet(ModelViewSet):
     queryset = Comment.objects.all()
