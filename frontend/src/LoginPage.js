@@ -1,12 +1,58 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import LoginPageHeader from "./components/LoginPageHeader"
 import "./css/LoginPage.css"
-
+import jwt_decode from "jwt-decode";
 const LoginPage=()=>{
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState(false);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+		// 이미 로그인이 되어있다면 redirect
+    if (localStorage.getItem('token') !== null) {
+      window.location.replace('http://localhost:3000/mypage');
+    } else {
+      setLoading(false);
+    }
+  }, []);
+  const onSubmit = e => {
+    e.preventDefault();
 
-    const [Logindata,setLogindata]=useState({id:"",password:""})
+    const user = {
+      username: username,
+      password: password
+    };
+
+    fetch('http://127.0.0.1:8000/auth/login/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.key) {
+          localStorage.clear();
+          localStorage.setItem('token', data.key);
+          window.location.replace('http://localhost:3000/mypage');
+        } else {
+          setUsername('');
+          setPassword('');
+          localStorage.clear();
+          setErrors(true);
+        }
+      });
+  };
+  const [user, setUser] = useState(() =>
+  localStorage.getItem("token")
+    ? jwt_decode(localStorage.getItem("token"))
+    : null
+);
     return(
-        
+   
+    
+
     <div className="LoginPage">
     <LoginPageHeader></LoginPageHeader>    
     
@@ -28,25 +74,20 @@ const LoginPage=()=>{
         <span className="LoginPage_loginmain">
             아이디
         </span>
-        <input placeholder="아이디를 입력해주세요" value={Logindata.id} onChange={(e)=>{
-            setLogindata({
-                id:e.target.value,
-                password:Logindata.password})
-        }} className="LoginPage_inputbox">
+        <input placeholder="아이디를 입력해주세요" value={username} required onChange={e=>setUsername(e.target.value)} name='username' type='username' className="LoginPage_inputbox">
 
         </input>
         <span  className="LoginPage_loginmain">
             비밀번호
         </span>
-        <input placeholder="비밀번호를 입력해주세요" value={Logindata.password} className="LoginPage_inputbox" onChange={(e)=>{
-            setLogindata({
-                id:Logindata.id,
-                password:e.target.value
-            })
-        }}>
+        <input placeholder="비밀번호를 입력해주세요" value={password} className="LoginPage_inputbox" name='password'
+            type='password'
+            
+            required
+            onChange={e => setPassword(e.target.value)}>
             
         </input>
-        <button  className="LoginPage_mainloginbutton">
+        <button onClick={onSubmit} className="LoginPage_mainloginbutton">
             로그인
         </button>
         <div className="LoginPage_smalltextbox">
@@ -83,13 +124,14 @@ const LoginPage=()=>{
             
         </div>
     </div>
-
-    <div></div>
-    
     </div>
-
+    
+    
     </div>
     )
 }
+
+    
+
 
 export default LoginPage

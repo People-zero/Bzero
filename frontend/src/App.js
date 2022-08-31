@@ -72,7 +72,7 @@ const dummyList = [
     profile: "example_profile.jpg",
     nickname: "닉네임",
     email: "email@email.com",
-    point: 6300,
+    point: 4300,
   },
 ];
 const reducer=(state,action)=>{
