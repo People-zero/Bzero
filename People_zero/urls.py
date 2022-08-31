@@ -12,7 +12,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('backend.urls')),
     path('main/', TemplateView.as_view(template_name='index.html')),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('map/', TemplateView.as_view(template_name='index.html')),
+     path('login/', TemplateView.as_view(template_name='index.html')),
+    path('anpi-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('post/',include('board.urls')),
     path('store/', include('store.urls')),
     path('auth/', include('accounts.urls'))
