@@ -15,32 +15,26 @@ class TimestampAbstractModel(models.Model):
 
 class Post(TimestampAbstractModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
-    CATEGORY_CHOICES = ((1,"공개글"),(2,"일기장"),(3,"정보공유글"),(4,"인증사진"),(5,"질문글"))
+    CATEGORY_CHOICES = ((1,"일기장"),(2,"함께해요"),(3,"궁금해요"),(4,"인증사진"),(5,"정보광장"))
     category = models.IntegerField(choices =CATEGORY_CHOICES)
     title = models.CharField(max_length=30)
     content = models.TextField()
     image = models.ImageField(null=True, blank=True)
-    recommend_cnt = models.IntegerField(default=0)
-    tag_set = models.ManyToManyField("Tag",blank = True,related_name="tagiing")
-    ttabong = models.ManyToManyField(
-        User, blank=True, related_name="ttabong"
-    )
+    recommend_user_set = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True,related_name= "ttabong")
+    # tag_set = models.ManyToManyField("Tag",blank = True,related_name="tagiing")
     
 
-    def is_like_user(self, user):
-        return self.ttabong.filter(pk=user.pk).exists()
-    
     class Meta:
         ordering = ["-id"] # 최신순 정렬
     
 
     
 
-class Tag(TimestampAbstractModel):
-    name = models.CharField(max_length = 30,unique=True)
+# class Tag(TimestampAbstractModel):
+#     name = models.CharField(max_length = 30,unique=True)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 class Comment(TimestampAbstractModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
