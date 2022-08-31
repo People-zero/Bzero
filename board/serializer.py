@@ -10,7 +10,7 @@ class PostSerializer(serializers.ModelSerializer):
             "title",
             "image",
             "content",
-            "user",
+            "author",
             "recommend_user_set"
             ]
         

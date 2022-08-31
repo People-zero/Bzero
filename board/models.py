@@ -21,7 +21,7 @@ class Post(TimestampAbstractModel):
     content = models.TextField()
     image = models.ImageField(null=True, blank=True)
     recommend_user_set = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True,related_name= "ttabong")
-    tag_set = models.ManyToManyField("Tag",blank = True,related_name="tagiing")
+    # tag_set = models.ManyToManyField("Tag",blank = True,related_name="tagiing")
     
 
     class Meta:
@@ -30,11 +30,11 @@ class Post(TimestampAbstractModel):
 
     
 
-class Tag(TimestampAbstractModel):
-    name = models.CharField(max_length = 30,unique=True)
+# class Tag(TimestampAbstractModel):
+#     name = models.CharField(max_length = 30,unique=True)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 class Comment(TimestampAbstractModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)

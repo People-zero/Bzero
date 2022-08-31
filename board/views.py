@@ -24,14 +24,14 @@ class PostViewSet(ModelViewSet):
         context["request"] = self.request
         return context
 
-    def extract_tag_list(self):
-        tag_name_list = re.findall(r"#([a-zA-Z\dㄱ-힣]+)",self.request.data.get("content"))
-        tag_list = [Tag.objects.get_or_create(name=tag_name)[0]for tag_name in tag_name_list]
-        return tag_list
+    # def extract_tag_list(self):
+    #     tag_name_list = re.findall(r"#([a-zA-Z\dㄱ-힣]+)",self.request.data.get("content"))
+    #     tag_list = [Tag.objects.get_or_create(name=tag_name)[0]for tag_name in tag_name_list]
+    #     return tag_list
 
     def perform_create(self, serializer): #저장할때
         serializer.save(author = self.request.user)
-        serializer.validated_data["tag_set"]+=(self.extract_tag_list())
+        # serializer.validated_data["tag_set"]+=(self.extract_tag_list())
         return super().perform_create(serializer)
 
 
@@ -66,19 +66,19 @@ class CommentViewSet(ModelViewSet):
         serializer.save(author = self.request.user,post=post)
         return super().perform_create(serializer)
 
-class TagSearchViewSet(ModelViewSet):
-    queryset = Post.objects.all()
-    serializer_class= PostSerializer
+# class TagSearchViewSet(ModelViewSet):
+#     queryset = Post.objects.all()
+#     serializer_class= PostSerializer
     
-    def get_queryset(self):
-        answer = Tag.objects.filter(name=self.kwargs["tag_name"])
-        qs = super().get_queryset()
-        qs = qs.filter(tag_set__in = answer)
-        return qs
+#     def get_queryset(self):
+#         answer = Tag.objects.filter(name=self.kwargs["tag_name"])
+#         qs = super().get_queryset()
+#         qs = qs.filter(tag_set__in = answer)
+#         return qs
 
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        context["request"] = self.request
-        return context
+#     def get_serializer_context(self):
+#         context = super().get_serializer_context()
+#         context["request"] = self.request
+#         return context
 
     
