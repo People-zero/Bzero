@@ -1,4 +1,5 @@
 from ctypes.wintypes import SIZE
+from pickle import TRUE
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -6,7 +7,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     # First name = name (실명)
     # last_name = nickname (넷상에서 쓰는이름)
-    username = models.CharField(max_length=150, unique=True)
+    username = models.CharField(max_length=150, unique=True, blank=True)
     birth = models.DateField(null=True)
     age = models.PositiveIntegerField(null=True)
     phone_number = models.CharField(null=True, max_length=30, unique=True)
@@ -14,9 +15,10 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=30, blank=False)
     last_name = models.CharField(max_length=150, blank=False, unique=True)
     is_staff = models.BooleanField(blank=False, default=False)
+    gender = models.CharField(verbose_name='성별', max_length=1, null=True)
 
     def __str__(self) -> str:
-        return str(self.username)
+        return (self.username)
 
 
 class Attendance(models.Model):
@@ -25,7 +27,7 @@ class Attendance(models.Model):
 
 
 class Profile(models.Model):
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_image = models.ImageField(upload_to='image/', blank=True, null=True)
     intro_comment = models.CharField(max_length=150, blank=True, null=True)
     point = models.IntegerField(default=0)
