@@ -5,7 +5,7 @@ from .models import Attendance, User, Profile
 
 class userAdmin(admin.ModelAdmin):
     list_display = ('id', 'username', 'password', 'birth',
-                    'email', 'age', 'phone_number')
+                    'email', 'age', 'phone_number', 'gender')
 
 
 admin.site.register(User, userAdmin)
