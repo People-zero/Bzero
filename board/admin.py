@@ -8,6 +8,3 @@ class postAdmin(admin.ModelAdmin):
 @admin.register(models.Comment)
 class commentAdmin(admin.ModelAdmin):
     pass
-@admin.register(models.Tag)
-class tagAdmin(admin.ModelAdmin):
-    pass
