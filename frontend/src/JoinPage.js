@@ -245,11 +245,11 @@ const JoinPage = () => {
               value="남성"
               name="gender"
             ></input>
-            <label style={{ marginRight: "40px" }} for="male">
+            <label style={{ marginRight: "40px" }} htmlFor="male">
               남성
             </label>
             <input id="female" type="radio" value="여성" name="gender"></input>
-            <label for="female">여성</label>
+            <label htmlFor="female">여성</label>
           </div>
           <h4 className="join_page_detail">
             <label id="age">나이</label>
@@ -284,7 +284,7 @@ const JoinPage = () => {
                 checked={all_check}
                 onChange={all_btn_event}
               />
-              <label for="all_check">가입 약관에 모두 동의합니다.</label>
+              <label htmlFor="all_check">가입 약관에 모두 동의합니다.</label>
             </div>
             <div>
               <div>
@@ -296,7 +296,7 @@ const JoinPage = () => {
                       checked={use_check}
                       onChange={use_btn_event}
                     />
-                    <label for="check1">이용약관 동의 *</label>
+                    <label htmlFor="check1">이용약관 동의 *</label>
                   </div>
 
                   <a
@@ -316,7 +316,7 @@ const JoinPage = () => {
                     checked={info_use_check}
                     onChange={info_use_btn_event}
                   />
-                  <label for="check2">개인정보 수집 및 이용 동의 *</label>
+                  <label htmlFor="check2">개인정보 수집 및 이용 동의 *</label>
                 </div>
                 <a
                   className="join_page_check_detail_2"
@@ -333,7 +333,7 @@ const JoinPage = () => {
                     checked={age_check}
                     onChange={age_btn_event}
                   />
-                  <label for="check3">만 14세 이상입니다. *</label>
+                  <label htmlFor="check3">만 14세 이상입니다. *</label>
                 </div>
 
                 <a
