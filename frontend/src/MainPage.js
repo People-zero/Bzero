@@ -1,4 +1,4 @@
-import LoginPageHeader from "./component/LoginPageHeader"
+import LoginPageHeader from "./components/LoginPageHeader"
 import { FunctionComponent } from "react";
 import "./css/MainPage.css"
 
@@ -119,6 +119,34 @@ const MainPage=()=>{
        BZero의 제로웨이스트 커뮤니티를 이용하여 제로웨이스트 라이프를 공유해보세요!</span><br></br>
        <button className="MainPage_fourthPage_start">시작하기</button>
        </div>
+    </div>
+
+    <div className="MainPage_fifth">
+
+        <div className="MainPage_fifth_textbox">
+            <div>제로웨이스트를 향한 첫 걸음</div>
+            <div>지금  <img src={process.env.PUBLIC_URL+`../img/BZero.png`}></img> 로 시작해보세요!</div>
+            <div className="MainPage_fifth_button">
+                시작하기
+            </div>
+
+        </div>
+    </div>
+
+    <div className="MainPage_footer">
+        <div className="Mainfooter_left">
+            <div>제로웨이스트 플랫폼</div>
+            <div className="Main_footer_img"><img src={process.env.PUBLIC_URL+`../img/image 106.png`}></img> BZero</div>
+        </div>
+        <div className="Mainfooter_center">
+            <div>개발 | 팀 코스</div>
+            <div>제휴 및 협력 | fishingest@kookmin.ac.kr</div>
+            <div>@2022 by BZero All right reseved</div>
+
+        </div>
+        <div className="Mainfooter_right">
+        <a href="https://github.com/People-zero/Bzero"><img src={process.env.PUBLIC_URL+`../img/githubicon.png`} width="30px" height="30px" alt=""/></a>
+        </div>
     </div>
 
     </div>

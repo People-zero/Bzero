@@ -1,0 +1,162 @@
+  .RegistStore{
+    display: flex;
+    margin: 0px;
+  }
+  .registstore_navbar_left{
+    background-color: white;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    border: 1px solid #0679FF;
+    border-style: none solid none none;
+    height: 800px;
+    width: 120px;
+    padding: 20px 26px;
+  }
+  .registstore_navbar_left_title{
+    color: #0679FF;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+  .registstore_navbar_left_menu {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 300px; 
+  }
+  .registstore_navbar_left_menu > .registstore_present{
+    color: #0679FF;
+  }
+  .registstore_navbar_left_menu > a{
+    color: black;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 8px 0;
+  }
+
+  .registstore_navbar_left_logout > a {
+    color: black;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  
+  .registstore_navbar_left_menu > a:hover{
+    color: #0679FF;
+  }
+  
+  
+  .registstore_right{
+    display: flex;
+    padding-left: 173px;
+    flex-direction: column;
+    width: 100%;
+  }
+  .registstore_navbar_top{
+    display: flex;
+    position: fixed;
+    background-color: white;
+    border: 1px solid #0679FF;
+    border-style: none none solid none;
+    width: 100%;
+    padding: 5px 0px 10px;
+  }
+  .registstore_navbar_top > .registstore_text{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 55px;
+  }
+  .registstore_navbar_top > .registstore_text > .registstore_line1{
+    align-items: center;
+    display: flex;
+  }
+  .registstore_navbar_top > .registstore_text > .registstore_line1 > .registstore_title1{
+    font-weight: bold;
+    font-size: 19px;
+    margin-right: 20px;
+  }
+  .registstore_navbar_top > .registstore_text > .registstore_line1 > .registstore_title2{
+    font-weight: bold;
+    font-size: 15px;
+    color: #0679FF;
+    padding-top: 4px;
+  }
+  .registstore_navbar_top > .registstore_text > p{
+    font-size: 12px;
+    color: gray;
+    padding-top: 5px;
+  }
+  .registstore_navbar_top > .registstore_logo{
+    position: absolute;
+    top: 20px;
+    right: 40px;
+  }
+  
+
+  /* main*/
+  
+  .registstore_main{
+    padding: 140px 100px;
+  }
+  .registstore_main > .registstore_boxes > .registstore_box_question > .registstore_box {
+    margin: 30px 0;
+  }
+  .registstore_main > .registstore_boxes .registstore_Q{
+    background-color: #0679FF;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    padding-left: 15px;
+    height: 30px;
+    padding-top: 10px;
+    width: 900px;
+  }
+  .registstore_main > .registstore_boxes .registstore_A{
+    height: 80px;
+    width: 900px;
+    border: solid 0.2px;
+    border-color: #0679FF;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-top: 9px;
+    resize: none;
+  }
+  input:focus{
+    outline: none;
+  }
+  .registstore_main > .registstore_boxes > .registstore_box_img {
+    width: 800px;
+  }
+  .registstore_main > .registstore_boxes > .registstore_box_img > .registstore_order{
+    background-color: #0679FF;
+    border-radius: 5px;
+    color: white;
+    width: 202px;
+    font-size: 14px;
+    padding: 10px 5px 10px 20px;
+  }
+  .registstore_main > .registstore_boxes > .registstore_box_img > .registstore_input_img{
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 225px;
+    border: solid 0.2px;
+    border-color: #0679FF;
+    border-radius: 5px;
+  }
+
+
+  .registstore_main > .registstore_main_bottom {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+  }
+  .registstore_main > .registstore_main_bottom > .registstore_back{
+    color: #0679FF;
+    text-decoration: none;
+  }
+  .registstore_main > .registstore_main_bottom > .registstore_save{
+    border: 1px solid #0679FF;
+    color: #0679FF;
+    padding: 10px 40px;
+    border-radius: 5px;
+    text-decoration: none;
+  }

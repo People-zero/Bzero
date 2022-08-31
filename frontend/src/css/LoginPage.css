@@ -44,7 +44,7 @@ font-size: 18px;
 line-height: 22px;
 /* identical to box height */
 position: relative;
-width: 50px;
+width: 63px;
 height: 22px;
 left: 1373px;
 top: 38px;
@@ -75,14 +75,16 @@ padding:9px 21px 9px 21px
 @media (max-width:1600px){
     .LoginPage_header_loginbutton{
 
-    left: 1083px;
+    left: 1053px;
     
     
     }
-
+    .LoginPage_header span{
+        left:160px;
+    }
     .LoginPage_header_signin{
 
-    left: 1130px;
+    left: 1100px;
     
 
     }
@@ -98,6 +100,7 @@ padding:9px 21px 9px 21px
     
     }
 
+    
     .LoginPage_header_signin{
     
     left: 953px;
