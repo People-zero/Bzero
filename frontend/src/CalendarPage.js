@@ -5,6 +5,10 @@ import "./css/CalendarPage.css";
 
 const CalendarPage = ({ checked_date }) => {
   const [value, onChange] = useState(new Date());
+  const refinedDate = [];
+  for (const value of checked_date) {
+    console.dir(value);
+  }
 
   return (
     <div className="calendar_page">
