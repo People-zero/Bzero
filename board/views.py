@@ -1,7 +1,7 @@
 from unicodedata import category
 from rest_framework.viewsets import ModelViewSet
 from .serializer import CommentSerializer, PostSerializer
-from .models import Post,Tag,Comment
+from .models import Post,Comment
 import re
 from rest_framework.generics import get_object_or_404
 from django.shortcuts import redirect
