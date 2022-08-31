@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     # First name = name (실명)
     # last_name = nickname (넷상에서 쓰는이름)
-    username = models.CharField(max_length=150, unique=True, blank=True, null= TRUE)
+    username = models.CharField(max_length=150, unique=True, blank=True)
     birth = models.DateField(null=True)
     age = models.PositiveIntegerField(null=True)
     phone_number = models.CharField(null=True, max_length=30, unique=True)
@@ -27,7 +27,7 @@ class Attendance(models.Model):
 
 
 class Profile(models.Model):
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_image = models.ImageField(upload_to='image/', blank=True, null=True)
     intro_comment = models.CharField(max_length=150, blank=True, null=True)
     point = models.IntegerField(default=0)

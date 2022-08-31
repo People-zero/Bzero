@@ -14,12 +14,12 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    profile_set = ProfileSerializer(many=True, read_only=True)
+    profile = ProfileSerializer(read_only=True)
 
     class Meta:
         model = User
         fields = ['id', 'username', 'birth',
-                  'email', 'age', 'phone_number', 'first_name', 'last_name', 'is_staff', 'profile_set']
+                  'email', 'age', 'phone_number', 'first_name', 'last_name', 'is_staff', 'profile']
 
 
 class AttendSerializer(serializers.ModelSerializer):
