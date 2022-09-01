@@ -1,3 +1,4 @@
+from time import strftime
 from django.db import models
 from accounts.models import User
 from django.conf import settings
@@ -20,7 +21,7 @@ class Post(TimestampAbstractModel):
     title = models.CharField(max_length=30)
     content = models.TextField()
     image = models.ImageField(null=True, blank=True)
-    recommend_user_set = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True,related_name= "ttabong")
+    recommend_user_set = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name= "ttabong")
     # tag_set = models.ManyToManyField("Tag",blank = True,related_name="tagiing")
     
 
