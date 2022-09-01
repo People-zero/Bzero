@@ -112,6 +112,7 @@ const dummyList2 = [
 ]
 function App() {
   const [place,setplace]=useState([])
+  const [userdata,setuserdata]=useState()
 
   const getData = async() => {
     const res = await fetch("http://127.0.0.1:8000/store/bottle_collection_Store/")
@@ -149,7 +150,7 @@ function App() {
       }
     })
         .then((res)=>res.json());
-        console.log(res)
+        setuserdata(res)
     
   }
   getData()},[])
@@ -204,9 +205,10 @@ function App() {
   useEffect(()=>{
     init();
   })
-
+  const mypagelink=userdata?.id
   // console.log(data);
-
+  // console.log(userdata?.id)
+  // console.log(userdata)
   return (
     
     <PostStateContext.Provider value={data}>
@@ -226,6 +228,7 @@ function App() {
         <Route path='/edit' element={<EditProfilePage/>}></Route>
         <Route path='/main' element={<MainPage></MainPage>}></Route>
         <Route path='/mypage' element={<MyPage
+        userdata={userdata}
         user_info={dummyList}
         checked_date={dummy_checked_date}
         badge_info={dummy_badge}

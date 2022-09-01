@@ -23,20 +23,7 @@ const LoginPageHeader=()=>{
         window.location.replace('/main')
       });
   }
-  useEffect(()=>{
-    
-    const getData = async() => {
-      let token=localStorage.getItem('token')
-      const res = await fetch("http://127.0.0.1:8000/auth/accounts",{
-      method:'GET',
-      headers:{
-        'Authorization': 'Token '.concat+token
-      }
-    })
-        .then((res)=>res.json());
-        console.log(res)
-
-  }},[])
+  
 
 
 
