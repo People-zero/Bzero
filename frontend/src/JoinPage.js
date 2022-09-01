@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import LoginPageHeader from "./component/LoginPageHeader";
+import LoginPageHeader from "./components/LoginPageHeader";
 import "./css/JoinPage.css";
 const JoinPage = () => {
   const [isStaff, setIsStaff] = useState(false);
