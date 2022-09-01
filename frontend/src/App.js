@@ -200,7 +200,7 @@ function App() {
   const [attendDate, setAttendDate] = useState([]);
 
   const attendDatesForCalendar = () => {
-    axios.get("http://127.0.0.1:8000/auth/attend/").then((response) => {
+    axios.get("http://127.0.0.1:8000/auth/attend/", {headers: {"Authorizaion":`token${}`}}).then((response) => {
       setAttendDate([...response.data]);
     });
     if (attendDate.lengh < 1) {

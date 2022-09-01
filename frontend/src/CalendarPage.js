@@ -6,6 +6,7 @@ import CalendarNav from "./components/CalendarNav";
 
 const CalendarPage = ({ checked_date }) => {
   const [value, onChange] = useState(new Date());
+
   const refinedDate = [];
   for (const value of checked_date) {
     console.dir(value);
@@ -13,7 +14,7 @@ const CalendarPage = ({ checked_date }) => {
 
   return (
     <div className="calendar_page">
-     <CalendarNav></CalendarNav>
+      <CalendarNav></CalendarNav>
       <div className="calendar_page_main">
         <header className="calendar_page_header">
           <p className="calendar_page_title">제로웨이스트 캘린더</p>
