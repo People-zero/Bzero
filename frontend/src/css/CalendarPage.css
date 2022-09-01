@@ -136,6 +136,7 @@
     justify-content: center;
     padding-top: 111px;
     width: 860px;
+    height: auto;
 }
 
 .calendar_page_goto_other {
@@ -162,8 +163,9 @@
 }
 
 .calendar_page_my_calendar {
+    display: flex;
+    flex-direction: column;
     width: 807px;
-
     margin-bottom: 33px;
 }
 
@@ -173,7 +175,6 @@
     justify-content: center;
     align-items: center;
     width: 870px;
-    height: 400px;
     background: white;
     
     font-family: 'Inter';
