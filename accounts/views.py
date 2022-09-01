@@ -1,6 +1,3 @@
-from email.policy import HTTP
-from http.client import HTTPMessage
-from django.shortcuts import render
 from .models import User, Attendance, Profile
 from rest_framework import viewsets, permissions, generics
 from accounts.serializers import UserSerializer, AttendSerializer, ProfileSerializer
@@ -21,14 +18,6 @@ class UserViewSet(viewsets.ModelViewSet):
     #     serializer = self.get_serializer(queryset, many=True)
     #     return Response(serializer.data)
 
-class UserAPI(generics.RetrieveAPIView):
-    permission_class = [
-        permissions.IsAuthenticated,
-    ]
-    serializer_class = UserSerializer
-
-    def get_object(self):
-        return self.request.user
 
 
 class AttendViewSet(viewsets.ModelViewSet):
