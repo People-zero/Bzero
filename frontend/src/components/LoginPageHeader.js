@@ -3,6 +3,7 @@ import { useEffect,useState } from "react";
 import Axios from 'axios'
 import jwt_decode from "jwt-decode";
 const LoginPageHeader=()=>{
+    const [user,setuser]=useState()
     const [loading, setLoading] = useState(true);
     useEffect(() => {
 		// 이미 로그인이 되어있다면 redirect
@@ -14,7 +15,7 @@ const LoginPageHeader=()=>{
   }, []);
   const handleLogout = () => {
     let token = localStorage.getItem('token')
-
+    
     Axios.post('http://127.0.0.1:8000/auth/logout/', token)
       .then(res => {
         localStorage.clear()
@@ -22,6 +23,20 @@ const LoginPageHeader=()=>{
         window.location.replace('/main')
       });
   }
+  useEffect(()=>{
+    
+    const getData = async() => {
+      let token=localStorage.getItem('token')
+      const res = await fetch("http://127.0.0.1:8000/auth/accounts",{
+      method:'GET',
+      headers:{
+        'Authorization': 'Token '.concat+token
+      }
+    })
+        .then((res)=>res.json());
+        console.log(res)
+
+  }},[])
 
 
 

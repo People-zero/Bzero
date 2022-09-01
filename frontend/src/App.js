@@ -136,6 +136,23 @@ function App() {
       setplace(initData)
       
   }
+  useEffect(()=>{
+    
+    const getData = async() => {
+      let token=localStorage.getItem('token')
+      let token2='Token '.concat(token)
+      console.log(token2)
+      const res = await fetch("http://127.0.0.1:8000/auth/user",{
+      method:'GET',
+      headers:{
+        'Authorization': 'Token '.concat(token)
+      }
+    })
+        .then((res)=>res.json());
+        console.log(res)
+    
+  }
+  getData()},[])
 
   useEffect(()=>{
     getData();
