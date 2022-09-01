@@ -28,5 +28,9 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         if is_staff:
             user.is_staff = is_staff
 
+        gender = data.get("gender")
+        if gender:
+            user.gender = gender
+
         user.save()
         return user
