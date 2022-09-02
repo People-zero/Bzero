@@ -12,11 +12,11 @@ class UserViewSet(viewsets.ModelViewSet):
 
     http_method_names = ['get', 'patch']  # get method 만을 활용
 
-    # def list(self, request):
-    #     user = request.user
-    #     queryset = User.objects.filter(username=user)
-    #     serializer = self.get_serializer(queryset, many=True)
-    #     return Response(serializer.data)
+    def list(self, request):
+        user = request.user
+        queryset = User.objects.filter(username=user)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 
