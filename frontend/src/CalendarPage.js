@@ -7,9 +7,14 @@ import CalendarNav from "./components/CalendarNav";
 const CalendarPage = ({ checked_date }) => {
   const [value, onChange] = useState(new Date());
 
+  const refined_date = [];
+  for (const value of checked_date) {
+    refined_date.push(value.attended_date);
+  }
+
   return (
     <div className="calendar_page">
-     <CalendarNav></CalendarNav>
+      <CalendarNav></CalendarNav>
       <div className="calendar_page_main">
         <header className="calendar_page_header">
           <p className="calendar_page_title">제로웨이스트 캘린더</p>
@@ -45,7 +50,7 @@ const CalendarPage = ({ checked_date }) => {
               prev2Label={null}
               tileClassName={({ date, view }) => {
                 if (
-                  checked_date.find(
+                  refined_date.find(
                     (x) => x === moment(date).format("YYYY-MM-DD")
                   )
                 ) {
