@@ -24,31 +24,31 @@ import RegistStore from './RegistStore';
 import EditProfilePage from './EditProfilePage';
 const dumyData = [
   {
-    id:1,
+    id: 1,
     emotion: 1,
     content: "송하윤 멋져 1",
     date:1660478254683
   },
   {
-    id:2,
+    id: 2,
     emotion: 2,
     content: "송하윤 멋져 2",
     date:1660478254684
   },
   {
-    id:3,
+    id: 3,
     emotion: 3,
     content: "송하윤 멋져 3",
     date:1660478254685
   },
   {
-    id:4,
+    id: 4,
     emotion: 4,
     content: "송하윤 멋져 4",
     date:1660478254686
   },
   {
-    id:5,
+    id: 5,
     emotion: 5,
     content: "송하윤 멋져 5",
     date:1660478254687
@@ -172,22 +172,22 @@ function App() {
     }})
   
     dataId.current += 1;
-  } 
+  };
   // REMOVE
-  const onRemove = (targetId) =>{
-    dispatch({type:"REMOVE",targetId});
-  }
+  const onRemove = (targetId) => {
+    dispatch({ type: "REMOVE", targetId });
+  };
   // Edit
   const onEdit = (targetId, date, content, emotion) => {
     dispatch({
-      type:"EDIT",
-      data:{
+      type: "EDIT",
+      data: {
         id: targetId,
         date: new Date(date).getTime(),
         content,
-        emotion  
-      }
-    })
+        emotion,
+      },
+    });
   };
   const [data,dispatch]=useReducer(reducer,dummyData);
   const dataId= useRef(10);
