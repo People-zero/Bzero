@@ -33,10 +33,11 @@ const reducer = (state, action) => {
   }
   return newState;
 };
+
 export const PostStateContext = React.createContext();
 export const PostDispatchContext = React.createContext();
 
-const dumyData = [
+const FirstData = [
   {
     id: 1,
     emotion: 1,
@@ -100,33 +101,15 @@ function App() {
       },
     });
     dataId.current += 1;
-  };
-  // REMOVE
-  const onRemove = (targetId) => {
-    dispatch({ type: "REMOVE", targetId });
-  };
-  // Edit
-  const onEdit = (targetId, date, content, emotion) => {
-    dispatch({
-      type: "EDIT",
-      data: {
-        id: targetId,
-        date: new Date(date).getTime(),
-        content,
-        emotion,
-      },
-    });
-  };
+  }
 
-  const [data, dispatch] = useReducer(reducer, dumyData);
+  const [data, dispatch] = useReducer(reducer, FirstData);
   const dataId = useRef(7);
 
   return (
     <PostDispatchContext.Provider
       value={{
         onCreate,
-        onEdit,
-        onRemove,
       }}
     >
       <PostStateContext.Provider value={data}>
