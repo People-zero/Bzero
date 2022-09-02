@@ -5,7 +5,6 @@ import camera_icon from "./images/camera_icon.svg";
 import withdrawl_icon from "./images/withdrawl_icon.svg";
 
 function EditProfilePage() {
-
   const [profile_data, set_profile_data] = useState({
     name: "",
     nickname: "",
@@ -48,7 +47,12 @@ function EditProfilePage() {
   };
 
   const submit_event = () => {
-    // 제출 코드
+    const id = 1; //임시코드
+    const API_URL = `http://127.0.0.1:8000/auth/accounts/${id}`;
+
+    axios.post(API_URL, edtiting_profile_data).then(({ data }) => {
+      console.log(data);
+    });
   };
 
   const withdrawal_event = () => {
@@ -56,24 +60,15 @@ function EditProfilePage() {
   };
 
   const fetch_user_data = () => {
-    const data = {
-      name: "홍길동",
-      nickname: "코카콜라",
-      email: "example@example.com",
-      gender: "male",
-      birth: new Date(2000, 1, 1),
-      age: 84,
-      phone_number: "010-1234-5678",
-      profile_image:
-        "https://files.heftykrcdn.com/wp-content/uploads/2019/01/1557f9ce6b3048b34488694c02d63ad8-718x800.jpg",
-    };
-    return data;
+    const API_URL = "http://127.0.0.1:8000/auth/accounts/";
+    axios.get(API_URL).then(({ data }) => {
+      set_profile_data(data);
+      set_edtiting_profile_data({...data, password : "" });
+    });
   };
 
   useEffect(() => {
-    const user_profile_data = fetch_user_data();
-    set_edtiting_profile_data(user_profile_data);
-    set_profile_data({ ...user_profile_data, password: "" });
+    fetch_user_data();
     return;
   }, []);
 
@@ -259,11 +254,11 @@ function EditProfilePage() {
                 }
               />
             </div>
-            <button className="sumbit_btn">완료</button>
+            <button className="sumbit_btn" onClick={submit_event}>완료</button>
           </div>
           <div className="withdrawal">
             <button className="withdrawal_btn" onChange={withdrawal_event}>
-              탈퇴하기 <img src={withdrawl_icon} alt="withdrawl_icon"/>
+              탈퇴하기 <img src={withdrawl_icon} alt="withdrawl_icon" />
               {/* <img src={`/static/withdrawl_icon.svg`} alt="withdrawl_icon"/> */}
             </button>
           </div>
