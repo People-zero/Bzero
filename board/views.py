@@ -6,7 +6,8 @@ from .serializer import PostSerializer,CommentSerializer,Post_DetailSerializer
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404,redirect
 from rest_framework import status
-
+import accounts.models
+import datetime
 
 
 class postCategoryListApiView(APIView):
@@ -38,6 +39,16 @@ class postListApiView(APIView):
     def post(self,request):
         serializer = PostSerializer(data=request.data)
         if serializer.is_valid():
+            profile = accounts.models.Profile.objects.get(id = request.user.id)
+            profile.point += 100
+            profile.save() 
+            attendance,check = accounts.models.Attendance.objects.get_or_create(id = request.user.id,
+                                                                username = request.user,
+                                                                attended_date = datetime.date.today())
+            if check:
+                attendance.save()
+            else:
+                pass
             serializer.save(author=request.user)
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
