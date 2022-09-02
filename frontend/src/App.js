@@ -193,24 +193,31 @@ function App() {
 
   useEffect(() => {
     init();
-  });
+  }, []);
 
   // console.log(data);
 
   const [attendDate, setAttendDate] = useState([]);
 
-  const attendDatesForCalendar = () => {
-    axios.get("http://127.0.0.1:8000/auth/attend/", {headers: {"Authorizaion":`token${}`}}).then((response) => {
-      setAttendDate([...response.data]);
-    });
-    if (attendDate.lengh < 1) {
-      setAttendDate(dummy_checked_date);
-    }
-  };
+  // const attendDatesForCalendar = () => {
+  //   let token = localStorage.getItem("token");
+  //   let token2 = "Token ".concat(token);
+  //   axios
+  //     .get("http://127.0.0.1:8000/auth/attend/", {
+  //       headers: { Authorizaion: `${token2}` },
+  //     })
+  //     .then((response) => {
+  //       // setAttendDate([...response.data]);
+  //       console.log(response);
+  //     });
+  //   if (attendDate.lengh < 1) {
+  //     setAttendDate(dummy_checked_date);
+  //   }
+  // };
 
-  useEffect(() => {
-    attendDatesForCalendar();
-  });
+  // useEffect(() => {
+  //   attendDatesForCalendar();
+  // }, []);
 
   return (
     <PostStateContext.Provider value={data}>
