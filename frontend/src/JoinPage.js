@@ -11,7 +11,7 @@ const JoinPage = () => {
   const [pwd1, setPwd1] = useState("");
   const [pwd2, setPwd2] = useState("");
   const [phone, setPhone] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("남성");
   const [age, setAge] = useState(15);
   const [birth, setBirth] = useState(null);
 
