@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LoginPageHeader from "./components/LoginPageHeader";
 import "./css/JoinPage.css";
+
 const JoinPage = () => {
   const [isStaff, setIsStaff] = useState(false);
   const [name, setName] = useState("");
@@ -94,6 +95,7 @@ const JoinPage = () => {
         phone_number: phone,
         name: name,
         nickname: nickname,
+        gender: gender,
         is_staff: isStaff,
       })
       .then(() => {
@@ -173,7 +175,7 @@ const JoinPage = () => {
           <input
             className="join_page_input"
             placeholder="성명을 입력해주세요"
-            value={name}
+            value={name || ""}
             onChange={(event) => {
               setName(event.target.value);
             }}
@@ -184,7 +186,7 @@ const JoinPage = () => {
           <input
             className="join_page_input"
             placeholder="닉네임을 입력해주세요"
-            value={nickname}
+            value={nickname || ""}
             onChange={(event) => {
               setNickname(event.target.value);
             }}
@@ -195,7 +197,7 @@ const JoinPage = () => {
           <input
             className="join_page_input"
             placeholder="예: bzero@example.com"
-            value={email}
+            value={email || ""}
             onChange={(event) => {
               setEmail(event.target.value);
             }}
@@ -206,7 +208,7 @@ const JoinPage = () => {
           <input
             className="join_page_input"
             placeholder="6자 이상의 비밀번호를 입력해주세요"
-            value={pwd1}
+            value={pwd1 || ""}
             onChange={(event) => {
               setPwd1(event.target.value);
             }}
@@ -217,7 +219,7 @@ const JoinPage = () => {
           <input
             className="join_page_input"
             placeholder="6자 이상의 비밀번호를 입력해주세요"
-            value={pwd2}
+            value={pwd2 || ""}
             onChange={(event) => {
               setPwd2(event.target.value);
             }}
@@ -229,7 +231,7 @@ const JoinPage = () => {
             className="join_page_input"
             id="phone_number"
             placeholder="숫자만 입력해주세요"
-            value={phone}
+            value={phone || ""}
             onChange={(event) => {
               setPhone(event.target.value);
             }}
@@ -241,21 +243,32 @@ const JoinPage = () => {
             <input
               id="male"
               type="radio"
-              checked
+              defaultChecked
               value="남성"
               name="gender"
+              onClick={(event) => {
+                setGender(event.target.value);
+              }}
             ></input>
             <label style={{ marginRight: "40px" }} htmlFor="male">
               남성
             </label>
-            <input id="female" type="radio" value="여성" name="gender"></input>
+            <input
+              id="female"
+              type="radio"
+              value="여성"
+              name="gender"
+              onClick={(event) => {
+                setGender(event.target.value);
+              }}
+            ></input>
             <label htmlFor="female">여성</label>
           </div>
           <h4 className="join_page_detail">
             <label id="age">나이</label>
           </h4>
           <select
-            value={age}
+            value={age || ""}
             onChange={(event) => {
               setAge(event.target.value);
             }}
@@ -271,7 +284,7 @@ const JoinPage = () => {
             data-placeholder="YYYY / MM / DD"
             required
             aria-required="true"
-            value={birth}
+            value={birth || ""}
             onChange={(event) => {
               setBirth(event.target.value);
             }}
