@@ -57,16 +57,17 @@ const ControlMenu = ({ value, onChange, optionList }) => {
 };
 
 const Community = () => {
-  const imgchange = process.env.PUBLIC_URL + `/icon/Pin.png`;
 
+  const [isAtive, SetisAtive] = useState(false);
   const [goodbt, Setgoodbt] = useState(0);
 
+  const img = isAtive ?  process.env.PUBLIC_URL + `/icon/Pin.png` : process.env.PUBLIC_URL + `/icon/PinChange.png`;
   const pushgoodbt = () => {
     Setgoodbt(goodbt + 1);
   };
 
-  const pushpinbt = (id) => {
-    const pinimg = process.env.PUBLIC_URL + `/icon/Pinchange.png`;
+  const pushpinbt = () => {
+    SetisAtive(!isAtive);
   };
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -82,7 +83,6 @@ const Community = () => {
   const [sortType, setSortType] = useState("latest");
   const PostList = useContext(PostStateContext);
   const [curDate, setCurDate] = useState(new Date());
-  console.log(PostList + " po");
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -127,7 +127,6 @@ const Community = () => {
       filter === 1 ? copyList : copyList.filter((it) => filters(it));
     const Searchfilterlist = filterlist.filter((it) => Searchfilter(it));
     const sortedList = Searchfilterlist.sort(compare);
-    console.log(sortedList);
     return sortedList;
   };
 
@@ -216,11 +215,11 @@ const Community = () => {
                       className="Community_body_four_postlist_imgs1"
                       src={process.env.PUBLIC_URL + `/icon/Good.png`}
                     />
-                    <div>{goodbt}</div>
+                    <div className="Community_body_four_postlist_imgs1_goodbt">{goodbt}</div>
                     <img
-                      className={`Community_body_four_postlist_imgs2${it.id}`}
-                      onClick={pushpinbt(it.id)}
-                      src={imgchange}
+                      className={"Community_body_four_postlist_imgs2"}
+                      onClick={()=>pushpinbt()}
+                      src={img}
                     />
                   </span>
                 </div>
