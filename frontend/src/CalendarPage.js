@@ -7,9 +7,9 @@ import CalendarNav from "./components/CalendarNav";
 const CalendarPage = ({ checked_date }) => {
   const [value, onChange] = useState(new Date());
 
-  const refinedDate = [];
+  const refined_date = [];
   for (const value of checked_date) {
-    console.dir(value);
+    refined_date.push(value.attended_date);
   }
 
   return (
@@ -50,7 +50,7 @@ const CalendarPage = ({ checked_date }) => {
               prev2Label={null}
               tileClassName={({ date, view }) => {
                 if (
-                  checked_date.find(
+                  refined_date.find(
                     (x) => x === moment(date).format("YYYY-MM-DD")
                   )
                 ) {

@@ -22,9 +22,10 @@ const my_level = (user_info) => {
     return "D";
   }
 };
-const MyPage = ({ user_info, checked_date, badge_info }) => {
+const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
+  
   const [value, onChange] = useState(new Date());
-
+  console.log(userdata)
   return (
     <div className="mypage">
       <MypageNav/>
@@ -38,12 +39,12 @@ const MyPage = ({ user_info, checked_date, badge_info }) => {
               <div className="mypage_my_info">
                 <div className="mypage_my_profile">
                   <img
-                    src={process.env.PUBLIC_URL + `/img/${it.profile}`}
-                    alt="profile"
+                    src={userdata?.profile?.profile_image}
+                    // alt="profile"
                   />
                   {/* <img src={`static/${it.profile}`} alt="profile"></img> */}
-                  <p className="mypage_nickname">{it.nickname}</p>
-                  <p className="mypage_email">{it.email}</p>
+                  <p className="mypage_nickname">{userdata?.last_name}</p>
+                  <p className="mypage_email">{userdata?.email}</p>
                   <button className="mypage_edit_profile_btn">
                     내정보수정
                   </button>

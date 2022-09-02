@@ -55,19 +55,6 @@ const dumyData = [
   },
 ];
 
-const dummy_checked_date = [
-  {
-    id: 8,
-    username: 4,
-    attended_date: "2022-08-10",
-  },
-  {
-    id: 9,
-    username: 4,
-    attended_date: "2022-08-03",
-  },
-];
-
 const dummy_badge = [
   { badge_id: 1, badge_type: "badge1.png" },
   { badge_id: 2, badge_type: "badge1.png" },
@@ -123,6 +110,8 @@ const dummyList2 = [
 ];
 function App() {
   const [place, setplace] = useState([]);
+  const [userdata, setuserdata] = useState();
+  const [attendDate, setAttendDate] = useState([]);
 
   const getData = async () => {
     const res = await fetch(
@@ -145,6 +134,37 @@ function App() {
 
     setplace(initData);
   };
+  useEffect(() => {
+    const getData = async () => {
+      let token = localStorage.getItem("token");
+      let token2 = "Token ".concat(token);
+      console.log(token2);
+      const res = await fetch("http://127.0.0.1:8000/auth/user", {
+        method: "GET",
+        headers: {
+          Authorization: "Token ".concat(token),
+        },
+      }).then((res) => res.json());
+      setuserdata(res);
+    };
+    getData();
+  }, []);
+
+  useEffect(() => {
+    const getAttendData = async () => {
+      let token = localStorage.getItem("token");
+      let token2 = "Token ".concat(token);
+      console.log(token2);
+      const res = await fetch("http://127.0.0.1:8000/auth/attend/", {
+        method: "GET",
+        headers: {
+          Authorization: "Token ".concat(token),
+        },
+      }).then((res) => res.json());
+      setAttendDate(res);
+    };
+    getAttendData();
+  }, []);
 
   useEffect(() => {
     getData();
@@ -193,31 +213,11 @@ function App() {
 
   useEffect(() => {
     init();
-  }, []);
-
+  });
+  const mypagelink = userdata?.id;
   // console.log(data);
-
-  const [attendDate, setAttendDate] = useState([]);
-
-  // const attendDatesForCalendar = () => {
-  //   let token = localStorage.getItem("token");
-  //   let token2 = "Token ".concat(token);
-  //   axios
-  //     .get("http://127.0.0.1:8000/auth/attend/", {
-  //       headers: { Authorizaion: `${token2}` },
-  //     })
-  //     .then((response) => {
-  //       // setAttendDate([...response.data]);
-  //       console.log(response);
-  //     });
-  //   if (attendDate.lengh < 1) {
-  //     setAttendDate(dummy_checked_date);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   attendDatesForCalendar();
-  // }, []);
+  // console.log(userdata?.id)
+  // console.log(userdata)
 
   return (
     <PostStateContext.Provider value={data}>
@@ -242,8 +242,9 @@ function App() {
                 path="/mypage"
                 element={
                   <MyPage
+                    userdata={userdata}
                     user_info={dummyList}
-                    checked_date={dummy_checked_date}
+                    checked_date={attendDate}
                     badge_info={dummy_badge}
                   />
                 }
