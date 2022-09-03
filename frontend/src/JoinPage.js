@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LoginPageHeader from "./components/LoginPageHeader";
 import "./css/JoinPage.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const JoinPage = () => {
+  const naviagte=useNavigate()
   const [isStaff, setIsStaff] = useState(false);
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
@@ -100,11 +102,12 @@ const JoinPage = () => {
       })
       .then(() => {
         // Handle success.
-        console.log("Well done!");
+        Navigate('/main')
         //페이지 이동 필요
       })
       .catch((error) => {
         console.log("An error occurred:", error.response);
+        alert("양식에 맞춰 다시 작성해주세요")
       });
   };
 

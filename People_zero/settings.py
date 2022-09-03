@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     
     'board',
     'store',
-    'accounts.apps.AccountsConfig'
+    'accounts'
 
 ]
 
