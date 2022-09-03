@@ -20,7 +20,7 @@ class Clean_StoreSerializer(serializers.ModelSerializer):
 
    class Meta:
       model = Clean_Store
-      fields = ['pk','store_name', 'store_image', 'opening_time', 'store_longtitude', 'store_latitude', 'telephone', 'description','point_avg']
+      fields = ['pk','store_name', 'store_image', 'opening_time', 'store_longtitude', 'store_latitude', 'telephone', 'description','point_avg','address','store_url']
       read_only_fields = ['point_avg']
       
 
