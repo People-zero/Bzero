@@ -26,16 +26,17 @@ const my_level = (user_info) => {
 };
 const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
   const navigate=useNavigate()
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
 		// 이미 로그인이 되어있다면 redirect
     if (localStorage.getItem('token') !== null) {
       console.log("로그인")
+      setLoading(true)
     } else {
       setLoading(false);
   
     }
-  }, []);
+  });
   
   const [value, onChange] = useState(new Date());
 

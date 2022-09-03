@@ -11,7 +11,7 @@ const navigate=useNavigate()
     }}><img src={process.env.PUBLIC_URL+`../img/로고 파랑 2.png`}></img> BZero</button>
     
     <div className="Map_nav_sellect">
-        <a href="/mypage"><div className="Map_nav_subtext" >마이페이지</div></a>
+    <div onClick={()=>{navigate('/mypage')}} className="Map_nav_subtext" >마이페이지</div>
         <div className="Map_nav_subtext" >가게 찾기</div>
         <div className="Map_nav_subsub">
             <div >클린스토어</div>
