@@ -35,11 +35,11 @@ class AttendViewSet(viewsets.ModelViewSet):
         username = request.user
         attended_date = request.POST['attended_date']
         if(Attendance.objects.filter(username=username, attended_date=attended_date)):
-            return Response({'a': 'a'})
+            return Response({'detail': 'already attend'})
         else:
             data = Attendance(username=username, attended_date=attended_date)
             data.save()
-            return Response({'b': 'b'})
+            return Response({'detail': 'successfully attend'})
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
