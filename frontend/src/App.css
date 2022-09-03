@@ -1,7 +1,1 @@
-*{
-  margin: 0px;
-  
-}
-.App{
-  display: flex;
-}
+@import url(reset.css);
