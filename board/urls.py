@@ -16,9 +16,18 @@ router.register(r"C/(?P<post_pk>\d+)", views.CommentViewSet, basename = Comment)
 urlpatterns = [
     path("",include(router.urls)),
     path('<int:pk>/recommend/', views.post_recommend, name='post_recommend'),  
-]
 
 #urls 
 # local/post/category = 카테고리별 뷰
 # local/post/C/post.id = 포스트 아이디에 따른 댓글창
 # local/post/post.id/recommend = 좋아요 or 싫어요 (toggle 로 구현)
+
+
+
+
+    path('',views.postListApiView.as_view()),
+    path('detail/<int:pk>',views.postDetailApiView.as_view()),
+    path('detail/<int:pk>/<int:commentpk>', views.commentDetailApiView.as_view()),
+    path('C/<int:category>',views.postCategoryListApiView.as_view()), 
+    path('recommend/<int:pk>',views.post_recommend, name = 'post_recommend'),  
+]
