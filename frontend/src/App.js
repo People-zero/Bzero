@@ -111,7 +111,7 @@ const dummyList2 = [
 ];
 function App() {
   const [place, setplace] = useState([]);
-  const [userdata, setuserdata] = useState();
+  const [userdata, setuserdata] = useState([]);
   const [attendDate, setAttendDate] = useState([]);
 
   const getData = async () => {
@@ -140,15 +140,18 @@ function App() {
       let token = localStorage.getItem("token");
       let token2 = "Token ".concat(token);
       console.log(token2);
-      const res = await fetch("http://127.0.0.1:8000/auth/user", {
+      const res = await fetch("http://127.0.0.1:8000/auth/accounts", {
         method: "GET",
         headers: {
           Authorization: "Token ".concat(token),
         },
       }).then((res) => res.json());
+      console.log(res)
       setuserdata(res);
     };
+
     getData();
+    
   }, []);
 
   useEffect(() => {

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import Calendar from "react-calendar";
 import "./css/MyPage.css";
 import MapNav from "./components/MapNav";
 import MypageNav from "./components/MypageNav";
+import Axios from 'axios'
 const point_list = [
   { level: "B", level_kr: "브론즈", min: 0, max: 1500 },
   { level: "S", level_kr: "실버", min: 1500, max: 4500 },
@@ -12,13 +13,13 @@ const point_list = [
 ];
 
 const my_level = (user_info) => {
-  if (user_info.point < 1500) {
+  if (user_info?.profile.point < 1500) {
     return "B";
-  } else if (user_info.point < 4500) {
+  } else if (user_info?.profile.point < 4500) {
     return "S";
-  } else if (user_info.point < 10000) {
+  } else if (user_info?.profile.point < 10000) {
     return "G";
-  } else if (user_info.point >= 10000) {
+  } else if (user_info?.profile.point >= 10000) {
     return "D";
   }
 };
@@ -29,13 +30,25 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
   for (const value of checked_date) {
     refined_date.push(value.attended_date);
   }
+  const handleLogout = () => {
+    let token = localStorage.getItem('token')
+    
+    Axios.post('http://127.0.0.1:8000/auth/logout/', token)
+      .then(res => {
+        localStorage.clear()
+        // 사용하려면 App.js에서 /로 라우팅해야 한다
+        window.location.replace('/main')
+      });
+  }
+useEffect(()=>{
+  const mydata=userdata[0]
+},[userdata])
 
-  console.log(userdata);
   return (
     <div className="mypage">
       <MypageNav />
       <div className="mypage_main">
-        {user_info.map((it) => (
+        
           <div>
             <header className="mypage_header">
               <p className="mypage_title">마이페이지</p>
@@ -43,13 +56,15 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
             <section className="mypage_my">
               <div className="mypage_my_info">
                 <div className="mypage_my_profile">
-                  <img
-                    src={userdata?.profile?.profile_image}
-                    // alt="profile"
-                  />
+                  
+                  {userdata[0]?.profile?.profile_image &&(
+                  <img src={userdata[0]?.profile?.profile_image}/>)}
+                    {!userdata[0]?.profile?.profile_image &&(
+                  <img src={process.env.PUBLIC_URL+`../img/Group 1183 (1).png`}/>)}
+      
                   {/* <img src={`static/${it.profile}`} alt="profile"></img> */}
-                  <p className="mypage_nickname">{userdata?.last_name}</p>
-                  <p className="mypage_email">{userdata?.email}</p>
+                  <p className="mypage_nickname">{userdata[0]?.last_name}</p>
+                  <p className="mypage_email">{userdata[0]?.email}</p>
                   <button className="mypage_edit_profile_btn">
                     내정보수정
                   </button>
@@ -78,9 +93,9 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
                       </a>
                     </li>
                     <li>
-                      <a className="mypage_goto_menu" href="#mypage_my_diary">
+                      <button className="mypage_goto_menu" onClick={()=>{handleLogout()}}>
                         로그아웃
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -89,13 +104,13 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
                 <div className="mypage_my_contents_top">
                   <div className="mypage_my_level">
                     <div className="mypage_level_title">
-                      <p>{it.nickname}님은</p>
+                      <p>{userdata[0]?.last_name}님은</p>
                     </div>
                     <div className="mypage_level_title2">
                       <p>현재&nbsp;</p>
                       <p className="mypage_level_kr">
                         {point_list
-                          .filter((list) => list.level === my_level(it))
+                          .filter((list) => list.level === my_level(userdata[0]))
                           .map((list) => (
                             <div>
                               <p> {list.level_kr}&nbsp;</p>
@@ -107,7 +122,7 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
                     <img
                       className="mypage_level_img"
                       src={
-                        process.env.PUBLIC_URL + `/img/level${my_level(it)}.png`
+                        process.env.PUBLIC_URL + `/img/level${my_level(userdata[0])}.png`
                       }
                       alt="level"
                     />
@@ -115,7 +130,7 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
                   </div>
                   <div className="mypage_my_point_status">
                     {point_list
-                      .filter((list) => list.level === my_level(it))
+                      .filter((list) => list.level === my_level(userdata[0]))
                       .map((list) => (
                         <div>
                           <p className="mypage_point_title">현재 포인트</p>
@@ -128,14 +143,14 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
                             {/* <img className="mypage_coins_img"
                               src={`static/coins.png`}
                               alt="coins"></img> */}
-                            <p className="mypage_my_point">{it.point}P</p>
+                            <p className="mypage_my_point">{userdata[0]?.profile.point}P</p>
                             <p className="mypage_next_point">
-                              다음 레벨까지 {list.max - it.point}P 남았어요!
+                              다음 레벨까지 {list.max - userdata[0]?.profile.point}P 남았어요!
                             </p>
                           </div>
                           <progress
                             className="mypage_point_progress"
-                            value={it.point}
+                            value={userdata[0]?.profile?.point}
                             min={list.min}
                             max={list.max}
                           ></progress>
@@ -326,7 +341,7 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
               </div>
             </section>
           </div>
-        ))}
+       
       </div>
     </div>
   );

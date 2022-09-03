@@ -1,8 +1,10 @@
 import LoginPageHeader from "./components/LoginPageHeader"
 import { FunctionComponent } from "react";
 import "./css/MainPage.css"
+import { useNavigate } from "react-router-dom";
 
 const MainPage=()=>{
+    const navigate=useNavigate()
     return(
     <div className="MainPage">
         
@@ -19,7 +21,7 @@ const MainPage=()=>{
                 제로웨이스터들을 위한 플랫폼
             </span>
 
-            <button className="MainPage_firstPage_start">
+            <button onClick={()=>{navigate('/mypage')}} className="MainPage_firstPage_start">
                 시작하기
             </button>
 
@@ -117,7 +119,7 @@ const MainPage=()=>{
        <div className="MainPage_fourthpage_maintext">제로웨이스터들을 위한 커뮤니티 플랫폼</div>
        <span className="MainPage_fourthpage_subtext">혹시 주위의 다른 제로웨이스터들과 소통하고 싶으신가요?<br></br>
        BZero의 제로웨이스트 커뮤니티를 이용하여 제로웨이스트 라이프를 공유해보세요!</span><br></br>
-       <button className="MainPage_fourthPage_start">시작하기</button>
+       <button onClick={()=>{navigate('/community')}}className="MainPage_fourthPage_start">시작하기</button>
        </div>
     </div>
 
@@ -126,7 +128,7 @@ const MainPage=()=>{
         <div className="MainPage_fifth_textbox">
             <div>제로웨이스트를 향한 첫 걸음</div>
             <div>지금  <img src={process.env.PUBLIC_URL+`../img/BZero.png`}></img> 로 시작해보세요!</div>
-            <div className="MainPage_fifth_button">
+            <div onClick={()=>{navigate('/mypage')}} className="MainPage_fifth_button">
                 시작하기
             </div>
 

@@ -54,9 +54,10 @@ INSTALLED_APPS = [
     # my apps
     'backend',
     'corsheaders',
-    'accounts',
+    
     'board',
     'store',
+    'accounts.apps.AccountsConfig'
 
 ]
 
