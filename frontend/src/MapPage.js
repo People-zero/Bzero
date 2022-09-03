@@ -245,7 +245,7 @@ ps.keywordSearch(where, placesSearchCB);
        var jibun_text=document.createElement('span')
        jibun_text.className='jubun_text'
        jibun.appendChild(jibun_text)
-       jibun_text.innerHTML='서울특별시 성북구 보국문로11길 18-2'
+       jibun_text.innerHTML=place[i].address
 
         var linktext=document.createElement('div')
         linktext.className='linktext'

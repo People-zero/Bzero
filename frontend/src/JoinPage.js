@@ -5,7 +5,7 @@ import "./css/JoinPage.css";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const JoinPage = () => {
-  const naviagte=useNavigate()
+  const navigate=useNavigate()
   const [isStaff, setIsStaff] = useState(false);
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
@@ -13,12 +13,18 @@ const JoinPage = () => {
   const [pwd1, setPwd1] = useState("");
   const [pwd2, setPwd2] = useState("");
   const [phone, setPhone] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("남자");
   const [age, setAge] = useState(15);
   const [birth, setBirth] = useState(null);
-
+  const [loading, setLoading] = useState(true);
   const [userType, setUserType] = useState(true);
-
+  useEffect(() => {
+  if (localStorage.getItem('token') !== null) {
+    window.location.replace('http://localhost:3000/main');
+  } else {
+    setLoading(false);
+  }
+}, []);
   const user_type_btn_event_1 = () => {
     setUserType(true);
   };
@@ -102,12 +108,12 @@ const JoinPage = () => {
       })
       .then(() => {
         // Handle success.
-        Navigate('/main')
+        navigate('/main')
         //페이지 이동 필요
       })
       .catch((error) => {
         console.log("An error occurred:", error.response);
-        alert("양식에 맞춰 다시 작성해주세요")
+        // alert("양식에 맞춰 다시 작성해주세요")
       });
   };
 

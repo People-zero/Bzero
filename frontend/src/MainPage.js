@@ -21,7 +21,7 @@ const MainPage=()=>{
                 제로웨이스터들을 위한 플랫폼
             </span>
 
-            <button onClick={()=>{navigate('/mypage')}} className="MainPage_firstPage_start">
+            <button onClick={()=>{navigate('/map')}} className="MainPage_firstPage_start">
                 시작하기
             </button>
 

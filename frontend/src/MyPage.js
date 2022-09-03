@@ -5,6 +5,7 @@ import "./css/MyPage.css";
 import MapNav from "./components/MapNav";
 import MypageNav from "./components/MypageNav";
 import Axios from 'axios'
+import { Navigate, useNavigate } from "react-router-dom";
 const point_list = [
   { level: "B", level_kr: "브론즈", min: 0, max: 1500 },
   { level: "S", level_kr: "실버", min: 1500, max: 4500 },
@@ -24,12 +25,26 @@ const my_level = (user_info) => {
   }
 };
 const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
+  const navigate=useNavigate()
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+		// 이미 로그인이 되어있다면 redirect
+    if (localStorage.getItem('token') !== null) {
+      console.log("로그인")
+    } else {
+      setLoading(false);
+  
+    }
+  }, []);
+  
   const [value, onChange] = useState(new Date());
 
   const refined_date = [];
+  if(loading===true){
   for (const value of checked_date) {
     refined_date.push(value.attended_date);
   }
+}
   const handleLogout = () => {
     let token = localStorage.getItem('token')
     
@@ -46,7 +61,8 @@ useEffect(()=>{
 
   return (
     <div className="mypage">
-      <MypageNav />
+      <MypageNav/>
+      {loading===true &&(
       <div className="mypage_main">
         
           <div>
@@ -340,9 +356,17 @@ useEffect(()=>{
                 </div>
               </div>
             </section>
+
           </div>
        
       </div>
+      )}
+      {loading===false &&(
+      <div className="loginfailed">마이페이지는 로그인 후 이용해주세요
+      <div>
+      <button onClick={()=>{navigate('/login')}} className="loginfailed_login">로그인</button>
+      <button onClick={()=>{navigate('/login')}} className="loginfailed_join">회원가입</button></div></div>
+      )}
     </div>
   );
 };
