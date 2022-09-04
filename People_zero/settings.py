@@ -181,9 +181,9 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'  # email 유효성인증 하지 않음
 
 # ACCOUNT_EMAIL_REQUIRED = False
 
-REST_USE_JWT = True
-JWT_AUTH_COOKIE = 'my-app-auth'
-JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+# REST_USE_JWT = True
+# JWT_AUTH_COOKIE = 'my-app-auth'
+# JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 
 # SITE_ID = 1
 # ACCOUNT_UNIQUE_EMAIL = True
