@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
 import Calendar from "react-calendar";
-import "./css/MyPage.css"
+import "./css/MyPage.css";
 import MapNav from "./components/MapNav";
 import MypageNav from "./components/MypageNav";
 const point_list = [
@@ -23,12 +23,17 @@ const my_level = (user_info) => {
   }
 };
 const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
-  
   const [value, onChange] = useState(new Date());
-  console.log(userdata)
+
+  const refined_date = [];
+  for (const value of checked_date) {
+    refined_date.push(value.attended_date);
+  }
+
+  console.log(userdata);
   return (
     <div className="mypage">
-      <MypageNav/>
+      <MypageNav />
       <div className="mypage_main">
         {user_info.map((it) => (
           <div>
@@ -160,7 +165,7 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
                         prevLabel={null}
                         tileClassName={({ date, view }) => {
                           if (
-                            checked_date.find(
+                            refined_date.find(
                               (x) => x === moment(date).format("YYYY-MM-DD")
                             )
                           ) {

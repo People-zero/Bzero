@@ -1,6 +1,3 @@
-from email.policy import HTTP
-from http.client import HTTPMessage
-from django.shortcuts import render
 from .models import User, Attendance, Profile
 from rest_framework import viewsets, permissions, generics
 from accounts.serializers import UserSerializer, AttendSerializer, ProfileSerializer
@@ -15,20 +12,12 @@ class UserViewSet(viewsets.ModelViewSet):
 
     http_method_names = ['get', 'patch']  # get method 만을 활용
 
-    # def list(self, request):
-    #     user = request.user
-    #     queryset = User.objects.filter(username=user)
-    #     serializer = self.get_serializer(queryset, many=True)
-    #     return Response(serializer.data)
+    def list(self, request):
+        user = request.user
+        queryset = User.objects.filter(username=user)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
-class UserAPI(generics.RetrieveAPIView):
-    permission_class = [
-        permissions.IsAuthenticated,
-    ]
-    serializer_class = UserSerializer
-
-    def get_object(self):
-        return self.request.user
 
 
 class AttendViewSet(viewsets.ModelViewSet):
@@ -46,11 +35,11 @@ class AttendViewSet(viewsets.ModelViewSet):
         username = request.user
         attended_date = request.POST['attended_date']
         if(Attendance.objects.filter(username=username, attended_date=attended_date)):
-            return Response({'a': 'a'})
+            return Response({'detail': 'already attend'})
         else:
             data = Attendance(username=username, attended_date=attended_date)
             data.save()
-            return Response({'b': 'b'})
+            return Response({'detail': 'successfully attend'})
 
 
 class ProfileViewSet(viewsets.ModelViewSet):

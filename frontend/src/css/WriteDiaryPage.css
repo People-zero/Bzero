@@ -1,0 +1,138 @@
+body {
+  max-width: 1670px;
+  margin-bottom: 46px;
+}
+.write_diary_page {
+  width: 86.97%;
+  max-width: 1670px;
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="file"] {
+  /* 파일 필드 숨기기 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* 일기 헤더 */
+.header {
+  height: 114px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #0679ff;
+}
+
+.page_title {
+  font-size: 24px;
+  color: black;
+  margin-left: 72px;
+}
+
+.tip {
+  font-size: 15px;
+  color: #767678;
+  margin-right: 101px;
+  margin-top: 23px;
+}
+
+/* 일기 작성 */
+
+.main_body {
+  width: 78.80%;
+  max-width: 1316px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.input_header_div {
+  margin-top: 40px;
+  margin-bottom: 29px;
+  display: flex;
+  justify-content: space-between;
+}
+.input_header_title {
+  font-size: 18px;
+  color: #0679ff;
+}
+.input_header_timestmap {
+  font-size: 13px;
+  color: #767678;
+}
+
+/* 일기 제목 입력 */
+.diary_title_input {
+  border: 1px solid #0679ff;
+  background-color: #eaf4ff;
+  border-radius: 10px;
+  height: 59px;
+  font-size: 16px;
+  padding-left: 27px;
+}
+
+/* 일기 내용 입력 */
+.diary_text_input {
+  resize: none;
+  border: 1px solid #0679ff;
+  border-radius: 10px;
+  height: 453px;
+  font-size: 15px;
+  padding-left: 27px;
+  padding-right: 27px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.diary_text_input:focus {
+  outline: none !important;
+}
+
+/* 일기 사진 첨부 */
+.diary_image_input {
+  border: 1px solid #0679ff;
+  background-color: #eaf4ff;
+  color: #767678;
+  border-radius: 10px;
+  height: 59px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  padding-left: 27px;
+}
+.diary_image_input p {
+  margin-left: 5px;
+}
+
+/* 일기 제출 */
+.diary_buttons {
+  margin-top: 28px;
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancel_btn {
+  font-size: 18px;
+  color: #0679ff;
+  display: flex;
+  align-items: center;
+}
+.cancel_btn p {
+  margin-left: 4px;
+}
+
+.submit_btn {
+  width: 168px;
+  height: 52px;
+  background-color: #0788ff;
+  color: white;
+  border-radius: 10px;
+  font-size: 18px;
+}
