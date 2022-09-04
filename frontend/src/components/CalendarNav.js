@@ -18,7 +18,7 @@ const navigate=useNavigate()
             <a href="/map"><div style={{color:'#979797'}}>공병스토어</div></a>
         </div>
         <button onClick={()=>{navigate('/community')}} className="Map_nav_subtext">커뮤니티</button>
-        <div className="Map_nav_subtext" style={{color:'#0679FF'}}>제로웨이스트 일기</div>
+        <div style={{cursor:"pointer",color:'#0679FF'}} className="Map_nav_subtext" >제로웨이스트 일기</div>
         
     </div>
 
