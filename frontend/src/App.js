@@ -1,11 +1,12 @@
 
 import './App.css';
+import EditProfilePage from './EditProfilePage';
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
   return (
     // <BrowserRouter>
     <div className="App">
-      프론트엔드팀 화이팅~
+      <EditProfilePage/>
       {/* <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/new' element={<New></New>}></Route>

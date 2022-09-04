@@ -29,6 +29,6 @@ class Profile(models.Model):
     profile_image = models.ImageField(upload_to='image/', blank=True, null=True)
     intro_comment = models.CharField(max_length=150, blank=True, null=True)
     point = models.IntegerField(default=0)
-
+    
 
 # Create your models here.

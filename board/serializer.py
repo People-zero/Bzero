@@ -1,30 +1,30 @@
 from rest_framework import serializers
 from . import models
-import re
+
 
 class PostSerializer(serializers.ModelSerializer):
-    is_ttabong = serializers.SerializerMethodField("ttabong_field")
+    created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+    updated_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
     
-    def ttabong_field(self,post):
-        if "request" in self.context:
-            user = self.context["request"].user
-            return post.ttabong.filter(pk = user.pk).exists()
-        return False
-
     class Meta:
         model = models.Post
-        fields = [
-            "category",
-            "title",
-            "image",
-            "content",
-            "user",
-            "is_ttabong"]
-        
-    
-
+        fields = "__all__"
 
 class CommentSerializer(serializers.ModelSerializer):
+    created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+    updated_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
     class Meta:
         model = models.Comment
-        fields = "__all__"
+        fields = ("post","created_at","updated_at","content","author")
+
+
+class Post_DetailSerializer(serializers.ModelSerializer):
+    comment_set = CommentSerializer(many=True)
+    created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+    updated_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+    
+    class Meta:
+        model = models.Post
+        fields = ("id",'comment_set',"created_at", "updated_at","category","content","image","recommend_user_set")
+
+

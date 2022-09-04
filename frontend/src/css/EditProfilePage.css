@@ -1,0 +1,207 @@
+.body {
+  width: 86.97%;
+  max-width: 1670px;
+  margin-bottom: 46px;
+}
+
+.main_body {
+  width: 86.97%;
+  max-width: 1670px;
+  display: flex;
+}
+
+.my_page_title {
+  font-size: 24px;
+  height: 114px;
+  width: 86.97%;
+  max-width: 1670px;
+  padding-left: 74px;
+  padding-top: 42px;
+  border-bottom: 1px solid #0679ff;
+}
+
+/* 프로필 파트 */
+
+.profile_image {
+  border-radius: 50%;
+  width: 177px;
+  height: 177px;
+}
+.profile_body {
+  padding-top: 54px;
+  width: 28.44%;
+  max-width: 475px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile_nickname {
+  font-size: 15px;
+  color: #151515;
+  margin-top: 45px;
+}
+.profile_email {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #545454;
+}
+.profile_navibar {
+  width: 243px;
+  margin-top: 35px;
+  padding-top: 46px;
+  border-top: 1px solid #0679ff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.navi_btn {
+  font-size: 15px;
+  margin-top: 11px;
+  color: #474747;
+}
+.profile_edit_btn {
+  width: 152px;
+  height: 40px;
+  font-size: 13px;
+  color: #0679ff;
+  border: 1px solid #0679ff;
+  border-radius: 50px;
+  margin-top: 45px;
+}
+/* 프로필 수정 파트  */
+
+.edit_profile {
+  padding-top: 46px;
+  width: 71.52%;
+  max-width: 1198px;
+  display: flex;
+  flex-direction: column;
+}
+.edit_profile_title {
+    padding-left: 63px;
+  font-size: 18px;
+  color: black;
+}
+.profile_image_margin {
+  justify-self: center;
+  margin-top: 82.5px;
+  margin-bottom: 82.5px;
+}
+.edit_profile_main {
+  padding-top: 27px;
+  width: 70.53%;
+  max-width: 845px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+}
+
+.input_div {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+}
+.input_tag {
+  color: #767678;
+  font-size: 13px;
+}
+.profile_input_tag {
+  color: #767678;
+  font-size: 13px;
+  align-self: flex-start;
+}
+.input_text {
+  padding-left: 10px;
+  width: 69.58%;
+  max-width: 588px;
+  height: 36px;
+  border: 1px solid #bdc8d3;
+  border-radius: 5px;
+  color: #252525;
+  font-size: 13px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  width: 13px;
+  height: 16.125px;
+  margin-right: 14px;
+
+  content: url("/src/images/calendar_icon.svg");
+}
+input[type="file"] {
+  /* 파일 필드 숨기기 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.camera_upload_button {
+  position: absolute;
+  margin-left: 133.5px;
+  margin-top: -54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid #0679ff;
+}
+.input_div {
+  height: 36px;
+  margin-bottom: 36px;
+}
+.radios {
+  display: flex;
+  width: 69.58%;
+  max-width: 588px;
+}
+.radio {
+  margin-left: 36px;
+  width: 15px;
+  height: 15px;
+}
+label {
+  font-size: 13px;
+  color: #454545;
+}
+.age {
+  margin-right: 508px;
+  width: 78px;
+  height: 36px;
+  border: 1px solid #bdc8d3;
+  border-radius: 5px;
+  color: #454545;
+  font-size: 13px;
+}
+.sumbit_btn {
+  width: 136.5px;
+  height: 42px;
+  color: white;
+  font-size: 15px;
+  border-radius: 5px;
+  background-color: #0788ff;
+  align-self: flex-end;
+}
+
+/* 회원 탈퇴 */
+.withdrawal {
+  align-self: center;
+  margin-top: 36px;
+  border-top: 1px solid #0679ff;
+  width: 1030px;
+}
+
+.withdrawal_btn {
+  color: #0679ff;
+  font-size: 13px;
+  margin-top: 15.75px;
+}
