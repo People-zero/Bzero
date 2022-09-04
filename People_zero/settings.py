@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     # rest_auth
-    'rest_auth',
+    'dj_rest_auth',
     'allauth',
     'allauth.account',
     # 'allauth.socialaccount',
@@ -180,3 +180,16 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'  # email 유효성인증 하지 않음
 # ACCOUNT_AUTHENTICATION_METHOD = 'username'
 
 # ACCOUNT_EMAIL_REQUIRED = False
+
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+
+# SITE_ID = 1
+# ACCOUNT_UNIQUE_EMAIL = True
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+# ACCOUNT_USERNAME_REQUIRED = False
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_PHONE_NUMBER = True
