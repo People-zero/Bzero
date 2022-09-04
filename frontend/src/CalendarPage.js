@@ -39,7 +39,9 @@ const CalendarPage = ({ checked_date }) => {
               onChange={onChange}
               value={value}
               onClickDay={(value, event) =>
-                window.location.assign(`/${moment(value).format("YYYY-MM-DD")}`)
+                window.location.assign(
+                  `/diary_detail/${moment(value).format("YYYY-MM-DD")}`
+                )
               }
               calendarType="US"
               formatDay={(locale, date) => moment(date).format("D")}
