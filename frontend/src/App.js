@@ -22,6 +22,65 @@ import BottleStore from "./BottleStore";
 import RegistStore from "./RegistStore";
 import Post from "./Post.js"
 import EditProfilePage from "./EditProfilePage";
+import DiaryDetailPage from "./DiaryDetailPage";
+const dummy_diary = [
+  {
+    id: 1,
+    user: "user",
+    profile: "example_profile.jpg",
+    created_at: "2022-09-01 18:30:00",
+    title: "제목들어가는 자리0901",
+    content: "포스트 내용1",
+  },
+  {
+    id: 2,
+    user: "user",
+    profile: "example_profile.jpg",
+    created_at: "2022-09-03 18:30:00",
+    title: "제목들어가는 자리0903",
+    content: "포스트 내용2",
+  },
+  {
+    id: 3,
+    user: "user",
+    profile: "example_profile.jpg",
+    created_at: "2022-09-04 18:30:00",
+    title: "제목들어가는 자리0904",
+    content: "포스트 내용3",
+  },
+];
+const dumyData = [
+  {
+    id: 1,
+    emotion: 1,
+    content: "송하윤 멋져 1",
+    date: 1660478254683,
+  },
+  {
+    id: 2,
+    emotion: 2,
+    content: "송하윤 멋져 2",
+    date: 1660478254684,
+  },
+  {
+    id: 3,
+    emotion: 3,
+    content: "송하윤 멋져 3",
+    date: 1660478254685,
+  },
+  {
+    id: 4,
+    emotion: 4,
+    content: "송하윤 멋져 4",
+    date: 1660478254686,
+  },
+  {
+    id: 5,
+    emotion: 5,
+    content: "송하윤 멋져 5",
+    date: 1660478254687,
+  },
+];
 
 
 
@@ -66,17 +125,16 @@ const dummyList2 = [
     photo1: photo1,
     photo2: photo2,
     map: "",
-    photo3:photo3,
-    businessDay : "평일",
-    businessHour : "오전 10시 - 오후 7시",
-    dayOff : "토•일•공휴일",
-    CollectHour :"오전 10시 - 오후 7시",
-    address : "서울특별시 OO구 OO 길 1232-12(OO동)",
-    CollectDay : "매주 수요일",
-    inquiries : "02-OOO-OOOO",
-    info_title:"가게에 대한 설명 (부제목)",
-    info:"가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~",
-
+    photo3: photo3,
+    businessDay: "평일",
+    businessHour: "오전 10시 - 오후 7시",
+    dayOff: "토•일•공휴일",
+    CollectHour: "오전 10시 - 오후 7시",
+    address: "서울특별시 OO구 OO 길 1232-12(OO동)",
+    CollectDay: "매주 수요일",
+    inquiries: "02-OOO-OOOO",
+    info_title: "가게에 대한 설명 (부제목)",
+    info: "가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~",
   },
 ];
 function App() {
@@ -259,7 +317,10 @@ function App() {
                 path="/bottle_store"
                 element={<BottleStore store={dummyList2}></BottleStore>}
               ></Route>
-              <Route path="/post" element={<Post/>}></Route>
+              <Route
+                path="/diary_detail/:date"
+                element={<DiaryDetailPage dummy_diary={dummy_diary} />}
+              ></Route>
             </Routes>
           </BrowserRouter>
         
