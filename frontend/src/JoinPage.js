@@ -108,7 +108,7 @@ const JoinPage = () => {
       })
       .then(() => {
         // Handle success.
-        navigate('/main')
+        window.location.replace('http://localhost:3000/main')
         //페이지 이동 필요
       })
       .catch((error) => {
