@@ -1,9 +1,11 @@
 from .models import User, Attendance, Profile
-from rest_framework import viewsets, permissions, generics
+from rest_framework import viewsets, permissions
 from accounts.serializers import UserSerializer, AttendSerializer, ProfileSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
-
+from dj_rest_auth.registration.views import RegisterView
+from rest_framework import viewsets
+from django.utils.translation import gettext_lazy as _
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -11,14 +13,12 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     http_method_names = ['get', 'patch']  # get method 만을 활용
-
+    
     def list(self, request):
         user = request.user
         queryset = User.objects.filter(username=user)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
-
-
 
 class AttendViewSet(viewsets.ModelViewSet):
     queryset = Attendance.objects.all()

@@ -18,7 +18,7 @@ class attendanceAdmin(admin.ModelAdmin):
 admin.site.register(Attendance, attendanceAdmin)
 
 class profileAdmin(admin.ModelAdmin):
-    list_display = ('profile_image', 'intro_comment', 'point')
+    list_display = ('username','profile_image', 'intro_comment', 'point')
 
 admin.site.register(Profile, profileAdmin)
 
