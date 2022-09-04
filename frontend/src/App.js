@@ -22,56 +22,7 @@ import BottleStore from "./BottleStore";
 import RegistStore from "./RegistStore";
 import Post from "./Post.js"
 import EditProfilePage from "./EditProfilePage";
-const FirstData = [
-  {
-    id: 1,
-    emotion: 1,
-    user: "Player1",
-    title: "a 1",
-    content: "가 라 1",
-    date: 1660478254683,
-  },
-  {
-    id: 2,
-    emotion: 2,
-    user: "Player2",
-    title: "b 2qweipqwjeioqjwejqhjoiwejqkwejoqiwjeioqwjioenqwneoiqw",
-    content: "나 2dasdasdsasaddassadsaddasadsdass",
-    date: 1660478254684,
-  },
-  {
-    id: 3,
-    emotion: 3,
-    user: "Player3",
-    title: "c 3",
-    content: "다 3",
-    date: 1660478254685,
-  },
-  {
-    id: 4,
-    emotion: 4,
-    user: "Player4",
-    title: "d 4",
-    content: "라 4",
-    date: 1660478254686,
-  },
-  {
-    id: 5,
-    emotion: 5,
-    user: "Player5",
-    title: "e 5",
-    content: "마 5",
-    date: 1660478254687,
-  },
-  {
-    id: 6,
-    emotion: 5,
-    user: "Player6",
-    title: "e 5",
-    content: "마 리아 5",
-    date: 1660478254688,
-  },
-];
+
 
 
 const dummy_badge = [
@@ -129,9 +80,36 @@ const dummyList2 = [
   },
 ];
 function App() {
+
+
   const [place, setplace] = useState([]);
   const [userdata, setuserdata] = useState([]);
   const [attendDate, setAttendDate] = useState([]);
+  const [FirstData,setFirstdata]=useState([]);
+
+  const getpost = async () => {
+    const res = await fetch(
+      "http://127.0.0.1:8000/post"
+    ).then((res) => res.json());
+    // console.log(res); // 500개의 데이터
+  
+    const initData = res.map((it) => {
+      // console.log(it.id)
+      return {
+        id: it.id,
+        emotion:it.category,
+        user:it.author, // 작성자
+        title:it.title,
+        content:it.content,
+        date: it.created_at,
+        
+        // image: it.store_image,
+      };
+    });
+  
+    setFirstdata(initData);
+  };
+
 
   const getData = async () => {
     const res = await fetch(
@@ -170,7 +148,7 @@ function App() {
     };
 
     getData();
-    
+    getpost();
   }, []);
 
   useEffect(() => {
@@ -228,6 +206,7 @@ function App() {
 
   useEffect(() => {
     // init();
+    console.log(FirstData)
   });
   const mypagelink = userdata?.id;
   // console.log(data);

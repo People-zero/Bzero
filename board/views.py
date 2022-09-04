@@ -35,7 +35,7 @@ class postListApiView(APIView):
     # when creating post
     # 1. increasing point from accounts/model.profile.point
     # 2. add now() at accounts/model.Attendance.attended_date
-    @login_required
+    # @login_required
     def post(self,request):
         serializer = PostSerializer(data=request.data)
         if serializer.is_valid():
