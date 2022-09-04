@@ -1,0 +1,89 @@
+@import url(reset.css);
+
+/* Header */
+
+.Details_header {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid greenyellow;
+    height: 10%;
+}
+
+.Details_header_title {
+    width: 50%;
+    font-size: 30px;
+    color: green;
+}
+
+.Details_header_right {
+    width: 50%;
+    display: flex;
+    padding-top: 8px;
+    justify-content: end;
+    color: #bbb;    
+}
+
+.Details_header_right div {
+    padding-right: 30px;
+}
+
+/* Body */
+
+.Details_Body {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Details_Body_1 {
+    width: 80%;
+    display: flex;
+}
+
+.Details_Body_1_route {
+    display: flex;
+    color: gray;
+    width: 80%;
+    padding-top: 50px;
+}
+
+.Details_Body_1_route_s {
+    margin-left: 5px;
+}
+
+.Details_Body_2 {
+    width: 80%; 
+}
+
+.Details_Body_2_title {
+    padding-top: 20px;
+    font-size: 23px;
+}
+
+.Details_Body_3 {
+    width: 80%;
+}
+
+.Details_Body_3_user{
+    padding-top: 20px;
+}
+
+.Details_Body_4 {
+    width: 80%;
+}
+
+.Details_Body_4_post {
+}
+
+.Details_Body_5 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.Details_Body_5_answer {
+    width: 80%;
+}

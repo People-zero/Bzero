@@ -26,3 +26,4 @@ class Post_DetailSerializer(serializers.ModelSerializer):
         model = models.Post
         fields = ("id",'comment_set',"created_at", "updated_at","category","content","image","recommend_user_set")
 
+

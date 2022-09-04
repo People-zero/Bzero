@@ -2,13 +2,16 @@
     box-sizing: border-box;
   }
   
-  
-  /* html {
+  @import url('https://rsms.me/inter/inter.css');
+
+
+
+  html {
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
       "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
       "Malgun Gothic", sans-serif !important;
   }
-   */
+  
   html,
   body,
   div,
@@ -154,6 +157,8 @@
     text-decoration: none;
     color: inherit;
   }
+  
+  
   
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {

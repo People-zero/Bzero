@@ -1,0 +1,328 @@
+  .BottleStore{
+    display: flex;
+  }
+  .bottlestore_navbar_left{
+    background-color: white;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    border: 1px solid #0679FF;
+    border-style: none solid none none;
+    height: 800px;
+    width: 173px;
+    padding: 20px 26px;
+  }
+  .bottlestore_navbar_left_menu {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 300px; 
+    margin-top: 40px;
+  }
+  .bottlestore_navbar_left_menu > .bottlestore_present {
+    color: #0679FF;
+  }
+
+  .bottlestore_store > a{
+    color: gray;
+    margin-left: 10px;
+    display:block;
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  
+  .bottlestore_navbar_left_menu > .bottlestore_store > .bottlestore_focus{
+    color: black;
+  }
+  
+  .bottlestore_navbar_left_logout > a {
+    color: black;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  
+  .bottlestore_navbar_left_menu > a{
+    color: black;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 8px 0;
+  }
+
+ 
+  .bottlestore_navbar_left_menu > a:hover{
+    color: #0679FF;
+  }
+  
+  
+  .bottlestore_right{
+    display: flex;
+    padding-left: 173px;
+    flex-direction: column;
+    max-width: 1000px;
+  }
+  .bottlestore_navbar_top{
+    display: flex;
+    position: fixed;
+    background-color: white;
+    border: 1px solid #0679FF;
+    border-style: none none solid none;
+    width: 100%;
+    padding: 5px 0px 10px;
+  }
+ 
+  .bottlestore_navbar_top > .bottlestore_text{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 55px;
+    align-items: center;
+    display: flex;
+  }
+  .bottlestore_navbar_top > .bottlestore_text > .bottlestore_title{
+    font-weight: bolder;
+    font-size: 19px;
+    margin-right: 20px;
+  }
+  
+ 
+  .bottlestore_main > .bottlestore_summary {
+    flex-grow: 1;
+    padding: 88px 62px;
+    
+}
+
+.bottlestore_summary_title {
+    margin-top: 33px;
+    display: flex;
+    margin-bottom: 25px;
+    width: 1170px;
+}
+
+.bottlestore_summary_title > p{
+  color : #0679FF;
+  font-weight: 400;
+  font-size: 40px;
+  flex-grow: 1;
+}
+
+
+.bottlestore_summary_title >.bottlestore_url > button{
+    border-radius: 50px;
+    cursor: pointer;
+    margin-left: 0px;
+    display: flex;
+    width: 225px;
+    border: 1px solid #0679FF;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+    color: #0679FF;
+    background-color: white;
+    padding: 7px 0px 4px 35px;
+}
+
+
+.bottlestore_summary_title > .bottlestore_url > button > a{
+  color : #0679FF;
+  text-decoration: none;
+}
+
+.bottlestore_summary_title > .bottlestore_url > button > img{
+  width: 24px;
+  height: 21px;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+ /*.bottlestore_summary_content > .star{
+  z-index: 1000;
+  margin-left: 55px;
+  margin-right: 10px;
+  height: 15px;
+  overflow: hidden;
+}
+.bottlestore_summary_content > .real_star {
+    z-index: 10;
+    height: 19px;
+}*/
+
+.bottlestore_summary_content{
+  width: 1200px;
+}
+.bottlestore_summary_content > .bottlestore_info_summary {
+  color: #474747;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  padding-left: 700px;
+}
+
+.bottlestore_info_photo  {
+  width: 1230px;
+}
+
+
+.bottlestore_content_group {
+  border-top: 1px solid #0679FF;
+  flex-grow: 1;
+  padding-left: 50px ;
+  width: 1350px;
+  margin-bottom: 30px;
+}
+
+.bottlestore_content_group > .bottlestore_content_title{
+  color:#075CFF;
+  padding-top:30px;
+  padding-bottom: 30px;
+  font-size: 19px;
+}
+.bottlestore_content_group > .bottlestore_content_title > img{
+  padding-right: 5px;
+  width: 17px;
+}
+.bottlestore_content {
+  display: flex;
+  padding-bottom: 20px;
+}
+
+.bottlestore_content_left {
+  padding-bottom: 20px;
+  font-size: 17px;
+  display: flex;
+  flex-grow: 1;
+  padding-top: 230px;
+ }
+
+ .bottlestore_content_left >  .content_subtitle {
+  padding-right: 15px;
+ }
+
+.bottlestore_content_left > .content_subtitle > p{
+  color:#0679FF;
+  padding-bottom: 48px;
+  padding-left: 30px;
+}
+.bottlestore_content_left > .content_subtitle > .another_content,
+.bottlestore_content_left > .content_subcontent >.another_content{
+  padding-bottom: 23px;
+  padding-top: 13px;
+}
+
+.bottlestore_content_left > .content_subcontent > span{
+  display: block;
+  padding-left: 50px;
+  padding-bottom: 9px;
+  font-weight: 340;
+  padding-bottom: 15.5px;
+}
+ .content_subcontent >.another_content {
+  padding-top:10px;
+}
+.bottlestore_content_left > .content_subcontent > span > .bold{
+  font-weight: 550;
+  padding-right: 6px;
+}
+
+
+.bottlestore_content > .bottlestore_content_right {
+  flex-grow: 1;
+  margin-top: 100px;
+  margin-right: 70px;
+  border: 6px solid;
+  width: 400px;
+  height: 350px;
+}
+
+.bottlestore_photo_zip {
+  display: inline;
+  
+}
+
+.bottlestore_photo_zip > img {
+  width: 400px;
+  height: 300px;
+  margin : 8px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border: none;
+}
+.bottlestore_info_title {
+  font-size: 30px;
+  font-weight: border;
+  padding: 12px;
+}
+.bottlestore_info_content {
+  padding: 12px;
+  padding-top: 40px;
+  color: #474747;
+  width: 800px;
+}
+
+.bottlestore_bottletype_text {
+  background-color: #DDFFD8;
+    font-size: 15px;
+    padding: 5px 15px;
+    border-radius: 100px;
+    text-decoration: none;
+    margin-left: 20px;
+}
+.bottlestore_bottletype_pic{
+  position: relative;
+  margin-top: 130px;
+  padding-bottom: 400px;
+}
+.bottlestore_bottletype_pic > .bottlestore_bottletype_box {
+  margin-top: 60px;
+}
+.bottlestore_bottletype_pic > .bottlestore_bottletype_box>img{
+  position:absolute;
+  width: 670px;
+  left: 300px;
+  z-index:2;
+  top: 200px;
+}
+.bottlestore_bottletype_pic > .bottlestore_bottletype_bottle {
+  position:absolute;
+left:500px;
+top: 1px;
+z-index:1;
+}
+
+
+.bottlestore_bottletype_bottle > img{
+  padding-right: 16px;
+  }
+
+  .bottlestore_bottledetail{
+    display: flex;
+  }
+  .bottlestore_bottledeail_content{
+    padding-right: 20px;
+    display: block;
+    margin-top: 240px;
+  }
+  .bottlestore_bottledeail_content p{
+    margin-top: 5px;
+  }
+  .bottlestore_bottledeail_content img{
+    width: 300px;
+  }
+
+  .bottlestore_slide{
+    position: absoulte;
+  }
+
+ .bottlestore_review {
+  text-align: center;
+  display: block;
+  margin-top: 120px;
+ }
+ .bottlestore_review h3,
+ .bottlestore_star{
+  margin-bottom: 40px;
+ }
+ .bottlestore_review textarea{
+  width:700px;
+  height: 70px;
+  resize: none;
+  border: solid 0.2px #0679FF;
+    border-radius: 5px;
+ }

@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./css/EditProfilePage.css";
 import camera_icon from "./images/camera_icon.svg";
 import withdrawl_icon from "./images/withdrawl_icon.svg";
-
+import axios from "axios";
 function EditProfilePage() {
   const [profile_data, set_profile_data] = useState({
     name: "",

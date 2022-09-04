@@ -1,1 +1,644 @@
-@import url(reset.css);
+
+.App {
+    min-height: 100vh; /* App 컴포넌트는 화면의 100%에 차지하는 높이를 갖게 된다. */
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+
+/* CleanStore */
+
+.CleanStore article{
+    display: flex;
+    flex-direction: column;
+}
+
+.CleanStore{
+    justify-content: center;
+    display: flex;
+}
+
+.CleanStore .menu_wrapper{ 
+    margin-left: 160px;
+}
+
+.CleanStore .cleanstore_list {
+    display: flex;
+    flex-grow: 1; 
+}
+
+.CleanStore .cleanstore_content{
+    display: flex;
+    flex-direction: column;
+    margin-left: 72px;  
+}
+
+.CleanStore h2{
+    margin-top: 42px;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39px;
+}
+
+.CleanStore h4{
+    margin-top: 15px;
+    line-height: 22px;
+    color: #767678;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.CleanStore .earth_logo{
+    margin-top: 42px;
+    margin-left: 980px;
+    margin-right: 105px;
+    width: 135.72px;
+    height: 105px;
+    left: 1679px;
+    /* display: flex; */
+}
+
+/* CleanStore_list */
+
+.CleanStore .cleanstore_list{
+    display: flex;
+    width: 100%;
+}
+
+/* CleanStoreList */
+
+.CleanStoreList{
+    margin-top: 63px;
+    border-top: 1px solid #0679FF;
+    min-width: 100%;
+    display: grid; /* 격자를 만들어줌*/
+    grid-template-columns: repeat(3, auto); /* 격자 5개 지정 */
+    gap: 1%; /* item 사이의 gap 생성 */
+}
+
+/* CleanStoreItem */
+.CleanStoreItem{
+    margin-left: 72px;
+    margin-top: 120px;
+    width: 478px;
+    height: 464px;
+    /* justify-content: space-between; */
+    
+}
+
+.CleanStoreItem .img_wrapper{
+    cursor: pointer;
+}
+
+.CleanStoreItem img{
+    cursor: pointer;
+    max-width: 100%;
+    max-height: 100%;
+    width: 478px;
+    height: 464px;
+}
+
+.CleanStoreItem .info_wrapper{
+    margin-top: 17px;
+    border-top: 1px solid #0679FF;
+}
+
+.CleanStoreItem .info_wrapper .store_name{
+    margin-top: 12px;
+    color: #075CFF;
+    font-size: 22px;
+    line-height: 27px;
+    font-weight: 400;
+}
+
+.CleanStoreItem .info_wrapper .store_content{
+    color: #474747;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 27px;
+}
+
+/* CleanStoreDetail */
+
+.CleanStoreDetail{
+    display: flex;
+    justify-content: center;
+}
+
+.CleanStoreDetail .cleanstore_detail{
+    flex-grow: 1;
+}
+
+.CleanStoreDetail .cleanstore_topbar{
+    margin-left: 72px;
+    margin-top: 42px;
+}
+
+.CleanStoreDetail .cleanstore_topbar h2{
+
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+}
+
+.CleanStoreDetail .cleanstore_content{
+    border-top: 1px solid #0679FF;
+    margin-top: 33px;
+    display: flex;
+}
+
+.CleanStoreDetail .cleanstore_content h2{
+    margin-left: 70px;
+    margin-top: 38px;
+    color : #0679FF;
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 55px;
+    flex-grow: 1;
+}
+
+/* Point */
+
+.star-rating {
+    margin-left: 420px;
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    justify-content: space-around;
+    padding: 0 0.2em;
+    text-align: center;
+    width: 5em;
+  }
+   
+  .star-rating input {
+    display: none;
+  }
+   
+  .star-rating label {
+    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 2.3px;
+    -webkit-text-stroke-color: #2b2a29;
+    cursor: pointer;
+  }
+   
+  .star-rating :checked ~ label {
+    -webkit-text-fill-color: gold;
+  }
+   
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    -webkit-text-fill-color: #0679FF;
+  }
+
+.CleanStoreDetail .cleanstore_content2 .stars{
+    margin-left: 20px;
+    margin-top: 37px;
+}
+
+.CleanStoreDetail .starBox{
+    /* background-image: url("./gray_star.png");
+    background-repeat: no-repeat;
+    background-size: 100px -20px; */
+    z-index: 1000;
+    margin-left: 55px;
+    margin-right: 10px;
+    height: 19px;
+    overflow: hidden;
+}
+
+.CleanStoreDetail .pointOfStar{
+    z-index: 100;
+    height: 19px;
+    width: 100px;
+}
+
+.CleanStoreDetail .backgroundStar{
+    z-index: -1;
+    position: absolute;
+    /* margin-left: 84px; */
+    margin-left: 55px;
+    margin-top: -20px;
+    width: 100px;
+    height: 19px;
+}
+
+.CleanStoreDetail .cleanstore_content2 .cleanstore_star{
+    margin-left: 70px;
+    margin-top: 37px;
+}
+
+.CleanStoreDetail .cleanstore_content2 h4{
+    display: inline-block;
+    width: 588px;
+    margin-left: 730px;
+    margin-top: 48px;
+    margin-right: 140px;
+    color : #474747;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 34px;  
+}
+
+.CleanStoreDetail .cleanstore_content2 .store_image{
+      margin-top: 76px;
+      margin-left: 93px;
+      max-width: 100%;
+      max-height: 100%;
+      /* width: 700px; */
+      height: 754px;
+}
+
+.CleanStoreDetail .cleanstore_url button{
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 38px;
+    margin-right: 250px;
+    display: flex;
+    border: 1px solid #0679FF;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
+    color: #0679FF;
+    padding-top: 14px;
+    padding-bottom: 13px;
+    padding-left: 36px;
+    padding-right: 18px;
+}
+
+.CleanStoreDetail .cleanstore_url button a{
+    color : #0679FF;
+    text-decoration: none;
+}
+
+.CleanStoreDetail .cleanstore_url img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 20px;
+    height: 20px;
+    margin-left: 23px;
+    margin-right: 20px;
+    margin-top: 3px;
+
+}
+
+.CleanStoreDetail .cleanstore_management{
+    margin-top: 47px;
+    border-top: 1px solid #0679FF;
+}
+
+.CleanStoreDetail .cleanstore_management .vector_image{
+    max-width: 100%;
+    max-height: 100%;
+    width: 22px;
+    height: 14px;
+    margin-top: 29px;
+    margin-left: 35px;
+    margin-right: 11px;
+}
+
+.CleanStoreDetail .cleanstore_management button{
+    margin-top: 22px;
+    color: #075CFF;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.CleanStoreDetail .cleanstore_information{
+    display: flex;
+}
+
+.CleanStoreDetail .cleanstore_information h2{
+    display: flex;
+    margin-left: 20px;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    color: #075CFF;
+}
+
+.CleanStoreDetail .cleanstore_information .opening_hours{
+    margin-top: 409px;
+}
+
+.CleanStoreDetail .cleanstore_information .opening_hours h3{
+    margin-left: 43px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #353535;
+}
+
+.CleanStoreDetail .cleanstore_information .address{
+    margin-top: 22px;
+}
+
+.CleanStoreDetail .cleanstore_information .address h3{
+    margin-left: 163px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #353535;
+}
+
+.CleanStoreDetail .cleanstore_information .telephone{
+    margin-top: 22px;
+}
+
+.CleanStoreDetail .cleanstore_information .telephone h3{
+    margin-left: 143px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    color: #353535;
+}
+
+.CleanStoreDetail .cleanstore_information img{
+    margin-left: 30px;
+    margin-right: 100px;
+    margin-top: 79px;
+}
+
+.CleanStoreDetail .cleanstore_description{
+    margin-top: 45px;
+    border-top: 1px solid #0679FF;
+}
+
+.CleanStoreDetail .cleanstore_description h2{
+    margin-top: 76px;
+    margin-left: 35px;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 33px;
+    color: #474747;
+}
+
+.CleanStoreDetail .cleanstore_description h3{
+    width: 80%;
+    margin-top: 49px;
+    margin-left: 62px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 33px;
+    color: #474747;
+    margin-right: 100px;
+    word-break: keep-all;
+}
+
+.CleanStoreDetail .cleanstore_review{
+    margin-top: 45px;
+    border-top: 1px solid #0679FF;
+}
+
+.CleanStoreDetail .cleanstore_review_write{
+    justify-content: center;
+    border-top: 1px solid #0679FF;
+}
+
+.CleanStoreDetail .cleanstore_review_write h2{
+    margin-top: 33px;
+    margin-left: 52px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color : #075CFF
+}
+
+.CleanStoreDetail .cleanstore_review_write h3{
+    margin-top: 92px;
+    margin-left: 382px;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+}
+
+.CleanStoreDetail .cleanstore_review_write .star{
+    margin-top: 5px;
+    display: flex;
+}
+
+.CleanStoreDetail .cleanstore_review_write .star h2{
+    margin-top: 12px;
+    font-style: bold;
+}
+
+.CleanStoreDetail .cleanstore_review_write textarea{
+    margin-left: 130px;
+    margin-top: 20px;
+    width: 50%;
+    box-sizing: border-box;
+    min-height: 200px;
+    resize: vertical; /* 위아래로만 textarea 사이즈 변경 가능하게 */
+    border-radius: 5px;
+    border-color: #0679FF;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.CleanStoreDetail .write_button{
+    margin-left: 750px;
+    background: #0679FF;
+    border: 1px solid #0679FF;
+    border-radius: 10px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 36px;
+    padding-right: 37px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.CleanStoreDetail .write_button h2{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.CleanStoreDetail .relative_url{
+    margin-top: 46px;
+    padding: 40px;
+    border-top: 1px solid #0679FF;
+    border-bottom: 1px solid #0679FF;
+}
+
+.CleanStoreDetail .relative_url section{
+    display: flex;
+}
+
+.CleanStoreDetail .relative_url section h2{
+    margin-left: 11px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #075CFF;
+}
+
+.CleanStoreDetail .relative_url section img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 22px;
+    height: 14px;
+    margin-top: 8px;
+}
+
+.CleanStoreDetail .relative_url .relative_button{
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 38px;
+    margin-right: 101px;
+    display: flex;
+    border: 1px solid #0679FF;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
+    color: #0679FF;
+    padding-top: 14px;
+    padding-bottom: 13px;
+    padding-left: 36px;
+    padding-right: 18px;
+}
+
+.CleanStoreDetail .relative_url .relative_button a{
+    color: #0679FF;
+    text-decoration: none;
+}
+
+.CleanStoreDetail .relative_url .relative_button h2{
+    font-size: 25px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.CleanStoreDetail .relative_url .relative_button img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 20px;
+    height: 20px;
+    margin-left: 23px;
+    margin-right: 20px;
+    margin-top: 3px;
+
+}
+
+/* CleanStoreReview */
+
+.CleanStoreReview{
+    margin-top: 50px;
+    margin-left: 50px;
+    /* margin-bottom: 50px; */
+    display: flex;
+    flex-direction: column;
+    /* min-width: 50%; */
+}
+
+.CleanStoreReview button{
+    margin-right: 1300px;
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 50px;
+    border: 1px solid #0679FF;
+    color: #0679FF;
+    padding-top:7px;
+    padding-bottom: 7px;
+    padding-left: 21px;
+    padding-right: 22px;
+}
+
+/* CleanStoreReviewItem */
+
+.CleanStoreReviewItem .info_wrapper{
+    margin-left: 60px;
+    display: flex;    
+}
+
+.CleanStoreReviewItem .user{
+    color: #075CFF;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+    margin-right: 767px;
+}
+
+.CleanStoreReviewItem .created_at{
+    color: #767678;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.CleanStoreReviewItem .review{
+    margin-left: 60px;
+    margin-bottom: 50px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: #474747;
+    margin-top: 22px;
+    margin-right: 691px;
+    word-break: keep-all;
+}
+
+
+/* SideBar */
+
+.SideBar{
+    margin-top:37px;
+    margin-left: 120px;
+    border-right: 1px solid #0679FF;
+    min-height: 100vh;
+    justify-items: center;
+}
+
+.SideBar nav{
+    margin-right: 30px;
+    margin-top: 55px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    word-break: keep-all;
+    /* padding-bottom:16px; */
+}
+
+.SideBar .mypage{
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.SideBar .findstore{
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.SideBar .cleanstore{
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.SideBar .emptybottlestore{
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.SideBar .community{
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.SideBar .zeroweistdiary{
+    cursor: pointer;
+    margin-bottom: 437px;
+}
+
+.SideBar .logout{
+    cursor: pointer;
+    margin-bottom: 16px;
+    margin-right:49px;
+}

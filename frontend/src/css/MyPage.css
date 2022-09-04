@@ -1,0 +1,613 @@
+@import url(reset.css);
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto&display=swap');
+
+.mypage {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.mypage_nav {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    z-index: 10;
+    
+    width: 180px;
+
+    background: #FFFFFF;
+    border-right: 1px solid #0679FF;
+}
+
+.mypage_goto_home {
+    display: flex;
+
+    margin-top: 37px;
+    padding-left: 30px;
+}
+
+.mypage_goto_home_detail {
+    display: flex;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 39px;
+
+    color: #0679FF !important;
+}
+
+.mypage_nav_menu {
+    margin-top: 30px;
+    padding-left: 30px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 34px;
+}
+
+.mypage_nav_detail {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.mypage_calendar {
+    display: flex;
+
+    color: #0679FF !important;
+}
+
+.mypage_goto {
+    display: flex;
+
+    color: #353535 !important;  
+}
+
+.mypage_logout {
+    display: flex;
+
+    padding-top: 250px;
+    padding-bottom: 179px;
+
+    color: #353535 !important;
+}
+
+.mypage_main {
+    display: flex;    
+
+    padding-left: 210px;
+}
+
+.mypage_header {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    height: 80px;
+
+    padding-bottom: 23px;
+    padding-left: 250px;
+
+    border-bottom: 1px solid #0679FF;
+    background-color: #FFFFFF;
+}
+
+.mypage_title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    
+}
+
+.mypage_my {
+    display: flex;
+    flex-direction: row;
+
+    padding-top: 61px;
+}
+
+.mypage_my_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 335px;
+    padding-top: 43px;
+    padding-left: 52px;
+    padding-right: 42px;
+}
+
+.mypage_my_profile {
+    text-align: center;
+}
+
+.mypage_my_profile img {
+    border-radius: 70%;
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+}
+
+.mypage_nickname {
+    margin-bottom: 9px;
+    padding-top: 23px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+
+    color: #151515;
+}
+
+.mypage_email {
+    margin-bottom: 9px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+
+    color: #545454;
+}
+
+.mypage_edit_profile_btn{
+    width: 163px;
+    height: 38px;
+
+    margin-top: 14px;
+    margin-bottom: 13px;
+
+    background: #FFFFFF;
+    border: 1px solid #0679FF;
+    border-radius: 50px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+
+    color: #0679FF;
+}
+
+.mypage_my_menu {
+    
+    width: 244px;
+
+    padding-top: 27px;
+
+    border-top: 1px solid #0679FF;
+    margin-left:30px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.mypage_my_menu_detail {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mypage_goto_info_menu {
+    color: #0679FF !important;
+}
+
+.mypage_my_contents {
+    display: flex;
+    flex-direction: column;
+
+    padding-left: 57px;
+}
+
+.mypage_my_contents_top {
+    display: flex;
+    flex-direction: row;
+}
+
+.mypage_my_level {
+    display: flex;
+    flex-direction: column;
+    padding-top: 43px;
+}
+
+.mypage_level_title {
+    display: flex;
+
+    
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #2E2E2E;
+}
+
+.mypage_level_title2 {
+    display: flex;
+    flex-direction: row;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #2E2E2E;
+}
+
+.mypage_level_kr {    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #075CFF;
+}
+
+.mypage_level_img {
+    display: flex;
+    width: 282px;
+    height: 200px;
+
+    margin-top: 18px;
+    margin-bottom: 3px;
+}
+
+.mypage_my_point_status {
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 170px;
+    padding-left: 64px;
+}
+
+.mypage_point_title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    color: #535353;
+}
+.mypage_point_detail {
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 9px;
+}
+
+.mypage_coins_img {
+    padding-right: 8px;
+
+    width: 30px;
+    
+}
+
+.mypage_my_point {
+    padding-right: 80px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+
+    color: #0679FF;
+}
+
+.mypage_next_point {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 140.69%;
+
+    color: #474747;
+}
+
+.mypage_point_progress {
+    display: flex;
+
+    appearance: none;
+    width: 310px;
+    height: 13px;
+    margin-top: 18px;
+}
+
+.mypage_point_progress::-webkit-progress-bar {
+    background:#D9D9D9;
+    border-radius:50px;
+}
+
+.mypage_point_progress::-webkit-progress-value {
+    background: #034DEA;
+    border-radius:50px;
+}
+
+.mypage_my_contents_bottom {
+    display: flex;
+    flex-direction: row;
+}
+
+.mypage_my_calendar_status {
+    display: flex;
+    flex-direction: column;
+}
+
+.mypage_my_calendar {
+    width: 286px;
+}
+
+.mypage_content_title {
+    display: flex;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.mypage_my_calendar .react-calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 286px;
+
+    background: white;
+    border: 1px solid white;
+    font-family: 'Inter';
+}
+
+.mypage_my_calendar .react-calendar button {
+    margin: 0;
+    border: 0;
+    outline: none;
+}
+
+.mypage_my_calendar .react-calendar button:enabled:hover {
+    cursor: pointer;
+}
+
+.mypage_my_calendar .react-calendar__navigation {
+    display: flex;
+    height: 24px;
+    margin-bottom: 10px;
+}
+
+.mypage_my_calendar .react-calendar__navigation button {
+    background: none;
+    font-size: 11px;
+    font-family: 'Inter';
+}
+
+/* 요일 */
+.mypage_my_calendar .react-calendar__month-view__weekdays {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Inter';
+    font-size: 12px;
+
+    padding-bottom: 8px;
+}
+
+.mypage_my_calendar .react-calendar__month-view__weekNumbers 
+.mypage_my_calendar .react-calendar__tile {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-family: 'Inter';
+}
+
+.mypage_my_calendar .react-calendar__tile {
+    display: flex;
+    flex-direction: row ;
+    justify-content: center;
+    align-items: center;
+
+    width: 30px;
+    height: 20px;
+
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    border-left: 10px solid #FFFFFF !important;
+    border-right: 10px solid #FFFFFF !important;
+}
+
+.mypage_my_calendar .react-calendar__month-view__days__day{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    color: #2E2E2E;
+}
+
+.mypage_my_calendar .mypage_calendar_highlight {
+    background: #DDFFD8;
+    border-radius: 45%;
+}
+
+.mypage_my_badge {
+    display: flex;
+    flex-direction: column;
+
+    width: 330px;
+
+    padding-left: 64px;
+}
+
+.mypage_badge_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 24px;
+
+    position: relative;
+
+    width: 310px;
+    height: 57px;
+}
+
+.mypage_badge_top_img {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 57px;
+    height: 57px;
+}
+
+.mypage_badge_img {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+
+    width: 57px;
+    height: 57px;
+}
+
+.mypage_badge_img2 {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+
+    width: 57px;
+    height: 57px;
+
+    padding-left: 84px;
+}
+
+.mypage_badge_img3 {
+    display: flex;
+    flex-direction: row;
+    padding-left: 250px;
+    position: absolute;
+
+    width: 57px;
+    height: 57px;
+    padding-left: 169px;
+}
+
+.mypage_badge_img4 {
+    display: flex;
+    flex-direction: row;
+    padding-left: 375px;
+    position: absolute;
+
+    width: 57px;
+    height: 57px;
+
+    padding-left: 253px;
+}
+
+.mypage_badge_top_base {
+    display: flex;
+    flex-direction: row;
+
+    width: 57px;
+    height: 57px;
+}
+
+.mypage_badge_bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding-top: 32px;
+
+    position: relative;
+
+    width: 310px;
+    height: 50px;
+}
+
+.mypage_badge_bottom_base {
+    display: flex;
+    flex-direction: row;
+
+    width: 57px;
+    height: 57px;
+}
+
+.mypage_badge_more_btn {
+    width: 56px;
+    height: 56px;
+
+    flex-wrap: nowrap;
+
+    border-radius: 50%;
+    border: 1px solid #0679FF;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+
+color: #0679FF;
+}
+
+.loginfailed{
+    width:100%;
+    height:100%;
+    background-color: white;;
+    text-align: center;
+    padding-left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 20px;
+}
+
+.loginfailed_login{
+    margin-top:45px;    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size:  19px!important;
+    line-height: 30px;
+    width: 130px;
+    height: 43px;
+    color: #075CFF;
+    
+    background: #FFFFFF;
+    border: 1px solid #075CFF;
+    border-radius: 50px;
+    margin-right:10px;
+    
+}
+.loginfailed_join{
+    margin-top:45px;    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size:  19px!important;
+    line-height: 30px;
+    width: 130px;
+    height: 43px;
+    color: white;
+    
+    background: #075CFF;
+    border: 1px solid #075CFF;
+    border-radius: 50px;
+    margin-left:10px;
+    
+}

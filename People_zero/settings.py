@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+b9n0s0d75evu7ag&vl*wj#h*v11%-g=2nn^pa1iu!bxgn-n#5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     # rest_auth
-    'rest_auth',
+    'dj_rest_auth',
     'allauth',
     'allauth.account',
     # 'allauth.socialaccount',
@@ -54,9 +54,10 @@ INSTALLED_APPS = [
     # my apps
     'backend',
     'corsheaders',
-    'accounts',
+    
     'board',
     'store',
+    'accounts'
 
 ]
 
@@ -73,6 +74,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "http://127.0.0.1:8000",
+    "http://localhost:8000",
 ]
 CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = 'People_zero.urls'
@@ -92,9 +94,11 @@ TEMPLATES = [
         },
     },
 ]
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'frontend', 'build', 'static')
-# ]
+STATIC_URL = '/static/'
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,'frontend','build','static'),
+    os.path.join(BASE_DIR,'frontend','build','img')
+]
 WSGI_APPLICATION = 'People_zero.wsgi.application'
 
 
@@ -140,6 +144,8 @@ USE_I18N = True
 USE_TZ = True
 
 
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
@@ -157,11 +163,14 @@ AUTH_USER_MODEL = 'accounts.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# REST_FRAMEWORK = { // 인증
-#     'DEFAULT_AUTHENTICATION_CLASSES': [
-#         'rest_framework.authentication.TokenAuthentication',
-#     ]
-# }
+REST_FRAMEWORK = { 
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ]
+}
+
 
 REST_AUTH_REGISTER_SERIALIZERS = {
     # custom register_serializer
@@ -176,3 +185,16 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'  # email 유효성인증 하지 않음
 # ACCOUNT_AUTHENTICATION_METHOD = 'username'
 
 # ACCOUNT_EMAIL_REQUIRED = False
+
+# REST_USE_JWT = True
+# JWT_AUTH_COOKIE = 'my-app-auth'
+# JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+
+# SITE_ID = 1
+# ACCOUNT_UNIQUE_EMAIL = True
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+# ACCOUNT_USERNAME_REQUIRED = False
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_PHONE_NUMBER = True
