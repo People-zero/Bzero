@@ -5,21 +5,21 @@ import { useLocation } from "react-router";
 import axios from "axios";
 
 const Details = () => {
-  axios
-    .post("http://127.0.0.1:8000/post/", {
-      author: 1,
-      category: 2,
-      content: "test1",
-      image: null,
-      recommend_user_set: [],
-      title: "test1",
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  // axios
+  //   .post("http://127.0.0.1:8000/post/", {
+  //     author: 1,
+  //     category: 2,
+  //     content: "test1",
+  //     image: null,
+  //     recommend_user_set: [],
+  //     title: "test1",
+  //   })
+  //   .then(function (response) {
+  //     console.log(response);
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
 
   const getApi = async () => {
     const res = await fetch("http://127.0.0.1:8000/post/2/").then((res) =>

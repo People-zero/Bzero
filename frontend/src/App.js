@@ -20,40 +20,59 @@ import photo2 from "./images/photo2.png";
 import photo3 from "./images/photo3.png";
 import BottleStore from "./BottleStore";
 import RegistStore from "./RegistStore";
-
+import Post from "./Post.js"
 import EditProfilePage from "./EditProfilePage";
-const dumyData = [
+const FirstData = [
   {
     id: 1,
     emotion: 1,
-    content: "송하윤 멋져 1",
+    user: "Player1",
+    title: "a 1",
+    content: "가 라 1",
     date: 1660478254683,
   },
   {
     id: 2,
     emotion: 2,
-    content: "송하윤 멋져 2",
+    user: "Player2",
+    title: "b 2qweipqwjeioqjwejqhjoiwejqkwejoqiwjeioqwjioenqwneoiqw",
+    content: "나 2dasdasdsasaddassadsaddasadsdass",
     date: 1660478254684,
   },
   {
     id: 3,
     emotion: 3,
-    content: "송하윤 멋져 3",
+    user: "Player3",
+    title: "c 3",
+    content: "다 3",
     date: 1660478254685,
   },
   {
     id: 4,
     emotion: 4,
-    content: "송하윤 멋져 4",
+    user: "Player4",
+    title: "d 4",
+    content: "라 4",
     date: 1660478254686,
   },
   {
     id: 5,
     emotion: 5,
-    content: "송하윤 멋져 5",
+    user: "Player5",
+    title: "e 5",
+    content: "마 5",
     date: 1660478254687,
   },
+  {
+    id: 6,
+    emotion: 5,
+    user: "Player6",
+    title: "e 5",
+    content: "마 리아 5",
+    date: 1660478254688,
+  },
 ];
+
 
 const dummy_badge = [
   { badge_id: 1, badge_type: "badge1.png" },
@@ -203,20 +222,12 @@ function App() {
       },
     });
   };
-  const [data, dispatch] = useReducer(reducer, dummyData);
-  const dataId = useRef(10);
 
-  const init = () => {
-    axios.get("http://127.0.0.1:8000/store/clean_store/").then((response) => {
-      dispatch({ type: "INIT", data: response });
-    });
-    if (data.lengh < 1) {
-      dispatch({ type: "INIT", data: dummyData });
-    }
-  };
+  const [data, dispatch] = useReducer(reducer, FirstData);
+  const dataId = useRef(7);
 
   useEffect(() => {
-    init();
+    // init();
   });
   const mypagelink = userdata?.id;
   // console.log(data);
@@ -224,16 +235,15 @@ function App() {
   // console.log(userdata)
 
   return (
-    <PostStateContext.Provider value={data}>
-      <PostDispatchContext.Provider
-        value={{
-          onCreate,
-          onEdit,
-          onRemove,
-        }}
-      >
+    <PostDispatchContext.Provider
+      value={{
+        onCreate,
+      }}
+    >
         <CleanStoreContext.Provider value={data}>
-          <BrowserRouter>
+      <PostStateContext.Provider value={data}>
+        <BrowserRouter>
+          
             <Routes>
               <Route
                 path="/calendar"
@@ -264,17 +274,20 @@ function App() {
                 element={<CleanStoreDetail />}
               ></Route>
               <Route path="/community" element={<Community />} />
-              <Route path="/details" element={<Details />} />
+              <Route path="/details/:id" element={<Details />} />
               <Route path="/regist_store" element={<RegistStore />}></Route>
               <Route
                 path="/bottle_store"
                 element={<BottleStore store={dummyList2}></BottleStore>}
               ></Route>
+              <Route path="/post" element={<Post/>}></Route>
             </Routes>
           </BrowserRouter>
-        </CleanStoreContext.Provider>
-      </PostDispatchContext.Provider>
-    </PostStateContext.Provider>
+        
+          </PostStateContext.Provider>
+      </CleanStoreContext.Provider>
+    
+    </PostDispatchContext.Provider>
   );
 }
 

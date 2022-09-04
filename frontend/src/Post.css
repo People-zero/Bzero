@@ -1,18 +1,14 @@
-@import url(reset.css);
-
-/* Header */
-
 .Post_header {
     display: flex;
     padding: 15px;
-    border-bottom: 1px solid greenyellow;
+    border-bottom: 2px solid #0679FF;
     height: 10%;
 }
 
 .Post_header_title {
     width: 50%;
     font-size: 30px;
-    color: green;
+    color: #0679FF;
 }
 
 .Post_header_right {
@@ -20,7 +16,11 @@
     display: flex;
     padding-top: 8px;
     justify-content: end;
-    color: #bbb;    
+    color: #353535; 
+}
+
+.Post_header_right_com {
+    color: #0679FF;
 }
 
 .Post_header_right div {
@@ -28,6 +28,17 @@
 }
 
 /* Body */
+
+
+.Post_ControlMenu {
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: #0679FF;
+}
+.Post_ControlMenu option{
+    color: black;
+}
 
 .Post_body {
     display: flex;
@@ -47,11 +58,11 @@
     display: flex;
     flex-grow: 1;
     justify-content: end;
-    color : gray;
+    color : #767678;
 }
 
-.Post_body_1_title ControlMenu{
-    border: 0;
+.Post_body_1_title{
+    color: #454545;
 }
 .Post_body_2 {
     width: 70%;
@@ -60,7 +71,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    border: 1px solid blue;
+    border: 1px solid #0679FF;
     border-radius: 10px;
 }
 
@@ -71,22 +82,34 @@
 }
 
 .Post_body_2_imgs {
-    color: #bbb;
-    padding-left: 20px;
+    color: #767678;
+    padding-left: 10px;
+    font-size: 13px;
+    padding-top: 3px;
+}
+
+.Post_body_2_imgss {
+    height: 19.43px;
+    width: 28px;
+    margin-left: 10px
 }
 
 .Post_body_2_title {
-    width: 95%;
-    height: 12%;
+    width: 98%;
+    height: 10%;
     border: 0;
-    border-bottom: 1px solid blue;
+    border-bottom: 1px solid #0679FF;
+    padding-left: 10px;
+    padding-top: 5px;
 }
 
 .Post_body_2_post {
-    width: 95%;
-    height: 60%;
+    padding-left: 10px;
+    padding-top: 5px;
+    width: 98%;
+    height: 78%;
     border: 0;
-    border-bottom: 1px solid blue;
+    border-bottom: 1px solid #0679FF;
 }
 
 
@@ -110,7 +133,7 @@
     border-radius: 5px;
     background-color: #1E90FF;
     color: aliceblue;
-    width: 100px;
+    width: 120px;
     height: 40px;
 }
 
@@ -118,6 +141,12 @@
     display: flex;
 }
 .Post_body_3_exit_point {
-    color: blue;
-    padding-right: 10px;
+    padding-right: 5px;
+    color: 0679FF;
+}
+
+.Post_body_3_exit_imgs {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
 }
