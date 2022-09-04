@@ -113,7 +113,8 @@ const JoinPage = () => {
       })
       .catch((error) => {
         console.log("An error occurred:", error.response);
-        // alert("양식에 맞춰 다시 작성해주세요")
+        // alert('')
+        alert("양식에 맞춰 다시 작성해주세요")
       });
   };
 
