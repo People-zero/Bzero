@@ -1,22 +1,23 @@
 .body {
-  width: 86.97%;
+  width: 100%;
   max-width: 1670px;
   margin-bottom: 46px;
 }
 
 .main_body {
-  width: 86.97%;
+  width: 100%;
   max-width: 1670px;
   display: flex;
+  padding-left:230px;
 }
 
 .my_page_title {
   font-size: 24px;
-  height: 114px;
-  width: 86.97%;
+  height: 90px;
+  width: 100%;
   max-width: 1670px;
-  padding-left: 74px;
-  padding-top: 42px;
+  padding-left: 250px;
+  padding-top: 32px;
   border-bottom: 1px solid #0679ff;
 }
 
@@ -34,6 +35,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 .profile_nickname {
   font-size: 15px;
@@ -79,7 +81,7 @@
 }
 .edit_profile_title {
     padding-left: 63px;
-  font-size: 18px;
+  font-size: 21px;
   color: black;
 }
 .profile_image_margin {
