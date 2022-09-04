@@ -22,6 +22,23 @@ import BottleStore from "./BottleStore";
 import RegistStore from "./RegistStore";
 
 import EditProfilePage from "./EditProfilePage";
+import DiaryDetailPage from "./DiaryDetailPage";
+const dummy_diary = [
+  {
+    user: "user",
+    profile: "example_profile.jpg",
+    date: "2022-09-01",
+    title: "제목들어가는 자리",
+    post: "포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 ",
+  },
+  {
+    user: "user",
+    profile: "example_profile.jpg",
+    date: "2022-09-03",
+    title: "제목들어가는 자리",
+    post: "포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 ",
+  },
+];
 const dumyData = [
   {
     id: 1,
@@ -265,6 +282,10 @@ function App() {
               <Route
                 path="/bottle_store"
                 element={<BottleStore store={dummyList2}></BottleStore>}
+              ></Route>
+              <Route
+                path="/diary_detail/:date"
+                element={<DiaryDetailPage dummy_diary={dummy_diary} />}
               ></Route>
             </Routes>
           </BrowserRouter>
