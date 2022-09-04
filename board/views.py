@@ -198,3 +198,4 @@ def post_recommend(request,pk):
         post.recommend_user_set.add(request.user)
     return redirect('http://127.0.0.1:8000/post/detail/'+str(pk))
 
+
