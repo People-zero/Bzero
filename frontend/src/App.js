@@ -28,14 +28,14 @@ const dummy_diary = [
     user: "user",
     profile: "example_profile.jpg",
     date: "2022-09-01",
-    title: "제목들어가는 자리",
+    title: "제목들어가는 자리0901",
     post: "포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 ",
   },
   {
     user: "user",
     profile: "example_profile.jpg",
     date: "2022-09-03",
-    title: "제목들어가는 자리",
+    title: "제목들어가는 자리0903",
     post: "포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 포스트 내용 ",
   },
 ];
