@@ -33,7 +33,7 @@ const reducer = (state, action) => {
   }
   return newState;
 };
-
+//1
 export const PostStateContext = React.createContext();
 export const PostDispatchContext = React.createContext();
 
