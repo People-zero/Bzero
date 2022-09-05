@@ -20,7 +20,7 @@ import photo2 from "./images/photo2.png";
 import photo3 from "./images/photo3.png";
 import BottleStore from "./BottleStore";
 import RegistStore from "./RegistStore";
-
+import Post from "./Post.js"
 import EditProfilePage from "./EditProfilePage";
 import DiaryDetailPage from "./DiaryDetailPage";
 const dummy_diary = [
@@ -82,6 +82,8 @@ const dumyData = [
   },
 ];
 
+
+
 const dummy_badge = [
   { badge_id: 1, badge_type: "badge1.png" },
   { badge_id: 2, badge_type: "badge1.png" },
@@ -136,9 +138,36 @@ const dummyList2 = [
   },
 ];
 function App() {
+
+
   const [place, setplace] = useState([]);
-  const [userdata, setuserdata] = useState();
+  const [userdata, setuserdata] = useState([]);
   const [attendDate, setAttendDate] = useState([]);
+  const [FirstData,setFirstdata]=useState([]);
+
+  const getpost = async () => {
+    const res = await fetch(
+      "http://127.0.0.1:8000/post"
+    ).then((res) => res.json());
+    // console.log(res); // 500개의 데이터
+  
+    const initData = res.map((it) => {
+      // console.log(it.id)
+      return {
+        id: it.id,
+        emotion:it.category,
+        user:it.author, // 작성자
+        title:it.title,
+        content:it.content,
+        date: it.created_at,
+        
+        // image: it.store_image,
+      };
+    });
+  
+    setFirstdata(initData);
+  };
+
 
   const getData = async () => {
     const res = await fetch(
@@ -166,15 +195,18 @@ function App() {
       let token = localStorage.getItem("token");
       let token2 = "Token ".concat(token);
       console.log(token2);
-      const res = await fetch("http://127.0.0.1:8000/auth/user", {
+      const res = await fetch("http://127.0.0.1:8000/auth/accounts", {
         method: "GET",
         headers: {
           Authorization: "Token ".concat(token),
         },
       }).then((res) => res.json());
+      console.log(res)
       setuserdata(res);
     };
+
     getData();
+    getpost();
   }, []);
 
   useEffect(() => {
@@ -226,20 +258,13 @@ function App() {
       },
     });
   };
-  const [data, dispatch] = useReducer(reducer, dummyData);
-  const dataId = useRef(10);
 
-  const init = () => {
-    axios.get("http://127.0.0.1:8000/store/clean_store/").then((response) => {
-      dispatch({ type: "INIT", data: response });
-    });
-    if (data.lengh < 1) {
-      dispatch({ type: "INIT", data: dummyData });
-    }
-  };
+  const [data, dispatch] = useReducer(reducer, FirstData);
+  const dataId = useRef(7);
 
   useEffect(() => {
-    init();
+    // init();
+    console.log(FirstData)
   });
   const mypagelink = userdata?.id;
   // console.log(data);
@@ -247,16 +272,15 @@ function App() {
   // console.log(userdata)
 
   return (
-    <PostStateContext.Provider value={data}>
-      <PostDispatchContext.Provider
-        value={{
-          onCreate,
-          onEdit,
-          onRemove,
-        }}
-      >
+    <PostDispatchContext.Provider
+      value={{
+        onCreate,
+      }}
+    >
         <CleanStoreContext.Provider value={data}>
-          <BrowserRouter>
+      <PostStateContext.Provider value={data}>
+        <BrowserRouter>
+          
             <Routes>
               <Route
                 path="/calendar"
@@ -287,7 +311,7 @@ function App() {
                 element={<CleanStoreDetail />}
               ></Route>
               <Route path="/community" element={<Community />} />
-              <Route path="/details" element={<Details />} />
+              <Route path="/details/:id" element={<Details />} />
               <Route path="/regist_store" element={<RegistStore />}></Route>
               <Route
                 path="/bottle_store"
@@ -299,9 +323,11 @@ function App() {
               ></Route>
             </Routes>
           </BrowserRouter>
-        </CleanStoreContext.Provider>
-      </PostDispatchContext.Provider>
-    </PostStateContext.Provider>
+        
+          </PostStateContext.Provider>
+      </CleanStoreContext.Provider>
+    
+    </PostDispatchContext.Provider>
   );
 }
 

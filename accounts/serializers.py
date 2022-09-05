@@ -1,6 +1,3 @@
-from dataclasses import fields
-from pyexpat import model
-from re import A
 from .models import User, Attendance, Profile
 from rest_framework import serializers
 from dj_rest_auth.registration.serializers import RegisterSerializer

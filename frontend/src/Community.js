@@ -58,7 +58,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
 
 const Community = () => {
 
-  const [isAtive, SetisAtive] = useState(false);
+  const [isAtive, SetisAtive] = useState(true);
   const [goodbt, Setgoodbt] = useState(0);
 
   const img = isAtive ?  process.env.PUBLIC_URL + `/icon/Pin.png` : process.env.PUBLIC_URL + `/icon/PinChange.png`;
@@ -220,6 +220,7 @@ const Community = () => {
                       className={"Community_body_four_postlist_imgs2"}
                       onClick={()=>pushpinbt()}
                       src={img}
+                      key={it.id}
                     />
                   </span>
                 </div>
