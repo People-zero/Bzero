@@ -42,13 +42,13 @@ const EditProfilePage=({userdata})=> {
 else{
   
     set_edtiting_profile_data({
-    name: userdata[0]?.username,
+    name: userdata[0]?.first_name,
     nickname: userdata[0]?.last_name,
     email: userdata[0]?.email,
     birth: new Date(),
     age: 0,
     phone_number: userdata[0]?.phone_number,
-    profile_image: userdata[0]?.profile.profile_image,
+    profile_image: "../img/Group 1183 (1).png"
 })
   
   }
@@ -77,13 +77,36 @@ else{
   };
 
   const submit_event = () => {
-    const id = 1; //임시코드
-    const API_URL = `http://127.0.0.1:8000/auth/accounts/${id}`;
+    const id = userdata[0].id; //임시코드
 
-    axios.post(API_URL, edtiting_profile_data).then(({ data }) => {
-      console.log(data);
-    });
-  };
+
+  //   axios.put(`http://127.0.0.1:8000/auth/accounts/${id}/`,{
+  //     first_name:edtiting_profile_data.name,
+  //     last_name:edtiting_profile_data.nickname,
+  //     email:edtiting_profile_data.email,
+  //     phone_number:edtiting_profile_data.phone_number,
+      
+  //     username: userdata[0]?.username,
+  //     birth: userdata[0]?.birth,
+  //     age: userdata[0]?.age,
+  
+
+  //     is_staff: userdata[0].is_staff,
+    
+ 
+  // },{headers: {
+  //   Authorization: "Token ".concat(localStorage.getItem("token")),
+  // }})
+  axios.put(`http://127.0.0.1:8000/auth/profile/${id}/`
+  ,{
+    username:userdata[0]?.profile?.username,
+    intro_comment:userdata[0]?.profile?.intro_comment,
+    profile_image:edtiting_profile_data.profile_image,
+    point:userdata[0]?.profile?.point
+  },{headers: {
+    Authorization: "Token ".concat(localStorage.getItem("token")),
+  }})
+};
  
   const withdrawal_event = () => {
     // 제출 코드
@@ -91,7 +114,7 @@ else{
 
   useEffect(()=>{
 
-    console.log(userdata)
+    console.log(edtiting_profile_data.profile_image)
   })
 
 
