@@ -1,4 +1,4 @@
-from time import strftime
+
 from django.db import models
 from django.conf import settings
 
@@ -15,6 +15,7 @@ class TimestampAbstractModel(models.Model):
 
 class Post(TimestampAbstractModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+    author_name = models.CharField(max_length = 150)
     CATEGORY_CHOICES = ((1,"일기장"),(2,"함께해요"),(3,"궁금해요"),(4,"인증사진"),(5,"정보광장"))
     category = models.IntegerField(choices =CATEGORY_CHOICES)
     title = models.CharField(max_length=30)
