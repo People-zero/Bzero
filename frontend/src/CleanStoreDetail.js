@@ -41,6 +41,8 @@ const CleanStoreDetail = () => {
     const [review,dispatch] = useReducer(reducer,dummyReview); 
     const [pointAvg,setPointAvg] = useState(); //평균 별점
 
+    console.log(cleanStoreList);
+
     // useEffect(()=>{
     //     fetch('http://localhost:8000/review/')
     //     .then((res)=>res.json())
@@ -52,10 +54,13 @@ const CleanStoreDetail = () => {
     useEffect(()=>{
         init();
     },[])
+
+    console.log(cleanStoreList.data);
     
     useEffect(()=>{
         if (cleanStoreList.length >=1){
             const targetList = cleanStoreList.find((it)=>parseInt(it.id)===parseInt(id));
+            console.log(targetList);
                  // const targetReview = cleanStoreReview.find((it)=>parseInt(it.Store_PK)===parseInt(id));
             if(targetList){ //가게가 존재할 때
                 setData(targetList);
@@ -184,8 +189,8 @@ const CleanStoreDetail = () => {
                 </button>
                 <div className="cleanstore_information">
                     <section>
-                    <h2 className="opening_hours">영업 일자 및 시간<h3>{data.opening_hours}</h3></h2>
-                    <h2 className="address">주소<h3>{data.address}</h3></h2>
+                    <h2 className="opening_hours">영업 일자 및 시간<h3>{data.opening_time}</h3></h2>
+                    <h2 className="address">주소<h3></h3></h2>
                     <h2 className="telephone">문의처<h3>{data.telephone}</h3></h2>
                     </section>
                     <img src={Map} alt="Map" /> 

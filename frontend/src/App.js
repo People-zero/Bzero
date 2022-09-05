@@ -197,14 +197,16 @@ function App() {
     .then((response) => {
     dispatch({type:"INIT",data:response});
   })
-    if (data.lengh<1){
-      dispatch({type:"INIT",data:dummyData});
-    }
+    // if (data.lengh<1){
+    //   dispatch({type:"INIT",data:dummyData});
+    // }
   }
+
+  console.log(data);
 
   useEffect(()=>{
     init();
-  })
+  },[])
   const mypagelink=userdata?.id
   // console.log(data);
   // console.log(userdata?.id)
