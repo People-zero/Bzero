@@ -26,7 +26,10 @@ const EditProfilePage=({userdata})=> {
     profile_image: "",
   });
 
-  useEffect(()=>{set_edtiting_profile_data({
+  useEffect(()=>{
+    
+    if(userdata[0]?.profile?.profile_image!=null){
+    set_edtiting_profile_data({
     name: userdata[0]?.username,
     nickname: userdata[0]?.last_name,
     email: userdata[0]?.email,
@@ -35,7 +38,21 @@ const EditProfilePage=({userdata})=> {
     phone_number: userdata[0]?.phone_number,
     profile_image: userdata[0]?.profile.profile_image,
   })
-  },[userdata])
+}
+else{
+  
+    set_edtiting_profile_data({
+    name: userdata[0]?.username,
+    nickname: userdata[0]?.last_name,
+    email: userdata[0]?.email,
+    birth: new Date(),
+    age: 0,
+    phone_number: userdata[0]?.phone_number,
+    profile_image: userdata[0]?.profile.profile_image,
+})
+  
+  }
+},[userdata])
   const change_phone_number = ({ target: { value } }) => {
     const regex = /[^0-9]/g; // 숫자가 아닌 문자열을 선택하는 정규식
     let phone_number = value.replace(regex, "");
