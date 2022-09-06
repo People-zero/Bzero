@@ -10,6 +10,7 @@ class Clean_Store(models.Model):
     store_image = models.ImageField(null=True,blank=True)#TODO: default image 추가
     store_url = models.URLField(null=True)
     opening_time = models.CharField(max_length=50)
+    address = models.TextField(blank=True,default="")
     store_longtitude = models.DecimalField(max_digits=9, decimal_places=6)
     store_latitude = models.DecimalField(max_digits=9, decimal_places=6)
     phoneNumberRegex = RegexValidator(regex = r"^\+?1?\d{8,15}$")
@@ -35,6 +36,7 @@ class Bottle_Collection_Store(models.Model):
     store_url = models.URLField(null=True)
     bottle_kind = models.CharField(max_length = 100)
     pickup_day =  models.CharField(max_length=15)
+    address = models.TextField(blank=True)
     store_longtitude = models.DecimalField(max_digits=9, decimal_places=6)
     store_latitude = models.DecimalField(max_digits=9, decimal_places=6)
     opening_time = models.CharField(max_length=50)

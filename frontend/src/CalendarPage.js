@@ -1,16 +1,36 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import moment from "moment";
 import Calendar from "react-calendar";
 import "./css/CalendarPage.css";
 import CalendarNav from "./components/CalendarNav";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const CalendarPage = ({ checked_date }) => {
   const [value, onChange] = useState(new Date());
-
+  const navigate=useNavigate()
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+		// 이미 로그인이 되어있다면 redirect
+    if (localStorage.getItem('token') !== null) {
+      console.log("로그인")
+      setLoading(true)
+    } else {
+      setLoading(false);
+  
+    }
+  });
+  const refined_date = [];
+  if(loading===true){
+  for (const value of checked_date) {
+    refined_date.push(value.attended_date);
+  }
+  }
   return (
     <div className="calendar_page">
-     <CalendarNav></CalendarNav>
+      <CalendarNav></CalendarNav>
+      {loading===true &&(
       <div className="calendar_page_main">
+      
         <header className="calendar_page_header">
           <p className="calendar_page_title">제로웨이스트 캘린더</p>
           <div className="calender_page_title_sub">
@@ -45,7 +65,7 @@ const CalendarPage = ({ checked_date }) => {
               prev2Label={null}
               tileClassName={({ date, view }) => {
                 if (
-                  checked_date.find(
+                  refined_date.find(
                     (x) => x === moment(date).format("YYYY-MM-DD")
                   )
                 ) {
@@ -55,7 +75,15 @@ const CalendarPage = ({ checked_date }) => {
             />
           </div>
         </section>
+      
       </div>
+      )}
+      {loading===false &&(
+      <div style={{marginTop:"21%"}}className="loginfailed">캘린더는 로그인 후 이용해주세요
+      <div>
+      <button onClick={()=>{navigate('/login')}} className="loginfailed_login">로그인</button>
+      <button onClick={()=>{navigate('/login')}} className="loginfailed_join">회원가입</button></div></div>
+      )}
     </div>
   );
 };

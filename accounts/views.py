@@ -1,12 +1,11 @@
-from email.policy import HTTP
-from http.client import HTTPMessage
-from django.shortcuts import render
 from .models import User, Attendance, Profile
-from rest_framework import viewsets, permissions, generics
+from rest_framework import viewsets, permissions
 from accounts.serializers import UserSerializer, AttendSerializer, ProfileSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
-
+from dj_rest_auth.registration.views import RegisterView
+from rest_framework import viewsets
+from django.utils.translation import gettext_lazy as _
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -14,22 +13,12 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     http_method_names = ['get', 'patch']  # get method 만을 활용
-
-    # def list(self, request):
-    #     user = request.user
-    #     queryset = User.objects.filter(username=user)
-    #     serializer = self.get_serializer(queryset, many=True)
-    #     return Response(serializer.data)
-
-class UserAPI(generics.RetrieveAPIView):
-    permission_class = [
-        permissions.IsAuthenticated,
-    ]
-    serializer_class = UserSerializer
-
-    def get_object(self):
-        return self.request.user
-
+    
+    def list(self, request):
+        user = request.user
+        queryset = User.objects.filter(username=user)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
 class AttendViewSet(viewsets.ModelViewSet):
     queryset = Attendance.objects.all()
@@ -46,11 +35,11 @@ class AttendViewSet(viewsets.ModelViewSet):
         username = request.user
         attended_date = request.POST['attended_date']
         if(Attendance.objects.filter(username=username, attended_date=attended_date)):
-            return Response({'a': 'a'})
+            return Response({'detail': 'already attend'})
         else:
             data = Attendance(username=username, attended_date=attended_date)
             data.save()
-            return Response({'b': 'b'})
+            return Response({'detail': 'successfully attend'})
 
 
 class ProfileViewSet(viewsets.ModelViewSet):

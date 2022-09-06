@@ -1,9 +1,19 @@
 import './BottleStore.css';
 import React, { useState,useEffect,useContext,useReducer,useRef } from "react";
-import { useNavigate,useParams } from "react-router";
+import { useNavigate,useParams } from "react-router-dom";
 import mainlogo from './images/logo2.svg'
 import Vector from './images/Vector.png'
 import Vectorbottom from'./images/Vector_bottom.png'
+import Vector_left from './images/Vector_left.svg'
+import Vector_right from './images/Vector_right.png'
+import bottle1 from './images/bottle1.svg'
+import bottle2 from './images/bottle2.svg'
+import bottle3 from './images/bottle3.svg'
+import bottlebox from './images/bottlebox.svg'
+import bottletype_rectancle from './images/bottletype_rectangle.png'
+import emptystar from './images/emptystar.png'
+const env = process.env;
+env.PUBLIC_URL = env.PUBLIC_URL || "";
 
 const BottleStore = ({store}) => {
     //console.log(store);
@@ -11,7 +21,9 @@ const BottleStore = ({store}) => {
     //const {id} = useParams();
     //const [data,setData] = useState();
     //const navigate = useNavigate();
-
+    const handleSubmit = () => {
+      //저장하기
+    }
     
 
     return (
@@ -47,7 +59,7 @@ const BottleStore = ({store}) => {
                 <div className='bottlestore_summary_title'>
                   <p>{it.name}</p>
                   <div className='bottlestore_url'>
-                    <button>
+                    <button /*onClick={()=>{navigate(`${it.store_url}`)}}*/>
                        <a herf={it.store_url}>관련링크 방문하기</a>
                     <img src={Vector} alt="Vector" /> </button>
                   </div>
@@ -58,7 +70,7 @@ const BottleStore = ({store}) => {
 
                   </div>
                 <p className="bottlestore_info_summary">{it.info_summary}</p>
-                <img className="bottlestore_info_photo" src={it.photo}/>
+                <img className="bottlestore_info_photo" src={it.info_photo}/>
                 </div>
              </div>   
             <div className="bottlestore_content_group">
@@ -77,7 +89,7 @@ const BottleStore = ({store}) => {
                           <span ><span className='bold'>{it.dayOff} </span> 휴무</span>
                           <span className='another_content'><span className='bold'>{it.CollectDay}</span>  {it.CollectHour}</span>   
                           <span className='another_content'>{it.address}</span>
-                          <span className='another_content'>{it.inquiries}</span>
+                          <span className='another_content'>{it.number}</span>
                     </div>
                     </div>
                 
@@ -97,13 +109,52 @@ const BottleStore = ({store}) => {
             <div className="bottlestore_content_group">
             <p className="bottlestore_content_title"> 
             <img src={Vectorbottom} />수거하는 공병</p>
-            {/*수정중*/}
+            <div className='bottlestore_content_body'>
+              <div className='bottlestore_bottletype'>
+                <span className='bottlestore_bottletype_text'>페트병</span>
+                <span className='bottlestore_bottletype_text'>페트병</span>
+                <span className='bottlestore_bottletype_text'>페트병</span>
+                <span className='bottlestore_bottletype_text'>페트병</span>
+                <div className='bottlestore_bottletype_pic'>
+                  <div className='bottlestore_bottletype_bottle'>
+                      <img src={bottle1}   width='100px'/>
+                      <img src={bottle2}width='100px'/>
+                      <img src={bottle3}width='135px'/>
+                  </div>
+                  <div className='bottlestore_bottletype_box'>
+                    <img src={bottlebox}/>
+                  </div>
+                </div>
+              </div>
+            </div>
               </div>
             <div className="bottlestore_content_group">
               <p className="bottlestore_content_title"> 
             <img src={Vectorbottom} />수거하는 공병</p>
-            {/*수정중*/}
-              
+            <div className='bottlestore_content_body'>
+              {/*<div className='bottlestore_slide'>
+                <button><img src={Vector_left}/></button>
+                <button><img src={Vector_right}/></button>
+          </div>*/}
+              <div className='bottlestore_bottledetail'>    
+              <div className='bottlestore_bottledeail_content'>
+                <img src={bottletype_rectancle}/>
+                <p>페트병</p>
+                </div>
+                <div className='bottlestore_bottledeail_content'>
+                <img src={bottletype_rectancle}/>
+                <p>페트병</p>
+                </div>
+                <div className='bottlestore_bottledeail_content'>
+                <img src={bottletype_rectancle}/>
+                <p>페트병</p>
+                </div>
+                <div className='bottlestore_bottledeail_content'>
+                <img src={bottletype_rectancle}/>
+                <p>페트병</p>
+                </div>
+              </div>              
+              </div>
               </div>
               <div className="bottlestore_content_group">
             <p className="bottlestore_content_title"> 
@@ -114,12 +165,20 @@ const BottleStore = ({store}) => {
             ))}
             <div className="bottlestore_content_group">
             <p className="bottlestore_content_title"> 리뷰 작성</p>
-            {/*수정중*/}
+              <div className='bottlestore_review'>
+                <h3>이 스토어를 추천하시겠어요?</h3>
+                    <div className="bottlestore_star">
+                      <img src={emptystar}/><img src={emptystar}/><img src={emptystar}/><img src={emptystar}/><img src={emptystar}/>
+                    </div>
+                    <textarea placeholder="리뷰를 작성해주세요." />
+                {/*<button className="write_button" onClick={handleSubmit}>
+                    작성하기
+        </button>*/}
+                </div>      
               </div>
-   
         </div>
-      </div>
-      </div>
+</div>
+</div>
     );
 };
 

@@ -41,8 +41,9 @@ const CleanStoreDetail = () => {
     const [review,dispatch] = useReducer(reducer,dummyReview); 
     const [pointAvg,setPointAvg] = useState(); //평균 별점
 
-    console.log(cleanStoreList);
-
+    useEffect(()=>{
+    console.log(cleanStoreList[0]);
+},[])
     // useEffect(()=>{
     //     fetch('http://localhost:8000/review/')
     //     .then((res)=>res.json())
@@ -55,8 +56,7 @@ const CleanStoreDetail = () => {
         init();
     },[])
 
-    console.log(cleanStoreList.data);
-    
+ 
     useEffect(()=>{
         if (cleanStoreList.length >=1){
             const targetList = cleanStoreList.find((it)=>parseInt(it.id)===parseInt(id));
