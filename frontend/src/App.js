@@ -169,6 +169,7 @@ function App() {
   };
 
 
+  const [CleanStore,setCleanStore] = useState([]);
   const getData = async () => {
     const res = await fetch(
       "http://127.0.0.1:8000/store/bottle_collection_Store/"
@@ -259,14 +260,55 @@ function App() {
     });
   };
 
-  const [data, dispatch] = useReducer(reducer, FirstData);
-  const dataId = useRef(7);
+  const [data,dispatch]=useReducer(reducer,dummyData);
+  const dataId= useRef(10);
 
   useEffect(() => {
     // init();
     
   });
   const mypagelink = userdata?.id;
+  const init = async() => {
+    const response=await fetch("http://127.0.0.1:8000/store/clean_store/")
+    .then((response)=>response.json()) 
+    const initdata=response.map((it)=>{
+      
+      return{
+        id : it.pk,
+        store_name : it.store_name,
+        store_image: it.store_image,
+        opening_time : it.opening_time,
+        store_longtitude : it.store_longtitude,
+        store_latitude : it.store_latitude,
+        telephone : it.telephone,
+        description : it.description,
+        point_avg : it.point_avg,
+        address : it.address,
+        store_url : it.store_url,
+      }
+
+    })
+       
+    setCleanStore(initdata)
+    
+    // if (data.lengh<1){
+    //   dispatch({type:"INIT",data:dummyData});
+    // }
+  }
+
+
+
+  useEffect(()=>{
+    init();
+    console.log(CleanStore)
+  },[])
+
+  const mypagelink=userdata?.id
+
+
+  // const [data, dispatch] = useReducer(reducer, FirstData);
+  // const dataId = useRef(7);
+
   // console.log(data);
   // console.log(userdata?.id)
   // console.log(userdata)
@@ -277,7 +319,7 @@ function App() {
         onCreate,
       }}
     >
-        <CleanStoreContext.Provider value={data}>
+        <CleanStoreContext.Provider value={CleanStore}>
       <PostStateContext.Provider value={data}>
         <BrowserRouter>
           
