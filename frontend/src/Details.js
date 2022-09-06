@@ -5,38 +5,23 @@ import { useLocation } from "react-router";
 import axios from "axios";
 
 const Details = () => {
-  // axios
-  //   .post("http://127.0.0.1:8000/post/", {
-  //     author: 1,
-  //     category: 2,
-  //     content: "test1",
-  //     image: null,
-  //     recommend_user_set: [],
-  //     title: "test1",
-  //   })
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
 
   const getApi = async () => {
-    const res = await fetch("http://127.0.0.1:8000/post/2/").then((res) =>
-      res.json()
-    );
-    console.log(res);
 
-    const res2 = await fetch("http://127.0.0.1:8000/post/3/").then((res2) =>
-      res2.json()
-    );
-    console.log(res2);
+    //데이터 가져 오기
+    // const res = await fetch("http://127.0.0.1:8000/post/detail/1").then((res) =>
+    //   res.json()
+    // );
+    // console.log(res);
   };
+
   useEffect(() => {
     getApi();
   }, []);
 
   const { state } = useLocation();
+  console.log(state)
+
 
   const [comment, Setcomment] = useState("");
   const [commentList, SetcommentList] = useState([]);

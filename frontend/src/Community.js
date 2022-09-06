@@ -133,7 +133,12 @@ const Community = () => {
   return (
     <div className="Community">
       <div className="Community_header">
-        <div className="Community_header_title">B ZERO</div>
+        <img
+          className="Community_header_title_img"
+          src={process.env.PUBLIC_URL + `/img/로고 파랑 2.png`}
+        />
+        <div className="Community_header_title">BZERO</div>
+
         <div className="Community_header_right">
           <div>가게 찾기</div>
           <div className="Community_header_right_communiy">커뮤니티</div>
@@ -215,10 +220,12 @@ const Community = () => {
                       className="Community_body_four_postlist_imgs1"
                       src={process.env.PUBLIC_URL + `/icon/Good.png`}
                     />
-                    <div className="Community_body_four_postlist_imgs1_goodbt">{goodbt}</div>
+                    <div className="Community_body_four_postlist_imgs1_goodbt">
+                      {goodbt}
+                    </div>
                     <img
                       className={"Community_body_four_postlist_imgs2"}
-                      onClick={()=>pushpinbt()}
+                      onClick={() => pushpinbt()}
                       src={img}
                       key={it.id}
                     />

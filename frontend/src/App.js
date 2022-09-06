@@ -143,7 +143,7 @@ function App() {
   const [place, setplace] = useState([]);
   const [userdata, setuserdata] = useState([]);
   const [attendDate, setAttendDate] = useState([]);
-  const [FirstData,setFirstdata]=useState([]);
+  const [FirstData, setFirstdata]= useState([]);
 
   const getpost = async () => {
     const res = await fetch(
@@ -262,6 +262,7 @@ function App() {
 
   const [data,dispatch]=useReducer(reducer,dummyData);
   const dataId= useRef(10);
+  const dataId = useRef(7);
 
   useEffect(() => {
     // init();
@@ -323,6 +324,10 @@ function App() {
       <PostStateContext.Provider value={data}>
         <BrowserRouter>
           
+    <PostDispatchContext.Provider>
+      <CleanStoreContext.Provider>
+        <PostStateContext.Provider value={FirstData}>
+          <BrowserRouter>
             <Routes>
               <Route
                 path="/calendar"
@@ -359,16 +364,15 @@ function App() {
                 path="/bottle_store/:id"
                 element={<BottleStore store={place}></BottleStore>}
               ></Route>
+              <Route path="/post" element={<Post />}></Route>
               <Route
                 path="/diary_detail/:date"
                 element={<DiaryDetailPage dummy_diary={dummy_diary} />}
               ></Route>
             </Routes>
           </BrowserRouter>
-        
-          </PostStateContext.Provider>
+        </PostStateContext.Provider>
       </CleanStoreContext.Provider>
-    
     </PostDispatchContext.Provider>
   );
 }
