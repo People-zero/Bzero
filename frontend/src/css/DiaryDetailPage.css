@@ -171,6 +171,15 @@
     height: 50px;
 }
 
+/* .diary_detail_prev_btn_not {
+    pointer-events: none;
+} */
+
+.diary_detail_prev_btn_not img{
+    width: 30px;
+    height: 50px;
+}
+
 .diary_detail_next_diary {
     display: flex;
     flex-direction: column;
@@ -182,6 +191,11 @@
 }
 
 .diary_detail_next_btn img{
+    width: 30px;
+    height: 50px;
+}
+
+.diary_detail_next_btn_not img{
     width: 30px;
     height: 50px;
 }
