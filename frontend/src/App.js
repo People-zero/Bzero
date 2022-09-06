@@ -20,7 +20,7 @@ import photo2 from "./images/photo2.png";
 import photo3 from "./images/photo3.png";
 import BottleStore from "./BottleStore";
 import RegistStore from "./RegistStore";
-import Post from "./Post.js"
+import Post from "./Post.js";
 import EditProfilePage from "./EditProfilePage";
 import DiaryDetailPage from "./DiaryDetailPage";
 const dummy_diary = [
@@ -82,8 +82,6 @@ const dumyData = [
   },
 ];
 
-
-
 const dummy_badge = [
   { badge_id: 1, badge_type: "badge1.png" },
   { badge_id: 2, badge_type: "badge1.png" },
@@ -138,36 +136,54 @@ const dummyList2 = [
   },
 ];
 function App() {
-
-
   const [place, setplace] = useState([]);
   const [userdata, setuserdata] = useState([]);
   const [attendDate, setAttendDate] = useState([]);
-  const [FirstData,setFirstdata]=useState([]);
+  const [FirstData, setFirstdata] = useState([]);
+  const [diaryDetailData, setDiaryDetailData] = useState([]);
 
-  const getpost = async () => {
-    const res = await fetch(
-      "http://127.0.0.1:8000/post"
-    ).then((res) => res.json());
+  const getDiaryDetail = async () => {
+    const res = await fetch("http://127.0.0.1:8000/post/C/1").then((res) =>
+      res.json()
+    );
     // console.log(res); // 500개의 데이터
-  
+
     const initData = res.map((it) => {
       // console.log(it.id)
       return {
         id: it.id,
-        emotion:it.category,
-        user:it.author, // 작성자
-        title:it.title,
-        content:it.content,
+        title: it.title,
+        content: it.content,
         date: it.created_at,
-        
+
         // image: it.store_image,
       };
     });
-  
-    setFirstdata(initData);
+    setDiaryDetailData(initData);
   };
 
+  const getpost = async () => {
+    const res = await fetch("http://127.0.0.1:8000/post").then((res) =>
+      res.json()
+    );
+    // console.log(res); // 500개의 데이터
+
+    const initData = res.map((it) => {
+      // console.log(it.id)
+      return {
+        id: it.id,
+        emotion: it.category,
+        user: it.author, // 작성자
+        title: it.title,
+        content: it.content,
+        date: it.created_at,
+
+        // image: it.store_image,
+      };
+    });
+
+    setFirstdata(initData);
+  };
 
   const getData = async () => {
     const res = await fetch(
@@ -201,12 +217,13 @@ function App() {
           Authorization: "Token ".concat(token),
         },
       }).then((res) => res.json());
-      console.log(res)
+      console.log(res);
       setuserdata(res);
     };
 
     getData();
     getpost();
+    getDiaryDetail();
   }, []);
 
   useEffect(() => {
@@ -264,7 +281,7 @@ function App() {
 
   useEffect(() => {
     // init();
-    console.log(FirstData)
+    // console.log(FirstData);
   });
   const mypagelink = userdata?.id;
   // console.log(data);
@@ -277,10 +294,9 @@ function App() {
         onCreate,
       }}
     >
-        <CleanStoreContext.Provider value={data}>
-      <PostStateContext.Provider value={data}>
-        <BrowserRouter>
-          
+      <CleanStoreContext.Provider value={data}>
+        <PostStateContext.Provider value={data}>
+          <BrowserRouter>
             <Routes>
               <Route
                 path="/calendar"
@@ -319,14 +335,14 @@ function App() {
               ></Route>
               <Route
                 path="/diary_detail/:date"
-                element={<DiaryDetailPage dummy_diary={dummy_diary} />}
+                element={
+                  <DiaryDetailPage diary_detail_post={diaryDetailData} />
+                }
               ></Route>
             </Routes>
           </BrowserRouter>
-        
-          </PostStateContext.Provider>
+        </PostStateContext.Provider>
       </CleanStoreContext.Provider>
-    
     </PostDispatchContext.Provider>
   );
 }
