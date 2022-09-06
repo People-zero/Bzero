@@ -143,7 +143,7 @@ function App() {
   const [place, setplace] = useState([]);
   const [userdata, setuserdata] = useState([]);
   const [attendDate, setAttendDate] = useState([]);
-  const [FirstData,setFirstdata]=useState([]);
+  const [FirstData, setFirstdata]= useState([]);
 
   const getpost = async () => {
     const res = await fetch(
@@ -229,37 +229,6 @@ function App() {
     getData();
   }, []);
 
-  const onCreate = (date, content, emotion) => {
-    dispatch({
-      type: "CREATE",
-      data: {
-        id: dataId.current,
-        data: new Date(date).getTime(),
-        content,
-        emotion,
-      },
-    });
-
-    dataId.current += 1;
-  };
-  // REMOVE
-  const onRemove = (targetId) => {
-    dispatch({ type: "REMOVE", targetId });
-  };
-  // Edit
-  const onEdit = (targetId, date, content, emotion) => {
-    dispatch({
-      type: "EDIT",
-      data: {
-        id: targetId,
-        date: new Date(date).getTime(),
-        content,
-        emotion,
-      },
-    });
-  };
-
-  const [data, dispatch] = useReducer(reducer, FirstData);
   const dataId = useRef(7);
 
   useEffect(() => {
@@ -272,15 +241,10 @@ function App() {
   // console.log(userdata)
 
   return (
-    <PostDispatchContext.Provider
-      value={{
-        onCreate,
-      }}
-    >
-        <CleanStoreContext.Provider value={data}>
-      <PostStateContext.Provider value={data}>
-        <BrowserRouter>
-          
+    <PostDispatchContext.Provider>
+      <CleanStoreContext.Provider>
+        <PostStateContext.Provider value={FirstData}>
+          <BrowserRouter>
             <Routes>
               <Route
                 path="/calendar"
@@ -317,16 +281,15 @@ function App() {
                 path="/bottle_store"
                 element={<BottleStore store={dummyList2}></BottleStore>}
               ></Route>
+              <Route path="/post" element={<Post />}></Route>
               <Route
                 path="/diary_detail/:date"
                 element={<DiaryDetailPage dummy_diary={dummy_diary} />}
               ></Route>
             </Routes>
           </BrowserRouter>
-        
-          </PostStateContext.Provider>
+        </PostStateContext.Provider>
       </CleanStoreContext.Provider>
-    
     </PostDispatchContext.Provider>
   );
 }

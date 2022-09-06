@@ -2,6 +2,8 @@ import { useState, useRef, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { PostStateContext, PostDispatchContext } from "./App";
 import "./Post.css";
+import axios from "axios";
+import { normalizeUnits } from "moment";
 
 const sortOptionList = [
   { value: "카테고리", name: "카테고리" },
@@ -29,8 +31,21 @@ const ControlMenu = ({ value, onChange, optionList }) => {
 };
 
 const Post = () => {
+  axios
+    .post("http://127.0.0.1:8000/post/", {
+      category: 3,
+      title: "test 1 title",
+      content: "test 1 content",
+      imgae: "",
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   const [data, setData] = useState([]);
-  const { onCreate } = useContext(PostDispatchContext);
   const navigate = useNavigate();
   useEffect(() => {
     setData(data);
@@ -51,7 +66,6 @@ const Post = () => {
   const { id } = useParams();
 
   const handleSubmit = () => {
-    onCreate(curDate, sortType, title, post);
     navigate("/community", { replace: true });
   };
 
