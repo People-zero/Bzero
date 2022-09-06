@@ -14,7 +14,7 @@ const CleanStore = () => {
 
     useEffect(()=>{
         setData(cleanStoreList)
-    },[cleanStoreList]);
+    },[]);
 
     return (
         <div className="CleanStore">

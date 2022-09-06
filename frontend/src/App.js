@@ -143,7 +143,7 @@ function App() {
   const [place, setplace] = useState([]);
   const [userdata, setuserdata] = useState([]);
   const [attendDate, setAttendDate] = useState([]);
-  const [FirstData,setFirstdata]=useState([]);
+  const [FirstData, setFirstdata]= useState([]);
 
   const getpost = async () => {
     const res = await fetch(
@@ -169,6 +169,7 @@ function App() {
   };
 
 
+  const [CleanStore,setCleanStore] = useState([]);
   const getData = async () => {
     const res = await fetch(
       "http://127.0.0.1:8000/store/bottle_collection_Store/"
@@ -194,20 +195,20 @@ function App() {
     const getData = async () => {
       let token = localStorage.getItem("token");
       let token2 = "Token ".concat(token);
-      console.log(token2);
+      
       const res = await fetch("http://127.0.0.1:8000/auth/accounts", {
         method: "GET",
         headers: {
           Authorization: "Token ".concat(token),
         },
       }).then((res) => res.json());
-      console.log(res)
+      
       setuserdata(res);
     };
 
     getData();
     getpost();
-  }, []);
+  },[]);
 
   useEffect(() => {
     const getAttendData = async () => {
@@ -259,14 +260,56 @@ function App() {
     });
   };
 
-  const [data, dispatch] = useReducer(reducer, FirstData);
-  const dataId = useRef(7);
+  const [data,dispatch]=useReducer(reducer,dummyData);
+  const dataId= useRef(10);
+  
 
   useEffect(() => {
     // init();
-    console.log(FirstData)
+    
   });
-  const mypagelink = userdata?.id;
+  
+  const init = async() => {
+    const response=await fetch("http://127.0.0.1:8000/store/clean_store/")
+    .then((response)=>response.json()) 
+    const initdata=response.map((it)=>{
+      
+      return{
+        id : it.pk,
+        store_name : it.store_name,
+        store_image: it.store_image,
+        opening_time : it.opening_time,
+        store_longtitude : it.store_longtitude,
+        store_latitude : it.store_latitude,
+        telephone : it.telephone,
+        description : it.description,
+        point_avg : it.point_avg,
+        address : it.address,
+        store_url : it.store_url,
+      }
+
+    })
+       
+    setCleanStore(initdata)
+    
+    // if (data.lengh<1){
+    //   dispatch({type:"INIT",data:dummyData});
+    // }
+  }
+
+
+
+  useEffect(()=>{
+    init();
+    console.log(CleanStore)
+  },[])
+
+  const mypagelink=userdata?.id
+
+
+  // const [data, dispatch] = useReducer(reducer, FirstData);
+  // const dataId = useRef(7);
+
   // console.log(data);
   // console.log(userdata?.id)
   // console.log(userdata)
@@ -277,17 +320,19 @@ function App() {
         onCreate,
       }}
     >
-        <CleanStoreContext.Provider value={data}>
-      <PostStateContext.Provider value={data}>
-        <BrowserRouter>
+        <CleanStoreContext.Provider value={CleanStore}>
+      
           
+   
+        <PostStateContext.Provider value={FirstData}>
+          <BrowserRouter>
             <Routes>
               <Route
                 path="/calendar"
                 element={<CalendarPage checked_date={attendDate} />}
               ></Route>
               <Route path="/login" element={<LoginPage></LoginPage>}></Route>
-              <Route path="/edit" element={<EditProfilePage />}></Route>
+              <Route  path="/mypage/edit" element={<EditProfilePage userdata={userdata} />}></Route>
               <Route path="/main" element={<MainPage></MainPage>}></Route>
               <Route
                 path="/mypage"
@@ -314,23 +359,22 @@ function App() {
               <Route path="/details/:id" element={<Details />} />
               <Route path="/regist_store" element={<RegistStore />}></Route>
               <Route
-                path="/bottle_store"
-                element={<BottleStore store={dummyList2}></BottleStore>}
+                path="/bottle_store/:id"
+                element={<BottleStore store={place}></BottleStore>}
               ></Route>
+              <Route path="/post" element={<Post />}></Route>
               <Route
                 path="/diary_detail/:date"
                 element={<DiaryDetailPage dummy_diary={dummy_diary} />}
               ></Route>
             </Routes>
           </BrowserRouter>
-        
-          </PostStateContext.Provider>
+        </PostStateContext.Provider>
       </CleanStoreContext.Provider>
-    
     </PostDispatchContext.Provider>
   );
 }
 
 export default App;
 
-// < BottleStore store={dummyList}/>
+

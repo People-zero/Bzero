@@ -1,13 +1,23 @@
 from .models import User, Attendance, Profile
 from rest_framework import serializers
 from dj_rest_auth.registration.serializers import RegisterSerializer
+from drf_extra_fields.fields import Base64ImageField
 
 
 class ProfileSerializer(serializers.ModelSerializer):
     # user_data = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    profile_image = Base64ImageField()
     class Meta:
         model = Profile
         fields = ['id', 'username', 'profile_image', 'intro_comment', 'point']
+
+    def update(self, instance, validated_data):
+        instance.id = validated_data.get("id", instance.id)
+        instance.username = validated_data.get("username", instance.username)
+        instance.profile_image = validated_data.get("profile_image", instance.profile_image)
+        instance.intro_comment = validated_data.get("intro_comment", instance.intro_comment)
+        instance.point = validated_data.get("point", instance.point)
+        return super().update(instance, validated_data)
 
 
 class UserSerializer(serializers.ModelSerializer):

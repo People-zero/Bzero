@@ -56,9 +56,9 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
         window.location.replace('/main')
       });
   }
-useEffect(()=>{
-  const mydata=userdata[0]
-},[userdata])
+// useEffect(()=>{
+//   const mydata=userdata[0]
+// },[userdata])
 
   return (
     <div className="mypage">
@@ -82,7 +82,8 @@ useEffect(()=>{
                   {/* <img src={`static/${it.profile}`} alt="profile"></img> */}
                   <p className="mypage_nickname">{userdata[0]?.last_name}</p>
                   <p className="mypage_email">{userdata[0]?.email}</p>
-                  <button className="mypage_edit_profile_btn">
+                  <button onClick={()=>{navigate('/mypage/edit')
+                  }} className="mypage_edit_profile_btn">
                     내정보수정
                   </button>
                 </div>

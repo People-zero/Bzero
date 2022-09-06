@@ -4,9 +4,13 @@ import "./css/EditProfilePage.css";
 import camera_icon from "./images/camera_icon.svg";
 import withdrawl_icon from "./images/withdrawl_icon.svg";
 import axios from "axios";
-function EditProfilePage() {
+import MypageNav from "./components/MypageNav";
+const EditProfilePage=({userdata})=> {
+  
+  const[photo,setphoto]=useState()
+
   const [profile_data, set_profile_data] = useState({
-    name: "",
+    name: userdata[0]?.username,
     nickname: "",
     email: "",
     birth: new Date(),
@@ -15,14 +19,42 @@ function EditProfilePage() {
     profile_image: "",
   });
   const [edtiting_profile_data, set_edtiting_profile_data] = useState({
-    name: "",
-    nickname: "",
-    email: "",
+    name: userdata[0]?.username,
+    nickname: userdata[0]?.last_name,
+    email: userdata[0]?.email,
     birth: new Date(),
     age: 0,
     phone_number: "",
     profile_image: "",
   });
+
+  useEffect(()=>{
+    
+    if(userdata[0]?.profile?.profile_image!=null){
+    set_edtiting_profile_data({
+    name: userdata[0]?.username,
+    nickname: userdata[0]?.last_name,
+    email: userdata[0]?.email,
+    birth: new Date(),
+    age: 0,
+    phone_number: userdata[0]?.phone_number,
+    profile_image: userdata[0]?.profile.profile_image,
+  })
+}
+else{
+  
+    set_edtiting_profile_data({
+    name: userdata[0]?.first_name,
+    nickname: userdata[0]?.last_name,
+    email: userdata[0]?.email,
+    birth: new Date(),
+    age: 0,
+    phone_number: userdata[0]?.phone_number,
+    profile_image: userdata[0]?.profile.profile_image
+})
+  
+  }
+},[userdata])
   const change_phone_number = ({ target: { value } }) => {
     const regex = /[^0-9]/g; // 숫자가 아닌 문자열을 선택하는 정규식
     let phone_number = value.replace(regex, "");
@@ -47,48 +79,68 @@ function EditProfilePage() {
   };
 
   const submit_event = () => {
-    const id = 1; //임시코드
-    const API_URL = `http://127.0.0.1:8000/auth/accounts/${id}`;
+    const id = userdata[0].id; //임시코드
+ 
+    console.log(typeof(edtiting_profile_data.profile_image))
+  //   axios.put(`http://127.0.0.1:8000/auth/accounts/${id}/`,{
+  //     first_name:edtiting_profile_data.name,
+  //     last_name:edtiting_profile_data.nickname,
+  //     email:edtiting_profile_data.email,
+  //     phone_number:edtiting_profile_data.phone_number,
+      
+  //     username: userdata[0]?.username,
+  //     birth: userdata[0]?.birth,
+  //     age: userdata[0]?.age,
+  
 
-    axios.post(API_URL, edtiting_profile_data).then(({ data }) => {
-      console.log(data);
-    });
-  };
-
+  //     is_staff: userdata[0].is_staff,
+  
+ 
+  // },{headers: {
+  //   Authorization: "Token ".concat(localStorage.getItem("token")),
+  // }})
+  axios.put(`http://127.0.0.1:8000/auth/profile/${id}/`
+  ,{
+    username:userdata[0]?.profile?.username,
+    intro_comment:'ㄴㄴ',
+    profile_image:edtiting_profile_data.profile_image,
+    point:userdata[0]?.profile?.point
+  },{headers: {
+    Authorization: "Token ".concat(localStorage.getItem("token")),
+  }})
+};
+ 
   const withdrawal_event = () => {
     // 제출 코드
   };
 
-  const fetch_user_data = () => {
-    const API_URL = "http://127.0.0.1:8000/auth/accounts/";
-    axios.get(API_URL).then(({ data }) => {
-      set_profile_data(data);
-      set_edtiting_profile_data({...data, password : "" });
-    });
-  };
+  useEffect(()=>{
 
-  useEffect(() => {
-    fetch_user_data();
-    return;
-  }, []);
+    console.log(photo)
+  },[photo])
 
+
+
+
+  
   return (
     <div className="body">
+      <MypageNav></MypageNav>
       <header className="my_page_title">마이페이지</header>
       <div className="main_body">
         <div className="profile_body">
           <img
             className="profile_image"
             alt="profile"
-            src={profile_data["profile_image"]}
+            src={edtiting_profile_data["profile_image"]}
           />
-          <p className="profile_nickname">{profile_data["nickname"]}</p>
-          <p className="profile_email">{profile_data["email"]}</p>
+          <p className="profile_nickname">{edtiting_profile_data["nickname"]}</p>
+          <p className="profile_email">{edtiting_profile_data["email"]}</p>
           <div>
             <button className="profile_edit_btn">내 정보 수정</button>
           </div>
           <div className="profile_navibar">
-            <button className="navi_btn">내 정보</button>
+            <button style={{color:"#0679ff"}}className="navi_btn">내 정보</button>
             <button className="navi_btn">제로웨이스트 캘린더</button>
             <button className="navi_btn">제로웨이스트 일기</button>
           </div>
@@ -121,6 +173,7 @@ function EditProfilePage() {
                 accept="image/jpg,impge/png,image/jpeg"
                 id="profile_upload"
                 className="profile_upload"
+                value=""
                 onChange={change_profile_image}
               />
             </div>
@@ -185,75 +238,7 @@ function EditProfilePage() {
                 onChange={change_phone_number}
               />
             </div>
-            <div className="input_div">
-              <p className="input_tag">성별</p>
-              <div className="radios">
-                <div>
-                  <input
-                    id="male"
-                    value="male"
-                    name="gender"
-                    type="radio"
-                    className="radio"
-                    checked={edtiting_profile_data["gender"] === "male"}
-                    onChange={() =>
-                      set_edtiting_profile_data({
-                        ...edtiting_profile_data,
-                        gender: "male",
-                      })
-                    }
-                  />
-                  <label>남성</label>
-                </div>
-                <div>
-                  <input
-                    id="female"
-                    value="female"
-                    name="gender"
-                    type="radio"
-                    className="radio"
-                    checked={edtiting_profile_data["gender"] === "female"}
-                    onChange={() =>
-                      set_edtiting_profile_data({
-                        ...edtiting_profile_data,
-                        gender: "female",
-                      })
-                    }
-                  />
-                  <label>여성</label>
-                </div>
-              </div>
-            </div>
-            <div className="input_div">
-              <p className="input_tag">나이</p>
-              <input
-                type="number"
-                className="input_text"
-                value={edtiting_profile_data["age"]}
-                onChange={(e) =>
-                  set_edtiting_profile_data({
-                    ...edtiting_profile_data,
-                    age: e.target.value,
-                  })
-                }
-              />
-            </div>
-            <div className="input_div">
-              <p className="input_tag">생년원일</p>
-              <input
-                className="input_text"
-                type="date"
-                value={edtiting_profile_data["birth"]
-                  .toISOString()
-                  .slice(0, 10)}
-                onChange={(e) =>
-                  set_edtiting_profile_data({
-                    ...edtiting_profile_data,
-                    birth: new Date(e.target.value),
-                  })
-                }
-              />
-            </div>
+            
             <button className="sumbit_btn" onClick={submit_event}>완료</button>
           </div>
           <div className="withdrawal">

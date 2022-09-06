@@ -5,7 +5,7 @@ export const dummyData = [ //가게 별점 평균, 리뷰 data는 따로 빼기
     { 
       id: 1, //id
       store_name: "store_1", //가게 이름
-      opening_hours: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
+      opening_time: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
       store_longitude: "37",
       store_latitude : "40",
       telephone: "02-OOO-OOOO", //문의처
@@ -18,7 +18,7 @@ export const dummyData = [ //가게 별점 평균, 리뷰 data는 따로 빼기
     {
         id: 2, //id
         store_name: "store_2", //가게 이름
-        opening_hours: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
+        opening_time: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
         store_longitude: "37",
         store_latitude : "40",
         telephone: "02-OOO-OOOO", //문의처
@@ -31,7 +31,7 @@ export const dummyData = [ //가게 별점 평균, 리뷰 data는 따로 빼기
       {
         id: 3, //id
         store_name: "store_3", //가게 이름
-        opening_hours: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
+        opening_time: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
         store_longitude: "37",
         store_latitude : "40",
         telephone: "02-OOO-OOOO", //문의처
@@ -44,7 +44,7 @@ export const dummyData = [ //가게 별점 평균, 리뷰 data는 따로 빼기
       {
           id: 4, //id
           store_name: "store_4", //가게 이름
-          opening_hours: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
+          opening_time: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
           store_longitude: "37",
           store_latitude : "40",
           telephone: "02-OOO-OOOO", //문의처
@@ -57,7 +57,7 @@ export const dummyData = [ //가게 별점 평균, 리뷰 data는 따로 빼기
         {
           id: 5, //id
           store_name: "store_5", //가게 이름
-          opening_hours: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
+          opening_time: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
           store_longitude: "37",
           store_latitude : "40",
           telephone: "02-OOO-OOOO", //문의처
@@ -70,7 +70,7 @@ export const dummyData = [ //가게 별점 평균, 리뷰 data는 따로 빼기
         {
           id: 6, //id
           store_name: "store_6", //가게 이름
-          opening_hours: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
+          opening_time: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
           store_longitude: "37",
           store_latitude : "40",
           telephone: "02-OOO-OOOO", //문의처
@@ -83,7 +83,7 @@ export const dummyData = [ //가게 별점 평균, 리뷰 data는 따로 빼기
           {
           id: 7, //id
           store_name: "store_7", //가게 이름
-          opening_hours: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
+          opening_time: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
           store_longitude: "37",
           store_latitude : "40",
           telephone: "02-OOO-OOOO", //문의처
@@ -97,7 +97,7 @@ export const dummyData = [ //가게 별점 평균, 리뷰 data는 따로 빼기
             id: 8, //id
             name: "store_8", //가게 이름
             store_name: "store_8", //가게 이름
-            opening_hours: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
+            opening_time: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
             store_longitude: "37",
             store_latitude : "40",
             telephone: "02-OOO-OOOO", //문의처
@@ -110,7 +110,7 @@ export const dummyData = [ //가게 별점 평균, 리뷰 data는 따로 빼기
               {
               id: 9, //id
               store_name: "store_9", //가게 이름
-              opening_hours: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
+              opening_time: "평일 오전 10시-오후 7시 (토,일,공휴일 휴무)", //영업일자 및 시간
               store_longitude: "37",
               store_latitude : "40",
               telephone: "02-OOO-OOOO", //문의처
