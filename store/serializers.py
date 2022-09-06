@@ -2,11 +2,12 @@ from distutils.command import clean
 from django.test import TestCase
 from rest_framework import serializers
 from .models import Clean_Store,Review,Bottle_Collection_Store
+from drf_extra_fields.fields import Base64ImageField
 
 
 class Clean_StoreSerializer(serializers.ModelSerializer):
    point_avg = serializers.SerializerMethodField("get_point_avg")
-   store_image = serializers.ImageField(use_url = True)
+   store_image = Base64ImageField()
 
    def get_point_avg(self,clean_store):
       cnt = 0
@@ -34,7 +35,7 @@ class ReviewSerializer(serializers.ModelSerializer):
       fields = "__all__"
 
 class Bottle_Collection_StoreSerializer(serializers.ModelSerializer):
-   store_image = serializers.ImageField(use_url=True)
+   store_image = Base64ImageField()
    class Meta:
       model = Bottle_Collection_Store
       fields = "__all__"
