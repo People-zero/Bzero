@@ -6,6 +6,8 @@ from .models import Clean_Store,Review,Bottle_Collection_Store
 
 class Clean_StoreSerializer(serializers.ModelSerializer):
    point_avg = serializers.SerializerMethodField("get_point_avg")
+   store_image = serializers.ImageField(use_url = True)
+
    def get_point_avg(self,clean_store):
       cnt = 0
       total = 0
@@ -32,6 +34,7 @@ class ReviewSerializer(serializers.ModelSerializer):
       fields = "__all__"
 
 class Bottle_Collection_StoreSerializer(serializers.ModelSerializer):
+   store_image = serializers.ImageField(use_url=True)
    class Meta:
       model = Bottle_Collection_Store
       fields = "__all__"
