@@ -262,13 +262,13 @@ function App() {
 
   const [data,dispatch]=useReducer(reducer,dummyData);
   const dataId= useRef(10);
-  const dataId = useRef(7);
+  
 
   useEffect(() => {
     // init();
     
   });
-  const mypagelink = userdata?.id;
+  
   const init = async() => {
     const response=await fetch("http://127.0.0.1:8000/store/clean_store/")
     .then((response)=>response.json()) 
@@ -321,11 +321,9 @@ function App() {
       }}
     >
         <CleanStoreContext.Provider value={CleanStore}>
-      <PostStateContext.Provider value={data}>
-        <BrowserRouter>
+      
           
-    <PostDispatchContext.Provider>
-      <CleanStoreContext.Provider>
+   
         <PostStateContext.Provider value={FirstData}>
           <BrowserRouter>
             <Routes>
@@ -379,4 +377,4 @@ function App() {
 
 export default App;
 
-// < BottleStore store={dummyList}/>
+
