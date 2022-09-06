@@ -1,4 +1,4 @@
-import './BottleStore.css';
+import './css/BottleStore.css';
 import React, { useState,useEffect,useContext,useReducer,useRef } from "react";
 import { useNavigate,useParams } from "react-router-dom";
 import mainlogo from './images/logo2.svg'
@@ -12,13 +12,14 @@ import bottle3 from './images/bottle3.svg'
 import bottlebox from './images/bottlebox.svg'
 import bottletype_rectancle from './images/bottletype_rectangle.png'
 import emptystar from './images/emptystar.png'
+import MapNav from './components/MapNav'
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
 
 const BottleStore = ({store}) => {
     //console.log(store);
 
-    //const {id} = useParams();
+    const {id} = useParams(); 
     //const [data,setData] = useState();
     //const navigate = useNavigate();
     const handleSubmit = () => {
@@ -28,24 +29,7 @@ const BottleStore = ({store}) => {
 
     return (
       <div className="BottleStore">
-      <div className="bottlestore_navbar_left">
-        <div className='bottlestore_navbar_left_title'>
-          <p><img src={mainlogo} width='130px'/></p>
-        </div>
-        <div className='bottlestore_navbar_left_menu'>
-          <a href="#">마이페이지</a>
-          <a href="#" className='bottlestore_present'>가게 찾기</a>
-          <div className="bottlestore_store">
-            <a href="#">클린스토어</a>
-            <a href="#" className="bottlestore_focus">공병스토어</a>
-          </div>
-          <a href="#">커뮤니티</a>
-          <a href="#">제로웨이스트 일기</a>
-        </div>
-        <div className='bottlestore_navbar_left_logout'>
-          <a href='#'>로그아웃</a>
-        </div>
-      </div>
+      <MapNav></MapNav>
       <div className='bottlestore_right'>
         <div className='bottlestore_navbar_top'>
           <div className='bottlestore_text'>

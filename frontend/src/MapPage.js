@@ -12,7 +12,7 @@ const MapPage = ({place}) => {
     const [count,setcount]=useState(0)
     const localdata=localStorage.getItem
     const [currentday,setcurrentday]=useState(['월','화','수','목','금','토','일'])
-    const [where,setwhere]=useState("정릉시장")
+    const [where,setwhere]=useState("")
     const [currentbottle,setcurrentbottle]=useState(['소형 및 중형','대형 및 유류 정종','화장품 및 기타 공병'])
     
 
@@ -70,8 +70,8 @@ var map
             
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = {
-		        center: new kakao.maps.LatLng(37.56843, 126.97472), // 지도의 중심좌표
-		        level: 6, // 지도의 확대 레벨
+		        center: new kakao.maps.LatLng(37.609400, 127.009080), // 지도의 중심좌표
+		        level: 4, // 지도의 확대 레벨
 		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
 		    }; 
 
@@ -115,6 +115,7 @@ function placesSearchCB (data, status, pagination) {
 
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
+        map.setlevel(6);
     } 
 }
 ps.keywordSearch(where, placesSearchCB);
@@ -251,8 +252,9 @@ ps.keywordSearch(where, placesSearchCB);
         linktext.className='linktext'
         desc.appendChild(linktext)
 
+        const id=place[i].id
         var linkto=document.createElement('a')
-        linkto.href="/main"
+        linkto.href=`/bottle_store/${id}`
         linktext.append(linkto)
 
         var linkmessage=document.createElement('div')

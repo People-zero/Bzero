@@ -314,8 +314,8 @@ function App() {
               <Route path="/details/:id" element={<Details />} />
               <Route path="/regist_store" element={<RegistStore />}></Route>
               <Route
-                path="/bottle_store"
-                element={<BottleStore store={dummyList2}></BottleStore>}
+                path="/bottle_store/:id"
+                element={<BottleStore store={place}></BottleStore>}
               ></Route>
               <Route
                 path="/diary_detail/:date"
