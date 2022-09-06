@@ -3,8 +3,7 @@ from . import models
 from accounts.models import User
 
 class PostSerializer(serializers.ModelSerializer):
-    created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
-    updated_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+   
     author_name = serializers.SerializerMethodField()
 
     def get_author_name(self,request):
@@ -14,25 +13,23 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Post
         fields = "__all__"
+        read_only_fields = ("created_at","updated_at","author","recommend_user_set",)
 
 class CommentSerializer(serializers.ModelSerializer):
-    created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
-    updated_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+
     class Meta:
         model = models.Comment
-        fields = ["post","created_at","updated_at","content","author","id",]
+        fields = "__all__"
+        read_only_fields = ("created_at","updated_at","author","post")
 
 
 class Post_DetailSerializer(serializers.ModelSerializer):
     comment_set = CommentSerializer(many=True)
-    created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
-    updated_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
-    
 
     class Meta:
         model = models.Post
-        fields = ["id",'comment_set',"created_at", "updated_at","category","content","image","recommend_user_set"]
-        read_only_fields = ('comment_set',)
+        fields = "__all__"
+        read_only_fields = ('comment_set',"created_at","updated_at","author","recommend_user_set",)
 
 
 
