@@ -30,20 +30,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
   );
 };
 
-const Post = () => {
-  axios
-    .post("http://127.0.0.1:8000/post/", {
-      category: 3,
-      title: "test 1 title",
-      content: "test 1 content",
-      imgae: "",
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+const Post = () => { 
 
   const [data, setData] = useState([]);
   const navigate = useNavigate();
@@ -66,7 +53,23 @@ const Post = () => {
   const { id } = useParams();
 
   const handleSubmit = () => {
-    navigate("/community", { replace: true });
+    const PostData = {
+      category: sortType,
+      title: title,
+      content: post,
+      image: null,
+    };
+    fetch("http://127.0.0.1:8000/post/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Token ".concat(localStorage.getItem("token")),
+    },
+    body: JSON.stringify(PostData),
+  }).then((res) => res.json())
+  .then(()=>{
+    window.location.replace('http://localhost:3000/community')
+  })
   };
 
   return (
