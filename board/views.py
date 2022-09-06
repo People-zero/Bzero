@@ -62,7 +62,7 @@ class postDetailApiView(APIView):
 
     def get(self, request ,pk):
         self.serializer_class = CommentSerializer
-        post = self.get_object_post(pk) 
+        post = self.get_object_post(pk)
         serializer = Post_DetailSerializer(post,many= True)
         return Response(serializer.data)
     
@@ -73,7 +73,8 @@ class postDetailApiView(APIView):
         else:
             serializer = CommentSerializer(data=request.data)
             if serializer.is_valid():
-                serializer.save(author=request.user)
+                post = Post.objects.get(pk = pk)
+                serializer.save(author=request.user,post = post)
                 return Response(serializer.data, status=201)
             else:
                 return Response(serializer.errors, status=400)
