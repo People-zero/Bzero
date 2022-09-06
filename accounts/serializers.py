@@ -9,6 +9,14 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ['id', 'username', 'profile_image', 'intro_comment', 'point']
 
+    def update(self, instance, validated_data):
+        instance.id = validated_data.get("id", instance.id)
+        instance.username = validated_data.get("username", instance.username)
+        instance.profile_image = validated_data.get("profile_image", instance.profile_image)
+        instance.intro_comment = validated_data.get("intro_comment", instance.intro_comment)
+        instance.point = validated_data.get("point", instance.point)
+        return super().update(instance, validated_data)
+
 
 class UserSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer(read_only=True)
