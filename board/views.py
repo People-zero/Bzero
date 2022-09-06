@@ -36,23 +36,17 @@ class postListApiView(APIView):
         else:
             serializer = PostSerializer(data=request.data)
             if serializer.is_valid():
-                if request.data["category"] == 1:
-                    profile = accounts.models.Profile.objects.get(id =request.user.id)
+                if self.request.data["category"] == "1":
+                    profile = accounts.models.Profile.objects.get(username = request.user)
                     profile.point += 100
                     profile.save() 
-                    attendance,check = accounts.models.Attendance.objects.get_or_create(id = request.user.id,
-                                                                        username = request.user,
+                    attendance,check = accounts.models.Attendance.objects.get_or_create(username = request.user,
                                                                         attended_date = datetime.date.today())
                     if check:
                         attendance.save()
-                    else:
-                        pass
-                else:
-                    pass
                 serializer.save(author=request.user)
                 return Response(serializer.data, status=201)
             return Response(serializer.errors, status=400)
-
 
 
 class postDetailApiView(APIView):
