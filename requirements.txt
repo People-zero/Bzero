@@ -12,6 +12,7 @@ django-rest-auth==0.9.5
 django-rest-framework==0.1.0
 djangorestframework==3.13.1
 djangorestframework-simplejwt==5.2.0
+drf-extra-fields==3.4.0
 idna==3.3
 oauthlib==3.2.0
 pycparser==2.21
