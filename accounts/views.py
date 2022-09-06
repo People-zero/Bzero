@@ -56,6 +56,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response(str(e), status=status.HTTP_404_NOT_FOUND)
         profile_pic_serializer = self.get_serializer(profile, data=request.data)
+        print(request.data)
         if profile_pic_serializer.is_valid():
             profile_pic_serializer.save()
             return Response(profile_pic_serializer.data)

@@ -7,6 +7,8 @@ import axios from "axios";
 import MypageNav from "./components/MypageNav";
 const EditProfilePage=({userdata})=> {
   
+  const[photo,setphoto]=useState()
+
   const [profile_data, set_profile_data] = useState({
     name: userdata[0]?.username,
     nickname: "",
@@ -48,7 +50,7 @@ else{
     birth: new Date(),
     age: 0,
     phone_number: userdata[0]?.phone_number,
-    profile_image: "../img/Group 1183 (1).png"
+    profile_image: userdata[0]?.profile.profile_image
 })
   
   }
@@ -78,34 +80,34 @@ else{
 
   const submit_event = () => {
     const id = userdata[0].id; //임시코드
-
-
-    axios.put(`http://127.0.0.1:8000/auth/accounts/${id}/`,{
-      first_name:edtiting_profile_data.name,
-      last_name:edtiting_profile_data.nickname,
-      email:edtiting_profile_data.email,
-      phone_number:edtiting_profile_data.phone_number,
+ 
+    console.log(typeof(edtiting_profile_data.profile_image))
+  //   axios.put(`http://127.0.0.1:8000/auth/accounts/${id}/`,{
+  //     first_name:edtiting_profile_data.name,
+  //     last_name:edtiting_profile_data.nickname,
+  //     email:edtiting_profile_data.email,
+  //     phone_number:edtiting_profile_data.phone_number,
       
-      username: userdata[0]?.username,
-      birth: userdata[0]?.birth,
-      age: userdata[0]?.age,
+  //     username: userdata[0]?.username,
+  //     birth: userdata[0]?.birth,
+  //     age: userdata[0]?.age,
   
 
-      is_staff: userdata[0].is_staff,
+  //     is_staff: userdata[0].is_staff,
   
  
+  // },{headers: {
+  //   Authorization: "Token ".concat(localStorage.getItem("token")),
+  // }})
+  axios.put(`http://127.0.0.1:8000/auth/profile/${id}/`
+  ,{
+    username:userdata[0]?.profile?.username,
+    intro_comment:'ㄴㄴ',
+    profile_image:edtiting_profile_data.profile_image,
+    point:userdata[0]?.profile?.point
   },{headers: {
     Authorization: "Token ".concat(localStorage.getItem("token")),
   }})
-//   axios.put(`http://127.0.0.1:8000/auth/profile/${id}/`
-//   ,{
-//     username:userdata[0]?.profile?.username,
-//     intro_comment:userdata[0]?.profile?.intro_comment,
-//     profile_image:edtiting_profile_data.profile_image,
-//     point:userdata[0]?.profile?.point
-//   },{headers: {
-//     Authorization: "Token ".concat(localStorage.getItem("token")),
-//   }})
 };
  
   const withdrawal_event = () => {
@@ -114,8 +116,8 @@ else{
 
   useEffect(()=>{
 
-    console.log(edtiting_profile_data.profile_image)
-  },[])
+    console.log(photo)
+  },[photo])
 
 
 
@@ -171,6 +173,7 @@ else{
                 accept="image/jpg,impge/png,image/jpeg"
                 id="profile_upload"
                 className="profile_upload"
+                value=""
                 onChange={change_profile_image}
               />
             </div>
