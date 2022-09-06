@@ -36,23 +36,17 @@ class postListApiView(APIView):
         else:
             serializer = PostSerializer(data=request.data)
             if serializer.is_valid():
-                if request.data["category"] == 1:
-                    profile = accounts.models.Profile.objects.get(id =request.user.id)
+                if self.request.data["category"] == "1":
+                    profile = accounts.models.Profile.objects.get(username = request.user)
                     profile.point += 100
                     profile.save() 
-                    attendance,check = accounts.models.Attendance.objects.get_or_create(id = request.user.id,
-                                                                        username = request.user,
+                    attendance,check = accounts.models.Attendance.objects.get_or_create(username = request.user,
                                                                         attended_date = datetime.date.today())
                     if check:
                         attendance.save()
-                    else:
-                        pass
-                else:
-                    pass
                 serializer.save(author=request.user)
                 return Response(serializer.data, status=201)
             return Response(serializer.errors, status=400)
-
 
 
 class postDetailApiView(APIView):
@@ -62,7 +56,7 @@ class postDetailApiView(APIView):
 
     def get(self, request ,pk):
         self.serializer_class = CommentSerializer
-        post = self.get_object_post(pk)
+        post = self.get_object_post(pk) 
         serializer = Post_DetailSerializer(post,many= True)
         return Response(serializer.data)
     
@@ -73,8 +67,7 @@ class postDetailApiView(APIView):
         else:
             serializer = CommentSerializer(data=request.data)
             if serializer.is_valid():
-                post = Post.objects.get(pk = pk)
-                serializer.save(author=request.user,post = post)
+                serializer.save(author=request.user)
                 return Response(serializer.data, status=201)
             else:
                 return Response(serializer.errors, status=400)
