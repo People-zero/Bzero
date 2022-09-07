@@ -141,6 +141,7 @@ function App() {
   const [userdata, setuserdata] = useState([]);
   const [attendDate, setAttendDate] = useState([]);
   const [FirstData, setFirstdata]= useState([]);
+  const [diaryDetailData, setDiaryDetailData] = useState([]);
 
   const getDiaryDetail = async () => {
     const res = await fetch("http://127.0.0.1:8000/post/C/1").then((res) =>
