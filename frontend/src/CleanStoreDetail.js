@@ -182,7 +182,7 @@ const CleanStoreDetail = () => {
                 {((data.description).split('.')).slice(0,1)}.
                 {/* 한줄만 보여주기 - 간략하게 */}
                 </h4>
-            <img className="store_image" src={data.store_image} />
+            <img className="store_image" src={data.store_image?(data.store_image):(process.env.PUBLIC_URL + "/assets/dummy_photo/photo_3.png")} />
             <div className="cleanstore_management">
                 <button>
                 <img className="vector_image" src={Vector_bottom} alt="Vector_bottom" />

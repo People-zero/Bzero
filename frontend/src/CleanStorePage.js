@@ -29,7 +29,7 @@ const CleanStore = () => {
             <h4>제로웨이스트 클린 스토어들의 목록을 확인하세요.</h4> 
             </div>
 		    <div className="earth_logo">
-            <img src={process.env.PUBLIC_URL + `assets/Earth.png`}/>
+            <img src={process.env.PUBLIC_URL + `/assets/Earth.png`}/>
             </div>
 	        </section>
             <CleanStoreList cleanStoreList = {data} />
