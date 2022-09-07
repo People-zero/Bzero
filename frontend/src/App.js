@@ -3,7 +3,7 @@ import MapPage from "./MapPage";
 import React, { useState } from "react";
 import { useReducer, useRef, useEffect } from "react";
 import CleanStoreDetail from "./CleanStoreDetail";
-import CleanStore from "./CleanStore";
+import CleanStorePage from "./CleanStorePage";
 import axios from "axios";
 import { dummyData } from "./util/dummyData";
 import Community from "./Community";
@@ -305,7 +305,7 @@ function App() {
                 path="/map"
                 element={<MapPage place={place}></MapPage>}
               ></Route>
-              <Route path="/clean_store" element={<CleanStore />}></Route>
+              <Route path="/clean_store/" element={<CleanStorePage />}></Route>
               <Route
                 path="/clean_store/:id"
                 element={<CleanStoreDetail />}
