@@ -40,6 +40,7 @@ const CleanStoreDetail = () => {
     const [reviewData,setReview] = useState([]); 
     const [review,dispatch] = useReducer(reducer,dummyReview); 
     const [pointAvg,setPointAvg] = useState(); //평균 별점
+    const [reviewPointAvg,setReviewPointAvg] = useState(5);
 
     useEffect(()=>{
     init()
@@ -90,6 +91,7 @@ const CleanStoreDetail = () => {
                 created_at_review: it.created_at_review,
                 store_review : it.store_review,
                 user_review : it.user_review,
+                
               }
             })
             setReview(initdata);
@@ -202,12 +204,12 @@ const CleanStoreDetail = () => {
                     <img className="vector_image" src={Vector_bottom} alt="Vector_bottom" />
                     리뷰
                     </button>
-                    <div className="cleanstore_star">
-                        <div className="starBox" style={{width : pointAvg}} >
-                        <img className="pointOfStar" src={blue_star} alt="blue_star" />
-                        </div>
-                        <img className="backgroundStar" src={gray_star} alt="gray_star" />
-                    </div>
+                    <div className="stars">
+                 <div className="starBox" style={{width : pointAvg}} >
+                 <img className="pointOfStar" src={blue_star} alt="blue_star" />
+                 </div>
+                 <img className="backgroundStar" src={gray_star} alt="gray_star" />
+                 </div>
                     <section className="review">
                         <CleanStoreReview cleanStoreReview = {reviewData} />
                     </section>
