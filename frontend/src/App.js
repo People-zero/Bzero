@@ -20,7 +20,7 @@ import photo2 from "./images/photo2.png";
 import photo3 from "./images/photo3.png";
 import BottleStore from "./BottleStore";
 import RegistStore from "./RegistStore";
-import Post from "./Post.js"
+import Post from "./Post.js";
 import EditProfilePage from "./EditProfilePage";
 import DiaryDetailPage from "./DiaryDetailPage";
 import WriteDiaryPage from "./WriteDiaryPage"
@@ -83,8 +83,6 @@ const dumyData = [
   },
 ];
 
-
-
 const dummy_badge = [
   { badge_id: 1, badge_type: "badge1.png" },
   { badge_id: 2, badge_type: "badge1.png" },
@@ -139,33 +137,52 @@ const dummyList2 = [
   },
 ];
 function App() {
-
-
   const [place, setplace] = useState([]);
   const [userdata, setuserdata] = useState([]);
   const [attendDate, setAttendDate] = useState([]);
   const [FirstData, setFirstdata]= useState([]);
 
-  const getpost = async () => {
-    const res = await fetch(
-      "http://127.0.0.1:8000/post"
-    ).then((res) => res.json());
+  const getDiaryDetail = async () => {
+    const res = await fetch("http://127.0.0.1:8000/post/C/1").then((res) =>
+      res.json()
+    );
     // console.log(res); // 500개의 데이터
-  
+
     const initData = res.map((it) => {
       // console.log(it.id)
       return {
         id: it.id,
-        emotion:it.category,
-        user:it.author, // 작성자
-        title:it.title,
-        content:it.content,
+        title: it.title,
+        content: it.content,
         date: it.created_at,
-        
+        image: it.image,
+
         // image: it.store_image,
       };
     });
-  
+    setDiaryDetailData(initData);
+  };
+
+  const getpost = async () => {
+    const res = await fetch("http://127.0.0.1:8000/post").then((res) =>
+      res.json()
+    );
+    // console.log(res); // 500개의 데이터
+
+    const initData = res.map((it) => {
+      // console.log(it.id)
+      return {
+        id: it.id,
+        emotion: it.category,
+        user: it.author, // 작성자
+        title: it.title,
+        content: it.content,
+        date: it.created_at,
+
+        // image: it.store_image,
+      };
+    });
+
     setFirstdata(initData);
   };
 
@@ -366,7 +383,9 @@ function App() {
               <Route path="/post" element={<Post />}></Route>
               <Route
                 path="/diary_detail/:date"
-                element={<DiaryDetailPage dummy_diary={dummy_diary} />}
+                element={
+                  <DiaryDetailPage diary_detail_post={diaryDetailData} />
+                }
               ></Route>
               <Route
               path="/write_diary"

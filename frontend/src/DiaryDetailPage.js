@@ -1,48 +1,64 @@
 import "./css/DiaryDetailPage.css";
 import MypageNav from "./components/MypageNav";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import axios from "axios";
 
-const DiaryDetailPage = ({ dummy_diary }) => {
+const DiaryDetailPage = ({ diary_detail_post }) => {
   const { date } = useParams();
-  const navigate = useNavigate();
+
   const [data, setData] = useState([]);
-  const [isPrev, setIsPrev] = useState("");
-  const [isNext, setIsNext] = useState("");
+
+  const [isEdit, setIsEdit] = useState(false);
+  const toggleIsEdit = () => setIsEdit(!isEdit);
+
+  const [localContent, setLocalContent] = useState(data.content);
+  const localContentInput = useRef();
+
+  const handleRemove = () => {
+    console.log(data.id);
+    if (window.confirm(`일기를 정말 삭제하시겠습니까?`)) {
+      axios
+        .delete(` http://127.0.0.1:8000/post/detail/retrieve/${data.id}`, {
+          headers: {
+            Authorization: "Token ".concat(localStorage.getItem("token")),
+          },
+        })
+        .then(window.location.replace("/calendar"));
+    }
+  };
+
+  const handleQuitEdit = () => {
+    setIsEdit(false);
+    setLocalContent(data.content);
+  };
+
+  const handleEdit = () => {
+    if (localContent.length < 5) {
+      localContentInput.current.focus();
+      return;
+    }
+
+    if (window.confirm(`일기를 수정하시겠습니까?`)) {
+      // axios.put;
+      toggleIsEdit();
+    }
+  };
 
   useEffect(() => {
-    console.log(dummy_diary);
-    if (dummy_diary.length >= 1) {
-      const targetDiary = dummy_diary.find(
-        (it) => it.created_at.slice(0, 10) === date
+    if (diary_detail_post.length >= 1) {
+      const targetDiary = diary_detail_post.find(
+        (it) => it.date.slice(0, 10) === date
       );
-
-      console.log("a");
       console.log(targetDiary);
 
       if (targetDiary) {
         setData(targetDiary);
-      }
-
-      const prev_diary = dummy_diary.find((it) => it.id === targetDiary.id - 1);
-      console.log(prev_diary);
-      if (prev_diary) {
-        setIsPrev(prev_diary.created_at.slice(0, 10));
-        console.log("p", prev_diary);
-      } else {
-        setIsPrev("");
-      }
-      const next_diary = dummy_diary.find((it) => it.id === targetDiary.id + 1);
-      console.log(next_diary);
-      if (next_diary) {
-        setIsNext(next_diary.created_at.slice(0, 10));
-        console.log("n", isNext);
-      } else {
-        setIsNext("");
+        console.log("target", targetDiary);
       }
     }
-  }, [date, isPrev, isNext]);
-  console.log(data);
+  }, [date, diary_detail_post]);
+
   return (
     <div className="diary_detail">
       <MypageNav />
@@ -51,67 +67,57 @@ const DiaryDetailPage = ({ dummy_diary }) => {
           <p className="diary_detail_title">제로웨이스트 일기</p>
         </div>
         <div className="diary_detail_body">
-          <div className="diary_detail_prev_diary">
-            {isPrev ? (
-              <>
-                <button
-                  className="diary_detail_prev_btn"
-                  onClick={() => navigate(`/diary_detail/${isPrev}`)}
-                >
-                  <img src={process.env.PUBLIC_URL + `/img/prev.png`} />
-                </button>
-              </>
-            ) : (
-              <>
-                <button className="diary_detail_prev_btn_not">
-                  <img src={process.env.PUBLIC_URL + `/img/prev_not.png`} />
-                </button>
-              </>
-            )}
-          </div>
           <div className="diary_detail_post">
-            {dummy_diary
-              .filter((x) => x.created_at.slice(0, 10) === date)
+            {diary_detail_post
+              .filter((x) => x.date.slice(0, 10) === date)
               .map((it) => (
                 <div>
                   <div className="diary_detail_top">
                     <div className="diary_detail_date">
                       <p className="diary_detail_post_date">
-                        {it.created_at.slice(0, 10)}
+                        {it.date.slice(0, 10)}
                       </p>
                     </div>
                     <div className="diary_detail_post_title">{it.title}</div>
 
                     <div className="diary_detail_post_detail">
                       <div className="diary_detail_post_edit">
-                        <button>수정하기</button>
-                        <button>삭제하기</button>
+                        {isEdit ? (
+                          <>
+                            <button onClick={handleQuitEdit}>수정취소</button>
+                            <button onClick={handleEdit}>수정완료</button>
+                          </>
+                        ) : (
+                          <>
+                            <button onClick={toggleIsEdit}>수정하기</button>
+                            <button onClick={handleRemove}>삭제하기</button>
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
                   <div className="diary_detail_content_box">
-                    <div className="diary_detail_content">{it.content}</div>
+                    <div className="diary_detail_content">
+                      {isEdit ? (
+                        <>
+                          <textarea
+                            ref={localContentInput}
+                            value={localContent}
+                            onChange={(e) => setLocalContent(e.target.value)}
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <p>{it.content}</p>
+                          <div>
+                            <img src={it.image} />
+                          </div>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
-          </div>
-          <div className="diary_detail_next_diary">
-            {isNext ? (
-              <>
-                <button
-                  className="diary_detail_next_btn"
-                  onClick={() => navigate(`/diary_detail/${isNext}`)}
-                >
-                  <img src={process.env.PUBLIC_URL + `/img/next.png`} />
-                </button>
-              </>
-            ) : (
-              <>
-                <button className="diary_detail_next_btn_not">
-                  <img src={process.env.PUBLIC_URL + `/img/next_not.png`} />
-                </button>
-              </>
-            )}
           </div>
         </div>
       </div>
