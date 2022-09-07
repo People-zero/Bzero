@@ -7,7 +7,6 @@ import { normalizeUnits } from "moment";
 
 const sortOptionList = [
   { value: "카테고리", name: "카테고리" },
-  { value: 1, name: "전체" },
   { value: 2, name: "함께해요" },
   { value: 3, name: "궁금해요" },
   { value: 4, name: "인증사진" },
@@ -60,17 +59,28 @@ const Post = () => {
       image: null,
     };
     fetch("http://127.0.0.1:8000/post/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Token ".concat(localStorage.getItem("token")),
-    },
-    body: JSON.stringify(PostData),
-  }).then((res) => res.json())
-  .then(()=>{
-    window.location.replace('http://localhost:3000/community')
-  })
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Token ".concat(localStorage.getItem("token")),
+      },
+      body: JSON.stringify(PostData),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        window.location.replace("http://localhost:3000/community");
+      });
   };
+
+  const [postimg, setpostimg] = useState()
+
+  const imageuploadbt =  ({ target: { files } }) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setpostimg(reader.result);
+      };
+      reader.readAsDataURL(files[0]); 
+    };
 
   return (
     <div className="Post">
@@ -110,26 +120,29 @@ const Post = () => {
             onChange={(e) => setPost(e.target.value)}
             placeholder="내용을 입력해주세요."
           ></textarea>
-          <div className="Post_body_2_img">
+          <label for="profile_upload" className="Post_body_2_img">
             <img
               className="Post_body_2_imgss"
               src={process.env.PUBLIC_URL + `/icon/image.png`}
             />
-            <div className="Post_body_2_imgs">이미지 첨부</div>
-          </div>
+            <p>이미지 첨부</p>
+            <input
+              type="file"
+              accept="image/jpg,impge/png,image/jpeg"
+              id="profile_upload"
+              className="profile_upload"
+              onChange={imageuploadbt}
+            />
+          </label>
         </div>
         <div className="Post_body_3">
           <div className="Post_body_3_exit">
-            <img
-              className="Post_body_3_exit_imgs"
-              src={process.env.PUBLIC_URL + `/icon/direction.png`}
-            />
-            <button onClick={() => navigate(-1)}>나가기</button>
+            <button onClick={() => navigate(-1)}>{"<- "}나가기</button>
           </div>
           <div className="Post_body_3_create">
             <button
               onClick={() => {
-                handleSubmit();
+                handleSubmit(postimg);
               }}
             >
               작성하기

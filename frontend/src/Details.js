@@ -3,33 +3,63 @@ import { PostStateContext } from "./App";
 import { useContext, useParams, useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router";
 import axios from "axios";
+const emotionLists = ["전체", "함께해요", "궁금해요", "인증사진", "정보광장"];
+
 
 const Details = () => {
 
-  const getApi = async () => {
-
-    //데이터 가져 오기
-    // const res = await fetch("http://127.0.0.1:8000/post/detail/1").then((res) =>
-    //   res.json()
-    // );
-    // console.log(res);
-  };
-
   useEffect(() => {
-    getApi();
+    const userdata = async () => {
+      let token = localStorage.getItem("token");
+      let token2 = "Token ".concat(token);
+      const res = await fetch("http://127.0.0.1:8000/auth/accounts", {
+        method: "GET",
+        headers: {
+          Authorization: "Token ".concat(token),
+        },
+      }).then((res) => res.json());
+      SetUser(res)
+      const res2 = await fetch(`http://127.0.0.1:8000/post/detail/${state.id}`, {
+        method: "GET",
+        headers: {
+          Authorization: "Token ".concat(token),
+        },
+      }).then((res2) => res2.json());
+      console.log(res2[0])
+      Setcommentdata([...res2[0].comment_set]);
+    };
+    userdata();
   }, []);
 
+  const [comentdata, Setcommentdata] = useState([]);
+  const [user, SetUser] = useState({});
   const { state } = useLocation();
-  console.log(state)
-
+  // console.log(state)
+  console.log(user)
 
   const [comment, Setcomment] = useState("");
-  const [commentList, SetcommentList] = useState([]);
 
   const commentpost = (e) => {
     if (e.key === "Enter") {
-      SetcommentList([comment, ...commentList]);
+      if (e.value !== "") {
+        Setcomment(comment);
+        pushcommentdata(comment)
+      }
     }
+  };
+
+  const pushcommentdata = async (data) => {
+    const commentapidata = {content:data};
+    const onecomment = await  fetch(`http://127.0.0.1:8000/post/detail/${state.id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Token ".concat(localStorage.getItem("token")),
+      },
+      body: JSON.stringify(commentapidata),
+    }).then(()=>{
+      window.location.replace(`http://localhost:3000/details/${state.id}`)
+    })
   };
 
   const times = () => {
@@ -40,9 +70,19 @@ const Details = () => {
     return nowdays;
   };
 
-  useEffect(() => {
-    Setcomment("");
-  }, [commentList]);
+  const detailsdelete = async () => {
+    const delcomment = await fetch(
+      `http://127.0.0.1:8000/post/detail/retrieve/${state.id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: "Token ".concat(localStorage.getItem("token")),
+        },
+      }
+        ).then(() => {
+      window.location.replace("http://localhost:3000/community");
+    });
+  }
 
   return (
     <div className="Details">
@@ -57,14 +97,22 @@ const Details = () => {
       <div className="Details_Body">
         <div className="Details_Body_1">
           <div className="Details_Body_1_route">
-            커뮤니티 &gt;<div className="Details_Body_1_route_s"> 궁금해요</div>
+            커뮤니티 &gt;
+            <div className="Details_Body_1_route_s">
+              {" "}
+              {emotionLists[state.emotion - 1]}
+            </div>
           </div>
         </div>
         <div className="Details_Body_2">
           <div className="Details_Body_2_title">{state.title}</div>
+          <div className="Details_Body_2_delete">
+            <button className="Details_Body_2_delete_delete"
+            onClick={detailsdelete}>삭제하기</button>
+          </div>
         </div>
         <div className="Details_Body_3">
-          <div className="Details_Body_3_user">{state.user}</div>
+          <div className="Details_Body_3_user">{user[0]?.username}</div>
           <div className="Details_Body_3_imgs">
             <img
               className="Details_Body_3_imgs_imgs1"
@@ -85,7 +133,7 @@ const Details = () => {
               className="Details_Body_3_imgs_imgs2"
               src={process.env.PUBLIC_URL + `/icon/coment.png`}
             />
-            댓글 {commentList.length}
+            댓글 {comentdata.length}
           </div>
           <input
             className="Details_Body_5_answers"
@@ -100,16 +148,16 @@ const Details = () => {
           ></input>
         </div>
         <div className="Details_Body_6">
-          {commentList.map((commentArr, i) => {
+          {comentdata.map((commentArr, i) => {
             return (
               <span key={i} className="Details_Body_6_commentlist">
                 <div className="Details_Body_6_commentlist_user">
-                  {state.user}
+                  {user[0]?.username}
                 </div>
                 <div className="Details_Body_6_commentlist_comment">
-                  {commentArr}
+                  {commentArr.content}
                 </div>
-                <div className="Details_Body_6_commentlist_time">{times()}</div>
+                <div className="Details_Body_6_commentlist_time"></div>
               </span>
             );
           })}

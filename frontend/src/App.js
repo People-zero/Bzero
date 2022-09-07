@@ -50,38 +50,6 @@ const dummy_diary = [
     content: "포스트 내용3",
   },
 ];
-const dumyData = [
-  {
-    id: 1,
-    emotion: 1,
-    content: "송하윤 멋져 1",
-    date: 1660478254683,
-  },
-  {
-    id: 2,
-    emotion: 2,
-    content: "송하윤 멋져 2",
-    date: 1660478254684,
-  },
-  {
-    id: 3,
-    emotion: 3,
-    content: "송하윤 멋져 3",
-    date: 1660478254685,
-  },
-  {
-    id: 4,
-    emotion: 4,
-    content: "송하윤 멋져 4",
-    date: 1660478254686,
-  },
-  {
-    id: 5,
-    emotion: 5,
-    content: "송하윤 멋져 5",
-    date: 1660478254687,
-  },
-];
 
 const dummy_badge = [
   { badge_id: 1, badge_type: "badge1.png" },
