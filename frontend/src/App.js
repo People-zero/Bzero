@@ -23,6 +23,7 @@ import RegistStore from "./RegistStore";
 import Post from "./Post.js";
 import EditProfilePage from "./EditProfilePage";
 import DiaryDetailPage from "./DiaryDetailPage";
+
 const dummy_diary = [
   {
     id: 1,
@@ -155,6 +156,7 @@ function App() {
         title: it.title,
         content: it.content,
         date: it.created_at,
+        image: it.image,
 
         // image: it.store_image,
       };
