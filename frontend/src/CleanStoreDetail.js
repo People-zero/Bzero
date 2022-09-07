@@ -42,18 +42,9 @@ const CleanStoreDetail = () => {
     const [pointAvg,setPointAvg] = useState(); //평균 별점
 
     useEffect(()=>{
-    console.log(cleanStoreList[0]);
     init()
     },[])
-    // useEffect(()=>{
-    //     fetch('http://localhost:8000/review/')
-    //     .then((res)=>res.json())
-    //     .then((reviewData)=>{
-    //       setReview(reviewData)
-    //     })
-    //   })
 
- 
     useEffect(()=>{
         if (cleanStoreList.length >=1){
             const targetList = cleanStoreList.find((it)=>parseInt(it.id)===parseInt(id));
@@ -79,8 +70,7 @@ const CleanStoreDetail = () => {
     const commentRef=useRef(); //content를 다 작성 안했을 때 focus하기 위함.
     const [comment,setComment] = useState("");
     const [point,setpoint] = useState(0);
-    console.log(pointAvg);
-    console.log(comment); 
+
 
     const getPoint= (point) =>{ 
         setpoint(point);
@@ -88,9 +78,8 @@ const CleanStoreDetail = () => {
 
     const init = async() => {
         console.log("init")
-        const response=await fetch("http://127.0.0.1:8000/store/clean_store/3/reviews/"
-    )
-        .then((response)=>response.json())
+        const response= await fetch(`http://127.0.0.1:8000/store/clean_store/${data.id}/reviews/`)
+        .then((response)=>response.json()).catch(err=>console.log("??",err))
         console.log("init response",response) 
         const initdata=response.map((it)=>{
           
@@ -100,29 +89,20 @@ const CleanStoreDetail = () => {
             comment : it.comment,
             point : it.point,
             created_at_review: it.created_at_review,
-            store_reivew : it.store_review,
+            store_review : it.store_review,
             user_review : it.user_review,
           }
-    
         })
-
-        // console.log(initdata);
-        const targetReview = initdata.filter((it)=>parseInt(it.store_review)===parseInt(id));
-        console.log(targetReview);
-        setReview(targetReview);
-        console.log(reviewData);
 
         setReview(initdata);
 
-        console.log(reviewData);
-
-        if (reviewData.lengh>=1){
-            const targetReview = reviewData.filter((it)=>parseInt(it.Store_review)===parseInt(id));
-            setReview(targetReview);
-        } else{
-            const targetReview = dummyReview.filter((it)=>parseInt(it.Store_PK)===parseInt(id));
-            setReview(targetReview);
-        }
+        // if (reviewData.lengh>=1){
+        //     const targetReview = reviewData.filter((it)=>parseInt(it.store_review)===parseInt(id));
+        //     setReview(targetReview);
+        // } else{
+        //     const targetReview = dummyReview.filter((it)=>parseInt(it.store_review)===parseInt(id));
+        //     setReview(targetReview);
+        // }
         dispatch({type:"INIT",data:reviewData});
         console.log(reviewData);
     }
