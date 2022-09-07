@@ -3,14 +3,21 @@ import "./css/WriteDiaryPage.css";
 import arrow_svg from "./images/left_arrow.svg";
 import image_icon_svg from "./images/image_icon.svg";
 import axios from "axios";
-
-function WriteDiaryPage(props) {
+import CalendarNav from "./components/CalendarNav";
+import { useEffect } from "react";
+const WriteDiaryPage = ({userdata})=> {
   const [image, setImage] = useState();
+  const [userid,setuserid]=useState();
+
+  useEffect(()=>{
+    setuserid(userdata[0]?.id)
+    console.log(userdata)
+  },[userdata])
   const [diaryData, setDiaryData] = useState({
     title: "",
     text: "",
   });
-
+  
   const upload_image = ({ target: { files } }) => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -21,21 +28,44 @@ function WriteDiaryPage(props) {
   };
 
   const onSubmit = () => {
-    const API_URL = "http://localhost:8000/post/1/";
-    axios
-      .post(API_URL, {
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-        category: 1,
-        title: diaryData["title"],
-        content: diaryData["text"],
-        image: image,
-        author: props.userdata.id,
-        recommend_user_set: [],
-      })
-      .then(function (response) {
-        console.log(response);
+    // const API_URL = "http://127.0.0.1:8000/post/";
+    // console.log(userid)
+    // axios
+    //   .post(API_URL, {
+        
+    //     category: 1,
+    //     title: diaryData["title"],
+    //     content: diaryData["text"],
+    //     image: image,
+        
+        
+    //   },
+    //   {
+    //     "Content-Type":"application/json",
+    //     Authorization: "Token ".concat(localStorage.getItem("token"))
+    //   })
+    //   .then(function (response) {
+    //     console.log(response);
+    //   });
+    const PostData = {
+      category: 1,
+      title: diaryData["title"],
+      content: diaryData["text"],
+      image: image,
+    };
+    fetch("http://127.0.0.1:8000/post/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Token ".concat(localStorage.getItem("token")),
+      },
+      body: JSON.stringify(PostData),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        window.location.replace("http://localhost:3000/calendar");
       });
+
   };
   const onCancel = () => {
     //뒤로가기
@@ -55,6 +85,7 @@ function WriteDiaryPage(props) {
   };
   return (
     <div className="write_diary_page">
+      <CalendarNav></CalendarNav>
       <div className="header">
         <p className="page_title">제로웨이스트 일기</p>
         <p className="tip">

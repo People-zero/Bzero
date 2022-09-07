@@ -106,7 +106,7 @@ else{
     profile_image:edtiting_profile_data.profile_image,
     point:userdata[0]?.profile?.point
   },{headers: {
-    Authorization: "Token ".concat(localStorage.getItem("token")),
+    Authorization: "Tokenx ".concat(localStorage.getItem("token")),
   }})
 window.location.replace('http://localhost:3000/mypage')
 };

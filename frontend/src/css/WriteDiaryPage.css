@@ -3,7 +3,7 @@ body {
   margin-bottom: 46px;
 }
 .write_diary_page {
-  width: 86.97%;
+  width:100%;
   max-width: 1670px;
   display: flex;
   flex-direction: column;
@@ -28,6 +28,7 @@ input[type="file"] {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #0679ff;
+  padding-left:230px;
 }
 
 .page_title {

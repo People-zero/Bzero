@@ -32,7 +32,8 @@ class postListApiView(APIView):
         
     def post(self,request):
         if not request.user.is_authenticated:
-            return redirect('http://127.0.0.1:8000/auth/login')
+            return 0
+            # return redirect('http://127.0.0.1:8000/auth/login')
         else:
             serializer = PostSerializer(data=request.data)
             if serializer.is_valid():

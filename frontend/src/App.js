@@ -23,6 +23,7 @@ import RegistStore from "./RegistStore";
 import Post from "./Post.js"
 import EditProfilePage from "./EditProfilePage";
 import DiaryDetailPage from "./DiaryDetailPage";
+import WriteDiaryPage from "./WriteDiaryPage"
 const dummy_diary = [
   {
     id: 1,
@@ -218,7 +219,7 @@ function App() {
       const res = await fetch("http://127.0.0.1:8000/auth/attend/", {
         method: "GET",
         headers: {
-          Authorization: "Token ".concat(token),
+          Authorization: "Token ".concat(localStorage.getItem("token")),
         },
       }).then((res) => res.json());
       setAttendDate(res);
@@ -367,6 +368,9 @@ function App() {
                 path="/diary_detail/:date"
                 element={<DiaryDetailPage dummy_diary={dummy_diary} />}
               ></Route>
+              <Route
+              path="/write_diary"
+              element={<WriteDiaryPage userdata={userdata}></WriteDiaryPage>}></Route>
             </Routes>
           </BrowserRouter>
         </PostStateContext.Provider>
