@@ -1,10 +1,10 @@
 body {
-  max-width: 1670px;
+
   margin-bottom: 46px;
 }
 .write_diary_page {
   width:100%;
-  max-width: 1670px;
+
   display: flex;
   flex-direction: column;
 }
@@ -48,7 +48,7 @@ input[type="file"] {
 
 .main_body {
   width: 78.80%;
-  max-width: 1316px;
+
   align-self: center;
   display: flex;
   flex-direction: column;
