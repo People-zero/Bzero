@@ -49,39 +49,6 @@ const dummy_diary = [
     content: "포스트 내용3",
   },
 ];
-const dumyData = [
-  {
-    id: 1,
-    emotion: 1,
-    content: "송하윤 멋져 1",
-    date: 1660478254683,
-  },
-  {
-    id: 2,
-    emotion: 2,
-    content: "송하윤 멋져 2",
-    date: 1660478254684,
-  },
-  {
-    id: 3,
-    emotion: 3,
-    content: "송하윤 멋져 3",
-    date: 1660478254685,
-  },
-  {
-    id: 4,
-    emotion: 4,
-    content: "송하윤 멋져 4",
-    date: 1660478254686,
-  },
-  {
-    id: 5,
-    emotion: 5,
-    content: "송하윤 멋져 5",
-    date: 1660478254687,
-  },
-];
-
 
 
 const dummy_badge = [
@@ -146,25 +113,25 @@ function App() {
   const [FirstData, setFirstdata]= useState([]);
 
   const getpost = async () => {
-    const res = await fetch(
-      "http://127.0.0.1:8000/post"
-    ).then((res) => res.json());
+    const res = await fetch("http://127.0.0.1:8000/post").then((res) =>
+      res.json()
+    );
     // console.log(res); // 500개의 데이터
-  
+
     const initData = res.map((it) => {
       // console.log(it.id)
       return {
         id: it.id,
-        emotion:it.category,
-        user:it.author, // 작성자
-        title:it.title,
-        content:it.content,
+        emotion: it.category,
+        user: it.author, // 작성자
+        title: it.title,
+        content: it.content,
         date: it.created_at,
-        
+
         // image: it.store_image,
       };
     });
-  
+
     setFirstdata(initData);
   };
 
