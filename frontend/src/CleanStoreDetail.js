@@ -77,25 +77,23 @@ const CleanStoreDetail = () => {
     } 
 
     const init = async() => {
-        console.log("init")
-        const response= await fetch(`http://127.0.0.1:8000/store/clean_store/${data.id}/reviews/`)
-        .then((response)=>response.json()).catch(err=>console.log("??",err))
-        console.log("init response",response) 
-        const initdata=response.map((it)=>{
-          
-          return{
-            id : it.id,
-            updated_at_review : it.updated_at_review,
-            comment : it.comment,
-            point : it.point,
-            created_at_review: it.created_at_review,
-            store_review : it.store_review,
-            user_review : it.user_review,
-          }
-        })
-
-        setReview(initdata);
-
+        await axios.get(`http://127.0.0.1:8000/store/clean_store/${id}/reviews/`)
+        .then((response)=>{
+            let data=response.data
+            console.log("init response",data) 
+            const initdata = data.map((it)=>{
+              return{
+                id : it.id,
+                updated_at_review : it.updated_at_review,
+                comment : it.comment,
+                point : it.point,
+                created_at_review: it.created_at_review,
+                store_review : it.store_review,
+                user_review : it.user_review,
+              }
+            })
+            setReview(initdata);
+        }).catch(err=>console.log("??",err))
         // if (reviewData.lengh>=1){
         //     const targetReview = reviewData.filter((it)=>parseInt(it.store_review)===parseInt(id));
         //     setReview(targetReview);
@@ -103,8 +101,8 @@ const CleanStoreDetail = () => {
         //     const targetReview = dummyReview.filter((it)=>parseInt(it.store_review)===parseInt(id));
         //     setReview(targetReview);
         // }
-        dispatch({type:"INIT",data:reviewData});
-        console.log(reviewData);
+        // dispatch({type:"INIT",data:reviewData});
+        // console.log(reviewData);
     }
 
     const onCreate = async(point,comment)=>{
@@ -121,12 +119,17 @@ const CleanStoreDetail = () => {
           },
         });
         console.log("data",data,"\n",point,"\n",comment)  
+        let token = localStorage.getItem("token");
         await axios.post(`http://127.0.0.1:8000/store/clean_store/${data.id}/reviews/`, {
             store_review : data.id,
             user_review : 1,
             point : point,
             comment: comment,
-          })
+          }, {
+              headers:{
+                Authorization: "Token ".concat(token),
+              }  
+        })
             .then(function (response) {
               console.log(response);
             })
