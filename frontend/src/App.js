@@ -164,6 +164,11 @@ function App() {
     setDiaryDetailData(initData);
   };
 
+  useEffect(()=>{
+
+    getDiaryDetail()
+  })
+
   const getpost = async () => {
     const res = await fetch("http://127.0.0.1:8000/post").then((res) =>
       res.json()

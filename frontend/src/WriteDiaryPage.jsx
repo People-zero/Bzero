@@ -51,7 +51,7 @@ const WriteDiaryPage = ({userdata})=> {
       category: 1,
       title: diaryData["title"],
       content: diaryData["text"],
-      image: null,
+      image: image,
     };
     fetch("http://127.0.0.1:8000/post/", {
       method: "POST",
@@ -60,10 +60,10 @@ const WriteDiaryPage = ({userdata})=> {
         Authorization: "Token ".concat(localStorage.getItem("token")),
       },
       body: JSON.stringify(PostData),
-    })  
+    })
       .then((res) => res.json())
       .then(() => {
-        
+        window.location.replace("http://localhost:3000/calendar");
       });
 
   };
