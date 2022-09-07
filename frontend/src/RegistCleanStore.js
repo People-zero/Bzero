@@ -8,9 +8,9 @@ import mainlogo from './images/logo2.svg'
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
 
-const registcleanstore = ({store})=>{
+const RegistCleanStore = ({store})=>{
 
-  const contentRef = useRef();
+  //const contentRef = useRef();
   //const navigate = useNavigate();
 
   const [state, setState] = useState({
@@ -26,6 +26,27 @@ const registcleanstore = ({store})=>{
         [e.target.name] : e.target.value,
     })
 };
+
+//파일 미리볼 url을 저장해줄 state
+const [fileImage, setFileImage] = useState("");
+
+// 파일 저장
+const saveFileImage = (e) => {
+  setFileImage(URL.createObjectURL(e.target.files[0]));
+};
+
+const Component=()=>{
+  if(true){
+    return (<p><label><input type="checkbox" name="hobby" value="2"/>화</label>
+    <label><input type="checkbox" name="hobby" value="3"/>수</label>
+    <label><input type="checkbox" name="hobby" value="4"/>목</label>
+    <label><input type="checkbox" name="hobby" value="5"/>금</label>
+    <label><input type="checkbox" name="hobby" value="6"/>토</label>
+    <label><input type="checkbox" name="hobby" value="7"/>일</label></p>);
+  }else {
+    return;
+  }
+}
 
 const setThumbnail = (e)=> {
   var reader = new FileReader();
@@ -95,6 +116,20 @@ const handleSubmit = () => {
                 placeholder='내용을 입력해주세요'/>
               </div>
               <div className='registcleanstore_box'>
+                <div className='registcleanstore_Q'>영업 정보를 선택해주세요</div>
+                <div
+                name='info_summamary'
+                className='registcleanstore_A'
+                value = {state.info_summary} 
+                onChange = {handleChangeState}>
+                {/*<p><label><input type="checkbox" name="hobby" value="1"/>월</label>
+                <input type="time"/> ~ <input type="time"/></p>*/}
+                수정중
+                
+
+                </div>
+              </div>
+              <div className='registcleanstore_box'>
                 <div className='registcleanstore_Q'>어떤 가게인지 자세한 설명을 작성해주세요</div>
                 <textarea className='registcleanstore_A' 
                 name='info'
@@ -113,7 +148,7 @@ const handleSubmit = () => {
               </div>
               <div className='registcleanstore_box'>
                 <div className='registcleanstore_Q'>가게 연락처를 작성해주세요</div>
-                <textarea 
+                <textarea type="tel"
                 className='registcleanstore_A' 
                 name='number'
                 value = {state.number} 
@@ -122,7 +157,7 @@ const handleSubmit = () => {
               </div>
               <div className='registcleanstore_box'>
                 <div className='registcleanstore_Q'>관련 링크가 있다면 첨부해주세요</div>
-                <textarea 
+                <textarea type="url"
                 name='streo_url'
                 value={state.store_url}
                 className='registcleanstore_A' 
@@ -136,9 +171,17 @@ const handleSubmit = () => {
                   <label for="input_file" 
                   className="registcleanstore_input_file">
                   <img src={photo_icon} />
-                  {/*사진미리보기 기능추가*/}
+                  {fileImage && (
+                  <img
+                    alt="sample"
+                    src={fileImage}
+                    style={{ margin: "auto" }}
+                    width="200px"
+                  />
+                )}
                   </label>
-                <input type="file" onChange = {setThumbnail} id="input_file" accept="image/*"  required multiple/>
+
+                <input type="file" onChange={saveFileImage} id="input_file" accept="image/*"  required multiple/>
                 </div>
             </div>
           </div>

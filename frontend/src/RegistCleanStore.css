@@ -96,25 +96,23 @@
     margin: 30px 0;
   }
   .registcleanstore_main > .registcleanstore_boxes .registcleanstore_Q{
-    background-color: #0679FF;
-    border-radius: 5px;
-    color: white;
-    font-size: 14px;
-    padding-left: 15px;
-    height: 30px;
-    padding-top: 10px;
-    width: 900px;
+    color: #0679FF;
+    font-size: 18x;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
   }
-  .registcleanstore_main > .registcleanstore_boxes .registcleanstore_A{
+  .registcleanstore_main > .registcleanstore_boxes  .registcleanstore_A{
     height: 80px;
     width: 900px;
     border: solid 0.2px;
     border-color: #0679FF;
     border-radius: 5px;
-    padding-left: 10px;
+    padding-left: 20px;
     padding-top: 9px;
     resize: none;
   }
+
   input:focus{
     outline: none;
   }
@@ -122,12 +120,12 @@
     width: 800px;
   }
   .registcleanstore_main > .registcleanstore_boxes > .registcleanstore_box_img > .registcleanstore_order{
-    background-color: #0679FF;
-    border-radius: 5px;
-    color: white;
+    color: #0679FF;
+    font-size: 18x;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
     width: 225px;
-    font-size: 14px;
-    padding: 10px 5px 10px 20px;
   }
   .registcleanstore_main > .registcleanstore_boxes > .registcleanstore_box_img > .registcleanstore_input_img{
     text-align: center;

@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from "react";
 import './App.css';
-import BottleStore from './BottleStore';
 import RegistCleanStore from "./RegistCleanStore";
-import RegistBottleStore from "./RegistBottleStore";
-import info_photo from "./images/info_photo.png";
+import info_photo from "./images/info_photo.jpg";
 import photo1 from "./images/photo1.png";
 import photo2 from "./images/photo2.png";
 import photo3 from "./images/photo3.png";
