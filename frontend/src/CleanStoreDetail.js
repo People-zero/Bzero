@@ -40,20 +40,12 @@ const CleanStoreDetail = () => {
     const [reviewData,setReview] = useState([]); 
     const [review,dispatch] = useReducer(reducer,dummyReview); 
     const [pointAvg,setPointAvg] = useState(); //평균 별점
+    const [reviewPointAvg,setReviewPointAvg] = useState(5);
 
     useEffect(()=>{
-    console.log(cleanStoreList[0]);
     init()
     },[])
-    // useEffect(()=>{
-    //     fetch('http://localhost:8000/review/')
-    //     .then((res)=>res.json())
-    //     .then((reviewData)=>{
-    //       setReview(reviewData)
-    //     })
-    //   })
 
- 
     useEffect(()=>{
         if (cleanStoreList.length >=1){
             const targetList = cleanStoreList.find((it)=>parseInt(it.id)===parseInt(id));
@@ -79,52 +71,40 @@ const CleanStoreDetail = () => {
     const commentRef=useRef(); //content를 다 작성 안했을 때 focus하기 위함.
     const [comment,setComment] = useState("");
     const [point,setpoint] = useState(0);
-    console.log(pointAvg);
-    console.log(comment); 
+
 
     const getPoint= (point) =>{ 
         setpoint(point);
     } 
 
     const init = async() => {
-        console.log("init")
-        const response=await fetch("http://127.0.0.1:8000/store/clean_store/3/reviews/"
-    )
-        .then((response)=>response.json())
-        console.log("init response",response) 
-        const initdata=response.map((it)=>{
-          
-          return{
-            id : it.id,
-            updated_at_review : it.updated_at_review,
-            comment : it.comment,
-            point : it.point,
-            created_at_review: it.created_at_review,
-            store_reivew : it.store_review,
-            user_review : it.user_review,
-          }
-    
-        })
-
-        // console.log(initdata);
-        const targetReview = initdata.filter((it)=>parseInt(it.store_review)===parseInt(id));
-        console.log(targetReview);
-        setReview(targetReview);
-        console.log(reviewData);
-
-        setReview(initdata);
-
-        console.log(reviewData);
-
-        if (reviewData.lengh>=1){
-            const targetReview = reviewData.filter((it)=>parseInt(it.Store_review)===parseInt(id));
-            setReview(targetReview);
-        } else{
-            const targetReview = dummyReview.filter((it)=>parseInt(it.Store_PK)===parseInt(id));
-            setReview(targetReview);
-        }
-        dispatch({type:"INIT",data:reviewData});
-        console.log(reviewData);
+        await axios.get(`http://127.0.0.1:8000/store/clean_store/${id}/reviews/`)
+        .then((response)=>{
+            let data=response.data
+            console.log("init response",data) 
+            const initdata = data.map((it)=>{
+              return{
+                id : it.id,
+                updated_at_review : it.updated_at_review,
+                comment : it.comment,
+                point : it.point,
+                created_at_review: it.created_at_review,
+                store_review : it.store_review,
+                user_review : it.user_review,
+                
+              }
+            })
+            setReview(initdata);
+        }).catch(err=>console.log("??",err))
+        // if (reviewData.lengh>=1){
+        //     const targetReview = reviewData.filter((it)=>parseInt(it.store_review)===parseInt(id));
+        //     setReview(targetReview);
+        // } else{
+        //     const targetReview = dummyReview.filter((it)=>parseInt(it.store_review)===parseInt(id));
+        //     setReview(targetReview);
+        // }
+        // dispatch({type:"INIT",data:reviewData});
+        // console.log(reviewData);
     }
 
     const onCreate = async(point,comment)=>{
@@ -141,14 +121,20 @@ const CleanStoreDetail = () => {
           },
         });
         console.log("data",data,"\n",point,"\n",comment)  
+        let token = localStorage.getItem("token");
         await axios.post(`http://127.0.0.1:8000/store/clean_store/${data.id}/reviews/`, {
             store_review : data.id,
             user_review : 1,
             point : point,
             comment: comment,
-          })
+          }, {
+              headers:{
+                Authorization: "Token ".concat(token),
+              }  
+        })
             .then(function (response) {
               console.log(response);
+              init()
             })
             .catch(function (error,response) {
               console.log(error);
@@ -196,7 +182,7 @@ const CleanStoreDetail = () => {
                 {((data.description).split('.')).slice(0,1)}.
                 {/* 한줄만 보여주기 - 간략하게 */}
                 </h4>
-            <img className="store_image" src={data.store_image} />
+            <img className="store_image" src={data.store_image?(data.store_image):(process.env.PUBLIC_URL + "/assets/dummy_photo/photo_3.png")} />
             <div className="cleanstore_management">
                 <button>
                 <img className="vector_image" src={Vector_bottom} alt="Vector_bottom" />
@@ -219,12 +205,12 @@ const CleanStoreDetail = () => {
                     <img className="vector_image" src={Vector_bottom} alt="Vector_bottom" />
                     리뷰
                     </button>
-                    <div className="cleanstore_star">
-                        <div className="starBox" style={{width : pointAvg}} >
-                        <img className="pointOfStar" src={blue_star} alt="blue_star" />
-                        </div>
-                        <img className="backgroundStar" src={gray_star} alt="gray_star" />
-                    </div>
+                    <div className="stars">
+                 <div className="starBox" style={{width : pointAvg}} >
+                 <img className="pointOfStar" src={blue_star} alt="blue_star" />
+                 </div>
+                 <img className="backgroundStar" src={gray_star} alt="gray_star" />
+                 </div>
                     <section className="review">
                         <CleanStoreReview cleanStoreReview = {reviewData} />
                     </section>
