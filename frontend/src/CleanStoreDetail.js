@@ -134,6 +134,7 @@ const CleanStoreDetail = () => {
         })
             .then(function (response) {
               console.log(response);
+              init()
             })
             .catch(function (error,response) {
               console.log(error);

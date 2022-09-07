@@ -27,7 +27,7 @@ class Review(models.Model):
     store_review = models.ForeignKey(Clean_Store, on_delete = models.CASCADE)
     user_review = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete = models.CASCADE)
     created_at_review = models.DateField(auto_now_add=True,editable= False, null=True)
-    updated_at_review = models.DateField(auto_created=timezone.now)
+    updated_at_review = models.DateField(auto_now=True,blank=True)
 
 
 class Bottle_Collection_Store(models.Model):
