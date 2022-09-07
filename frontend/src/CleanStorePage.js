@@ -3,18 +3,19 @@ import CleanStoreList from "./components/CleanStoreList";
 import { CleanStoreContext } from "./App";
 import { useEffect,useContext,useState } from "react";
 import "./css/CleanStore.css"
+
 const env=process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
 
 const CleanStore = () => {
 
     const cleanStoreList = useContext(CleanStoreContext);
-    const [data, setData] = useState([]);
     console.log(cleanStoreList);
+    const [data, setData] = useState([]);
 
     useEffect(()=>{
         setData(cleanStoreList)
-    },[]);
+    });
 
     return (
         <div className="CleanStore">
