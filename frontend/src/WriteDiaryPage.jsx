@@ -4,7 +4,7 @@ import arrow_svg from "./images/left_arrow.svg";
 import image_icon_svg from "./images/image_icon.svg";
 import axios from "axios";
 
-function WriteDiaryPage() {
+function WriteDiaryPage(props) {
   const [image, setImage] = useState();
   const [diaryData, setDiaryData] = useState({
     title: "",
@@ -17,19 +17,20 @@ function WriteDiaryPage() {
       setImage(reader.result);
     };
     reader.readAsDataURL(files[0]);
+     
   };
 
-  const API_URL = "http://localhost:8000/post/2";
   const onSubmit = () => {
+    const API_URL = "http://localhost:8000/post/1/";
     axios
       .post(API_URL, {
-        created_at: new Date().toString(),
-        updated_at: new Date().toString(),
-        category: "일기장",
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        category: 1,
         title: diaryData["title"],
         content: diaryData["text"],
-        image: null,
-        author: null,
+        image: image,
+        author: props.userdata.id,
         recommend_user_set: [],
       })
       .then(function (response) {
@@ -38,6 +39,19 @@ function WriteDiaryPage() {
   };
   const onCancel = () => {
     //뒤로가기
+  };
+
+  const getDate = () => {
+    const current = new Date();
+    return `${current.getFullYear().toString()}.${
+      current.getMonth() > 10
+        ? current.getMonth()
+        : "0" + current.getMonth().toString()
+    }.${
+      current.getMonth() > 10
+        ? current.getDay()
+        : "0" + current.getDay().toString()
+    }`;
   };
   return (
     <div className="write_diary_page">
@@ -50,7 +64,7 @@ function WriteDiaryPage() {
       <div className="main_body">
         <div className="input_header_div">
           <p className="input_header_title">오늘의 일기 작성</p>
-          <p className="input_header_timestamp">2022.08.08</p>
+          <p className="input_header_timestamp">{getDate()}</p>
         </div>
 
         <input
@@ -87,7 +101,7 @@ function WriteDiaryPage() {
             {/* <img src={`/static/left_arrow.svg`} alt="left_arrow" /> */}
             <p>작성 취소</p>
           </button>
-          <button className="submit_btn">
+          <button onClick={onSubmit} className="submit_btn">
             <p>작성하기</p>
           </button>
         </div>
