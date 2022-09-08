@@ -16,6 +16,7 @@ const WriteDiaryPage = ({userdata})=> {
   const [diaryData, setDiaryData] = useState({
     title: "",
     text: "",
+    
   });
   
   const upload_image = ({ target: { files } }) => {

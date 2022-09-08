@@ -128,7 +128,7 @@ window.location.replace('http://localhost:3000/mypage')
     <div className="body">
       <MypageNav></MypageNav>
       <header className="my_page_title">마이페이지</header>
-      <div className="main_body">
+      <div className="edit_main_body">
         <div className="profile_body">
           <img
             className="profile_image"

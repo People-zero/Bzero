@@ -23,7 +23,7 @@ input[type="file"] {
 
 /* 일기 헤더 */
 .header {
-  height: 114px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -48,7 +48,7 @@ input[type="file"] {
 
 .main_body {
   width: 78.80%;
-
+  padding-left:230px;
   align-self: center;
   display: flex;
   flex-direction: column;
