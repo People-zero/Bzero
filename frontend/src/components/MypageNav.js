@@ -14,7 +14,7 @@ const MypageNav=()=>{
         <button onClick={()=>{navigate('/mypage')}} className="Map_nav_subtext" style={{color:'#0679FF'}}>마이페이지</button>
         <div className="Map_nav_subtext" >가게 찾기</div>
         <div className="Map_nav_subsub">
-            <a href='#' ><div style={{color:'#979797'}}>클린스토어</div></a>
+        <div style={{cursor:"pointer"}}onClick={()=>{navigate('/clean_store')}}>클린스토어</div>
             <a href="/map"><div style={{color:'#979797'}}>공병스토어</div></a>
         </div>
         <button onClick={()=>{navigate('/community')}} className="Map_nav_subtext">커뮤니티</button>
