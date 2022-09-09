@@ -40,28 +40,16 @@ const CleanStoreDetail = () => {
     const [reviewData,setReview] = useState([]); 
     const [review,dispatch] = useReducer(reducer,dummyReview); 
     const [pointAvg,setPointAvg] = useState(); //평균 별점
+    const [reviewPointAvg,setReviewPointAvg] = useState(5);
 
     useEffect(()=>{
-    console.log(cleanStoreList[0]);
-},[])
-    // useEffect(()=>{
-    //     fetch('http://localhost:8000/review/')
-    //     .then((res)=>res.json())
-    //     .then((reviewData)=>{
-    //       setReview(reviewData)
-    //     })
-    //   })
-
-    useEffect(()=>{
-        init();
+    init()
     },[])
 
- 
     useEffect(()=>{
         if (cleanStoreList.length >=1){
             const targetList = cleanStoreList.find((it)=>parseInt(it.id)===parseInt(id));
-            console.log(targetList);
-                 // const targetReview = cleanStoreReview.find((it)=>parseInt(it.Store_PK)===parseInt(id));
+            // const targetReview = cleanStoreReview.find((it)=>parseInt(it.Store_PK)===parseInt(id));
             if(targetList){ //가게가 존재할 때
                 setData(targetList);
                 setPointAvg((targetList.point_avg)*20);
@@ -83,57 +71,70 @@ const CleanStoreDetail = () => {
     const commentRef=useRef(); //content를 다 작성 안했을 때 focus하기 위함.
     const [comment,setComment] = useState("");
     const [point,setpoint] = useState(0);
-    console.log(pointAvg);
-    console.log(comment); 
+
 
     const getPoint= (point) =>{ 
         setpoint(point);
     } 
 
-    const init = () => {
-            axios.get("http://127.0.0.1:8000/review/")
-            .then((response) => {
-            setReview([...response.data]);
-        })
-
-        if (reviewData.lengh>=1){
-            const targetReview = reviewData.filter((it)=>parseInt(it.Store_PK)===parseInt(id));
-            setReview(targetReview);
-        } else{
-            const targetReview = dummyReview.filter((it)=>parseInt(it.Store_PK)===parseInt(id));
-            setReview(targetReview);
-        }
-        dispatch({type:"INIT",data:reviewData});
-        console.log(reviewData);
+    const init = async() => {
+        await axios.get(`http://127.0.0.1:8000/store/clean_store/${id}/reviews/`)
+        .then((response)=>{
+            let data=response.data
+            console.log("init response",data) 
+            const initdata = data.map((it)=>{
+              return{
+                id : it.id,
+                updated_at_review : it.updated_at_review,
+                comment : it.comment,
+                point : it.point,
+                created_at_review: it.created_at_review,
+                store_review : it.store_review,
+                user_review : it.user_review,
+                
+              }
+            })
+            setReview(initdata);
+        }).catch(err=>console.log("??",err))
+        // if (reviewData.lengh>=1){
+        //     const targetReview = reviewData.filter((it)=>parseInt(it.store_review)===parseInt(id));
+        //     setReview(targetReview);
+        // } else{
+        //     const targetReview = dummyReview.filter((it)=>parseInt(it.store_review)===parseInt(id));
+        //     setReview(targetReview);
+        // }
+        // dispatch({type:"INIT",data:reviewData});
+        // console.log(reviewData);
     }
 
-    const onCreate = (point,comment) => {
+    const onCreate = async(point,comment)=>{
         dispatch({
           type : "CREATE",
           data : {
             id : reviewId.current,
-            Store_PK : cleanStoreList.find((it)=>parseInt(it.id)===parseInt(id)).id,
-            User_PK : 3,
+            store_review : cleanStoreList.find((it)=>parseInt(it.id)===parseInt(id)).id,
+            user_review : 1,
             point,
             comment, 
-            created_at : new Date(strDate).getTime(),
-            updated_at : new Date(strDate).getTime(),
+            created_at_review : new Date(strDate).getTime(),
+            updated_at_review : new Date(strDate).getTime(),
           },
         });
-
-        //back 연결 
-
-        axios.post("http://127.0.0.1:8000/review/", {
-            id : data.id,
-            Store_PK : data.Store_PK,
-            User_PK : data.User_PK,
+        console.log("data",data,"\n",point,"\n",comment)  
+        let token = localStorage.getItem("token");
+        await axios.post(`http://127.0.0.1:8000/store/clean_store/${data.id}/reviews/`, {
+            store_review : data.id,
+            user_review : 1,
             point : point,
-            comment: comment, 
-            created_at : data.created_at,
-            updated_at : data.updated_at,
-          })
+            comment: comment,
+          }, {
+              headers:{
+                Authorization: "Token ".concat(token),
+              }  
+        })
             .then(function (response) {
               console.log(response);
+              init()
             })
             .catch(function (error,response) {
               console.log(error);
@@ -142,7 +143,7 @@ const CleanStoreDetail = () => {
             
         reviewId.current += 1;
       };
-
+    
       const handleSubmit = () => { //리뷰 작성
         if(comment.length <1) {
             commentRef.current.focus();
@@ -181,7 +182,7 @@ const CleanStoreDetail = () => {
                 {((data.description).split('.')).slice(0,1)}.
                 {/* 한줄만 보여주기 - 간략하게 */}
                 </h4>
-            <img className="store_image" src={data.store_image} />
+            <img className="store_image" src={data.store_image?(data.store_image):(process.env.PUBLIC_URL + "/assets/dummy_photo/photo_3.png")} />
             <div className="cleanstore_management">
                 <button>
                 <img className="vector_image" src={Vector_bottom} alt="Vector_bottom" />
@@ -190,7 +191,7 @@ const CleanStoreDetail = () => {
                 <div className="cleanstore_information">
                     <section>
                     <h2 className="opening_hours">영업 일자 및 시간<h3>{data.opening_time}</h3></h2>
-                    <h2 className="address">주소<h3></h3></h2>
+                    <h2 className="address">주소<h3>{data.address}</h3></h2>
                     <h2 className="telephone">문의처<h3>{data.telephone}</h3></h2>
                     </section>
                     <img src={Map} alt="Map" /> 
@@ -204,12 +205,12 @@ const CleanStoreDetail = () => {
                     <img className="vector_image" src={Vector_bottom} alt="Vector_bottom" />
                     리뷰
                     </button>
-                    <div className="cleanstore_star">
-                        <div className="starBox" style={{width : pointAvg}} >
-                        <img className="pointOfStar" src={blue_star} alt="blue_star" />
-                        </div>
-                        <img className="backgroundStar" src={gray_star} alt="gray_star" />
-                    </div>
+                    <div className="stars">
+                 <div className="starBox" style={{width : pointAvg}} >
+                 <img className="pointOfStar" src={blue_star} alt="blue_star" />
+                 </div>
+                 <img className="backgroundStar" src={gray_star} alt="gray_star" />
+                 </div>
                     <section className="review">
                         <CleanStoreReview cleanStoreReview = {reviewData} />
                     </section>

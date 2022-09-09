@@ -200,19 +200,19 @@ const Community = () => {
             <div className="Community_body_four_postlist">
               {getProcessedPostList().map((it) => (
                 <div className="Community_body_four_postlist_s">
-                  <span
+                  <div
                     className="Community_body_four_postlist_ss"
                     onClick={() => navigate(`/details/${it.id}`, { state: it })}
                     key={it.id}
                   >
-                    <span className="Community_body_four_postlist_ss_title">
+                    <div className="Community_body_four_postlist_ss_title">
                       {it.title}
-                    </span>
+                    </div>
                     <br />
-                    <span className="Community_body_four_postlist_ss_content">
+                    <div className="Community_body_four_postlist_ss_content">
                       {it.content}
-                    </span>
-                  </span>
+                    </div>
+                  </div>
 
                   <span className="Community_body_four_postlist_imgs">
                     <img

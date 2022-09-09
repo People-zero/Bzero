@@ -56,8 +56,25 @@
 
 .Details_Body_2 {
     width: 80%; 
+    display: flex;
 }
 
+.Details_Body_2_delete {
+    display: flex;
+    flex-grow: 1;
+    justify-content: end;
+    align-items: center;
+}
+
+.Details_Body_2_delete_delete{
+    border-radius: 8px;
+    width: 100px;
+    height: 35px;
+    color: white;
+    background-color: #0679FF;
+    font-size: 15px;
+    font-family: 'Montserrat'
+}
 .Details_Body_2_title {
     padding-top: 20px;
     font-size: 23px;
@@ -141,4 +158,8 @@
     height: 60px;
     border-bottom: 1px solid gray;
     margin-bottom: 10px;
+}
+
+.Details_Body_6_commentlist_comment {
+    margin-top: 7px;
 }

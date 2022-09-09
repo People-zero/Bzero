@@ -42,10 +42,10 @@ const CalendarPage = ({ checked_date }) => {
         </header>
         <section className="calendar_page_contents">
           <div className="calendar_page_goto_other">
-            <a className="calendar_page_goto_edit" href="#goto">
+            <a className="calendar_page_goto_edit" href="/write_diary">
               일기 쓰러 가기 -&gt;
             </a>
-            <a className="calendar_page_goto_edit" href="goto">
+            <a className="calendar_page_goto_edit" href="/community">
               글 쓰러 가기 -&gt;
             </a>
           </div>

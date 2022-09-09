@@ -24,6 +24,7 @@ const BottleStore = ({store}) => {
     //const navigate = useNavigate();
     const handleSubmit = () => {
       //저장하기
+      
     }
     
 

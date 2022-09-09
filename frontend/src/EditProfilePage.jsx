@@ -82,23 +82,23 @@ else{
     const id = userdata[0].id; //임시코드
  
     console.log(typeof(edtiting_profile_data.profile_image))
-  //   axios.put(`http://127.0.0.1:8000/auth/accounts/${id}/`,{
-  //     first_name:edtiting_profile_data.name,
-  //     last_name:edtiting_profile_data.nickname,
-  //     email:edtiting_profile_data.email,
-  //     phone_number:edtiting_profile_data.phone_number,
+    axios.put(`http://127.0.0.1:8000/auth/accounts/${id}/`,{
+      first_name:edtiting_profile_data.name,
+      last_name:edtiting_profile_data.nickname,
+      email:edtiting_profile_data.email,
+      phone_number:edtiting_profile_data.phone_number,
       
-  //     username: userdata[0]?.username,
-  //     birth: userdata[0]?.birth,
-  //     age: userdata[0]?.age,
+      username: userdata[0]?.username,
+      birth: userdata[0]?.birth,
+      age: userdata[0]?.age,
   
 
-  //     is_staff: userdata[0].is_staff,
+      is_staff: userdata[0].is_staff,
   
  
-  // },{headers: {
-  //   Authorization: "Token ".concat(localStorage.getItem("token")),
-  // }})
+  },{headers: {
+    Authorization: "Token ".concat(localStorage.getItem("token")),
+  }})
   axios.put(`http://127.0.0.1:8000/auth/profile/${id}/`
   ,{
     username:userdata[0]?.profile?.username,
@@ -106,8 +106,9 @@ else{
     profile_image:edtiting_profile_data.profile_image,
     point:userdata[0]?.profile?.point
   },{headers: {
-    Authorization: "Token ".concat(localStorage.getItem("token")),
+    Authorization: "Tokenx ".concat(localStorage.getItem("token")),
   }})
+window.location.replace('http://localhost:3000/mypage')
 };
  
   const withdrawal_event = () => {
@@ -127,7 +128,7 @@ else{
     <div className="body">
       <MypageNav></MypageNav>
       <header className="my_page_title">마이페이지</header>
-      <div className="main_body">
+      <div className="edit_main_body">
         <div className="profile_body">
           <img
             className="profile_image"
@@ -177,19 +178,7 @@ else{
                 onChange={change_profile_image}
               />
             </div>
-            <div className="input_div">
-              <p className="input_tag">성명 *</p>
-              <input
-                className="input_text"
-                value={edtiting_profile_data["name"]}
-                onChange={(e) =>
-                  set_edtiting_profile_data({
-                    ...edtiting_profile_data,
-                    name: e.target.value,
-                  })
-                }
-              />
-            </div>
+           
             <div className="input_div">
               <p className="input_tag">닉네임 *</p>
               <input
@@ -203,33 +192,8 @@ else{
                 }
               />
             </div>
-            <div className="input_div">
-              <p className="input_tag">이메일 *</p>
-              <input
-                type="email"
-                className="input_text"
-                value={edtiting_profile_data["email"]}
-                onChange={(e) =>
-                  set_edtiting_profile_data({
-                    ...edtiting_profile_data,
-                    email: e.target.value,
-                  })
-                }
-              />
-            </div>
-            <div className="input_div">
-              <p className="input_tag">비밀번호 *</p>
-              <input
-                className="input_text"
-                value={edtiting_profile_data["password"]}
-                onChange={(e) =>
-                  set_edtiting_profile_data({
-                    ...edtiting_profile_data,
-                    password: e.target.value,
-                  })
-                }
-              />
-            </div>
+         
+           
             <div className="input_div">
               <p className="input_tag">연락처 *</p>
               <input
@@ -241,12 +205,7 @@ else{
             
             <button className="sumbit_btn" onClick={submit_event}>완료</button>
           </div>
-          <div className="withdrawal">
-            <button className="withdrawal_btn" onChange={withdrawal_event}>
-              탈퇴하기 <img src={withdrawl_icon} alt="withdrawl_icon" />
-              {/* <img src={`/static/withdrawl_icon.svg`} alt="withdrawl_icon"/> */}
-            </button>
-          </div>
+          
         </div>
       </div>
     </div>

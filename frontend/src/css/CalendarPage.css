@@ -90,13 +90,14 @@
 
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: flex-end;
 
     height: 80px;
 
     padding-bottom: 23px;
-    padding-left: 100px;
+    padding-left: 270px;
+    padding-right: 50px;
 
     border-bottom: 1px solid #0679FF;
     background-color: #FFFFFF;
@@ -117,6 +118,7 @@
     
 
     padding-left: 40px;
+    padding-right: 40px;
 
     font-family: 'Inter';
     font-style: normal;
@@ -129,14 +131,17 @@
 .calendar_page_title_sub_title {
     display: flex;
 
+
 }
 
 .calendar_page_contents {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 111px;
-    width: 860px;
+
+    padding-top: 100px;
+    padding-left: 45px;
+    width: 900px;
     height: auto;
 }
 
@@ -167,7 +172,7 @@
     display: flex;
     flex-direction: column;
     width: 807px;
-    margin-bottom: 33px;
+    margin-bottom: 13px;
 }
 
 .calendar_page_my_calendar .react-calendar {
@@ -175,7 +180,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 870px;
+    width: 850px;
     background: white;
     
     font-family: 'Inter';
@@ -262,7 +267,7 @@
   flex-direction: row ;
   justify-content: center;
   align-items: center;
-  height: 70px;
+  height: 60px;
   
   border-left: 35px solid #FFFFFF !important;
   border-right: 35px solid #FFFFFF !important;

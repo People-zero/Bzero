@@ -4,7 +4,7 @@
   margin-bottom: 46px;
 }
 
-.main_body {
+.edit_main_body {
   width: 100%;
   max-width: 1670px;
   display: flex;
@@ -13,10 +13,10 @@
 
 .my_page_title {
   font-size: 24px;
-  height: 90px;
+  height: 80px;
   width: 100%;
   max-width: 1670px;
-  padding-left: 250px;
+  padding-left: 270px;
   padding-top: 32px;
   border-bottom: 1px solid #0679ff;
 }

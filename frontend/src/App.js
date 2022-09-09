@@ -3,7 +3,7 @@ import MapPage from "./MapPage";
 import React, { useState } from "react";
 import { useReducer, useRef, useEffect } from "react";
 import CleanStoreDetail from "./CleanStoreDetail";
-import CleanStore from "./CleanStore";
+import CleanStorePage from "./CleanStorePage";
 import axios from "axios";
 import { dummyData } from "./util/dummyData";
 import Community from "./Community";
@@ -20,9 +20,10 @@ import photo2 from "./images/photo2.png";
 import photo3 from "./images/photo3.png";
 import BottleStore from "./BottleStore";
 import RegistStore from "./RegistStore";
-import Post from "./Post.js"
+import Post from "./Post.js";
 import EditProfilePage from "./EditProfilePage";
 import DiaryDetailPage from "./DiaryDetailPage";
+import WriteDiaryPage from "./WriteDiaryPage"
 const dummy_diary = [
   {
     id: 1,
@@ -49,40 +50,6 @@ const dummy_diary = [
     content: "포스트 내용3",
   },
 ];
-const dumyData = [
-  {
-    id: 1,
-    emotion: 1,
-    content: "송하윤 멋져 1",
-    date: 1660478254683,
-  },
-  {
-    id: 2,
-    emotion: 2,
-    content: "송하윤 멋져 2",
-    date: 1660478254684,
-  },
-  {
-    id: 3,
-    emotion: 3,
-    content: "송하윤 멋져 3",
-    date: 1660478254685,
-  },
-  {
-    id: 4,
-    emotion: 4,
-    content: "송하윤 멋져 4",
-    date: 1660478254686,
-  },
-  {
-    id: 5,
-    emotion: 5,
-    content: "송하윤 멋져 5",
-    date: 1660478254687,
-  },
-];
-
-
 
 const dummy_badge = [
   { badge_id: 1, badge_type: "badge1.png" },
@@ -138,33 +105,58 @@ const dummyList2 = [
   },
 ];
 function App() {
-
-
   const [place, setplace] = useState([]);
   const [userdata, setuserdata] = useState([]);
   const [attendDate, setAttendDate] = useState([]);
   const [FirstData, setFirstdata]= useState([]);
+  const [diaryDetailData, setDiaryDetailData] = useState([]);
 
-  const getpost = async () => {
-    const res = await fetch(
-      "http://127.0.0.1:8000/post"
-    ).then((res) => res.json());
+  const getDiaryDetail = async () => {
+    const res = await fetch("http://127.0.0.1:8000/post/C/1").then((res) =>
+      res.json()
+    );
     // console.log(res); // 500개의 데이터
-  
+
     const initData = res.map((it) => {
       // console.log(it.id)
       return {
         id: it.id,
-        emotion:it.category,
-        user:it.author, // 작성자
-        title:it.title,
-        content:it.content,
+        title: it.title,
+        content: it.content,
         date: it.created_at,
-        
+        image: it.image,
+
         // image: it.store_image,
       };
     });
-  
+    setDiaryDetailData(initData);
+  };
+
+  useEffect(()=>{
+
+    getDiaryDetail()
+  })
+
+  const getpost = async () => {
+    const res = await fetch("http://127.0.0.1:8000/post").then((res) =>
+      res.json()
+    );
+    // console.log(res); // 500개의 데이터
+
+    const initData = res.map((it) => {
+      // console.log(it.id)
+      return {
+        id: it.id,
+        emotion: it.category,
+        user: it.author, // 작성자
+        title: it.title,
+        content: it.content,
+        date: it.created_at,
+
+        // image: it.store_image,
+      };
+    });
+
     setFirstdata(initData);
   };
 
@@ -218,7 +210,7 @@ function App() {
       const res = await fetch("http://127.0.0.1:8000/auth/attend/", {
         method: "GET",
         headers: {
-          Authorization: "Token ".concat(token),
+          Authorization: "Token ".concat(localStorage.getItem("token")),
         },
       }).then((res) => res.json());
       setAttendDate(res);
@@ -350,7 +342,7 @@ function App() {
                 path="/map"
                 element={<MapPage place={place}></MapPage>}
               ></Route>
-              <Route path="/clean_store" element={<CleanStore />}></Route>
+              <Route path="/clean_store/" element={<CleanStorePage />}></Route>
               <Route
                 path="/clean_store/:id"
                 element={<CleanStoreDetail />}
@@ -365,8 +357,13 @@ function App() {
               <Route path="/post" element={<Post />}></Route>
               <Route
                 path="/diary_detail/:date"
-                element={<DiaryDetailPage dummy_diary={dummy_diary} />}
+                element={
+                  <DiaryDetailPage diary_detail_post={diaryDetailData} />
+                }
               ></Route>
+              <Route
+              path="/write_diary"
+              element={<WriteDiaryPage userdata={userdata}></WriteDiaryPage>}></Route>
             </Routes>
           </BrowserRouter>
         </PostStateContext.Provider>
