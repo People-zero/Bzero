@@ -164,7 +164,7 @@ const handleSubmit = () => {
               <div className='registcleanstore_box'>
                 <div className='registcleanstore_Q'>관련 링크가 있다면 첨부해주세요</div>
                 <textarea type="url"
-                name='streo_url'
+                name='store_url'
                 value={state.store_url}
                 className='registcleanstore_A' 
                 onChange = {handleChangeState}
@@ -187,7 +187,7 @@ const handleSubmit = () => {
                 )}
                   </label>
 
-                <input type="file" onChange={saveFileImage} id="input_file" accept="image/*"  required multiple/>
+                <input type="file" onChange={saveFileImage} id="input_file" accept="image/*"  style={{ display: "none" }} />
                 </div>
             </div>
           </div>
