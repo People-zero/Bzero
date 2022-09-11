@@ -6,9 +6,9 @@ import axios from "axios";
 import CalendarNav from "./components/CalendarNav";
 import { useEffect } from "react";
 const WriteDiaryPage = ({userdata})=> {
-  const [image, setImage] = useState();
+  const [image, setImage] = useState(null);
   const [userid,setuserid]=useState();
-
+  const [profileImage,setprofileImage]=useState();
   useEffect(()=>{
     setuserid(userdata[0]?.id)
     console.log(userdata)
@@ -27,8 +27,18 @@ const WriteDiaryPage = ({userdata})=> {
     reader.readAsDataURL(files[0]);
      
   };
-
+  const convertURLtoFile = async (url) => {
+    const response = await fetch(url);
+    const data = await response.blob();
+    const ext = url.split(".").pop(); // url 구조에 맞게 수정할 것
+    const filename = url.split("/").pop(); // url 구조에 맞게 수정할 것
+    const metadata = { type: `image/${ext}` };
+    return File([data], filename, metadata);
+  };
+  
   const onSubmit = () => {
+    console.log(userdata[0])
+    
     // const API_URL = "http://127.0.0.1:8000/post/";
     // console.log(userid)
     // axios
@@ -48,25 +58,31 @@ const WriteDiaryPage = ({userdata})=> {
     //   .then(function (response) {
     //     console.log(response);
     //   });
-    const PostData = {
-      category: 1,
-      title: diaryData["title"],
-      content: diaryData["text"],
-      image: image,
-    };
+    const PostData = 
+   
     fetch("http://127.0.0.1:8000/post/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Token ".concat(localStorage.getItem("token")),
       },
-      body: JSON.stringify(PostData),
+      body: JSON.stringify({
+        category: 1,
+        title: diaryData["title"],
+        content: diaryData["text"],
+        image: image,
+      }),
     })
-      .then((res) => res.json())
-      .then(() => {
-        window.location.replace("http://localhost:3000/calendar");
-      });
-
+  
+    axios.patch(`http://127.0.0.1:8000/auth/accounts/${userid}/`
+    ,{
+    
+      point:userdata[0]?.point+100,
+    },{headers: {
+      Authorization: "Token ".concat(localStorage.getItem("token")),
+    }})
+      
+    window.location.replace('http://localhost:3000/calendar')
   };
   const onCancel = () => {
     //뒤로가기
@@ -84,6 +100,7 @@ const WriteDiaryPage = ({userdata})=> {
         : "0" + current.getDay().toString()
     }`;
   };
+
   return (
     <div className="write_diary_page">
       <CalendarNav></CalendarNav>

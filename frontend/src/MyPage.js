@@ -14,13 +14,13 @@ const point_list = [
 ];
 
 const my_level = (user_info) => {
-  if (user_info?.profile.point < 1500) {
+  if (user_info?.point < 1500) {
     return "B";
-  } else if (user_info?.profile.point < 4500) {
+  } else if (user_info?.point < 4500) {
     return "S";
-  } else if (user_info?.profile.point < 10000) {
+  } else if (user_info?.point < 10000) {
     return "G";
-  } else if (user_info?.profile.point >= 10000) {
+  } else if (user_info?.point >= 10000) {
     return "D";
   }
 };
@@ -153,14 +153,14 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
                             {/* <img className="mypage_coins_img"
                               src={`static/coins.png`}
                               alt="coins"></img> */}
-                            <p className="mypage_my_point">{userdata[0]?.profile.point}P</p>
+                            <p className="mypage_my_point">{userdata[0]?.point}P</p>
                             <p className="mypage_next_point">
-                              다음 레벨까지 {list.max - userdata[0]?.profile.point}P 남았어요!
+                              다음 레벨까지 {list.max - userdata[0]?.point}P 남았어요!
                             </p>
                           </div>
                           <progress
                             className="mypage_point_progress"
-                            value={userdata[0]?.profile?.point}
+                            value={userdata[0]?.point}
                             min={list.min}
                             max={list.max}
                           ></progress>

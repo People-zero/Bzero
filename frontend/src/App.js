@@ -354,7 +354,7 @@ function App() {
                 path="/bottle_store/:id"
                 element={<BottleStore store={place}></BottleStore>}
               ></Route>
-              <Route path="/post" element={<Post />}></Route>
+              <Route path="/post" element={<Post userdata={userdata} />}></Route>
               <Route
                 path="/diary_detail/:date"
                 element={

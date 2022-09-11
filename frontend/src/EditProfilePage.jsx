@@ -102,11 +102,11 @@ else{
   axios.put(`http://127.0.0.1:8000/auth/profile/${id}/`
   ,{
     username:userdata[0]?.profile?.username,
-    intro_comment:'ㄴㄴ',
+    intro_comment:'not',
     profile_image:edtiting_profile_data.profile_image,
-    point:userdata[0]?.profile?.point
+    
   },{headers: {
-    Authorization: "Tokenx ".concat(localStorage.getItem("token")),
+    Authorization: "Token ".concat(localStorage.getItem("token")),
   }})
 window.location.replace('http://localhost:3000/mypage')
 };
