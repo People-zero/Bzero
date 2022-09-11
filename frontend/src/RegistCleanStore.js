@@ -33,6 +33,7 @@ const [fileImage, setFileImage] = useState("");
 // 파일 저장
 const saveFileImage = (e) => {
   setFileImage(URL.createObjectURL(e.target.files[0]));
+  
 };
 
 const Component=()=>{
@@ -116,18 +117,23 @@ const handleSubmit = () => {
                 placeholder='내용을 입력해주세요'/>
               </div>
               <div className='registcleanstore_box'>
-                <div className='registcleanstore_Q'>영업 정보를 선택해주세요</div>
-                <div
+                <div className='registcleanstore_Q'>영업 정보를 작성해주세요</div>
+                {/*<div
                 name='info_summamary'
                 className='registcleanstore_A'
                 value = {state.info_summary} 
                 onChange = {handleChangeState}>
-                {/*<p><label><input type="checkbox" name="hobby" value="1"/>월</label>
-                <input type="time"/> ~ <input type="time"/></p>*/}
-                수정중
+                <p><label><input type="checkbox"  value="1"/>...</label>
+                <input type="time"/> ~ <input type="time"/></p>
+                </div>*/}
+                <textarea 
+                name='info_summamary'
+                className='registcleanstore_A'
+                value = {state.info_summary} 
+                onChange = {handleChangeState}
+                placeholder='내용을 입력해주세요'/>
                 
 
-                </div>
               </div>
               <div className='registcleanstore_box'>
                 <div className='registcleanstore_Q'>어떤 가게인지 자세한 설명을 작성해주세요</div>
