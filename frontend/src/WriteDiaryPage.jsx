@@ -82,7 +82,7 @@ const WriteDiaryPage = ({userdata})=> {
       Authorization: "Token ".concat(localStorage.getItem("token")),
     }})
       
-    window.location.replace('http://localhost:3000/calendar')
+    // window.location.replace('http://localhost:3000/calendar')
   };
   const onCancel = () => {
     //뒤로가기

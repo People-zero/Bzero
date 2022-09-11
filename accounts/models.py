@@ -15,7 +15,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=150, blank=False, unique=True)
     is_staff = models.BooleanField(blank=False, default=False)
     gender = models.CharField(verbose_name='성별', max_length=1, null=True)
-
+    point = models.IntegerField(default=0)
     def __str__(self) -> str:
         return (self.username)
 
