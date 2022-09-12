@@ -13,6 +13,7 @@ import bottlebox from './images/bottlebox.svg'
 import bottletype_rectancle from './images/bottletype_rectangle.png'
 import emptystar from './images/emptystar.png'
 import MapNav from './components/MapNav'
+import Point from './components/Point';
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
 
@@ -26,6 +27,12 @@ const BottleStore = ({store}) => {
       //저장하기
       
     }
+
+    const [point,setpoint] = useState(0);
+
+    const getPoint= (point) =>{ 
+      setpoint(point);
+    } 
     
 
     return (
@@ -153,7 +160,9 @@ const BottleStore = ({store}) => {
               <div className='bottlestore_review'>
                 <h3>이 스토어를 추천하시겠어요?</h3>
                     <div className="bottlestore_star">
-                      <img src={emptystar}/><img src={emptystar}/><img src={emptystar}/><img src={emptystar}/><img src={emptystar}/>
+                        <Point pointAvg value={point} getPoint={getPoint}/>
+                        <h2>{point}/5</h2>
+                      {/* <img src={emptystar}/><img src={emptystar}/><img src={emptystar}/><img src={emptystar}/><img src={emptystar}/> */}
                     </div>
                     <textarea placeholder="리뷰를 작성해주세요." />
                 {/*<button className="write_button" onClick={handleSubmit}>
