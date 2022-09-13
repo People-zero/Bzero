@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from dj_rest_auth.registration.views import RegisterView
 from rest_framework import viewsets, status
 from django.utils.translation import gettext_lazy as _
-
+import datetime
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -32,7 +32,7 @@ class AttendViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         username = request.user
-        attended_date = request.POST['attended_date']
+        attended_date = datetime.date.today()
         if(Attendance.objects.filter(username=username, attended_date=attended_date)):
             return Response({'detail': 'already attend'})
         else:

@@ -18,12 +18,13 @@ class User(AbstractUser):
     point = models.IntegerField(default=0)
     def __str__(self) -> str:
         return (self.username)
-
+    
 
 class Attendance(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     attended_date = models.DateField()
-
+    def __str__(self) ->str:
+        return (self.attended_date)
 
 class Profile(models.Model):
     username = models.OneToOneField(User, on_delete=models.CASCADE, default="")

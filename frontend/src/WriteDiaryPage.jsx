@@ -5,6 +5,21 @@ import image_icon_svg from "./images/image_icon.svg";
 import axios from "axios";
 import CalendarNav from "./components/CalendarNav";
 import { useEffect } from "react";
+function dateFormat(date) {
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+  let hour = date.getHours();
+  let minute = date.getMinutes();
+  let second = date.getSeconds();
+
+  month = month >= 10 ? month : '0' + month;
+  day = day >= 10 ? day : '0' + day;
+  hour = hour >= 10 ? hour : '0' + hour;
+  minute = minute >= 10 ? minute : '0' + minute;
+  second = second >= 10 ? second : '0' + second;
+
+  return date.getFullYear() + '-' + month + '-' + day 
+}
 const WriteDiaryPage = ({userdata})=> {
   const [image, setImage] = useState(null);
   const [userid,setuserid]=useState();
@@ -18,7 +33,7 @@ const WriteDiaryPage = ({userdata})=> {
     text: "",
     
   });
-  
+  const current_time = new Date();
   const upload_image = ({ target: { files } }) => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -38,7 +53,8 @@ const WriteDiaryPage = ({userdata})=> {
   
   const onSubmit = () => {
     console.log(userdata[0])
-    
+    console.log(dateFormat(new Date()))
+    console.log(typeof((new Date())))
     // const API_URL = "http://127.0.0.1:8000/post/";
     // console.log(userid)
     // axios
@@ -58,7 +74,7 @@ const WriteDiaryPage = ({userdata})=> {
     //   .then(function (response) {
     //     console.log(response);
     //   });
-    const PostData = 
+    
    
     fetch("http://127.0.0.1:8000/post/", {
       method: "POST",
@@ -81,25 +97,36 @@ const WriteDiaryPage = ({userdata})=> {
     },{headers: {
       Authorization: "Token ".concat(localStorage.getItem("token")),
     }})
-      
+   
     // window.location.replace('http://localhost:3000/calendar')
+    // fetch("http://127.0.0.1:8000/auth/attend/", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: "Token ".concat(localStorage.getItem("token")),
+    //   },
+    //   body: JSON.stringify({
+    //     username:userdata[0]?.profile?.username,
+    //     attended_date:dateFormat(new Date())
+    //   }),
+    // })
+   axios.post(`http://127.0.0.1:8000/auth/attend/`
+    ,{
+    
+      username:userdata[0]?.profile?.username,
+      attended_date:(new Date().toString())
+    },{headers: {
+      Authorization: "Token ".concat(localStorage.getItem("token")),
+    }})
   };
   const onCancel = () => {
     //뒤로가기
   };
 
-  const getDate = () => {
-    const current = new Date();
-    return `${current.getFullYear().toString()}.${
-      current.getMonth() > 10
-        ? current.getMonth()
-        : "0" + current.getMonth().toString()
-    }.${
-      current.getMonth() > 10
-        ? current.getDay()
-        : "0" + current.getDay().toString()
-    }`;
-  };
+  const getDateString = () => {
+    const current_time = new Date();
+    return `${current_time.getFullYear()}.${(1+current_time.getMonth()) < 10 ? "0"+(1+current_time.getMonth()) : (1+current_time.getMonth())}.${current_time.getDate() < 10 ? "0"+current_time.getDate() : current_time.getDate()}`;
+  }
 
   return (
     <div className="write_diary_page">
@@ -113,7 +140,7 @@ const WriteDiaryPage = ({userdata})=> {
       <div className="main_body">
         <div className="input_header_div">
           <p className="input_header_title">오늘의 일기 작성</p>
-          <p className="input_header_timestamp">{getDate()}</p>
+          <p className="input_header_timestamp">{getDateString()}</p>
         </div>
 
         <input

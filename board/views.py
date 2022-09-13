@@ -77,7 +77,7 @@ class postDetailApiView(APIView):
 class postRetrieveApiView(APIView):
     
     def get_object_post(self,pk):
-        return Post.objects.filter(pk = pk)
+        return Post.objects.get(pk = pk)
 
     def get(self,request, pk):
         self.serializer_class = PostSerializer

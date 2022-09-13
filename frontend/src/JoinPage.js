@@ -105,6 +105,7 @@ const JoinPage = () => {
         nickname: nickname,
         gender: gender,
         is_staff: isStaff,
+        point:0,
       })
       .then(() => {
         // Handle success.
