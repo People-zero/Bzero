@@ -14,6 +14,7 @@ import LoginPage from "./LoginPage";
 import MainPage from "./MainPage";
 import JoinPage from "./JoinPage";
 import CalendarPage from "./CalendarPage";
+import RegistBottleStore from "./RegistBottleStore";
 import info_photo from "./images/info_photo.jpg";
 import photo1 from "./images/photo1.png";
 import photo2 from "./images/photo2.png";
