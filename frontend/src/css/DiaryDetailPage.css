@@ -149,9 +149,11 @@
 
 
 .diary_detail_content_box {
-    
-
     padding-top: 50px;
 
     width: 850px;
+}
+
+.diary_detail_content {
+    line-height: 25px;
 }
