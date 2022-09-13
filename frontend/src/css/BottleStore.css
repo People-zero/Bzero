@@ -22,6 +22,26 @@
     color: #0679FF;
   }
 
+  .bottlestore_review h2{
+    margin-top: 10px;
+    margin-left: 52px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color : #075CFF
+}
+
+  .bottlestore_star{
+    margin-left: 130px;
+    margin-top: 5px;
+    display: flex;
+}
+
+.bottlestore_star h2{
+  margin-top: 12px;
+  font-style: bold;
+}
+
   .bottlestore_store > a{
     color: gray;
     margin-left: 10px;
@@ -319,10 +339,16 @@ z-index:1;
  .bottlestore_star{
   margin-bottom: 40px;
  }
+ 
  .bottlestore_review textarea{
-  width:700px;
-  height: 70px;
-  resize: none;
-  border: solid 0.2px #0679FF;
-    border-radius: 5px;
- }
+  margin-left: 130px;
+  margin-top: 20px;
+  width: 50%;
+  box-sizing: border-box;
+  min-height: 200px;
+  resize: vertical; /* 위아래로만 textarea 사이즈 변경 가능하게 */
+  border-radius: 5px;
+  border-color: #0679FF;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
