@@ -17,16 +17,63 @@ import Point from './components/Point';
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
 
-const BottleStore = ({store}) => {
-    //console.log(store);
-
+const BottleStore = ({place}) => {
+  const [store,setstore]=useState()
     const {id} = useParams(); 
+    const [eday,setday]=useState([]);
+  const { kakao } = window;
+  useEffect(()=>{
+    var mapContainer = document.getElementById('bottle_map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(store?.store_longtitude, store?.store_latitude), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(store?.store_longtitude, store?.store_latitude); 
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+function setZoomable(zoomable) {
+  // 마우스 휠로 지도 확대,축소 가능여부를 설정합니다
+  map.setZoomable(zoomable);    
+}
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+  },[store])
+    //console.log(store);
+    
     //const [data,setData] = useState();
     //const navigate = useNavigate();
+    
     const handleSubmit = () => {
       //저장하기
       
     }
+    const getpost = async () => {
+      const res = await fetch(`http://127.0.0.1:8000/store/bottle_collection_Store/${id}/`).then((res) =>
+        res.json()
+      );
+      // console.log(res); // 500개의 데이터
+  
+     
+  
+      setstore(res);
+      
+      setday(res?.pickup_day?.split(","))
+      
+    };
+    useEffect(()=>{
+    getpost();
+    },[])
+    
+    
+
+    
 
     const [point,setpoint] = useState(0);
 
@@ -34,10 +81,13 @@ const BottleStore = ({store}) => {
       setpoint(point);
     } 
     
+    
 
     return (
       <div className="BottleStore">
       <MapNav></MapNav>
+
+
       <div className='bottlestore_right'>
         <div className='bottlestore_navbar_top'>
           <div className='bottlestore_text'>
@@ -45,25 +95,26 @@ const BottleStore = ({store}) => {
           </div>
         </div>
         <div className='bottlestore_main'>
-          {store.map((it)=> (
+         
               <>
               <div className='bottlestore_summary'>
                 <div className='bottlestore_summary_title'>
-                  <p>{it.name}</p>
+                  <p>{store?.store_name}</p>
                   <div className='bottlestore_url'>
                     <button /*onClick={()=>{navigate(`${it.store_url}`)}}*/>
-                       <a herf={it.store_url}>관련링크 방문하기</a>
-                    <img src={Vector} alt="Vector" /> </button>
+                       <a href={store?.store_url}>관련링크 방문하기
+                    <img src={Vector} alt="Vector" /></a></button>
                   </div>
-                </div>
-                <div className='bottlestore_summary_content'>
-                  <div className="star">
-                    별점 자리
 
-                  </div>
-                <p className="bottlestore_info_summary">{it.info_summary}</p>
-                <img className="bottlestore_info_photo" src={it.info_photo}/>
                 </div>
+                <div className='bottlestore_photo_zip'> 
+              <img src = {store?.store_image}/>
+              <div>
+                {store?.description}
+              </div>
+              </div>  
+              
+                
              </div>   
             <div className="bottlestore_content_group">
                 <p className="bottlestore_content_title">
@@ -71,55 +122,37 @@ const BottleStore = ({store}) => {
                   <div className="bottlestore_content">
                     <div className="bottlestore_content_left">
                         <div className="content_subtitle">
-                          <p>영업 일자 및 시간</p>
+                          <p>오픈 시간</p>
                           <p className='another_content'>공병 수거 요일</p>
                           <p className='another_content'>주소</p>
                           <p className='another_content'>문의처</p>
                           </div>
                         <div className='content_subcontent'>
-                          <span ><span className='bold'>{it.businessDay}</span> {it.businessHour} </span>   
-                          <span ><span className='bold'>{it.dayOff} </span> 휴무</span>
-                          <span className='another_content'><span className='bold'>{it.CollectDay}</span>  {it.CollectHour}</span>   
-                          <span className='another_content'>{it.address}</span>
-                          <span className='another_content'>{it.number}</span>
+                          {/* <span ><span className='bold'>{store.businessDay}</span> {store.businessHour} </span>    */}
+                          {/* <span ><span className='bold'>{store.dayOff} </span> 휴무</span> */}
+                          
+                          <span className='another_content'>{store?.opening_time  }</span>
+                          <div className='store_day'>
+                            {eday.map((it)=>(
+                              <div className='store_day_select'>
+                                <div>{it}</div>
+                              </div>
+                            )
+
+                            )}
+                          </div>
+                          <span className='another_content'>{store?.address}</span>
+                          <span className='another_content'>{store?.telephone}</span>
                     </div>
                     </div>
                 
-                <div className="bottlestore_content_right">
+                <div className="bottlestore_map" id='bottle_map'>
                     지도 자리
                 </div>
                 </div>
             </div>
-            <div className="bottlestore_content_group">
-              <div className='bottlestore_photo_zip'> 
-              <img src = {it.photo1}/>
-              <img src = {it.photo2}/>
-              <img src = {it.photo3}/></div>
-                <div className="bottlestore_info_title">{it.info_title}</div>
-                <div className="bottlestore_info_content">{it.info}</div>
-            </div>
-            <div className="bottlestore_content_group">
-            <p className="bottlestore_content_title"> 
-            <img src={Vectorbottom} />수거하는 공병</p>
-            <div className='bottlestore_content_body'>
-              <div className='bottlestore_bottletype'>
-                <span className='bottlestore_bottletype_text'>페트병</span>
-                <span className='bottlestore_bottletype_text'>페트병</span>
-                <span className='bottlestore_bottletype_text'>페트병</span>
-                <span className='bottlestore_bottletype_text'>페트병</span>
-                <div className='bottlestore_bottletype_pic'>
-                  <div className='bottlestore_bottletype_bottle'>
-                      <img src={bottle1}   width='100px'/>
-                      <img src={bottle2}width='100px'/>
-                      <img src={bottle3}width='135px'/>
-                  </div>
-                  <div className='bottlestore_bottletype_box'>
-                    <img src={bottlebox}/>
-                  </div>
-                </div>
-              </div>
-            </div>
-              </div>
+            
+            
             <div className="bottlestore_content_group">
               <p className="bottlestore_content_title"> 
             <img src={Vectorbottom} />수거하는 공병</p>
@@ -128,8 +161,33 @@ const BottleStore = ({store}) => {
                 <button><img src={Vector_left}/></button>
                 <button><img src={Vector_right}/></button>
           </div>*/}
-              <div className='bottlestore_bottledetail'>    
-              <div className='bottlestore_bottledeail_content'>
+              <div className='bottlestore_bottledetail'> 
+
+              {store?.bottle_kind?.split(",").map((it)=>(
+                <div className='bottle_view'>
+                <div className='bottlestore_bottledeail_content'>
+                {
+                it==='소형 및 중형'
+                ?<img src={process.env.PUBLIC_URL+`../img/Group 1182 (5).png`}/>
+                :null
+              }
+              {
+                it==='대형 및 유류 정종'
+                ?<img className="oil_image"src={process.env.PUBLIC_URL+`../img/Group 1182 (2).png`}/>
+                :null
+              }
+              {
+                it==='화장품 및 기타 공병'
+                ?<img className="beauty_image"src={process.env.PUBLIC_URL+`../img/화장품병.png`}/>
+                :null
+              }
+               
+               
+                </div>
+                <p>{it} </p>
+                </div>
+              ))}   
+              {/* <div className='bottlestore_bottledeail_content'>
                 <img src={bottletype_rectancle}/>
                 <p>페트병</p>
                 </div>
@@ -140,36 +198,15 @@ const BottleStore = ({store}) => {
                 <div className='bottlestore_bottledeail_content'>
                 <img src={bottletype_rectancle}/>
                 <p>페트병</p>
-                </div>
-                <div className='bottlestore_bottledeail_content'>
-                <img src={bottletype_rectancle}/>
-                <p>페트병</p>
-                </div>
+                </div> */}
+                
               </div>              
               </div>
               </div>
-              <div className="bottlestore_content_group">
-            <p className="bottlestore_content_title"> 
-            <img src={Vectorbottom} /> 리뷰({/*ReviewCount*/})</p>
-            {/*수정중*/}
-              </div>
+              
             </>
-            ))}
-            <div className="bottlestore_content_group">
-            <p className="bottlestore_content_title"> 리뷰 작성</p>
-              <div className='bottlestore_review'>
-                <h3>이 스토어를 추천하시겠어요?</h3>
-                    <div className="bottlestore_star">
-                        <Point pointAvg value={point} getPoint={getPoint}/>
-                        <h2>{point}/5</h2>
-                      {/* <img src={emptystar}/><img src={emptystar}/><img src={emptystar}/><img src={emptystar}/><img src={emptystar}/> */}
-                    </div>
-                    <textarea placeholder="리뷰를 작성해주세요." />
-                {/*<button className="write_button" onClick={handleSubmit}>
-                    작성하기
-        </button>*/}
-                </div>      
-              </div>
+            
+            
         </div>
 </div>
 </div>

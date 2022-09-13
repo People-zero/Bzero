@@ -25,7 +25,7 @@ const EditProfilePage=({userdata})=> {
     birth: new Date(),
     age: 0,
     phone_number: "",
-    profile_image: "",
+    profile_image: "/img/Group 1182 (5).png",
   });
 
   useEffect(()=>{
