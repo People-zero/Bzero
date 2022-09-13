@@ -17,12 +17,12 @@ import CalendarPage from "./CalendarPage";
 import RegistBottleStore from "./RegistBottleStore";
 import info_photo from "./images/info_photo.jpg";
 import RegistCleanStore from "./RegistCleanStore";
-import info_photo from "./images/info_photo.jpg";
+
 import photo1 from "./images/photo1.png";
 import photo2 from "./images/photo2.png";
 import photo3 from "./images/photo3.png";
 import BottleStore from "./BottleStore";
-import RegistStore from "./RegistStore";
+
 import Post from "./Post.js";
 import EditProfilePage from "./EditProfilePage";
 import DiaryDetailPage from "./DiaryDetailPage";
@@ -352,7 +352,7 @@ function App() {
               ></Route>
               <Route path="/community" element={<Community />} />
               <Route path="/details/:id" element={<Details />} />
-              <Route path="/regist_store" element={<RegistStore />}></Route>
+              <Route path="/regist_store" element={<RegistBottleStore />}></Route>
               <Route
                 path="/bottle_store/:id"
                 element={<BottleStore store={place}></BottleStore>}
