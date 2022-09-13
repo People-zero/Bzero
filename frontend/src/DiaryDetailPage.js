@@ -16,7 +16,7 @@ const DiaryDetailPage = ({ diary_detail_post }) => {
   const localContentInput = useRef();
 
   const handleRemove = () => {
-    console.log(data.id);
+    
     if (window.confirm(`일기를 정말 삭제하시겠습니까?`)) {
       axios
         .delete(` http://127.0.0.1:8000/post/detail/retrieve/${data.id}`, {
@@ -50,15 +50,16 @@ const DiaryDetailPage = ({ diary_detail_post }) => {
       const targetDiary = diary_detail_post.find(
         (it) => it.date.slice(0, 10) === date
       );
-      console.log(targetDiary);
+      
 
       if (targetDiary) {
         setData(targetDiary);
-        console.log("target", targetDiary);
+        console.log(targetDiary)
       }
     }
+    
   }, [date, diary_detail_post]);
-
+console.log(diary_detail_post)
   return (
     <div className="diary_detail">
       <MypageNav />
@@ -89,7 +90,7 @@ const DiaryDetailPage = ({ diary_detail_post }) => {
                           </>
                         ) : (
                           <>
-                            <button onClick={toggleIsEdit}>수정하기</button>
+                            
                             <button onClick={handleRemove}>삭제하기</button>
                           </>
                         )}

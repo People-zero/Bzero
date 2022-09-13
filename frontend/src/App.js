@@ -181,6 +181,7 @@ function App() {
         day: it.pickup_day.split(","),
         Bottle_kind: it.bottle_kind.split(","),
         image: it.store_image,
+        address:it.address,
       };
     });
 

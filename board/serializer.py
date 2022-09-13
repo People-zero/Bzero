@@ -2,9 +2,10 @@ from rest_framework import serializers
 from . import models
 from accounts.models import User
 # from drf_extra_fields.fields import Base64ImageField
+from drf_extra_fields.fields import Base64ImageField
 
 class PostSerializer(serializers.ModelSerializer):
-    # image = Base64ImageField()
+    image = Base64ImageField()
     author_name = serializers.SerializerMethodField()
     def get_author_name(self,request):
         author_name = User.objects.get(id = request.author.id).username

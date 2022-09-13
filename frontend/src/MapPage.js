@@ -15,7 +15,7 @@ const MapPage = ({place}) => {
     const [where,setwhere]=useState("")
     const [currentbottle,setcurrentbottle]=useState(['소형 및 중형','대형 및 유류 정종','화장품 및 기타 공병'])
     
-
+    console.log(place)
   
     
     
@@ -246,7 +246,7 @@ ps.keywordSearch(where, placesSearchCB);
        var jibun_text=document.createElement('span')
        jibun_text.className='jubun_text'
        jibun.appendChild(jibun_text)
-       jibun_text.innerHTML=place[i].address
+       jibun_text.innerHTML=place[i]?.address
 
         var linktext=document.createElement('div')
         linktext.className='linktext'
@@ -312,7 +312,7 @@ var zoomControl = new kakao.maps.ZoomControl();
 // 지도의 우측에 확대 축소 컨트롤을 추가한다
 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-  },[where])
+  },[where,currentday,currentbottle,place])
 
   
   const dayselect=(e)=>{
