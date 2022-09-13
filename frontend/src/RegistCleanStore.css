@@ -1,0 +1,157 @@
+  .RegistCleanStore{
+    display: flex;
+  }
+  .registcleanstore_navbar_left{
+    background-color: white;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    border: 1px solid #0679FF;
+    border-style: none solid none none;
+    height: 800px;
+    width: 173px;
+    padding: 20px 26px;
+  }
+  .registcleanstore_navbar_left_menu {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 300px; 
+    margin-top: 40px;
+  }
+  .registcleanstore_navbar_left_menu > .registcleanstore_present{
+    color: #0679FF;
+  }
+  .registcleanstore_navbar_left_menu > a{
+    color: black;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 8px 0;
+  }
+
+  .registcleanstore_navbar_left_logout > a {
+    color: black;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  
+  .registcleanstore_navbar_left_menu > a:hover{
+    color: #0679FF;
+  }
+  
+  
+  .registcleanstore_right{
+    display: flex;
+    padding-left: 173px;
+    flex-direction: column;
+    max-width: 1300px;
+  }
+  .registcleanstore_navbar_top{
+    display: flex;
+    position: fixed;
+    background-color: white;
+    border: 1px solid #0679FF;
+    border-style: none none solid none;
+    width: 90%;
+    padding: 5px 0px 10px;
+  }
+  .registcleanstore_navbar_top > .registcleanstore_text{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 55px;
+    
+  }
+  .registcleanstore_navbar_top > .registcleanstore_text > .registcleanstore_line1{
+    align-items: center;
+    display: flex;height: 40px;
+  }
+  .registcleanstore_navbar_top > .registcleanstore_text > .registcleanstore_line1 > .registcleanstore_title1{
+    font-weight: bold;
+    font-size: 19px;
+    margin-right: 20px;
+  }
+  .registcleanstore_navbar_top > .registcleanstore_text > .registcleanstore_line1 > .registcleanstore_title2{
+    font-weight: bold;
+    font-size: 15px;
+    color: #0679FF;
+    padding-top: 4px;
+  }
+  .registcleanstore_navbar_top > .registcleanstore_text > p{
+    font-size: 12px;
+    color: gray;
+    margin: 0;
+  }
+  .registcleanstore_navbar_top > .registcleanstore_logo{
+    position: absolute;
+    top: 20px;
+    right: 40px;
+  }
+  
+
+  /* main*/
+  
+  .registcleanstore_main{
+    padding: 140px 100px;
+  }
+  .registcleanstore_main > .registcleanstore_boxes > .registcleanstore_box_question > .registcleanstore_box {
+    margin: 30px 0;
+  }
+  .registcleanstore_main > .registcleanstore_boxes .registcleanstore_Q{
+    color: #0679FF;
+    font-size: 18x;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+  }
+  .registcleanstore_main > .registcleanstore_boxes  .registcleanstore_A{
+    height: 80px;
+    width: 900px;
+    border: solid 0.2px;
+    border-color: #0679FF;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-top: 9px;
+    resize: none;
+  }
+
+  input:focus{
+    outline: none;
+  }
+  .registcleanstore_main > .registcleanstore_boxes > .registcleanstore_box_img {
+    width: 800px;
+  }
+  .registcleanstore_main > .registcleanstore_boxes > .registcleanstore_box_img > .registcleanstore_order{
+    color: #0679FF;
+    font-size: 18x;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    width: 225px;
+  }
+  .registcleanstore_main > .registcleanstore_boxes > .registcleanstore_box_img > .registcleanstore_input_img{
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 225px;
+    border: solid 0.2px;
+    border-color: #0679FF;
+    border-radius: 5px;
+  }
+
+
+  .registcleanstore_main > .registcleanstore_main_bottom {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+  }
+  .registcleanstore_main > .registcleanstore_main_bottom > .registcleanstore_back{
+    color: #0679FF;
+    text-decoration: none;
+  }
+  .registcleanstore_main > .registcleanstore_main_bottom > .registcleanstore_save{
+    border: 1px solid #0679FF;
+    color: #0679FF;
+    font-size: 18px;
+    padding: 10px 40px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
