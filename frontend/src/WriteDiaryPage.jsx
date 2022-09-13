@@ -21,7 +21,7 @@ function dateFormat(date) {
   return date.getFullYear() + '-' + month + '-' + day 
 }
 const WriteDiaryPage = ({userdata})=> {
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   const [userid,setuserid]=useState();
   const [profileImage,setprofileImage]=useState();
   useEffect(()=>{
@@ -118,6 +118,17 @@ const WriteDiaryPage = ({userdata})=> {
     },{headers: {
       Authorization: "Token ".concat(localStorage.getItem("token")),
     }})
+    .then(() => {
+      // Handle success.
+      alert("일기 작성 완료!")
+      window.location.replace('http://localhost:3000/calendar')
+      //페이지 이동 필요
+    })
+    .catch((error) => {
+      console.log("An error occurred:", error.response);
+      // alert('')
+      alert("양식에 맞춰 다시 작성해주세요")
+    })
   };
   const onCancel = () => {
     //뒤로가기

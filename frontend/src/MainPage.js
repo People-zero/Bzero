@@ -63,19 +63,19 @@ const MainPage=()=>{
         <div className="MainPage_secondPage_blockblock">
 
             <div className="MainPage_secondPage_block">
-                <span>뭐뭐가 어려워요! 뭐뭐한거 없을까요?
+                <span>어디서부터 시작해야 할지 모르겠어요
                     <img src={process.env.PUBLIC_URL+`../img/Group 1148.png`}/> </span>
             </div>
             <div style={{backgroundColor:'#0679FF'}} className="MainPage_secondPage_block2">
-         <span><img src={process.env.PUBLIC_URL+`../img/Group 1148.png`}/>뭐뭐가 어려워요! 뭐뭐한거 없을까요?
+         <span><img src={process.env.PUBLIC_URL+`../img/Group 1148.png`}/>주위에 공병수거 하는 곳이 없을까요?
                      </span>
             </div>
             <div style={{backgroundColor:'#72EFCA'}}className="MainPage_secondPage_block">
-            <span>뭐뭐가 어려워요! 뭐뭐한거 없을까요?
+            <span>제로웨이스트 동기부여를 얻고 싶어요!
                     <img src={process.env.PUBLIC_URL+`../img/Group 1148.png`}/> </span>
             </div>
             <div style={{backgroundColor:'#8692FF'}} className="MainPage_secondPage_block2">
-            <span><img src={process.env.PUBLIC_URL+`../img/Group 1148.png`}/>뭐뭐가 어려워요! 뭐뭐한거 없을까요?
+            <span><img src={process.env.PUBLIC_URL+`../img/Group 1148.png`}/>초심자가 실천하기엔 너무 어려워요!
                      </span>
             </div>
 
@@ -95,9 +95,9 @@ const MainPage=()=>{
     <div className="MainPage_thirdpage">
 
        <div className="MainPage_thirdpage_textbox">
-        <div className="MainPage_thirdpage_maintext">공병 수거와 같은 우리 주위의 사소한 제로웨이스트들!</div>
+        <div className="MainPage_thirdpage_maintext">공병 수거와 같이 쉽게 실천할 수 있는 제로웨이스트부터!</div>
         <div className="MainPage_thirdpage_subtext">BZero는 내 근처 공병 수거 가게를 찾아 주는 서비스를 제공합니다.</div>
-        
+        <div style={{marginTop:'10px'}}className="MainPage_thirdpage_subtext">클린스토어, 제로웨이스트 일기등 누구나 쉽게 제로웨이스트를 실천할 수 있도록 지원합니다.</div>
        </div>
 
        <div className="MainPage_thirdpage_imagebox">

@@ -16,7 +16,7 @@ const EditProfilePage=({userdata})=> {
     birth: new Date(),
     age: 0,
     phone_number: "",
-    profile_image: "",
+    profile_image:""
   });
   const [edtiting_profile_data, set_edtiting_profile_data] = useState({
     name: userdata[0]?.username,
@@ -25,9 +25,8 @@ const EditProfilePage=({userdata})=> {
     birth: new Date(),
     age: 0,
     phone_number: "",
-    profile_image: "/img/Group 1182 (5).png",
-  });
-
+    profile_image: "",
+  })
   useEffect(()=>{
     
     if(userdata[0]?.profile?.profile_image!=null){
@@ -50,7 +49,7 @@ else{
     birth: new Date(),
     age: 0,
     phone_number: userdata[0]?.phone_number,
-    profile_image: userdata[0]?.profile.profile_image
+    profile_image: process.env.PUBLIC_URL + `/img/Group 1182 (2).png`
 })
   
   }

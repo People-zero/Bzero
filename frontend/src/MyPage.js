@@ -77,7 +77,7 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
                   {userdata[0]?.profile?.profile_image &&(
                   <img src={userdata[0]?.profile?.profile_image}/>)}
                     {!userdata[0]?.profile?.profile_image &&(
-                  <img src={process.env.PUBLIC_URL+`../img/Group 1183 (1).png`}/>)}
+                  <img src={process.env.PUBLIC_URL+`../img/Group 1182 (2).png`}/>)}
       
                   {/* <img src={`static/${it.profile}`} alt="profile"></img> */}
                   <p className="mypage_nickname">{userdata[0]?.last_name}</p>
