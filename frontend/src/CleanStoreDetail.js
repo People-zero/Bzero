@@ -157,7 +157,7 @@ const CleanStoreDetail = () => {
     }else{
     return (
         <div className="CleanStoreDetail">
-            <section className="menu_wrapper"><MapNav /></section> 
+            <MapNav />
             <div className="cleanstore_detail">
             <section className="cleanstore_topbar">
                 <h2>클린스토어 상세정보</h2></section>

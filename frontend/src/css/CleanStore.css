@@ -133,6 +133,16 @@
 
 .CleanStoreDetail .cleanstore_detail{
     flex-grow: 1;
+        
+}
+
+@media (max-width:1500px){
+    .CleanStoreDetail .cleanstore_detail{
+       
+    padding-left: 280px;    
+            
+    }
+    
 }
 
 .CleanStoreDetail .cleanstore_topbar{
