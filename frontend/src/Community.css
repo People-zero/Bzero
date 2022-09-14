@@ -31,6 +31,13 @@
     color: #353535; 
 }
 
+.Community_header_right_findstore{
+    cursor: pointer;
+}
+
+.Community_header_right_mypage{
+    cursor: pointer;
+}
 .Community_header_right_communiy {
     color: #0679FF;
 }
@@ -69,6 +76,7 @@
 }
 
 .Community_body_one_post button {
+
    width: 100px;
    border: 1px solid;
    border-radius: 5px;
@@ -78,6 +86,8 @@
 }
 
 .Community_body_one_post_imgs {
+    position: relative;
+    top : 4px;
     padding: 0;
     padding-left: 4px;
     height: 22px;
@@ -215,6 +225,12 @@
 
 .Community_body_four_postlist_imgs1_goodbt {
     padding-right: 10px;
+}
+
+.Community_body_four_postlist_imgs_date {
+    display: flex;
+    width: 100%;
+    margin-top: 35px;
 }
 
 .EmotionItem { 
