@@ -35,18 +35,6 @@ const saveFileImage = (e) => {
   
 };
 
-const Component=()=>{
-  if(true){
-    return (<p><label><input type="checkbox" name="hobby" value="2"/>화</label>
-    <label><input type="checkbox" name="hobby" value="3"/>수</label>
-    <label><input type="checkbox" name="hobby" value="4"/>목</label>
-    <label><input type="checkbox" name="hobby" value="5"/>금</label>
-    <label><input type="checkbox" name="hobby" value="6"/>토</label>
-    <label><input type="checkbox" name="hobby" value="7"/>일</label></p>);
-  }else {
-    return;
-  }
-}
 
 const handleSubmit = () => {
   //저장하기
@@ -106,9 +94,9 @@ const handleSubmit = () => {
               <div className='registbottlestore_box'>
                 <div className='registbottlestore_Q'>영업 정보를 작성해주세요</div>
                 <textarea 
-                name='info_summamary'
+                name='businessday'
                 className='registbottlestore_A'
-                value = {state.info_summary} 
+                value = {state.businessday}
                 onChange = {handleChangeState}
                 placeholder='내용을 입력해주세요'/>
               </div>
@@ -122,6 +110,15 @@ const handleSubmit = () => {
                 <p><label><input type="checkbox" name='collectable' value="대형 및 유류 정종"/>대형 및 유류 정종</label></p>
                 <p><label><input type="checkbox" name='collectable' value="화장품 및 기타 공병"/>화장품 및 기타 공병</label></p>
                 </div>
+              </div>
+              <div className='registbottlestore_box'>
+                <div className='registbottlestore_Q'>수거 가능한 날을 작성해주세요</div>
+                <textarea 
+                name='collectday'
+                className='registbottlestore_A'
+                value = {state.collectday}
+                onChange = {handleChangeState}
+                placeholder='내용을 입력해주세요'/>
               </div>
               <div className='registbottlestore_box'>
                 <div className='registbottlestore_Q'>어떤 가게인지 자세한 설명을 작성해주세요</div>
