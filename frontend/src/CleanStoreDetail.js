@@ -1,4 +1,4 @@
-import SideBar from "./components/SideBar";
+import MapNav from "./components/MapNav";
 import { useState,useEffect,useContext,useReducer,useRef } from "react";
 import { useNavigate,useParams } from "react-router";
 import { CleanStoreContext } from "./App";
@@ -157,7 +157,7 @@ const CleanStoreDetail = () => {
     }else{
     return (
         <div className="CleanStoreDetail">
-            <section className="menu_wrapper"><SideBar /></section> 
+            <section className="menu_wrapper"><MapNav /></section> 
             <div className="cleanstore_detail">
             <section className="cleanstore_topbar">
                 <h2>클린스토어 상세정보</h2></section>
