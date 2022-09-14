@@ -84,7 +84,7 @@ const Post = () => {
           className="Community_header_title_img"
           src={process.env.PUBLIC_URL + `/img/로고 파랑 2.png`}
         />
-        <div className="Post_header_title">BZERO</div>
+        <div className="Post_header_title">BZero</div>
         <div className="Post_header_right">
           <div>가게 찾기</div>
           <div className="Post_header_right_com">커뮤니티</div>

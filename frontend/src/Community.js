@@ -37,14 +37,6 @@ const emotionList = [
 
 
 const Community = () => {
-
-  const [goodbt, Setgoodbt] = useState(0);
-
-  const pushgoodbt = () => {
-    Setgoodbt(goodbt + 1);
-  };
-
-
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState(1);
   const [emotion, setEmotion] = useState(1);
@@ -103,12 +95,12 @@ const Community = () => {
           className="Community_header_title_img"
           src={process.env.PUBLIC_URL + `/img/로고 파랑 2.png`}
         />
-        <div className="Community_header_title">BZERO</div>
+        <div className="Community_header_title">BZero</div>
 
         <div className="Community_header_right">
-          <div>가게 찾기</div>
+          <div className="Community_header_right_findstore" onClick={() => navigate("/map")}>가게 찾기</div>
           <div className="Community_header_right_communiy">커뮤니티</div>
-          <div>마이페이지</div>
+          <div className="Community_header_right_mypage" onClick={() => navigate("/mypage")}>마이페이지</div>
         </div>
       </div>
       <div className="Community_body">
@@ -129,7 +121,7 @@ const Community = () => {
         </div>
         <div className="Community_body_two">
           <div className="Community_body_two_doing">저 이거 했어요!</div>
-          <div className="Community_body_two_share">꿀팁 공유</div>
+          <div className="Community_body_two_share"></div>
         </div>
         <div className="Community_body_three">
           <div className="Community_body_three_mir">
@@ -172,17 +164,8 @@ const Community = () => {
                       {it.content}
                     </div>
                   </div>
-
-                  <span className="Community_body_four_postlist_imgs">
-                    <img
-                      onClick={pushgoodbt}
-                      className="Community_body_four_postlist_imgs1"
-                      src={process.env.PUBLIC_URL + `/icon/Good.png`}
-                    />
-                    <div className="Community_body_four_postlist_imgs1_goodbt">
-                      {goodbt}
-                    </div>
-                  </span>
+                  <div className="Community_body_four_postlist_imgs_date">{it.date.slice(0 , 10)}</div>
+                
                 </div>
               ))}
             </div>
