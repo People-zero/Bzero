@@ -19,7 +19,7 @@
 }
 
 .CleanStore .menu_wrapper{ 
-    margin-left: 160px;
+    margin-left: 200px;
 }
 
 .CleanStore .cleanstore_list {
@@ -125,7 +125,17 @@
     justify-content: center;
 }
 
+.CleanStoreDetail .menu_wrapper{
+    margin-left: 50px;
+}
+
 .CleanStoreDetail .cleanstore_detail{
+    margin-left: 250px;
+    flex-grow: 1;
+}
+
+.CleanStoreDetail .cleanstore_detail{
+    margin-left: 250px;
     flex-grow: 1;
 }
 

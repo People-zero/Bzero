@@ -1,4 +1,4 @@
-import SideBar from "./components/SideBar";
+import MapNav from "./components/MapNav";
 import CleanStoreList from "./components/CleanStoreList";
 import { CleanStoreContext } from "./App";
 import { useEffect,useContext,useState } from "react";
@@ -20,7 +20,7 @@ const CleanStore = () => {
     return (
         <div className="CleanStore">
             <section className="menu_wrapper">
-            <SideBar />
+            <MapNav />
 		    </section>
             <article>
             <section className="cleanstore_list">

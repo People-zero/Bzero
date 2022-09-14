@@ -10,6 +10,7 @@
 /* CleanStore */
 
 .CleanStore article{
+    margin-left: 180px;
     display: flex;
     flex-direction: column;
 }
@@ -66,7 +67,7 @@
 .CleanStoreList{
     margin-top: 63px;
     border-top: 1px solid #0679FF;
-    min-width: 100%;
+    min-width: 40%;
     display: grid; /* 격자를 만들어줌*/
     grid-template-columns: repeat(3, auto); /* 격자 5개 지정 */
     gap: 1%; /* item 사이의 gap 생성 */
