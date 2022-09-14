@@ -15,6 +15,16 @@
     flex-direction: column;
 }
 
+@media (max-width:1700px) {
+    .CleanStore article{
+        padding-left:300px;
+    }
+}
+@media (max-width:1500px) {
+    .CleanStore article{
+        padding-left:500px;
+    }
+}
 .CleanStore{
     display: flex;
 }
@@ -177,10 +187,10 @@
 .CleanStoreDetail .cleanstore_content2 .store_image{
       margin-top: 76px;
       margin-left: 93px;
-      max-width: 100%;
+      
       max-height: 100%;
-      /* width: 700px; */
-      height: 754px;
+      width: 700px;
+      height: 500px;
 }
 
 .CleanStoreDetail .cleanstore_url button{

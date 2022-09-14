@@ -8,7 +8,7 @@ const CleanStoreReview = ({cleanStoreReview})=>{
     return(
         <div className="CleanStoreReview">
             {cleanStoreReview.map((it)=>(
-                <CleanStoreReviewItem key={it.id} {...it}/>
+                <CleanStoreReviewItem key={it.nickname} {...it}/>
             ))}
             <button>더보기</button>
         </div>

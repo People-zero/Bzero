@@ -1,9 +1,6 @@
 import { useState, useRef, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { PostStateContext, PostDispatchContext } from "./App";
 import "./Post.css";
-import axios from "axios";
-import { normalizeUnits } from "moment";
 
 const sortOptionList = [
   { value: "카테고리", name: "카테고리" },
@@ -48,15 +45,12 @@ const Post = () => {
   }.${curDate.getDate()}`;
 
   const [sortType, setSortType] = useState("카테고리");
-
-  const { id } = useParams();
-
   const handleSubmit = () => {
     const PostData = {
       category: sortType,
       title: title,
       content: post,
-      image: null,
+      image: postimg,
     };
     fetch("http://127.0.0.1:8000/post/", {
       method: "POST",
@@ -81,11 +75,16 @@ const Post = () => {
       };
       reader.readAsDataURL(files[0]); 
     };
+  console.log(postimg)
 
   return (
     <div className="Post">
       <div className="Post_header">
-        <div className="Post_header_title">B ZERO</div>
+        <img
+          className="Community_header_title_img"
+          src={process.env.PUBLIC_URL + `/img/로고 파랑 2.png`}
+        />
+        <div className="Post_header_title">BZERO</div>
         <div className="Post_header_right">
           <div>가게 찾기</div>
           <div className="Post_header_right_com">커뮤니티</div>

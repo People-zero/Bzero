@@ -210,7 +210,6 @@ function App() {
     const getAttendData = async () => {
       let token = localStorage.getItem("token");
       let token2 = "Token ".concat(token);
-      console.log(token2);
       const res = await fetch("http://127.0.0.1:8000/auth/attend/", {
         method: "GET",
         headers: {
@@ -237,6 +236,8 @@ function App() {
       },
     });
 
+
+  const mypagelink = userdata?.id;
     dataId.current += 1;
   };
   // REMOVE

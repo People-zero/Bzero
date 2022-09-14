@@ -11,6 +11,7 @@
     align-items: center;
     ;
     border-right: 1px solid #0679FF;
+    left:0px;
 }
 .Map_nav_image{
     font-family: 'Inter';

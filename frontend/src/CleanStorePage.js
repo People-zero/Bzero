@@ -19,9 +19,8 @@ const CleanStore = () => {
 
     return (
         <div className="CleanStore">
-            <section className="menu_wrapper">
-            <MapNav />
-		    </section>
+            < MapNav style={{left:"0px"}} />
+            
             <article>
             <section className="cleanstore_list">
             <div className="cleanstore_content">
