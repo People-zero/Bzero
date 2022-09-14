@@ -3,6 +3,7 @@ from django.test import TestCase
 from rest_framework import serializers
 from .models import Clean_Store,Review,Bottle_Collection_Store
 from drf_extra_fields.fields import Base64ImageField
+from accounts.models import User
 
 
 class Clean_StoreSerializer(serializers.ModelSerializer):
@@ -30,6 +31,12 @@ class Clean_StoreSerializer(serializers.ModelSerializer):
    
       
 class ReviewSerializer(serializers.ModelSerializer):
+   user_review_name = serializers.SerializerMethodField()
+
+   def get_user_review_name(self,request):
+      obj = User.objects.get(id= request.user_review.id).username
+      return obj
+
    class Meta:
       model = Review
       fields = "__all__"
