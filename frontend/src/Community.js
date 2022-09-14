@@ -35,40 +35,15 @@ const emotionList = [
   },
 ];
 
-const sortOptionList = [
-  { value: "latest", name: "최신순" },
-  { value: "oldest", name: "오래된순" },
-];
-
-const ControlMenu = ({ value, onChange, optionList }) => {
-  return (
-    <select
-      className="Community_ControlMenu"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    >
-      {optionList.map((it, idx) => (
-        <option key={idx} value={it.value}>
-          {it.name}
-        </option>
-      ))}
-    </select>
-  );
-};
 
 const Community = () => {
 
-  const [isAtive, SetisAtive] = useState(true);
   const [goodbt, Setgoodbt] = useState(0);
 
-  const img = isAtive ?  process.env.PUBLIC_URL + `/icon/Pin.png` : process.env.PUBLIC_URL + `/icon/PinChange.png`;
   const pushgoodbt = () => {
     Setgoodbt(goodbt + 1);
   };
 
-  const pushpinbt = () => {
-    SetisAtive(!isAtive);
-  };
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState(1);
@@ -80,7 +55,6 @@ const Community = () => {
   };
 
   const navigate = useNavigate();
-  const [sortType, setSortType] = useState("latest");
   const PostList = useContext(PostStateContext);
   const [curDate, setCurDate] = useState(new Date());
   const [data, setData] = useState([]);
@@ -115,19 +89,11 @@ const Community = () => {
       }
     };
 
-    const compare = (a, b) => {
-      if (sortType === "latest") {
-        return parseInt(b.date) - parseInt(a.date);
-      } else {
-        return parseInt(a.date) - parseInt(b.date);
-      }
-    };
     const copyList = JSON.parse(JSON.stringify(data));
     const filterlist =
       filter === 1 ? copyList : copyList.filter((it) => filters(it));
     const Searchfilterlist = filterlist.filter((it) => Searchfilter(it));
-    const sortedList = Searchfilterlist.sort(compare);
-    return sortedList;
+    return Searchfilterlist;
   };
 
   return (
@@ -190,13 +156,6 @@ const Community = () => {
             ))}
           </div>
           <div className="Community_body_four_right">
-            <div className="Community_body_four_right_option">
-              <ControlMenu
-                value={sortType}
-                onChange={setSortType}
-                optionList={sortOptionList}
-              />
-            </div>
             <div className="Community_body_four_postlist">
               {getProcessedPostList().map((it) => (
                 <div className="Community_body_four_postlist_s">
@@ -223,12 +182,6 @@ const Community = () => {
                     <div className="Community_body_four_postlist_imgs1_goodbt">
                       {goodbt}
                     </div>
-                    <img
-                      className={"Community_body_four_postlist_imgs2"}
-                      onClick={() => pushpinbt()}
-                      src={img}
-                      key={it.id}
-                    />
                   </span>
                 </div>
               ))}

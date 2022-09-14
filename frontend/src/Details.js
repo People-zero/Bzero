@@ -25,18 +25,17 @@ const Details = () => {
           Authorization: "Token ".concat(token),
         },
       }).then((res2) => res2.json());
-      console.log(res2[0])
+      console.log(res2[0]?.image);
+      Setimage(res2[0]?.image)
       Setcommentdata([...res2[0].comment_set]);
     };
     userdata();
   }, []);
 
+  const [image, Setimage] = useState();
   const [comentdata, Setcommentdata] = useState([]);
   const [user, SetUser] = useState({});
   const { state } = useLocation();
-  // console.log(state)
-  console.log(user)
-
   const [comment, Setcomment] = useState("");
 
   const commentpost = (e) => {
@@ -62,13 +61,6 @@ const Details = () => {
     })
   };
 
-  const times = () => {
-    const nowday = new Date();
-    const nowdays = `${nowday.getFullYear()}.${
-      nowday.getMonth() + 1
-    }.${nowday.getDate()}`;
-    return nowdays;
-  };
 
   const detailsdelete = async () => {
     const delcomment = await fetch(
@@ -87,7 +79,11 @@ const Details = () => {
   return (
     <div className="Details">
       <div className="Details_header">
-        <div className="Details_header_title">B ZERO</div>
+        <img
+          className="Community_header_title_img"
+          src={process.env.PUBLIC_URL + `/img/로고 파랑 2.png`}
+        />
+        <div className="Details_header_title">BZERO</div>
         <div className="Details_header_right">
           <div>가게 찾기</div>
           <div className="Details_header_right_community">커뮤니티</div>
@@ -107,25 +103,25 @@ const Details = () => {
         <div className="Details_Body_2">
           <div className="Details_Body_2_title">{state.title}</div>
           <div className="Details_Body_2_delete">
-            <button className="Details_Body_2_delete_delete"
-            onClick={detailsdelete}>삭제하기</button>
+            <button
+              className="Details_Body_2_delete_delete"
+              onClick={detailsdelete}
+            >
+              삭제하기
+            </button>
           </div>
         </div>
         <div className="Details_Body_3">
           <div className="Details_Body_3_user">{user[0]?.username}</div>
-          <div className="Details_Body_3_imgs">
-            <img
-              className="Details_Body_3_imgs_imgs1"
-              src={process.env.PUBLIC_URL + `/icon/Good.png`}
-            />
-            <img
-              className="Details_Body_3_imgs_imgs2"
-              src={process.env.PUBLIC_URL + `/icon/Pin.png`}
-            />
+          <div className="Details_Body_3_imgs"> 
           </div>
         </div>
         <div className="Details_Body_4">
           <div className="Details_Body_4_post">{state.content}</div>
+          <img
+              className="Details_Body_4_img"
+              src={process.env.PUBLIC_URL + image}
+            />
         </div>
         <div className="Details_Body_5">
           <div className="Details_Body_5_answer">
@@ -157,7 +153,6 @@ const Details = () => {
                 <div className="Details_Body_6_commentlist_comment">
                   {commentArr.content}
                 </div>
-                <div className="Details_Body_6_commentlist_time"></div>
               </span>
             );
           })}
