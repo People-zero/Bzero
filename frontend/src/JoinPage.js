@@ -109,7 +109,8 @@ const JoinPage = () => {
       })
       .then(() => {
         // Handle success.
-        window.location.replace('http://localhost:3000/main')
+        alert("회원가입 완료!")
+        window.location.replace('http://localhost:3000/login')
         //페이지 이동 필요
       })
       .catch((error) => {
