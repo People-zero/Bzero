@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./Post.css";
 
 const sortOptionList = [
-  { value: "카테고리", name: "카테고리" },
   { value: 2, name: "함께해요" },
   { value: 3, name: "궁금해요" },
   { value: 4, name: "인증사진" },
@@ -81,10 +80,11 @@ const Post = () => {
     <div className="Post">
       <div className="Post_header">
         <img
-          className="Community_header_title_img"
+          className="Post_header_title_img"
           src={process.env.PUBLIC_URL + `/img/로고 파랑 2.png`}
+          onClick={() => navigate("/main")}
         />
-        <div className="Post_header_title">BZero</div>
+        <div onClick={() => navigate("/main")} className="Post_header_title">BZero</div>
         <div className="Post_header_right">
           <div>가게 찾기</div>
           <div className="Post_header_right_com">커뮤니티</div>

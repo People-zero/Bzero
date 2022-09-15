@@ -11,10 +11,17 @@
     font-weight: bolder;
 }
 
+.Details_header_title_img{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+}
 .Details_header_title {
     width: 50%;
     font-size: 30px;
     color: #0679FF;
+    cursor: pointer;
 }
 
 .Details_header_right {

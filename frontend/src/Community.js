@@ -54,7 +54,6 @@ const Community = () => {
   useEffect(() => {
     setData(PostList);
   }, [PostList, curDate, filter]);
-
   const getProcessedPostList = () => {
     const filters = (item) => {
       if (filter === 1) {
@@ -94,8 +93,9 @@ const Community = () => {
         <img
           className="Community_header_title_img"
           src={process.env.PUBLIC_URL + `/img/로고 파랑 2.png`}
+          onClick={() => navigate("/main")}
         />
-        <div className="Community_header_title">BZero</div>
+        <div onClick={() => navigate("/main")} className="Community_header_title">BZero</div>
 
         <div className="Community_header_right">
           <div className="Community_header_right_findstore" onClick={() => navigate("/map")}>가게 찾기</div>

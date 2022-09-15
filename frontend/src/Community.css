@@ -15,12 +15,14 @@
     width: 25px;
     height: 25px;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .Community_header_title {
     width: 50%;
     font-size: 30px;
     color: #0679FF;
+    cursor: pointer;
 }
 
 .Community_header_right {

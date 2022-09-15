@@ -7,11 +7,17 @@
     font-style: normal;
     font-weight: bolder;
 }
-
+.Post_header_title_img{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+}
 .Post_header_title {
     width: 50%;
     font-size: 30px;
     color: #0679FF;
+    cursor: pointer;
 }
 
 .Post_header_right {
@@ -91,10 +97,14 @@
     padding-top: 3px;
 }
 
+.Post_body_2_img {
+    cursor: pointer;
+}
 .Post_body_2_imgss {
     height: 19.43px;
     width: 28px;
-    margin-left: 10px
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .Post_body_2_title {

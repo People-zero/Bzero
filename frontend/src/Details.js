@@ -1,4 +1,5 @@
 import "./Details.css";
+import { useNavigate } from "react-router-dom";
 import { PostStateContext } from "./App";
 import { useContext, useParams, useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router";
@@ -7,6 +8,7 @@ const emotionLists = ["전체", "함께해요", "궁금해요", "인증사진", 
 
 
 const Details = () => {
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userdata = async () => {
@@ -31,6 +33,7 @@ const Details = () => {
     };
     userdata();
   }, []);
+
 
   const [image, Setimage] = useState();
   const [comentdata, Setcommentdata] = useState([]);
@@ -80,10 +83,11 @@ const Details = () => {
     <div className="Details">
       <div className="Details_header">
         <img
-          className="Community_header_title_img"
+          className="Details_header_title_img"
           src={process.env.PUBLIC_URL + `/img/로고 파랑 2.png`}
+          onClick={() => navigate("/main")}
         />
-        <div className="Details_header_title">BZero</div>
+        <div onClick={() => navigate("/main")} className="Details_header_title">BZero</div>
         <div className="Details_header_right">
           <div>가게 찾기</div>
           <div className="Details_header_right_community">커뮤니티</div>
