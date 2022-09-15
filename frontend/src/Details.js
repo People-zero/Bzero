@@ -1,13 +1,13 @@
 import "./Details.css";
 import { PostStateContext } from "./App";
 import { useContext, useParams, useEffect, useState, useRef } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
 const emotionLists = ["전체", "함께해요", "궁금해요", "인증사진", "정보광장"];
 
 
 const Details = () => {
-
+  const navigate=useNavigate();
   useEffect(() => {
     const userdata = async () => {
       let token = localStorage.getItem("token");
@@ -25,7 +25,7 @@ const Details = () => {
           Authorization: "Token ".concat(token),
         },
       }).then((res2) => res2.json());
-      console.log(res2[0]?.image);
+      
       Setimage(res2[0]?.image)
       Setcommentdata([...res2[0].comment_set]);
     };
@@ -83,11 +83,11 @@ const Details = () => {
           className="Community_header_title_img"
           src={process.env.PUBLIC_URL + `/img/로고 파랑 2.png`}
         />
-        <div className="Details_header_title">BZero</div>
+        <div style={{cursor:"pointer"}}onClick={()=>{navigate('/main')}} className="Details_header_title" on>BZero</div>
         <div className="Details_header_right">
-          <div>가게 찾기</div>
-          <div className="Details_header_right_community">커뮤니티</div>
-          <div>마이페이지</div>
+          <div style={{cursor:"pointer"}}onClick={()=>{navigate('/map')}}>가게 찾기</div>
+          <div style={{cursor:"pointer"}}onClick={()=>{navigate('/community')}}  className="Details_header_right_community">커뮤니티</div>
+          <div style={{cursor:"pointer"}}onClick={()=>{navigate('/mypage')}} >마이페이지</div>
         </div>
       </div>
       <div className="Details_Body">
@@ -117,11 +117,12 @@ const Details = () => {
           </div>
         </div>
         <div className="Details_Body_4">
-          <div className="Details_Body_4_post">{state.content}</div>
-          <img
+        <img
               className="Details_Body_4_img"
-              src={process.env.PUBLIC_URL + image}
+              src={` http://127.0.0.1:8000/${image}`}
             />
+          <div className="Details_Body_4_post">{state.content}</div>
+          
         </div>
         <div className="Details_Body_5">
           <div className="Details_Body_5_answer">

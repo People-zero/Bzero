@@ -1,4 +1,4 @@
-import "./Community.css";
+import "./css/Community.css";
 import { PostStateContext } from "./App";
 import { useNavigate } from "react-router-dom";
 import React, { useContext, useState, useEffect, useRef } from "react";
@@ -95,12 +95,11 @@ const Community = () => {
           className="Community_header_title_img"
           src={process.env.PUBLIC_URL + `/img/로고 파랑 2.png`}
         />
-        <div className="Community_header_title">BZero</div>
-
-        <div className="Community_header_right">
-          <div className="Community_header_right_findstore" onClick={() => navigate("/map")}>가게 찾기</div>
-          <div className="Community_header_right_communiy">커뮤니티</div>
-          <div className="Community_header_right_mypage" onClick={() => navigate("/mypage")}>마이페이지</div>
+         <div style={{cursor:"pointer"}}onClick={()=>{navigate('/main')}} className="Details_header_title" on>BZero</div>
+        <div className="Details_header_right">
+          <div style={{cursor:"pointer"}}onClick={()=>{navigate('/map')}}>가게 찾기</div>
+          <div style={{cursor:"pointer"}}onClick={()=>{navigate('/community')}}  className="Details_header_right_community">커뮤니티</div>
+          <div style={{cursor:"pointer"}}onClick={()=>{navigate('/mypage')}} >마이페이지</div>
         </div>
       </div>
       <div className="Community_body">

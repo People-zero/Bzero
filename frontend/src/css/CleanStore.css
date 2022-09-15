@@ -185,7 +185,7 @@
 .CleanStoreDetail .cleanstore_content2 h4{
     display: inline-block;
     width: 588px;
-    margin-left: 942px;
+    margin-left: 62%!important;
     margin-top: 48px;
     margin-right: 140px;
     color : #474747;
@@ -199,7 +199,7 @@
       margin-left: 93px;
       
       max-height: 100%;
-      width: 700px;
+      width: 800px;
       height: 500px;
 }
 

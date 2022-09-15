@@ -1,4 +1,4 @@
-import './RegistCleanStore.css';
+import './css/RegistCleanStore.css';
 import { useState,useRef, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import icon_earth from './images/icon1.svg'
@@ -18,8 +18,7 @@ const RegistCleanStore = ({store})=>{
   });
 
   const handleChangeState = (e)=> {
-    console.log(e.target.name);
-    console.log(e.target.value);
+    
 
     setState({
         ...state,

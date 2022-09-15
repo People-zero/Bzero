@@ -1,6 +1,6 @@
 import { useState, useRef, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "./Post.css";
+import "./css/Post.css";
 
 const sortOptionList = [
   { value: "카테고리", name: "카테고리" },
@@ -75,7 +75,7 @@ const Post = () => {
       };
       reader.readAsDataURL(files[0]); 
     };
-  console.log(postimg)
+  
 
   return (
     <div className="Post">

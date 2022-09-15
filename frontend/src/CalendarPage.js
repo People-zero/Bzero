@@ -12,7 +12,7 @@ const CalendarPage = ({ checked_date }) => {
   useEffect(() => {
 		// 이미 로그인이 되어있다면 redirect
     if (localStorage.getItem('token') !== null) {
-      console.log("로그인")
+      
       setLoading(true)
     } else {
       setLoading(false);

@@ -15,7 +15,7 @@ const MapPage = ({place}) => {
     const [where,setwhere]=useState("")
     const [currentbottle,setcurrentbottle]=useState(['소형 및 중형','대형 및 유류 정종','화장품 및 기타 공병'])
     
-    console.log(place)
+
   
     
     
@@ -50,7 +50,7 @@ const MapPage = ({place}) => {
 
 var map
   useEffect(() => {
-    console.log(place[0]?.id)
+    
     // console.log(place);//들어오는 형태 찍어보기
 
 //     axios
@@ -290,7 +290,7 @@ ps.keywordSearch(where, placesSearchCB);
     else{
         setcount(count+1)
     }
-    console.log("새로고침")
+    
     
     
   }, [where,currentday,currentbottle,place]);

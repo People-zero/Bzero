@@ -54,12 +54,12 @@ const DiaryDetailPage = ({ diary_detail_post }) => {
 
       if (targetDiary) {
         setData(targetDiary);
-        console.log(targetDiary)
+       
       }
     }
     
   }, [date, diary_detail_post]);
-console.log(diary_detail_post)
+
   return (
     <div className="diary_detail">
       <MypageNav />
@@ -109,10 +109,11 @@ console.log(diary_detail_post)
                         </>
                       ) : (
                         <>
-                          <p>{it.content}</p>
-                          <div>
-                            <img src={it.image} />
+                        <div>
+                            <img src={` http://127.0.0.1:8000/${it.image}`} />
                           </div>
+                          <p>{it.content}</p>
+                          
                         </>
                       )}
                     </div>

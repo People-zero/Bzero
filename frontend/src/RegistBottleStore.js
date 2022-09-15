@@ -1,9 +1,10 @@
-import './RegistBottleStore.css';
+import './css/RegistBottleStore.css';
 import React, { useState,useRef, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import icon_earth from './images/icon1.svg'
 import photo_icon from './images/photo_icon.svg'
 import mainlogo from './images/logo2.svg'
+import MapNav from './components/MapNav';
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
@@ -17,8 +18,7 @@ const RegistBottleStore = ({store})=>{
   });
 
   const handleChangeState = (e)=> {
-    console.log(e.target.name);
-    console.log(e.target.value);
+    
 
     setState({
         ...state,
@@ -42,21 +42,8 @@ const handleSubmit = () => {
 
   return (
     <div className="RegistBottleStore">
-      <div className="registbottlestore_navbar_left">
-        <div className='registbottlestore_navbar_left_title'>
-          <p><img src={mainlogo} width='130px'/></p>
-        </div>
-        <div className='registbottlestore_navbar_left_menu'>
-          <a href="#">마이페이지</a>
-          <a href="#">가게 찾기</a>
-          <a href="#" className='registbottlestore_present'>가게 등록</a>
-          <a href="#">커뮤니티</a>
-          <a href="#">제로웨이스트 일기</a>
-        </div>
-        <div className='registbottlestore_navbar_left_logout'>
-          <a href='#'>로그아웃</a>
-        </div>
-      </div>
+      <MapNav/>
+      
       <div className='registbottlestore_right'>
         <div className='registbottlestore_navbar_top'>
           <div className='registbottlestore_text'>

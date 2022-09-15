@@ -68,7 +68,7 @@
 /* CleanStoreList */
 
 .CleanStoreList{
-    margin-top: 63px;
+    
     border-top: 1px solid #0679FF;
     min-width: 100%;
     display: grid; /* 격자를 만들어줌*/
@@ -130,15 +130,29 @@
 }
 
 .CleanStoreDetail .cleanstore_detail{
-    margin-left: 250px;
+    margin-left: 300px;
     flex-grow: 1;
 }
-
+@media (max-width:1500px){
+    .CleanStoreDetail .cleanstore_detail{
+        padding-left: 300px!important;
+        margin:0;
+        flex-grow: 1;
+    }
+}
+.cleanstore_information section{
+    padding-left:35px;
+    position: relative;
+    bottom:377px;
+}
 .CleanStoreDetail .cleanstore_detail{
     margin-left: 250px;
     flex-grow: 1;
 }
-
+.cleanstore_content2{
+    display: flex;
+    flex-direction: column;
+}
 .CleanStoreDetail .cleanstore_topbar{
     margin-left: 72px;
     margin-top: 42px;
@@ -317,6 +331,7 @@
 
 .CleanStoreDetail .cleanstore_information{
     display: flex;
+    height:150px;
 }
 
 .CleanStoreDetail .cleanstore_information h2{
@@ -477,6 +492,8 @@
 
 .CleanStoreDetail .relative_url section{
     display: flex;
+    
+    
 }
 
 .CleanStoreDetail .relative_url section h2{

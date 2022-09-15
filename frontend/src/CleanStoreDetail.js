@@ -32,7 +32,7 @@ const reducer = (state,action)=>{
   };
 
 const CleanStoreDetail = () => {
-
+    const { kakao } = window;
     const {id} = useParams();
     const cleanStoreList = useContext(CleanStoreContext);
     const navigate = useNavigate();
@@ -61,7 +61,9 @@ const CleanStoreDetail = () => {
             // if (targetReview){
             //     setReview(targetReview);
             // }
-        }
+        
+       
+}
     },[id,cleanStoreList]);
 
     const reviewId = useRef(6);
@@ -77,11 +79,12 @@ const CleanStoreDetail = () => {
         setpoint(point);
     } 
 
+
     const init = async() => {
         await axios.get(`http://127.0.0.1:8000/store/clean_store/${id}/reviews/`)
         .then((response)=>{
             let data=response.data
-            console.log("init response",data) 
+          
             const initdata = data.map((it)=>{
               return{
                 id : it.id,
@@ -91,7 +94,7 @@ const CleanStoreDetail = () => {
                 created_at_review: it.created_at_review,
                 store_review : it.store_review,
                 user_review : it.user_review,
-                
+                user_review_name: it.user_review_name,
               }
             })
             setReview(initdata);
@@ -106,6 +109,7 @@ const CleanStoreDetail = () => {
         // dispatch({type:"INIT",data:reviewData});
         // console.log(reviewData);
     }
+    
 
     const onCreate = async(point,comment)=>{
         dispatch({
@@ -120,7 +124,7 @@ const CleanStoreDetail = () => {
             updated_at_review : new Date(strDate).getTime(),
           },
         });
-        console.log("data",data,"\n",point,"\n",comment)  
+       
         let token = localStorage.getItem("token");
         await axios.post(`http://127.0.0.1:8000/store/clean_store/${data.id}/reviews/`, {
             store_review : data.id,
@@ -133,7 +137,7 @@ const CleanStoreDetail = () => {
               }  
         })
             .then(function (response) {
-              console.log(response);
+              
               init()
             })
             .catch(function (error,response) {
@@ -151,6 +155,32 @@ const CleanStoreDetail = () => {
         }
         onCreate(point,comment);
     };
+    
+    // useEffect(()=>{
+
+    //     console.log(data)
+    //     var mapContainer = document.getElementById('bottle_map'), // 지도를 표시할 div 
+    //     mapOption = { 
+    //         center: new kakao.maps.LatLng(data?.store_longtitude, data?.store_latitude), // 지도의 중심좌표
+    //         level: 3 // 지도의 확대 레벨
+    //     };
+    
+    // var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    
+    // 마커가 표시될 위치입니다 
+    // var markerPosition  = new kakao.maps.LatLng(data?.store_longtitude, data?.store_latitude); 
+    
+    // // 마커를 생성합니다
+    // var marker = new kakao.maps.Marker({
+    //     position: markerPosition
+    // });
+    // function setZoomable(zoomable) {
+    //   // 마우스 휠로 지도 확대,축소 가능여부를 설정합니다
+    //   map.setZoomable(zoomable);    
+    // }
+    // // 마커가 지도 위에 표시되도록 설정합니다
+    // marker.setMap(map);
+      
 
     if(!data) {
         return <div className="CleanStoreDetail">로딩중입니다...</div>;
@@ -194,7 +224,7 @@ const CleanStoreDetail = () => {
                     <h2 className="address">주소<h3>{data.address}</h3></h2>
                     <h2 className="telephone">문의처<h3>{data.telephone}</h3></h2>
                     </section>
-                    <img src={Map} alt="Map" /> 
+                    <div className="bottlestore_map" id='bottle_map'></div> 
                 </div>
                 <div className="cleanstore_description">
                     <h2>가게에 대한 설명</h2>

@@ -1,18 +1,20 @@
-@import url(reset.css);
 
 /* Header */
 
 .Details_header {
     display: flex;
     padding: 15px;
-    border-bottom: 1px solid greenyellow;
+    border-bottom: 2px solid #0679FF;
     height: 10%;
+    font-family: 'Montserrat',sans-serif;
+    font-style: normal;
+    font-weight: bolder;
 }
 
 .Details_header_title {
     width: 50%;
     font-size: 30px;
-    color: green;
+    color: #0679FF;
 }
 
 .Details_header_right {
@@ -20,9 +22,11 @@
     display: flex;
     padding-top: 8px;
     justify-content: end;
-    color: #bbb;    
+    color: #353535;    
 }
-
+.Details_header_right_community {
+    color: #0679FF;
+}
 .Details_header_right div {
     padding-right: 30px;
 }
@@ -55,35 +59,111 @@
 
 .Details_Body_2 {
     width: 80%; 
+    display: flex;
 }
 
+.Details_Body_2_delete {
+    display: flex;
+    flex-grow: 1;
+    justify-content: end;
+    align-items: center;
+}
+
+.Details_Body_2_delete_delete{
+    border-radius: 8px;
+    width: 100px;
+    height: 35px;
+    color: white;
+    background-color: #0679FF;
+    font-size: 15px;
+    font-family: 'Montserrat'
+}
 .Details_Body_2_title {
     padding-top: 20px;
     font-size: 23px;
+    margin-bottom: 10px;
+    font-size: 28px;
 }
 
 .Details_Body_3 {
+    display: flex;
     width: 80%;
+    height: 50px;
+    border-bottom: 1px solid gray;
 }
 
 .Details_Body_3_user{
-    padding-top: 20px;
 }
 
+.Details_Body_3 img {
+    height: 20px;
+    width: 20px;
+}
+.Details_Body_3_imgs {
+    display: flex;
+    flex-grow: 1;
+    justify-content: end;
+    align-items: flex-end;
+    margin-bottom: 7px;
+}
+
+.Details_Body_3_imgs_imgs1 {
+    margin-right: 10px;
+}
 .Details_Body_4 {
     width: 80%;
+    height: 50vh;
+    margin-top: 30px;
 }
 
 .Details_Body_4_post {
+    font-size: 14px;
+    padding-top:10px;
 }
 
 .Details_Body_5 {
     width: 100%;
-    height: auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .Details_Body_5_answer {
+    display: flex;
+    align-items: center;
     width: 80%;
+    height: 4vh;
+    border-bottom: 1px solid gray;
+    color: gray;
+}
+
+.Details_Body_5_answer img {
+    height: 20px;
+    width: 25px;
+    margin-right: 10px;
+}
+.Details_Body_5_answers {
+    margin-top: 20px;
+    padding-left: 10px;
+    border-radius: 10px;
+    width: 80%;
+    height: 8vh;
+}
+
+.Details_Body_6 {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.Details_Body_6_commentlist {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid gray;
+    margin-bottom: 10px;
+}
+
+.Details_Body_6_commentlist_comment {
+    margin-top: 13px;
 }

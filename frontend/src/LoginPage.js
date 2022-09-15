@@ -109,13 +109,13 @@ const LoginPage=()=>{
             <span className="LoginPage_snstext">
             SNS로 간편하게 시작하기
             </span>
-            <div className="LoginPage_SNSBUTTON_NAVER">
+            <div className="LoginPage_SNSBUTTON_NAVER" onClick={()=>alert("소셜로그인은 개발중입니다.")}>
                 <img style={{right:'110px',top:'2px'}}src={process.env.PUBLIC_URL+`../img/Naver.png`}></img>
                 {/* <img style={{right:'110px',top:'2px'}}src={`static/Naver.png`}></img> */ }
                 {/* 장고랑 연결할떄, 배포할때는 위 주석 코드 사용 */}
                 네이버 로그인
             </div>
-            <div style={{paddingTop:'10px'}} className="LoginPage_SNSBUTTON_GOOGLE">
+            <div style={{paddingTop:'10px'}} className="LoginPage_SNSBUTTON_GOOGLE" onClick={()=>alert("소셜로그인은 개발중입니다.")}>
             <img src={process.env.PUBLIC_URL+`../img/Google.png`}></img>
             {/* <img style={{right:'110px',top:'2px'}}src={`static/Google.png`}></img> */ }
                 {/* 장고랑 연결할떄, 배포할때는 위 주석 코드 사용 */}

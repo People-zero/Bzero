@@ -93,7 +93,7 @@ const JoinPage = () => {
 
   const join = () => {
     axios
-      .post("http://127.0.0.1:8000/auth/registration/", {
+      .post("https://3.39.211.105:8000/auth/registration/", {
         username: email,
         email: email,
         password1: pwd1,
@@ -114,7 +114,7 @@ const JoinPage = () => {
         //페이지 이동 필요
       })
       .catch((error) => {
-        console.log("An error occurred:", error.response);
+        
         // alert('')
         alert("양식에 맞춰 다시 작성해주세요")
       });
@@ -139,7 +139,7 @@ const JoinPage = () => {
                 onClick={() => {
                   setIsStaff(false);
                   user_type_btn_event_1();
-                  console.log(userType, "사b,개클", isStaff);
+                  
                 }}
               >
                 개인
@@ -149,7 +149,7 @@ const JoinPage = () => {
                 onClick={() => {
                   user_type_btn_event_2();
                   setIsStaff(true);
-                  console.log(userType, "사b", isStaff);
+                 
                 }}
               >
                 사업자
@@ -163,7 +163,7 @@ const JoinPage = () => {
                   setIsStaff(false);
                   user_type_btn_event_1();
 
-                  console.log(userType, "개인b", isStaff);
+                 
                 }}
                 value={isStaff}
               >
@@ -174,7 +174,7 @@ const JoinPage = () => {
                 onClick={() => {
                   user_type_btn_event_2();
                   setIsStaff(true);
-                  console.log(userType, "개인b,사클", isStaff);
+                  
                 }}
               >
                 사업자

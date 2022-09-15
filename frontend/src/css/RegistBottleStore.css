@@ -41,7 +41,7 @@
 
 .registbottlestore_right{
   display: flex;
-  padding-left: 173px;
+  padding-left: 210px;
   flex-direction: column;
   max-width: 1300px;
 }
@@ -83,7 +83,7 @@
 .registbottlestore_navbar_top > .registbottlestore_logo{
   position: absolute;
   top: 20px;
-  right: 40px;
+  right: 70px;
 }
 
 

@@ -1,4 +1,4 @@
-import MapNav from "./components/MapNav";
+import CleanNav from "./components/cleanNav";
 import CleanStoreList from "./components/CleanStoreList";
 import { CleanStoreContext } from "./App";
 import { useEffect,useContext,useState } from "react";
@@ -10,8 +10,9 @@ env.PUBLIC_URL = env.PUBLIC_URL || "";
 const CleanStore = () => {
 
     const cleanStoreList = useContext(CleanStoreContext);
-    console.log(cleanStoreList);
+  
     const [data, setData] = useState([]);
+
 
     useEffect(()=>{
         setData(cleanStoreList)
@@ -19,7 +20,7 @@ const CleanStore = () => {
 
     return (
         <div className="CleanStore">
-            < MapNav style={{left:"0px"}} />
+            < CleanNav style={{left:"0px"}} />
             
             <article>
             <section className="cleanstore_list">
