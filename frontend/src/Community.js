@@ -1,7 +1,7 @@
 import "./Community.css";
 import { PostStateContext } from "./App";
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import EmotionItem from "./EmotionItem";
 
 const env = process.env;
@@ -56,9 +56,7 @@ const Community = () => {
   }, [PostList, curDate, filter]);
   const getProcessedPostList = () => {
     const filters = (item) => {
-      if (filter === 1) {
-        return parseInt(item.emotion) <= 5;
-      } else if (filter === 2) {
+      if (filter === 2) {
         return parseInt(item.emotion) === 2;
       } else if (filter === 3) {
         return parseInt(item.emotion) === 3;
