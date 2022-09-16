@@ -81,7 +81,7 @@ else{
     const id = userdata[0].id; //임시코드
  
     console.log(typeof(edtiting_profile_data.profile_image))
-    axios.put(`http://127.0.0.1:8000/auth/accounts/${id}/`,{
+    axios.put(`https://bzeroo.herokuapp.com/http://127.0.0.1:8000/auth/accounts/${id}/`,{
       first_name:edtiting_profile_data.name,
       last_name:edtiting_profile_data.nickname,
       email:edtiting_profile_data.email,
@@ -98,7 +98,7 @@ else{
   },{headers: {
     Authorization: "Token ".concat(localStorage.getItem("token")),
   }})
-  axios.put(`http://127.0.0.1:8000/auth/profile/${id}/`
+  axios.put(`https://bzeroo.herokuapp.com/https://bzero.cf/auth/profile/${id}/`
   ,{
     username:userdata[0]?.profile?.username,
     intro_comment:'not',
@@ -107,7 +107,7 @@ else{
   },{headers: {
     Authorization: "Token ".concat(localStorage.getItem("token")),
   }})
-window.location.replace('http://localhost:3000/mypage')
+// window.location.replace('https://bzero.tk/mypage')
 };
  
   const withdrawal_event = () => {

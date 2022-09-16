@@ -55,7 +55,7 @@ marker.setMap(map);
       
     }
     const getpost = async () => {
-      const res = await fetch(`http://127.0.0.1:8000/store/bottle_collection_Store/${id}/`).then((res) =>
+      const res = await fetch(`https://bzeroo.herokuapp.com/https://bzero.tk/store/bottle_collection_Store/${id}/`).then((res) =>
         res.json()
       );
       // console.log(res); // 500개의 데이터

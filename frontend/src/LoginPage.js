@@ -10,7 +10,7 @@ const LoginPage=()=>{
     useEffect(() => {
 		// 이미 로그인이 되어있다면 redirect
     if (localStorage.getItem('token') !== null) {
-      window.location.replace('http://localhost:3000/mypage');
+      window.location.replace('https://bzero.cf/mypage');
     } else {
       setLoading(false);
     }
@@ -23,7 +23,7 @@ const LoginPage=()=>{
       password: password
     };
 
-    fetch('http://127.0.0.1:8000/auth/login/', {
+    fetch('https://bzeroo.herokuapp.com/https://bzero.tk/auth/login/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ const LoginPage=()=>{
         if (data.key) {
           localStorage.clear();
           localStorage.setItem('token', data.key);
-          window.location.replace('http://localhost:3000/mypage');
+          window.location.replace('https://bzero.cf/mypage');
         } else {
           setUsername('');
           setPassword('');

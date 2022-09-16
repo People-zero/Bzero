@@ -36,16 +36,35 @@ const emotionList = [
 ];
 
 
+
 const Community = () => {
+  const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState(1);
   const [emotion, setEmotion] = useState(1);
-
+  useEffect(() => {
+		// 이미 로그인이 되어있다면 redirect
+    if (localStorage.getItem('token') !== null) {
+      
+      setLoading(true)
+    } else {
+      setLoading(false);
+  
+    }
+  });
   const handleClickEmote = (emotion) => {
     setEmotion(emotion);
     setFilter(emotion);
   };
-
+  const postto=()=>{
+    if(!loading){
+      alert("로그인후 이용해주세요")
+      window.location.replace("/login")
+    }
+    else{
+    navigate("/post")
+  }
+  }
   const navigate = useNavigate();
   const PostList = useContext(PostStateContext);
   const [curDate, setCurDate] = useState(new Date());
@@ -108,7 +127,7 @@ const Community = () => {
           <div className="Community_body_one_post">
             <button
               className="Community_body_one_posts"
-              onClick={() => navigate("/post")}
+              onClick={()=>postto()}
             >
               글쓰기
               <img

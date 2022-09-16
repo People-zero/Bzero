@@ -20,7 +20,7 @@ const JoinPage = () => {
   const [userType, setUserType] = useState(true);
   useEffect(() => {
   if (localStorage.getItem('token') !== null) {
-    window.location.replace('http://localhost:3000/main');
+    window.location.replace('https://bzero.cf/main');
   } else {
     setLoading(false);
   }
@@ -93,7 +93,7 @@ const JoinPage = () => {
 
   const join = () => {
     axios
-      .post("https://3.39.211.105:8000/auth/registration/", {
+      .post("https://bzeroo.herokuapp.com/https://bzero.tk/auth/registration/", {
         username: email,
         email: email,
         password1: pwd1,
@@ -105,20 +105,20 @@ const JoinPage = () => {
         nickname: nickname,
         gender: gender,
         is_staff: isStaff,
-        point:0,
+       
       })
       .then(() => {
         // Handle success.
-        alert("회원가입 완료!")
-        window.location.replace('http://localhost:3000/login')
+        window.location.replace('https://bzero.tk/main')
         //페이지 이동 필요
       })
       .catch((error) => {
-        
+        console.log("An error occurred:", error.response);
         // alert('')
         alert("양식에 맞춰 다시 작성해주세요")
       });
   };
+
 
   return (
     <div className="join_page">

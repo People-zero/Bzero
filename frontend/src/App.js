@@ -84,29 +84,8 @@ const reducer = (state, action) => {
 export const CleanStoreContext = React.createContext();
 export const PostStateContext = React.createContext();
 export const PostDispatchContext = React.createContext();
-const dummyList2 = [
-  {
-    name: "공병스토어1",
-    grade: 3,
-    store_url: "www.naver.com",
-    info_summary:
-      "이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...이곳은 어쩌구저쩌구... 지구를 지키자...",
-    photo: info_photo,
-    photo1: photo1,
-    photo2: photo2,
-    map: "",
-    photo3: photo3,
-    businessDay: "평일",
-    businessHour: "오전 10시 - 오후 7시",
-    dayOff: "토•일•공휴일",
-    CollectHour: "오전 10시 - 오후 7시",
-    address: "서울특별시 OO구 OO 길 1232-12(OO동)",
-    CollectDay: "매주 수요일",
-    inquiries: "02-OOO-OOOO",
-    info_title: "가게에 대한 설명 (부제목)",
-    info: "가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~가게에 대한 설명~",
-  },
-];
+
+  
 function App() {
   const [place, setplace] = useState([]);
   const [userdata, setuserdata] = useState([]);
@@ -115,7 +94,7 @@ function App() {
   const [diaryDetailData, setDiaryDetailData] = useState([]);
 
   const getDiaryDetail = async () => {
-    const res = await fetch("http://127.0.0.1:8000/post/C/1").then((res) =>
+    const res = await fetch("https://bzeroo.herokuapp.com/https://bzero.tk/post/C/1").then((res) =>
       res.json()
     );
     // console.log(res); // 500개의 데이터
@@ -141,7 +120,8 @@ function App() {
   })
 
   const getpost = async () => {
-    const res = await fetch("http://127.0.0.1:8000/post").then((res) =>
+    const res = await fetch("https://bzeroo.herokuapp.com/https://bzero.tk/post")
+    .then((res) =>
       res.json()
     );
     // console.log(res); // 500개의 데이터
@@ -167,7 +147,7 @@ function App() {
   const [CleanStore,setCleanStore] = useState([]);
   const getData = async () => {
     const res = await fetch(
-      "http://127.0.0.1:8000/store/bottle_collection_Store/"
+      "https://bzeroo.herokuapp.com/https://bzero.tk/store/bottle_collection_Store/"
     ).then((res) => res.json());
     // console.log(res); // 500개의 데이터
 
@@ -192,7 +172,7 @@ function App() {
       let token = localStorage.getItem("token");
       let token2 = "Token ".concat(token);
       
-      const res = await fetch("http://127.0.0.1:8000/auth/accounts", {
+      const res = await fetch("https://bzeroo.herokuapp.com/https://bzero.tk/auth/accounts", {
         method: "GET",
         headers: {
           Authorization: "Token ".concat(token),
@@ -210,7 +190,7 @@ function App() {
     const getAttendData = async () => {
       let token = localStorage.getItem("token");
       let token2 = "Token ".concat(token);
-      const res = await fetch("http://127.0.0.1:8000/auth/attend/", {
+      const res = await fetch("https://bzeroo.herokuapp.com/https://bzero.tk/auth/attend/", {
         method: "GET",
         headers: {
           Authorization: "Token ".concat(localStorage.getItem("token")),
@@ -267,7 +247,7 @@ function App() {
   });
   
   const init = async() => {
-    const response=await fetch("http://127.0.0.1:8000/store/clean_store/")
+    const response=await fetch("https://bzeroo.herokuapp.com/https://bzero.tk/store/clean_store/")
     .then((response)=>response.json()) 
     const initdata=response.map((it)=>{
       
@@ -328,6 +308,7 @@ function App() {
                 path="/calendar"
                 element={<CalendarPage checked_date={attendDate} />}
               ></Route>
+              <Route path="/" element={<MainPage></MainPage>}></Route>
               <Route path="/login" element={<LoginPage></LoginPage>}></Route>
               <Route  path="/mypage/edit" element={<EditProfilePage userdata={userdata} />}></Route>
               <Route path="/main" element={<MainPage></MainPage>}></Route>

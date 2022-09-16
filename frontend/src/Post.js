@@ -52,7 +52,7 @@ const Post = () => {
       content: post,
       image: postimg,
     };
-    fetch("http://127.0.0.1:8000/post/", {
+    fetch("https://bzeroo.herokuapp.com/https://bzero.tk/post/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -62,7 +62,7 @@ const Post = () => {
     })
       .then((res) => res.json())
       .then(() => {
-        window.location.replace("http://localhost:3000/community");
+        // window.location.replace("https://bzero.tk/community");
       });
   };
 

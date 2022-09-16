@@ -1,4 +1,4 @@
-import "./Details.css";
+import "./css/Details.css";
 import { PostStateContext } from "./App";
 import { useContext, useParams, useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router";
@@ -12,14 +12,14 @@ const Details = () => {
     const userdata = async () => {
       let token = localStorage.getItem("token");
       let token2 = "Token ".concat(token);
-      const res = await fetch("http://127.0.0.1:8000/auth/accounts", {
+      const res = await fetch("https://bzeroo.herokuapp.com/https://bzero.tk/auth/accounts", {
         method: "GET",
         headers: {
           Authorization: "Token ".concat(token),
         },
       }).then((res) => res.json());
       SetUser(res)
-      const res2 = await fetch(`http://127.0.0.1:8000/post/detail/${state.id}`, {
+      const res2 = await fetch(`https://bzeroo.herokuapp.com/https://bzero.tk/post/detail/${state.id}`, {
         method: "GET",
         headers: {
           Authorization: "Token ".concat(token),
@@ -49,7 +49,7 @@ const Details = () => {
 
   const pushcommentdata = async (data) => {
     const commentapidata = {content:data};
-    const onecomment = await  fetch(`http://127.0.0.1:8000/post/detail/${state.id}`, {
+    const onecomment = await  fetch(`https://bzeroo.herokuapp.com/https://bzero.tk/auth/post/detail/${state.id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,14 +57,14 @@ const Details = () => {
       },
       body: JSON.stringify(commentapidata),
     }).then(()=>{
-      window.location.replace(`http://localhost:3000/details/${state.id}`)
+      window.location.replace(`https://bzero.cf/details/${state.id}`)
     })
   };
 
 
   const detailsdelete = async () => {
     const delcomment = await fetch(
-      `http://127.0.0.1:8000/post/detail/retrieve/${state.id}`,
+      `https://bzeroo.herokuapp.com/https://bzero.tk/post/detail/retrieve/${state.id}`,
       {
         method: "DELETE",
         headers: {
@@ -72,7 +72,7 @@ const Details = () => {
         },
       }
         ).then(() => {
-      window.location.replace("http://localhost:3000/community");
+      //  navigate("https://bzero.cf/community");
     });
   }
 
@@ -119,7 +119,7 @@ const Details = () => {
         <div className="Details_Body_4">
         <img
               className="Details_Body_4_img"
-              src={` http://127.0.0.1:8000/${image}`}
+              src={` https://bzero.tk/${image}`}
             />
           <div className="Details_Body_4_post">{state.content}</div>
           

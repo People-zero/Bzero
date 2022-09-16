@@ -19,7 +19,7 @@ const DiaryDetailPage = ({ diary_detail_post }) => {
     
     if (window.confirm(`일기를 정말 삭제하시겠습니까?`)) {
       axios
-        .delete(` http://127.0.0.1:8000/post/detail/retrieve/${data.id}`, {
+        .delete(`https://bzeroo.herokuapp.com/http://127.0.0.1:8000/post/detail/retrieve/${data.id}`, {
           headers: {
             Authorization: "Token ".concat(localStorage.getItem("token")),
           },

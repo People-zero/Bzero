@@ -16,7 +16,7 @@ const LoginPageHeader=()=>{
   const handleLogout = () => {
     let token = localStorage.getItem('token')
     
-    Axios.post('http://127.0.0.1:8000/auth/logout/', token)
+    Axios.post('https://bzeroo.herokuapp.com/https://bzero.tk/auth/logout/', token)
       .then(res => {
         localStorage.clear()
         // 사용하려면 App.js에서 /로 라우팅해야 한다
