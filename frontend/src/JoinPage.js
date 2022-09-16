@@ -109,7 +109,7 @@ const JoinPage = () => {
       })
       .then(() => {
         // Handle success.
-        window.location.replace('https://bzero.tk/main')
+        window.location.replace('https://bzero.cf/main')
         //페이지 이동 필요
       })
       .catch((error) => {

@@ -171,7 +171,7 @@ line-height: 34px;
 color: #000000;
 }
 .MainPage_secondPage_subtext{
-margin-top:20px;
+margin-top:19px;
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 500;
@@ -192,9 +192,9 @@ color: #767678;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 29px;
-    
+    white-space:nowrap;
     color: #FFFFFF;
     
     
@@ -229,7 +229,7 @@ color: #767678;
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 500;
-        font-size: 20px;
+        font-size: 18px;
         line-height: 29px;
         
         color: #FFFFFF;

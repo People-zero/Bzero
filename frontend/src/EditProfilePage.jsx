@@ -16,7 +16,7 @@ const EditProfilePage=({userdata})=> {
     birth: new Date(),
     age: 0,
     phone_number: "",
-    profile_image:""
+    profile_image:userdata[0]?.profile.profile_image
   });
   const [edtiting_profile_data, set_edtiting_profile_data] = useState({
     name: userdata[0]?.username,
@@ -25,7 +25,7 @@ const EditProfilePage=({userdata})=> {
     birth: new Date(),
     age: 0,
     phone_number: "",
-    profile_image: "",
+    profile_image: userdata[0]?.profile.profile_image,
   })
   useEffect(()=>{
     
@@ -81,7 +81,7 @@ else{
     const id = userdata[0].id; //임시코드
  
     console.log(typeof(edtiting_profile_data.profile_image))
-    axios.put(`https://bzeroo.herokuapp.com/http://127.0.0.1:8000/auth/accounts/${id}/`,{
+    axios.put(`https://bzeroo.herokuapp.com/https://bzero.tk/auth/accounts/${id}/`,{
       first_name:edtiting_profile_data.name,
       last_name:edtiting_profile_data.nickname,
       email:edtiting_profile_data.email,
@@ -98,7 +98,7 @@ else{
   },{headers: {
     Authorization: "Token ".concat(localStorage.getItem("token")),
   }})
-  axios.put(`https://bzeroo.herokuapp.com/https://bzero.cf/auth/profile/${id}/`
+  axios.put(`https://bzeroo.herokuapp.com/https://bzero.tk/auth/profile/${id}/`
   ,{
     username:userdata[0]?.profile?.username,
     intro_comment:'not',

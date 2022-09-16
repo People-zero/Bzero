@@ -40,7 +40,7 @@ top:38px;
     font-family: 'Montserrat',sans-serif;
 font-style: normal;
 font-weight: 500;
-font-size: 18px;
+font-size: 16px;
 line-height: 22px;
 /* identical to box height */
 position: relative;
@@ -49,6 +49,7 @@ height: 22px;
 left: 75%;
 top: 38px;
 
+white-space:nowrap;
 color: #0788FF;
 }
 
@@ -60,10 +61,12 @@ font-style: normal;
 font-weight: 500;
 font-size: 18px;
 line-height: 22px;
+
+white-space:nowrap;
 /* identical to box height */
 
 position: relative;
-width: 110px;
+width: 120px;
 height: 40px;
 left: 80%;
 top: 38px;
@@ -202,9 +205,12 @@ margin-bottom:20px;
      color: #FFFFFF; 
      background: #0679FF;
      border-radius: 5px;
+     
+    white-space:nowrap;
     padding: 12px 160px 12px 160px;
     max-width: 384px;
-    }
+
+}
 
 .LoginPage_smalltextbox{
     margin-top:9px
