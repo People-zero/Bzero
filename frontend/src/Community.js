@@ -56,15 +56,18 @@ const Community = () => {
   }, [PostList, curDate, filter]);
   const getProcessedPostList = () => {
     const filters = (item) => {
-      if (filter === 2) {
+      if (filter === 1) {
+        return 1 < parseInt(item.emotion) <= 5;
+      } else if (filter === 2) {
         return parseInt(item.emotion) === 2;
       } else if (filter === 3) {
         return parseInt(item.emotion) === 3;
       } else if (filter === 4) {
         return parseInt(item.emotion) === 4;
-      } else {
+      } else if( filter === 5 ) {
         return parseInt(item.emotion) === 5;
       }
+  
     };
 
     const Searchfilter = (val) => {
