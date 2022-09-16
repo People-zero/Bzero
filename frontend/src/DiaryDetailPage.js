@@ -1,5 +1,5 @@
 import "./css/DiaryDetailPage.css";
-import MypageNav from "./components/MypageNav";
+import CalendarNav from "./components/CalendarNav";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
@@ -16,14 +16,16 @@ const DiaryDetailPage = ({ diary_detail_post }) => {
   const localContentInput = useRef();
 
   const handleRemove = () => {
-    
     if (window.confirm(`일기를 정말 삭제하시겠습니까?`)) {
       axios
-        .delete(`https://bzeroo.herokuapp.com/http://127.0.0.1:8000/post/detail/retrieve/${data.id}`, {
-          headers: {
-            Authorization: "Token ".concat(localStorage.getItem("token")),
-          },
-        })
+        .delete(
+          `https://bzeroo.herokuapp.com/http://127.0.0.1:8000/post/detail/retrieve/${data.id}`,
+          {
+            headers: {
+              Authorization: "Token ".concat(localStorage.getItem("token")),
+            },
+          }
+        )
         .then(window.location.replace("/calendar"));
     }
   };
@@ -50,19 +52,16 @@ const DiaryDetailPage = ({ diary_detail_post }) => {
       const targetDiary = diary_detail_post.find(
         (it) => it.date.slice(0, 10) === date
       );
-      
 
       if (targetDiary) {
         setData(targetDiary);
-       
       }
     }
-    
   }, [date, diary_detail_post]);
 
   return (
     <div className="diary_detail">
-      <MypageNav />
+      <CalendarNav></CalendarNav>
       <div className="diary_detail_main">
         <div className="diary_detail_head">
           <p className="diary_detail_title">제로웨이스트 일기</p>
@@ -90,7 +89,6 @@ const DiaryDetailPage = ({ diary_detail_post }) => {
                           </>
                         ) : (
                           <>
-                            
                             <button onClick={handleRemove}>삭제하기</button>
                           </>
                         )}
@@ -109,11 +107,10 @@ const DiaryDetailPage = ({ diary_detail_post }) => {
                         </>
                       ) : (
                         <>
-                        <div>
+                          <div>
                             <img src={` http://127.0.0.1:8000/${it.image}`} />
                           </div>
                           <p>{it.content}</p>
-                          
                         </>
                       )}
                     </div>
