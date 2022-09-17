@@ -19,7 +19,7 @@
 }
 
 .join_page .join_page_row p {
-    font-family: 'Montserrat';
+
     font-size: 20px;
     font-weight: 500;
     line-height: 39px;
@@ -30,7 +30,7 @@
 }
 
 .join_page .join_page_detail label{
-    font-family: 'Roboto';
+
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -50,13 +50,13 @@
     border: 1px solid #BDC8D3;
     border-radius: 5px;
 
-    font-family: 'Roboto';
+
     font-size: 14px;
 
 }
 
 .join_page .join_page_row ::placeholder {
-    font-family: 'Roboto';
+
     font-size: 13px;
     color: #B9B9B9;
 }
@@ -100,7 +100,7 @@
 .join_page .join_page_radio {
     margin-top: 11px;
     margin-bottom: 18px;
-    font-family: 'Roboto';
+
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -116,7 +116,7 @@
     border: 1px solid #BDC8D3;
     border-radius: 5px;
 
-    font-family: 'Roboto';
+
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -136,7 +136,7 @@
     border: 1px solid #BDC8D3;
     border-radius: 5px;
 
-    font-family: 'Roboto';
+
     font-size: 14px;
     color: #B9B9B9;
 }
@@ -145,7 +145,7 @@
 .join_page input[type='date']::before {
     content: attr(data-placeholder);
     width: 100%;
-    font-family: 'Roboto';
+
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -175,7 +175,7 @@
     margin-top: 30px;
     margin-bottom: 25px;
 
-    font-family: 'Roboto';
+
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -204,7 +204,7 @@
     flex-direction: row;
     align-items: center;
     
-    font-family: 'Roboto';
+
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -213,7 +213,7 @@
 }
 
 .join_page .join_page_check_detail_1 {
-    font-family: 'Roboto';
+
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -222,7 +222,7 @@
 }
 
 .join_page .join_page_check_detail_2 {
-    font-family: 'Roboto';
+
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -231,7 +231,7 @@
 }
 
 .join_page .join_page_check_detail_3 {
-    font-family: 'Roboto';
+
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -249,7 +249,7 @@
 
     border: 1px solid #BDC8D3;
     border-radius: 5px;
-    font-family: 'Roboto';
+
     font-style: normal;
     font-weight: 400;
     font-size: 17px;
@@ -266,7 +266,7 @@
     background: #0788FF;
     border-radius: 5px;
 
-    font-family: 'Roboto';
+
     font-style: normal;
     font-weight: 400;
     font-size: 17px;

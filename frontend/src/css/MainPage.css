@@ -27,7 +27,7 @@ z-index: -5;
 }
 
 .MainPage_firstPage_maintext{
-    font-family: 'Montserrat';
+
 font-style: normal;
 font-weight: 600;
 font-size: 60px;
@@ -39,7 +39,7 @@ color: #FFFFFF;
 }
 
 .MainPage_firstPage_subtext{
-    font-family: 'Montserrat';
+
 font-style: normal;
 font-weight: 500;
 font-size: 22px;
@@ -53,7 +53,7 @@ color: #CECECE;
 .MainPage_firstPage_start{
 
 margin-top:45px;    
-font-family: 'Montserrat';
+
 font-style: normal;
 font-weight: 600;
 font-size: 21px;
@@ -162,7 +162,7 @@ border-radius: 50px;
     margin-top:150px;
 }
 .MainPage_secondPage_Maintext{
-    font-family: 'Montserrat';
+
 font-style: normal;
 font-weight: 500;
 font-size: 30px;
@@ -172,7 +172,7 @@ color: #000000;
 }
 .MainPage_secondPage_subtext{
 margin-top:19px;
-font-family: 'Montserrat';
+
 font-style: normal;
 font-weight: 500;
 font-size: 21px;
@@ -189,7 +189,7 @@ color: #767678;
 
 
 .MainPage_secondPage_block span{
-    font-family: 'Montserrat';
+
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -226,7 +226,7 @@ color: #767678;
     
 
     .MainPage_secondPage_block2 span{
-        font-family: 'Montserrat';
+
         font-style: normal;
         font-weight: 500;
         font-size: 18px;
@@ -274,7 +274,7 @@ color: #767678;
     margin-left:80px;
 }
 .MainPage_thirdpage_subtext{
-    font-family: 'Montserrat';
+
 font-style: normal;
 font-weight: 500;
 font-size: 20px;
@@ -283,7 +283,7 @@ color: #767678;
 
 }
 .MainPage_thirdpage_maintext{
-    font-family: 'Montserrat';
+
     font-style: normal;
     font-weight: 500;
     font-size: 30px;
@@ -343,7 +343,7 @@ height: 80px;
 margin-bottom: 30px;
 }
 .MainPage_fourthpage_maintext{
-    font-family: 'Montserrat';
+
     font-style: normal;
     font-weight: 500;
     font-size: 30px;
@@ -353,7 +353,7 @@ margin-bottom: 30px;
     margin-bottom:30px;
 }
 .MainPage_fourthpage_subtext{
-    font-family: 'Montserrat';
+
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
@@ -363,7 +363,7 @@ margin-bottom: 30px;
 .MainPage_fourthPage_start{
 
     margin-top:45px;    
-    font-family: 'Montserrat';
+
     font-style: normal;
     font-weight: 600;
     font-size: 21px;
@@ -399,7 +399,7 @@ margin-bottom: 30px;
 }
 .MainPage_fifth_button{
     margin-top:45px;    
-    font-family: 'Montserrat';
+
     font-style: normal;
     font-weight: 600;
     font-size:  19px!important;

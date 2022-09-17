@@ -49,7 +49,7 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
   const handleLogout = () => {
     let token = localStorage.getItem('token')
     
-    Axios.post('http://127.0.0.1:8000/auth/logout/', token)
+    Axios.post('https://bzeroo.herokuapp.com/https://bzero.tk/auth/logout/', token)
       .then(res => {
         localStorage.clear()
         // 사용하려면 App.js에서 /로 라우팅해야 한다
@@ -97,10 +97,10 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
                         내 정보
                       </a>
                     </li>
-                    <li>
-                      <a className="mypage_goto_menu" href="#mypage_my_diary">
+                    <li onClick={()=>navigate("/calendar")}>
+                      
                         제로웨이스트 일기 작성
-                      </a>
+                      
                     </li>
                     <li>
                       <button className="mypage_goto_menu" onClick={()=>{handleLogout()}}>

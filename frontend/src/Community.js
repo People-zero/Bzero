@@ -41,7 +41,7 @@ const Community = () => {
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState(1);
-  const [emotion, setEmotion] = useState(1);
+  const [emotion, setEmotion] = useState(0);
   useEffect(() => {
 		// 이미 로그인이 되어있다면 redirect
     if (localStorage.getItem('token') !== null) {
@@ -76,9 +76,7 @@ const Community = () => {
 
   const getProcessedPostList = () => {
     const filters = (item) => {
-      if (filter === 1) {
-        return 1 < parseInt(item.emotion) <= 5;
-      } else if (filter === 2) {
+      if (filter === 2) {
         return parseInt(item.emotion) === 2;
       } else if (filter === 3) {
         return parseInt(item.emotion) === 3;
@@ -87,7 +85,7 @@ const Community = () => {
       } else if( filter === 5 ) {
         return parseInt(item.emotion) === 5;
       }
-  
+      return 2 <= parseInt(item.emotion);
     };
 
     const Searchfilter = (val) => {
@@ -102,8 +100,7 @@ const Community = () => {
     };
 
     const copyList = JSON.parse(JSON.stringify(data));
-    const filterlist =
-      filter === 1 ? copyList : copyList.filter((it) => filters(it));
+    const filterlist = copyList.filter((it) => filters(it));
     const Searchfilterlist = filterlist.filter((it) => Searchfilter(it));
     return Searchfilterlist;
   };

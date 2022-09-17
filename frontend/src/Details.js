@@ -1,6 +1,6 @@
 import "./css/Details.css";
 import { PostStateContext } from "./App";
-import { useContext, useParams, useEffect, useState, useRef } from "react";
+import React, { useContext, useParams, useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
 const emotionLists = ["전체", "함께해요", "궁금해요", "인증사진", "정보광장"];
@@ -43,13 +43,14 @@ const Details = () => {
       if (e.value !== "") {
         Setcomment(comment);
         pushcommentdata(comment)
+        
       }
     }
   };
-
+  
   const pushcommentdata = async (data) => {
     const commentapidata = {content:data};
-    const onecomment = await  fetch(`https://bzeroo.herokuapp.com/https://bzero.tk/auth/post/detail/${state.id}`, {
+    const onecomment = await  fetch(`https://bzeroo.herokuapp.com/https://bzero.tk/post/detail/${state.id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,9 +58,10 @@ const Details = () => {
       },
       body: JSON.stringify(commentapidata),
     }).then(()=>{
-      window.location.replace(`https://bzero.cf/details/${state.id}`)
+      // window.location.replace(`https://bzero.cf/details/${state.id}`)
     })
   };
+
 
 
   const detailsdelete = async () => {
@@ -75,6 +77,7 @@ const Details = () => {
       //  navigate("https://bzero.cf/community");
     });
   }
+
 
   return (
     <div className="Details">
@@ -112,15 +115,15 @@ const Details = () => {
           </div>
         </div>
         <div className="Details_Body_3">
-          <div className="Details_Body_3_user">{user[0]?.username}</div>
+          <div className="Details_Body_3_user">{state.author}</div>
           <div className="Details_Body_3_imgs"> 
           </div>
         </div>
         <div className="Details_Body_4">
-        <img
+        {image === null ? <div></div> : <img
               className="Details_Body_4_img"
               src={` https://bzero.tk/${image}`}
-            />
+            />}
           <div className="Details_Body_4_post">{state.content}</div>
           
         </div>
@@ -163,4 +166,4 @@ const Details = () => {
   );
 };
 
-export default Details;
+export default React.memo(Details);

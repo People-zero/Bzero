@@ -38,6 +38,7 @@ const Post = () => {
   const postRef = useRef();
   const [title, setTitle] = useState("");
   const [post, setPost] = useState("");
+  const [postimg, setpostimg] = useState(null)
 
   const [curDate, setCurDate] = useState(new Date());
   const nowday = `${curDate.getFullYear()}.${
@@ -46,12 +47,21 @@ const Post = () => {
 
   const [sortType, setSortType] = useState("카테고리");
   const handleSubmit = () => {
-    const PostData = {
+    
+    const PostData = postimg === null ? 
+    { 
+      category: sortType,
+      title: title,
+      content: post,
+      image:"",
+    } : 
+    {
       category: sortType,
       title: title,
       content: post,
       image: postimg,
     };
+    console.log(PostData)
     fetch("https://bzeroo.herokuapp.com/https://bzero.tk/post/", {
       method: "POST",
       headers: {
@@ -66,7 +76,7 @@ const Post = () => {
       });
   };
 
-  const [postimg, setpostimg] = useState()
+
 
   const imageuploadbt =  ({ target: { files } }) => {
       const reader = new FileReader();

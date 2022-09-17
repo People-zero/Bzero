@@ -121,7 +121,7 @@ const WriteDiaryPage = ({userdata})=> {
     .then(() => {
       // Handle success.
       alert("일기 작성 완료!")
-      window.location.replace('https://bzero.tk/calendar')
+      window.location.replace('https://bzero.cf/calendar')
       //페이지 이동 필요
     })
     .catch((error) => {

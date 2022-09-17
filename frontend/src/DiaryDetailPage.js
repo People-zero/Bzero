@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-const DiaryDetailPage = ({ diary_detail_post }) => {
+const DiaryDetailPage = ({ diary_detail_post,userdata }) => {
   const { date } = useParams();
 
   const [data, setData] = useState([]);
@@ -19,12 +19,12 @@ const DiaryDetailPage = ({ diary_detail_post }) => {
     
     if (window.confirm(`일기를 정말 삭제하시겠습니까?`)) {
       axios
-        .delete(`https://bzeroo.herokuapp.com/http://127.0.0.1:8000/post/detail/retrieve/${data.id}`, {
+        .delete(`https://bzeroo.herokuapp.com/https://bzero.tk/post/detail/retrieve/${data.id}`, {
           headers: {
             Authorization: "Token ".concat(localStorage.getItem("token")),
           },
         })
-        .then(window.location.replace("/calendar"));
+        // .then(window.location.replace("/calendar"));
     }
   };
 
@@ -48,14 +48,16 @@ const DiaryDetailPage = ({ diary_detail_post }) => {
   useEffect(() => {
     if (diary_detail_post.length >= 1) {
       const targetDiary = diary_detail_post.find(
-        (it) => it.date.slice(0, 10) === date
+        (it) => (it.date.slice(0, 10) === date)&&(it.author===userdata[0]?.email)
       );
       
-
+      
       if (targetDiary) {
         setData(targetDiary);
        
       }
+   
+      
     }
     
   }, [date, diary_detail_post]);
@@ -70,7 +72,7 @@ const DiaryDetailPage = ({ diary_detail_post }) => {
         <div className="diary_detail_body">
           <div className="diary_detail_post">
             {diary_detail_post
-              .filter((x) => x.date.slice(0, 10) === date)
+              .filter((x) => (x.date.slice(0, 10) === date)&&(x.author===userdata[0]?.id))
               .map((it) => (
                 <div>
                   <div className="diary_detail_top">
@@ -110,7 +112,7 @@ const DiaryDetailPage = ({ diary_detail_post }) => {
                       ) : (
                         <>
                         <div>
-                            <img src={` http://127.0.0.1:8000/${it.image}`} />
+                            <img src={` https://bzero.tk/${it.image}`} />
                           </div>
                           <p>{it.content}</p>
                           

@@ -27,32 +27,6 @@ import Post from "./Post.js";
 import EditProfilePage from "./EditProfilePage";
 import DiaryDetailPage from "./DiaryDetailPage";
 import WriteDiaryPage from "./WriteDiaryPage"
-const dummy_diary = [
-  {
-    id: 1,
-    user: "user",
-    profile: "example_profile.jpg",
-    created_at: "2022-09-01 18:30:00",
-    title: "제목들어가는 자리0901",
-    content: "포스트 내용1",
-  },
-  {
-    id: 2,
-    user: "user",
-    profile: "example_profile.jpg",
-    created_at: "2022-09-03 18:30:00",
-    title: "제목들어가는 자리0903",
-    content: "포스트 내용2",
-  },
-  {
-    id: 3,
-    user: "user",
-    profile: "example_profile.jpg",
-    created_at: "2022-09-04 18:30:00",
-    title: "제목들어가는 자리0904",
-    content: "포스트 내용3",
-  },
-];
 
 const dummy_badge = [
   { badge_id: 1, badge_type: "badge1.png" },
@@ -63,14 +37,7 @@ const dummy_badge = [
   { badge_id: 4, badge_type: "badge1.png" },
   { badge_id: 7, badge_type: "badge1.png" },
 ];
-const dummyList = [
-  {
-    profile: "example_profile.jpg",
-    nickname: "닉네임",
-    email: "email@email.com",
-    point: 4300,
-  },
-];
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "INIT": {
@@ -107,7 +74,7 @@ function App() {
         content: it.content,
         date: it.created_at,
         image: it.image,
-
+        author: it.author,
         // image: it.store_image,
       };
     });
@@ -135,7 +102,7 @@ function App() {
         title: it.title,
         content: it.content,
         date: it.created_at,
-
+        author:it.author_name
         // image: it.store_image,
       };
     });
@@ -317,7 +284,7 @@ function App() {
                 element={
                   <MyPage
                     userdata={userdata}
-                    user_info={dummyList}
+                    
                     checked_date={attendDate}
                     badge_info={dummy_badge}
                   />
@@ -344,7 +311,7 @@ function App() {
               <Route
                 path="/diary_detail/:date"
                 element={
-                  <DiaryDetailPage diary_detail_post={diaryDetailData} />
+                  <DiaryDetailPage diary_detail_post={diaryDetailData} userdata={userdata} />
                 }
               ></Route>
               <Route

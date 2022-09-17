@@ -12,6 +12,7 @@ import { dummyReview } from "./util/dummyReview";
 import blue_star from './blue_star.png'
 import gray_star from './gray_star.png'
 import Point from "./components/Point";
+import CleanNav from "./components/cleanNav";
 
 const env=process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
@@ -187,7 +188,7 @@ const CleanStoreDetail = () => {
     }else{
     return (
         <div className="CleanStoreDetail">
-            <MapNav />
+            <CleanNav />
             <div className="cleanstore_detail">
             <section className="cleanstore_topbar">
                 <h2>클린스토어 상세정보</h2></section>
