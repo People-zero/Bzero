@@ -33,6 +33,7 @@ class Post(TimestampAbstractModel):
 
 class Comment(TimestampAbstractModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name= 'comment')
+    author_name = models.CharField(max_length = 150)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     content = models.TextField()
 

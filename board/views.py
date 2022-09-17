@@ -14,7 +14,11 @@ class postCategoryListApiView(APIView):
     serializer_class= PostSerializer
     
     def get(self, request ,category):
-        qs = Post.objects.filter(category = category)
+        #일기장은 이걸로 찾아보긴
+        if category == 1:
+            qs = Post.objects.filter(category = category, author = request.user)
+        else:
+            qs = Post.objects.filter(category = category)
         serializer = PostSerializer(qs, many=True)
         return Response(serializer.data)
         
@@ -26,7 +30,7 @@ class postListApiView(APIView):
     serializer_class= PostSerializer
 
     def get(self, request):
-        qs = Post.objects.all()
+        qs = Post.objects.filter(category__in = [2,3,4,5])
         serializer = PostSerializer(qs, many=True)
         return Response(serializer.data)
         
@@ -77,11 +81,11 @@ class postDetailApiView(APIView):
 class postRetrieveApiView(APIView):
     
     def get_object_post(self,pk):
-        return Post.objects.get(pk = pk)
+        return Post.objects.filter(pk = pk)
 
     def get(self,request, pk):
         self.serializer_class = PostSerializer
-        post = self.get_object_post(pk) 
+        post = self.get_object_post(pk)
         serializer = Post_DetailSerializer(post,many= True)
         return Response(serializer.data)
 
@@ -105,7 +109,7 @@ class postRetrieveApiView(APIView):
         if not request.user.is_authenticated:
             return Response(status = status.HTTP_403_FORBIDDEN)
         else:
-            post = self.get_object_post(pk)
+            post = self.get_object_post(pk).first()
             if request.user == post.author:
                 post.delete()
                 return Response(status=status.HTTP_204_NO_CONTENT)
@@ -146,7 +150,7 @@ class commentDetailApiView(APIView):
         if not request.user.is_authenticated:
             return Response(status = status.HTTP_403_FORBIDDEN)
         else:
-            comment = self.get_object(pk,commentpk)
+            comment = self.get_object(pk,commentpk).first()
             if request.user == comment.author:
                 comment.delete()
                 return Response(status=status.HTTP_204_NO_CONTENT)
