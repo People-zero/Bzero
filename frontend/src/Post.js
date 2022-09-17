@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./css/Post.css";
 
 const sortOptionList = [
-  { value: "카테고리", name: "카테고리" },
+  { value: 6, name: "카테고리" },
   { value: 2, name: "함께해요" },
   { value: 3, name: "궁금해요" },
   { value: 4, name: "인증사진" },
