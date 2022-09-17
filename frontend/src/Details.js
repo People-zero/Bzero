@@ -58,7 +58,7 @@ const Details = () => {
       },
       body: JSON.stringify(commentapidata),
     }).then(()=>{
-      // window.location.replace(`https://bzero.cf/details/${state.id}`)
+      window.location.reload()
     })
   };
 
@@ -74,7 +74,7 @@ const Details = () => {
         },
       }
         ).then(() => {
-      //  navigate("https://bzero.cf/community");
+       navigate("https://bzero.cf/community");
     });
   }
 

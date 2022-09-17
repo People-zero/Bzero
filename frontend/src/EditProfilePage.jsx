@@ -107,7 +107,7 @@ else{
   },{headers: {
     Authorization: "Token ".concat(localStorage.getItem("token")),
   }})
-// window.location.replace('https://bzero.tk/mypage')
+window.location.replace('https://bzero.cf/mypage')
 };
  
   const withdrawal_event = () => {

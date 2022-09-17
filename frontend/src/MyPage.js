@@ -37,7 +37,27 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
   
     }
   });
-  
+  const gotowrite=()=>{
+    var a=0;
+    const date = new Date();
+
+const year = date.getFullYear();
+const month = ('0' + (date.getMonth() + 1)).slice(-2);
+const day = ('0' + date.getDate()).slice(-2);
+const dateStr = year + '-' + month + '-' + day;
+    for(var i=0;i<checked_date.length;i++){
+      if(checked_date[i]?.attended_date===dateStr){
+        a=1;
+      }
+    }
+    if(a===0){
+      navigate('/write_diary')
+    }
+    else{
+      alert("오늘 이미 일기를 작성하셨습니다!")
+    }
+
+  }
   const [value, onChange] = useState(new Date());
 
   const refined_date = [];
@@ -97,7 +117,7 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
                         내 정보
                       </a>
                     </li>
-                    <li onClick={()=>navigate("/calendar")}>
+                    <li onClick={()=>gotowrite()}>
                       
                         제로웨이스트 일기 작성
                       

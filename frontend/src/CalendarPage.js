@@ -25,6 +25,27 @@ const CalendarPage = ({ checked_date }) => {
     refined_date.push(value.attended_date);
   }
   }
+  const gotowrite=()=>{
+    var a=0;
+    const date = new Date();
+
+const year = date.getFullYear();
+const month = ('0' + (date.getMonth() + 1)).slice(-2);
+const day = ('0' + date.getDate()).slice(-2);
+const dateStr = year + '-' + month + '-' + day;
+    for(var i=0;i<checked_date.length;i++){
+      if(checked_date[i]?.attended_date===dateStr){
+        a=1;
+      }
+    }
+    if(a===0){
+      navigate('/write_diary')
+    }
+    else{
+      alert("오늘 이미 일기를 작성하셨습니다!")
+    }
+
+  }
   return (
     <div className="calendar_page">
       <CalendarNav></CalendarNav>
@@ -42,7 +63,7 @@ const CalendarPage = ({ checked_date }) => {
         </header>
         <section className="calendar_page_contents">
           <div className="calendar_page_goto_other">
-            <a className="calendar_page_goto_edit" href="/write_diary">
+            <a className="calendar_page_goto_edit" onClick={()=>gotowrite()}>
               일기 쓰러 가기 -&gt;
             </a>
             <a className="calendar_page_goto_edit" href="/community">
@@ -54,7 +75,7 @@ const CalendarPage = ({ checked_date }) => {
               onChange={onChange}
               value={value}
               onClickDay={(value, event) =>
-                window.location.assign(
+                navigate(
                   `/diary_detail/${moment(value).format("YYYY-MM-DD")}`
                 )
               }

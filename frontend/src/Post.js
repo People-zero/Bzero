@@ -72,7 +72,7 @@ const Post = () => {
     })
       .then((res) => res.json())
       .then(() => {
-        // window.location.replace("https://bzero.tk/community");
+        window.location.replace("https://bzero.cf/community");
       });
   };
 

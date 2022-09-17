@@ -54,7 +54,22 @@
     font-size: 14px;
 
 }
+.join_page .join_page_detail_nickname {
+    display: flex;
+    flex-direction: row;  
+    justify-content: space-between; 
+    align-items: baseline;
+}
 
+.join_page .join_page_nickname_detail {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    color: #4397f8;
+
+    padding-right: 30px;
+}
 .join_page .join_page_row ::placeholder {
 
     font-size: 13px;

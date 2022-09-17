@@ -298,7 +298,7 @@ function App() {
               <Route path="/clean_store/" element={<CleanStorePage />}></Route>
               <Route
                 path="/clean_store/:id"
-                element={<CleanStoreDetail />}
+                element={<CleanStoreDetail userdata={userdata}/>}
               ></Route>
               <Route path="/community" element={<Community />} />
               <Route path="/details/:id" element={<Details />} />

@@ -61,7 +61,9 @@ const DiaryDetailPage = ({ diary_detail_post,userdata }) => {
     }
     
   }, [date, diary_detail_post]);
-
+  if(!diary_detail_post) {
+    return <div className="CleanStoreDetail">로딩중입니다...</div>;
+}else{
   return (
     <div className="diary_detail">
       <MypageNav />
@@ -85,17 +87,7 @@ const DiaryDetailPage = ({ diary_detail_post,userdata }) => {
 
                     <div className="diary_detail_post_detail">
                       <div className="diary_detail_post_edit">
-                        {isEdit ? (
-                          <>
-                            <button onClick={handleQuitEdit}>수정취소</button>
-                            <button onClick={handleEdit}>수정완료</button>
-                          </>
-                        ) : (
-                          <>
-                            
-                            <button onClick={handleRemove}>삭제하기</button>
-                          </>
-                        )}
+                       
                       </div>
                     </div>
                   </div>
@@ -112,7 +104,11 @@ const DiaryDetailPage = ({ diary_detail_post,userdata }) => {
                       ) : (
                         <>
                         <div>
-                            <img src={` https://bzero.tk/${it.image}`} />
+                            
+                            {it.image === null ? <div></div> : <img
+              
+                           src={`https://bzero.tk/${it.image}`}
+                            />}
                           </div>
                           <p>{it.content}</p>
                           
@@ -128,5 +124,6 @@ const DiaryDetailPage = ({ diary_detail_post,userdata }) => {
     </div>
   );
 };
+}
 
 export default DiaryDetailPage;
