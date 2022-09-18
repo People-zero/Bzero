@@ -37,7 +37,27 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
   
     }
   });
-  
+  const gotowrite=()=>{
+    var a=0;
+    const date = new Date();
+
+const year = date.getFullYear();
+const month = ('0' + (date.getMonth() + 1)).slice(-2);
+const day = ('0' + date.getDate()).slice(-2);
+const dateStr = year + '-' + month + '-' + day;
+    for(var i=0;i<checked_date.length;i++){
+      if(checked_date[i]?.attended_date===dateStr){
+        a=1;
+      }
+    }
+    if(a===0){
+      navigate('/write_diary')
+    }
+    else{
+      alert("오늘 이미 일기를 작성하셨습니다!")
+    }
+
+  }
   const [value, onChange] = useState(new Date());
 
   const refined_date = [];
@@ -49,7 +69,7 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
   const handleLogout = () => {
     let token = localStorage.getItem('token')
     
-    Axios.post('http://127.0.0.1:8000/auth/logout/', token)
+    Axios.post('https://bzeroo.herokuapp.com/https://bzero.tk/auth/logout/', token)
       .then(res => {
         localStorage.clear()
         // 사용하려면 App.js에서 /로 라우팅해야 한다
@@ -97,10 +117,10 @@ const MyPage = ({ userdata, user_info, checked_date, badge_info }) => {
                         내 정보
                       </a>
                     </li>
-                    <li>
-                      <a className="mypage_goto_menu" href="#mypage_my_diary">
+                    <li onClick={()=>gotowrite()}>
+                      
                         제로웨이스트 일기 작성
-                      </a>
+                      
                     </li>
                     <li>
                       <button className="mypage_goto_menu" onClick={()=>{handleLogout()}}>

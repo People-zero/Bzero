@@ -6,7 +6,7 @@
     padding: 15px;
     border-bottom: 2px solid #0679FF;
     height: 10%;
-    font-family: 'Montserrat',sans-serif;
+
     font-style: normal;
     font-weight: bolder;
 }
@@ -76,7 +76,7 @@
     color: white;
     background-color: #0679FF;
     font-size: 15px;
-    font-family: 'Montserrat'
+
 }
 .Details_Body_2_title {
     padding-top: 20px;
@@ -115,7 +115,10 @@
     height: 50vh;
     margin-top: 30px;
 }
-
+.Details_Body_4 img{
+    width:500px;
+    height: 350px;;
+}
 .Details_Body_4_post {
     font-size: 14px;
     padding-top:10px;

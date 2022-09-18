@@ -76,7 +76,7 @@ const WriteDiaryPage = ({userdata})=> {
     //   });
     
    
-    fetch("http://127.0.0.1:8000/post/", {
+    fetch("https://bzeroo.herokuapp.com/https://bzero.tk/post/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const WriteDiaryPage = ({userdata})=> {
       }),
     })
   
-    axios.patch(`http://127.0.0.1:8000/auth/accounts/${userid}/`
+    axios.patch(`https://bzeroo.herokuapp.com/https://bzero.tk/auth/accounts/${userid}/`
     ,{
     
       point:userdata[0]?.point+100,
@@ -110,7 +110,7 @@ const WriteDiaryPage = ({userdata})=> {
     //     attended_date:dateFormat(new Date())
     //   }),
     // })
-   axios.post(`http://127.0.0.1:8000/auth/attend/`
+   axios.post(`https://bzeroo.herokuapp.com/https://bzero.tk/auth/attend/`
     ,{
     
       username:userdata[0]?.profile?.username,
@@ -121,7 +121,7 @@ const WriteDiaryPage = ({userdata})=> {
     .then(() => {
       // Handle success.
       alert("일기 작성 완료!")
-      window.location.replace('http://localhost:3000/calendar')
+      window.location.replace('https://bzero.cf/calendar')
       //페이지 이동 필요
     })
     .catch((error) => {

@@ -19,52 +19,13 @@ const MapPage = ({place}) => {
   
     
     
-    
-//     const place=[{
-//         place_name:"하윤집",
-//         x:37.6084606,
-//         y:127.0094845,
-//         day:['월','화','수'],
-//         Bottle_kind:['소형 및 중형']
-//     },
-// {
-//     place_name:"축산",
-//         x:37.6055906,
-//         y:127.0099845,
-//         day:['월','화','수','목','금'],
-//         Bottle_kind:['소형 및 중형']
-// },{place_name:"test",
-//         x:37.6064606,
-//         y:127.0096845,
-//         day:['월','화','수'],
-//         Bottle_kind:['소형 및 중형']
-// },{
-//     place_name:"하윤집s",
-//     x:37.6084606,
-//     y:127.0073845,
-//     day:['월','화','수'],
-//     Bottle_kind:['소형 및 중형']
-// },
-// ]
+
 
 
 var map
   useEffect(() => {
     
-    // console.log(place);//들어오는 형태 찍어보기
 
-//     axios
-//     .get("http://127.0.0.1:8000/store/bottle_collection_Store/")
-//     .then((res)=>{
-//         setplace([
-//             ...res.data]
-                
-//                 )
-//         // console.log(res.data)
-//     })
-//     .catch((error)=>{
-//         console.log(error);
-//     })
       
     
             

@@ -12,6 +12,7 @@ import { dummyReview } from "./util/dummyReview";
 import blue_star from './blue_star.png'
 import gray_star from './gray_star.png'
 import Point from "./components/Point";
+import CleanNav from "./components/cleanNav";
 
 const env=process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
@@ -31,7 +32,7 @@ const reducer = (state,action)=>{
     return newState;
   };
 
-const CleanStoreDetail = () => {
+const CleanStoreDetail = ({userdata}) => {
     const { kakao } = window;
     const {id} = useParams();
     const cleanStoreList = useContext(CleanStoreContext);
@@ -81,7 +82,7 @@ const CleanStoreDetail = () => {
 
 
     const init = async() => {
-        await axios.get(`http://127.0.0.1:8000/store/clean_store/${id}/reviews/`)
+        await axios.get(`https://bzeroo.herokuapp.com/https://bzero.tk/store/clean_store/${id}/reviews/`)
         .then((response)=>{
             let data=response.data
           
@@ -117,7 +118,7 @@ const CleanStoreDetail = () => {
           data : {
             id : reviewId.current,
             store_review : cleanStoreList.find((it)=>parseInt(it.id)===parseInt(id)).id,
-            user_review : 1,
+            user_review : userdata[0]?.id,
             point,
             comment, 
             created_at_review : new Date(strDate).getTime(),
@@ -126,9 +127,9 @@ const CleanStoreDetail = () => {
         });
        
         let token = localStorage.getItem("token");
-        await axios.post(`http://127.0.0.1:8000/store/clean_store/${data.id}/reviews/`, {
+        await axios.post(`https://bzeroo.herokuapp.com/https://bzero.tk/store/clean_store/${data.id}/reviews/`, {
             store_review : data.id,
-            user_review : 1,
+            user_review : userdata[0]?.id,
             point : point,
             comment: comment,
           }, {
@@ -187,7 +188,7 @@ const CleanStoreDetail = () => {
     }else{
     return (
         <div className="CleanStoreDetail">
-            <MapNav />
+            <CleanNav />
             <div className="cleanstore_detail">
             <section className="cleanstore_topbar">
                 <h2>클린스토어 상세정보</h2></section>

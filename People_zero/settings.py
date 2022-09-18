@@ -73,7 +73,11 @@ CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:8000",
     "http://localhost:8000",
     "http://127.0.0.1:3000",
+    "https://bzero.cf",
+    "https://bero.tf",
+    "http://bero.tf"
 ]
+
 CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = 'People_zero.urls'
 

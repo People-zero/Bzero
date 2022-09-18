@@ -1,7 +1,7 @@
 import "./css/Community.css";
 import { PostStateContext } from "./App";
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import EmotionItem from "./EmotionItem";
 
 const env = process.env;
@@ -36,16 +36,35 @@ const emotionList = [
 ];
 
 
+
 const Community = () => {
+  const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState(1);
-  const [emotion, setEmotion] = useState(1);
-
+  const [emotion, setEmotion] = useState(0);
+  useEffect(() => {
+		// 이미 로그인이 되어있다면 redirect
+    if (localStorage.getItem('token') !== null) {
+      
+      setLoading(true)
+    } else {
+      setLoading(false);
+  
+    }
+  });
   const handleClickEmote = (emotion) => {
     setEmotion(emotion);
     setFilter(emotion);
   };
-
+  const postto=()=>{
+    if(!loading){
+      alert("로그인후 이용해주세요")
+      window.location.replace("/login")
+    }
+    else{
+    navigate("/post")
+  }
+  }
   const navigate = useNavigate();
   const PostList = useContext(PostStateContext);
   const [curDate, setCurDate] = useState(new Date());
@@ -57,17 +76,16 @@ const Community = () => {
 
   const getProcessedPostList = () => {
     const filters = (item) => {
-      if (filter === 1) {
-        return parseInt(item.emotion) <= 5;
-      } else if (filter === 2) {
+      if (filter === 2) {
         return parseInt(item.emotion) === 2;
       } else if (filter === 3) {
         return parseInt(item.emotion) === 3;
       } else if (filter === 4) {
         return parseInt(item.emotion) === 4;
-      } else {
+      } else if( filter === 5 ) {
         return parseInt(item.emotion) === 5;
       }
+      return 2 <= parseInt(item.emotion);
     };
 
     const Searchfilter = (val) => {
@@ -82,8 +100,7 @@ const Community = () => {
     };
 
     const copyList = JSON.parse(JSON.stringify(data));
-    const filterlist =
-      filter === 1 ? copyList : copyList.filter((it) => filters(it));
+    const filterlist = copyList.filter((it) => filters(it));
     const Searchfilterlist = filterlist.filter((it) => Searchfilter(it));
     return Searchfilterlist;
   };
@@ -108,7 +125,7 @@ const Community = () => {
           <div className="Community_body_one_post">
             <button
               className="Community_body_one_posts"
-              onClick={() => navigate("/post")}
+              onClick={()=>postto()}
             >
               글쓰기
               <img

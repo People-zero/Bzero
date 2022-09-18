@@ -20,7 +20,7 @@ const JoinPage = () => {
   const [userType, setUserType] = useState(true);
   useEffect(() => {
   if (localStorage.getItem('token') !== null) {
-    window.location.replace('http://localhost:3000/main');
+    window.location.replace('https://bzero.cf/main');
   } else {
     setLoading(false);
   }
@@ -93,7 +93,7 @@ const JoinPage = () => {
 
   const join = () => {
     axios
-      .post("https://3.39.211.105:8000/auth/registration/", {
+      .post("https://bzeroo.herokuapp.com/https://bzero.tk/auth/registration/", {
         username: email,
         email: email,
         password1: pwd1,
@@ -105,20 +105,20 @@ const JoinPage = () => {
         nickname: nickname,
         gender: gender,
         is_staff: isStaff,
-        point:0,
+       
       })
       .then(() => {
         // Handle success.
-        alert("회원가입 완료!")
-        window.location.replace('http://localhost:3000/login')
+        window.location.replace('https://bzero.cf/main')
         //페이지 이동 필요
       })
       .catch((error) => {
-        
+        console.log("An error occurred:", error.response);
         // alert('')
-        alert("양식에 맞춰 다시 작성해주세요")
+        alert("중복된 회원정보이거나, 양식에 맞춰 다시 작성해주세요")
       });
   };
+
 
   return (
     <div className="join_page">
@@ -192,9 +192,14 @@ const JoinPage = () => {
               setName(event.target.value);
             }}
           ></input>
-          <h4 className="join_page_detail">
-            <label id="nickname">닉네임*</label>
-          </h4>
+          <div className="join_page_detail_nickname">
+            <h4 className="join_page_detail">
+              <label id="nickname">닉네임*</label>
+            </h4>
+            <h4 className="join_page_nickname_detail">
+              ※닉네임은 성함, 이메일과 겹치지 않아야 합니다.
+            </h4>
+          </div>
           <input
             className="join_page_input"
             placeholder="닉네임을 입력해주세요"
@@ -219,7 +224,7 @@ const JoinPage = () => {
           </h4>
           <input
             className="join_page_input"
-            placeholder="6자 이상의 비밀번호를 입력해주세요"
+            placeholder="8자 이상의 비밀번호를 입력해주세요"
             value={pwd1 || ""}
             onChange={(event) => {
               setPwd1(event.target.value);
@@ -230,7 +235,7 @@ const JoinPage = () => {
           </h4>
           <input
             className="join_page_input"
-            placeholder="6자 이상의 비밀번호를 입력해주세요"
+            placeholder="8자 이상의 비밀번호를 입력해주세요"
             value={pwd2 || ""}
             onChange={(event) => {
               setPwd2(event.target.value);
@@ -249,7 +254,7 @@ const JoinPage = () => {
             }}
           ></input>
           <h4 className="join_page_detail">
-            <label>성별</label>
+            <label>성별*</label>
           </h4>
           <div className="join_page_radio">
             <input
@@ -277,7 +282,7 @@ const JoinPage = () => {
             <label htmlFor="female">여성</label>
           </div>
           <h4 className="join_page_detail">
-            <label id="age">나이</label>
+            <label id="age">나이*</label>
           </h4>
           <select
             value={age || ""}
@@ -288,7 +293,7 @@ const JoinPage = () => {
             {age_list_make()}
           </select>
           <h4 className="join_page_detail">
-            <label id="birth">생년월일</label>
+            <label id="birth">생년월일*</label>
           </h4>
           <input
             className="join_page_date"

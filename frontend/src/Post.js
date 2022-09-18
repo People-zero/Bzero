@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./css/Post.css";
 
 const sortOptionList = [
-  { value: "카테고리", name: "카테고리" },
+  { value: 6, name: "카테고리" },
   { value: 2, name: "함께해요" },
   { value: 3, name: "궁금해요" },
   { value: 4, name: "인증사진" },
@@ -38,6 +38,7 @@ const Post = () => {
   const postRef = useRef();
   const [title, setTitle] = useState("");
   const [post, setPost] = useState("");
+  const [postimg, setpostimg] = useState(null)
 
   const [curDate, setCurDate] = useState(new Date());
   const nowday = `${curDate.getFullYear()}.${
@@ -46,13 +47,22 @@ const Post = () => {
 
   const [sortType, setSortType] = useState("카테고리");
   const handleSubmit = () => {
-    const PostData = {
+    
+    const PostData = postimg === null ? 
+    { 
+      category: sortType,
+      title: title,
+      content: post,
+      image:"",
+    } : 
+    {
       category: sortType,
       title: title,
       content: post,
       image: postimg,
     };
-    fetch("http://127.0.0.1:8000/post/", {
+    console.log(PostData)
+    fetch("https://bzeroo.herokuapp.com/https://bzero.tk/post/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -62,11 +72,11 @@ const Post = () => {
     })
       .then((res) => res.json())
       .then(() => {
-        window.location.replace("http://localhost:3000/community");
+        window.location.replace("https://bzero.cf/community");
       });
   };
 
-  const [postimg, setpostimg] = useState()
+
 
   const imageuploadbt =  ({ target: { files } }) => {
       const reader = new FileReader();

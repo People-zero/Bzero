@@ -1,6 +1,6 @@
-import "./Details.css";
+import "./css/Details.css";
 import { PostStateContext } from "./App";
-import { useContext, useParams, useEffect, useState, useRef } from "react";
+import React, { useContext, useParams, useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
 const emotionLists = ["전체", "함께해요", "궁금해요", "인증사진", "정보광장"];
@@ -12,14 +12,14 @@ const Details = () => {
     const userdata = async () => {
       let token = localStorage.getItem("token");
       let token2 = "Token ".concat(token);
-      const res = await fetch("http://127.0.0.1:8000/auth/accounts", {
+      const res = await fetch("https://bzeroo.herokuapp.com/https://bzero.tk/auth/accounts", {
         method: "GET",
         headers: {
           Authorization: "Token ".concat(token),
         },
       }).then((res) => res.json());
       SetUser(res)
-      const res2 = await fetch(`http://127.0.0.1:8000/post/detail/${state.id}`, {
+      const res2 = await fetch(`https://bzeroo.herokuapp.com/https://bzero.tk/post/detail/${state.id}`, {
         method: "GET",
         headers: {
           Authorization: "Token ".concat(token),
@@ -43,13 +43,14 @@ const Details = () => {
       if (e.value !== "") {
         Setcomment(comment);
         pushcommentdata(comment)
+        
       }
     }
   };
-
+  
   const pushcommentdata = async (data) => {
     const commentapidata = {content:data};
-    const onecomment = await  fetch(`http://127.0.0.1:8000/post/detail/${state.id}`, {
+    const onecomment = await  fetch(`https://bzeroo.herokuapp.com/https://bzero.tk/post/detail/${state.id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,14 +58,15 @@ const Details = () => {
       },
       body: JSON.stringify(commentapidata),
     }).then(()=>{
-      window.location.replace(`http://localhost:3000/details/${state.id}`)
+      window.location.reload()
     })
   };
 
 
+
   const detailsdelete = async () => {
     const delcomment = await fetch(
-      `http://127.0.0.1:8000/post/detail/retrieve/${state.id}`,
+      `https://bzeroo.herokuapp.com/https://bzero.tk/post/detail/retrieve/${state.id}`,
       {
         method: "DELETE",
         headers: {
@@ -72,9 +74,10 @@ const Details = () => {
         },
       }
         ).then(() => {
-      window.location.replace("http://localhost:3000/community");
+       navigate("https://bzero.cf/community");
     });
   }
+
 
   return (
     <div className="Details">
@@ -112,15 +115,15 @@ const Details = () => {
           </div>
         </div>
         <div className="Details_Body_3">
-          <div className="Details_Body_3_user">{user[0]?.username}</div>
+          <div className="Details_Body_3_user">{state.author}</div>
           <div className="Details_Body_3_imgs"> 
           </div>
         </div>
         <div className="Details_Body_4">
-        <img
+        {image === null ? <div></div> : <img
               className="Details_Body_4_img"
-              src={` http://127.0.0.1:8000/${image}`}
-            />
+              src={` https://bzero.tk/${image}`}
+            />}
           <div className="Details_Body_4_post">{state.content}</div>
           
         </div>
@@ -163,4 +166,4 @@ const Details = () => {
   );
 };
 
-export default Details;
+export default React.memo(Details);
