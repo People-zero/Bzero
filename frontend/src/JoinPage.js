@@ -115,7 +115,7 @@ const JoinPage = () => {
       .catch((error) => {
         console.log("An error occurred:", error.response);
         // alert('')
-        alert("양식에 맞춰 다시 작성해주세요")
+        alert("중복된 회원정보이거나, 양식에 맞춰 다시 작성해주세요")
       });
   };
 
