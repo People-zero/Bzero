@@ -162,7 +162,7 @@ const handleSubmit = () => {
                 <div className='registbottlestore_input_img'>
                   <label for="input_file" 
                   className="registbottlestore_input_file">
-                  <img src={photo_icon} />
+                  {/*<img src={photo_icon} />*/}
                   {fileImage && (
                   <img
                     alt="sample"
