@@ -141,7 +141,7 @@ const MainPage=()=>{
             <div className="Main_footer_img"><img src={process.env.PUBLIC_URL+`../img/image 106.png`}></img> BZero</div>
         </div>
         <div className="Mainfooter_center">
-            <div>개발 | 팀 코스</div>
+            <div>개발 | 팀 People_Zero</div>
             <div>제휴 및 협력 | fishingest@kookmin.ac.kr</div>
             <div>@2022 by BZero All right reseved</div>
 
